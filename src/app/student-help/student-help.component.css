@@ -1,0 +1,250 @@
+h3 {
+  padding-right: 20px;
+}
+
+:root {
+  --nav_color_student: #FDC300;
+  --sidebar_color_student: #042954;
+  --font_style_student: "Inter";
+  --nav_color_admin: #4394DF;
+  --sidebar_color_admin: #284A6A;
+  --backcolor_admin: #bbc7d2;
+  --icon_color_admin: #FDC300;
+}
+
+
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+#help {
+  background-color: #5c7594;
+}
+
+
+#more-info {
+  padding: 2px;
+  margin: 0.5px;
+  font-size: x-large;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* width: calc(100% - 200px); */
+  /* width: 100%; */
+  /* transition: width 0.3s, margin-left 0.3s; */
+  /* overflow: scroll; */
+}
+
+.support-section {
+  margin: 50px;
+  /* transition: width 0.3s, margin-left 0.3s; */
+}
+
+.support-header {
+  height: 100px;
+  border-bottom: 2px solid #ddd;
+  /* margin-right: 30px; */
+  /* background-color: #4394DF; */
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 10px;
+  height: 80px;
+  padding: 10px 0 0 15px;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  /* background-color: aqua; */
+}
+
+#dash-1 {
+  color: blue;
+}
+
+.doubt-section {
+  margin-top: 50px;
+}
+
+.doubt-header {
+  width: 155px;
+  font-size: 1.2rem;
+  border-bottom: 1px solid black;
+}
+
+.doubt-header h3 {
+  padding: 0;
+}
+
+.card-section {
+  /* margin-right: 30px; */
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.card {
+  flex-grow: 1;
+  width: 45%;
+  height: 220px;
+  border-radius: 10px;
+  /* border: 1px solid black; */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card h4 {
+  padding: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.text-area {
+  flex-grow: 1;
+  width: 45%;
+  height: 220px;
+  /* border: 1px solid black; */
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.file-section input {
+  height: 40px;
+  width: 100%;
+  padding: 5px 0 0 5px;
+}
+.files::file-selector-button {
+  height: 30px;
+  border-radius: 10px;
+}
+.files::file-selector-button:hover{
+  cursor: pointer;
+}
+
+.text-section textarea {
+  overflow-y: auto;
+  overflow-x: hidden;
+  resize: none;
+  border: none;
+  outline: none;
+  /* padding: 10px; */
+  position: relative;
+  width: 100%;
+  height: 174px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+textarea:hover {
+  cursor: pointer;
+}
+
+::placeholder {
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  font-size: 15px;
+}
+
+.submit-button {
+  text-align: end;
+  margin-top: 10px;
+}
+
+.submit-button button {
+  /* margin-right: 0px; */
+  font-size: 2rem;
+  border-radius: 5px;
+  background-color: yellowgreen;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: blue;
+  color: white;
+}
+
+.contact-section {
+  margin-top: 20px;
+  /* margin-right: 30px; */
+}
+
+.contact-header {
+  width: 180px;
+  border-bottom: 1px solid black;
+}
+
+.contact-header h3 {
+  padding: 0;
+  font-size: 1.2rem;
+}
+
+.contact-table {
+  margin-top: 50px;
+  /* margin-bottom: 30px; */
+  width: 100%;
+  height: 300px;
+  overflow: auto;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.contact-table:hover {
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+th {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+td {
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  background: #f1f1f1;
+}
+
+
+@media screen and (max-width:991px) {
+  .card{
+      width: 100%;
+  }
+}
+@media screen  and (max-width:767px){
+  .support-section{
+      margin: 17px;
+  }
+  .container{
+    margin: 60px;
+    margin-top: 10px;
+    margin-right: 0px;
+}
+}
+
+

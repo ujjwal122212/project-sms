@@ -1,0 +1,23 @@
+
+
+.con{
+width: 100%;
+
+}
+.flex-container{
+  display: flex;
+}
+app-navbar{
+  width: 100%;
+}
+.ww{
+  display: flex;
+
+
+}
+.navu{
+  width: 100%;
+}
+app-performance{
+  width: 100%;
+}

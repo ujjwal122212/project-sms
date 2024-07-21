@@ -25,7 +25,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css",
+              "src/app/navbar/navbar.component.css"
             ],
             "scripts": [],
             "server": "src/main.server.ts",

@@ -1,0 +1,210 @@
+.grid-container{
+
+  margin-top: 10px;
+  padding: 10px;
+
+
+
+
+}
+.header {
+
+  width: 100%;
+  height: 70px;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  overflow: hidden;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.header h1 {
+  font-size: 25px;
+  padding: 5px;
+  margin: 5px;
+  padding-top: 0px;
+  margin-top: 0px;
+}
+.header a {
+  text-decoration: none;
+  color: #007bff;
+  display: inline;
+  padding: 5px;
+  margin: 5px;
+}
+.header p {
+  display: inline;
+}
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1.55px solid #ddd;
+  padding-bottom: 18px;
+}
+
+.filters select {
+  width: 19%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  border: none;
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+thead {
+  background-color:var(--icon_color_admin);
+}
+.actions {
+  text-align: center;
+}
+
+.actions button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.actions button:hover {
+  background-color: #45a049;
+}
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+body.dark-mode nav {
+  background-color: #333;
+  color: #e0e0e0;
+}
+body.dark-mode .menu {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+body.dark-mode .menu a {
+  color: #e0e0e0;
+  border-bottom: 1px solid #444;
+}
+
+@media (max-width: 768px) {
+  .menu {
+      width: 50px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      z-index: 10;
+      background: var(--sidebar_color_student);
+  }
+  .menu.expanded {
+      width: 200px;
+  }
+  .main-content.shifted {
+      margin-left: 0;
+      width: 100%;
+  }
+  .header {
+      margin: 0px;
+      padding: 10px;
+      height: auto;
+  }
+  .header h1 {
+      font-size: 18px;
+      padding-bottom: 5px;
+  }
+  .header div {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+  .grid-container {
+      margin-left: 50px;
+      transition: margin-left 0.3s;
+      overflow: scroll;
+  }
+  .menu.expanded + .main-content .grid-container {
+      margin-left: 0;
+  }
+  .filters select {
+      width: 48%;
+  }
+
+  table, thead, tbody, th, td, tr {
+      display: block;
+  }
+
+  thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+  }
+
+  tr {
+      margin: 0 0 1rem 0;
+  }
+
+  tr:nth-child(odd) {
+      background: #f2f2f2;
+  }
+
+  td {
+      border: none;
+      border-bottom: 1px solid #ddd;
+      position: relative;
+      padding-left: 50%;
+      text-align: left;
+  }
+
+  td:before {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      font-weight: bold;
+  }
+
+  td:nth-of-type(1):before { content: "Sr. No."; }
+  td:nth-of-type(2):before { content: "Subject Code"; }
+  td:nth-of-type(3):before { content: "Subject Name"; }
+  td:nth-of-type(4):before { content: "Quiz 1"; }
+  td:nth-of-type(5):before { content: "Mid Term"; }
+  td:nth-of-type(6):before { content: "Quiz 2"; }
+  td:nth-of-type(7):before { content: "End Term"; }
+}
+
+@media (min-width: 768px) {
+  .menu.collapsed + .main-content nav {
+      /* width: calc(100% - 50px); */
+      width: calc(100% );
+  }
+  .main-content {
+      /* width: calc(100% - 200px); */
+      width: calc(100%);
+  }
+}
