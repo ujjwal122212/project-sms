@@ -13,6 +13,7 @@ import { ViewBalanceComponent } from './teacher/leave/view-balance/view-balance.
 import { HolidayCalenderComponent } from './teacher/leave/holiday-calender/holiday-calender.component';
 import { CancelLeaveComponent } from './teacher/leave/cancel-leave/cancel-leave.component';
 import { UpcomingComponent } from './teacher/quiz/upcoming/upcoming.component';
+import { StudentHelpComponent } from './help/student-help.component';
 
 
 
@@ -34,6 +35,7 @@ export const routes: Routes = [
 
 { 'path': 'quizzes', 'title': 'quizzes', component:UpcomingComponent},
 
+{ 'path': 'help', 'title': 'help', component:StudentHelpComponent},
   { 'path': '', 'title': 'Home', component:HomeComponent},
   { 'path': 'performance', 'title': 'Performance', component:PerformanceComponent },
   { 'path': 'courses', 'title': 'Courses', component: CoursesComponent },
