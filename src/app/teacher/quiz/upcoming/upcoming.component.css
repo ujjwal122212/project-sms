@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Inter", sans-serif;
+}
+
+
+
+.quiz-header {
+  border-bottom: 1px solid #444;
+  margin: 20px 30px 50px 40px;
+  padding: 30px 0px 30px 0px;
+}
+
+.header-content {
+  flex-grow: 1;
+  padding: 20px 0 20px 50px;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.quiz-header h3 {
+  margin-bottom: 10px;
+}
+
+#dash {
+  color: blue;
+}
+
+.quiz-section {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 30px 20px 40px;
+  gap: 50px;
+}
+
+.quiz-left {
+  height: auto;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 40px 0 40px;
+  max-height: 400px;
+  gap: 30px;
+  /* margin: 0 400px; */
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.card {
+  border: 1px solid black;
+  padding: 10px 0 10px 20px;
+  border-radius: 10px;
+}
+
+.card:first-child {
+  background: #4394D4;
+  color: white;
+}
+
+.card p {
+  display: flex;
+  gap: 30%;
+}
+.card p:hover{
+  cursor: pointer;
+}
+
+.quiz-right {
+  height: auto;
+  width: calc(60% - 50px);
+}
+
+.table-section {
+  width: 100%;
+  padding-bottom: auto;
+  height: 400px;
+  overflow: auto;
+  /* background-color: green; */
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+table {
+  width: 100%;
+  /* border-collapse: collapse; */
+  border-spacing: 0;
+}
+
+th {
+  border: 1px solid #ddd;
+  padding: 10px ;
+  text-align: center;
+}
+
+td {
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 10px ;
+}
+
+td input {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 10px;
+  background-color:greenyellow;
+}
+td input:hover{
+  background-color:blue;
+  color: white;
+  cursor: pointer;
+}
+
+td p {
+  margin-bottom: 2px;
+}
+
+thead {
+  position: sticky;
+  top: 47.2px;
+  background: #f1f1f1;
+}
+
+caption {
+  position: sticky;
+  top: 0;
+  padding: 10px;
+  background-color: #4394DF;
+  font-size: 1.5rem;
+  color: white;
+}
+
+/* Media Queries */
+
+
+@media screen and (max-width:767px) {
+      .quiz-left{
+          width: 100%;
+         padding-bottom: 40px;
+         height: auto;
+      }
+      .quiz-right{
+          width: 100%;
+      }
+}

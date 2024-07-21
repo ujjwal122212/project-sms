@@ -1,25 +1,55 @@
+import { ViewLeaveBookComponent } from './teacher/leave/view-leave-book/view-leave-book.component';
 
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 import { PerformanceComponent } from './performance/performance.component';
 import { CoursesComponent } from './courses/courses.component';
-import { HomeComponent } from './home/home.component';
-import { Course1Component } from './courses/course1/course1.component';
-import { Fees1Component } from './student/fees/fees1/fees1.component';
-import { StudentHelpComponent } from './student-help/student-help.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { TimeTableComponent } from './time-table/time-table.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { LeavePageComponent } from './teacher/leave/leave-page/leave-page.component';
+import { ApplyLeaveComponent } from './teacher/leave/apply-leave/apply-leave.component';
+import { ViewStatusComponent } from './teacher/leave/view-status/view-status.component';
+import { ViewBalanceComponent } from './teacher/leave/view-balance/view-balance.component';
+import { HolidayCalenderComponent } from './teacher/leave/holiday-calender/holiday-calender.component';
+import { CancelLeaveComponent } from './teacher/leave/cancel-leave/cancel-leave.component';
+import { UpcomingComponent } from './teacher/quiz/upcoming/upcoming.component';
+
+
 
 export const routes: Routes = [
-  {'path':'','title':'Home',component:HomeComponent},
-  {'path':'performance','title':'Performance',component:PerformanceComponent},
-  {'path':'courses','title':'Courses',component:CoursesComponent},
-  {'path':'courses',children:[
-    {'path':'courses1','title':'Courses | course1',component:Course1Component},
+
+  // for teacher leave
+  { 'path': 'leave', 'title': 'leave', component:LeavePageComponent},
+
+  { 'path': 'leave',children:[
+    {'path':'apply-leave','title':'apply-leave',component:ApplyLeaveComponent},
+    {'path':'cancel-leave','title':'cancel-leave',component:CancelLeaveComponent},
+    {'path':'holiday-calender','title':'holiday-calender',component:HolidayCalenderComponent},
+    {'path':'view-balance','title':'view-balance',component:ViewBalanceComponent},
+    {'path':'view-leave-book','title':'view-leave-book',component:ViewLeaveBookComponent},
+    {'path':'view-status','title':'view-status',component:ViewStatusComponent},
   ]},
-  {'path':'fee','title':'fees',component:Fees1Component},
-  {'path':'help','title':'help',component:StudentHelpComponent},
-  {'path':'time','title':'time-table',component:TimeTableComponent},
-  {'path':'**',component:NotFoundComponent},
+
+// for teacher quizess
+
+{ 'path': 'quizzes', 'title': 'quizzes', component:UpcomingComponent},
+
+  { 'path': '', 'title': 'Home', component:HomeComponent},
+  { 'path': 'performance', 'title': 'Performance', component:PerformanceComponent },
+  { 'path': 'courses', 'title': 'Courses', component: CoursesComponent },
+  {
+    'path': 'courses', children: [
+    ]
+  },
+
+  { 'path': 'time', 'title': 'time-table', component:TimeTableComponent},
+  { 'path': '**', component: NotFoundComponent },
+
+
+
+
+
+
 
 
 ];

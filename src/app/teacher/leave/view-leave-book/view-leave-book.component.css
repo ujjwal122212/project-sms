@@ -1,0 +1,210 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.book-area {
+  margin: 50px;
+}
+
+.book-header {
+  border-bottom: 2px solid #aaa;
+  padding: 30px 0px 30px 0px;
+}
+
+.header-content {
+  flex-grow: 1;
+  padding: 20px 0 20px 50px;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.book-header h1 {
+  margin-bottom: 10px;
+}
+
+#dash {
+  color: blue;
+}
+.leave-book-area {
+  margin-top: 70px;
+  border-radius: 10px;
+  padding: 0 10%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.header-section {
+  margin-top: 20px;
+  border-radius: 10px;
+  border-top: 5px solid rgba(0, 157, 179, 1);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.header-section h2 {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.7rem;
+}
+
+
+.select-area{
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20%;
+}
+.select-section{
+  display: flex;
+  justify-content: space-between;
+}
+.select-section h4{
+  align-self: center;
+  font-size: 1.2rem;
+}
+select{
+  width: 40%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+}
+select:hover{
+  cursor: pointer;
+}
+.button-area{
+  margin-top: 10px;
+  display: flex;
+  justify-content: end;
+  gap: 30px;
+}
+button{
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 10px;
+  background-color: yellowgreen;
+}
+button:hover{
+  cursor: pointer;
+  background-color: blue;
+  color: white;
+  transform: scale(1.1);
+}
+.table-section{
+  margin-top: 30px;
+  width: 100%;
+  overflow: auto;
+  max-height: 300px;
+  border-radius: 10px;
+  margin-bottom: 50px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+th {
+  border: 1px solid #ddd;
+  padding: 10px ;
+  text-align: center;
+}
+
+td {
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 10px ;
+}
+caption {
+  position: sticky;
+  top: 0;
+  padding: 10px;
+  background-color: #4394DF;
+  font-size: 1.3rem;
+  color: white;
+}
+thead {
+  position: sticky;
+  top: 44.7px;
+  background: #f1f1f1;
+}
+@media screen and (max-width:991px) {
+  .book-area{
+      margin: 30px;
+  }
+  .leave-book-area{
+      padding: 0 8%;
+  }
+  .select-area{
+      padding: 0 10%;
+  }
+}
+@media screen and (max-width:767px) {
+  .select-section{
+      flex-direction: column;
+  }
+  .select-section h4{
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+      padding: 5px;
+      font-size: 1.2rem;
+  }
+  select{
+      width: 70%;
+      display: block;
+      margin: 0 auto;
+  }
+  .button-area{
+      justify-content: center;
+      margin-top: 20px;
+  }
+}
+
+@media screen and (max-width:497px){
+  .book-area{
+      margin: 20px;
+  }
+  .header-content {
+      padding: 10px 0 10px 10px;
+  }
+  .book-header h1 {
+      margin-bottom: 7px;
+  }
+
+  .header-content h1 {
+      font-size: 30px;
+  }
+  .header-section h2{
+      font-size: 20px;
+      padding: 20px 5px;
+  }
+  .leave-book-area{
+      padding: 0 5%;
+  }
+  .select-area{
+      padding: 0;
+  }
+  .button-area{
+     gap: 15px;
+  }
+
+  th,
+  td {
+      padding: 5px;
+      font-size: 15px;
+  }
+  caption{
+      padding: 8px;
+  }
+  thead{
+      top: 40.7px;
+  }
+}

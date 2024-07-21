@@ -1,0 +1,175 @@
+
+.apply-leave-section {
+  margin: 20px;
+}
+
+.leave-header {
+  border-bottom: 2px solid #aaa;
+  padding: 10px 0px 10px 0px;
+}
+
+.header-content {
+  flex-grow: 1;
+  padding: 20px 0 20px 50px;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.leave-header h1 {
+  margin-bottom: 10px;
+}
+
+#dash {
+  color: blue;
+}
+
+.apply-form-area {
+  margin-top: 70px;
+  border-radius: 10px;
+  padding: 0 10%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.header-section {
+  margin-top: 10px;
+  border-radius: 10px;
+  border-top: 5px solid rgba(0, 157, 179, 1);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.header-section h2 {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.7rem;
+}
+
+.form-area {
+  margin-top: 50px;
+  /* padding: 0 10% 0 15%; */
+  padding: 0 10%;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.card h3 {
+  padding: 10px;
+  font-size: 1.5rem;
+}
+
+.card #box {
+  width: 40%;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #aaa;
+}
+.card #box:hover{
+  cursor: pointer;
+}
+
+textarea {
+  height: 100px;
+  overflow: auto;
+}
+
+.files::file-selector-button {
+  border-radius: 10px;
+  height: 30px;
+}
+.files::file-selector-button:hover{
+  cursor: pointer;
+}
+
+.submit-area {
+  margin-top: 30px;
+  display: flex;
+  justify-content: end;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.cancel-button,
+.submit-button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  background-color: yellowgreen;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+button:hover{
+  cursor: pointer;
+  background-color: blue;
+  color: white;
+  transform: scale(1.1);
+}
+
+@media screen and (max-width:991px) {
+  .form-area {
+      padding: 0 5%;
+  }
+
+  .card #box {
+      width: 50%;
+  }
+}
+
+@media screen and (max-width:767px) {
+  .apply-leave-section {
+      margin: 20px;
+  }
+
+  .card {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .card h3 {
+      width: 100%;
+      text-align: center;
+  }
+
+  .card #box {
+      width: 80%;
+  }
+
+  .files::file-selector-button {
+      margin-left: 10%;
+  }
+}
+
+@media screen and (max-width:497px) {
+  .header-content {
+      padding: 10px;
+  }
+
+  .header-content h1 {
+      font-size: 30px;
+  }
+
+  .header-section h2 {
+      font-size: 15px;
+  }
+
+  .card #box {
+      width: 100%;
+  }
+  .card h3{
+      font-size: 15px;
+  }
+  input#box.files {
+      padding-left: 60px;
+  }
+
+  .files::file-selector-button {
+      display: block;
+      margin: 0;
+  }
+}

@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.calander-area {
+  margin: 50px;
+}
+
+.calander-header {
+  border-bottom: 2px solid #aaa;
+  padding: 30px 0px 30px 0px;
+}
+
+.header-content {
+  flex-grow: 1;
+  padding: 20px 0 20px 50px;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.calander-header h1 {
+  margin-bottom: 10px;
+}
+
+#dash {
+  color: blue;
+}
+.table-section{
+  margin-top: 50px;
+  width: 100%;
+  overflow: auto;
+  max-height: 600px;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+th {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+td {
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+caption {
+  position: sticky;
+  top: 0;
+  padding: 10px;
+  background-color: #4394DF;
+  font-size: 1.3rem;
+  color: white;
+}
+
+thead {
+  position: sticky;
+  top: 44.7px;
+  background: #f1f1f1;
+}
+
+@media screen and (max-width:991px) {
+  .calander-area {
+      margin: 30px;
+  }
+}
+@media screen and (max-width:497px) {
+  .calander-area {
+      margin-left: 70px;
+
+  }
+  .header-content {
+      padding: 10px 0 10px 10px;
+  }
+
+  .calander-header h1 {
+      margin-bottom: 7px;
+  }
+
+  th,
+  td {
+      padding: 5px;
+      font-size: 15px;
+  }
+
+  caption {
+      padding: 8px;
+  }
+
+  thead {
+      top: 40.7px;
+  }
+}
+@media screen and (max-width:350px){
+  .calander-header h1{
+      font-size: 25px;
+  }
+}
