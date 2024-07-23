@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Inter", sans-serif;
+}
+
+.Quiz-area {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.header {
+    width: 100%;
+    height: 70px;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    overflow: hidden;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.header h1 {
+    font-size: 25px;
+    padding: 5px;
+    margin: 5px;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.header a {
+    text-decoration: none;
+    color: #007bff;
+    display: inline;
+    padding: 5px 0 5px 5px;
+    margin-left: 5px;
+}
+
+.header p {
+    display: inline;
+}
+
+.border-bottom {
+    margin-top: 20px;
+    border-bottom: 2px solid #aaa;
+}
+
+.heading {
+    display: inline-block;
+    margin-top: 30px;
+}
+
+.heading h2 {
+    border-bottom: 2px solid black;
+}
+
+.table-section {
+    margin-top: 30px;
+    width: 100%;
+    max-height: 500px;
+    overflow: auto;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+table {
+    width: 100%;
+    /* border-collapse: collapse; */
+    border-spacing: 0;
+}
+
+th {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+td {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+td input {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 30px;
+    background-color: greenyellow;
+}
+
+td input:hover {
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
+
+td p {
+    margin-bottom: 2px;
+}
+
+thead {
+    position: sticky;
+    top: 47.2px;
+    background: #f1f1f1;
+}
+
+caption {
+    position: sticky;
+    top: 0;
+    padding: 10px;
+    background-color: #4394DF;
+    font-size: 1.5rem;
+    color: white;
+}
+
+/* Media Queries */
+
+
+@media screen and (max-width:768px) {
+    .Quiz-area {
+        margin-left: 60px;
+    }
+}
+
+@media screen and (max-width:497px) {
+    .table-section {
+        margin: 40px 0;
+    }
+
+    .Quiz-area {
+        margin-left: 50px;
+        overflow-x: hidden;
+    }
+
+    .header h1 {
+        font-size: 20px;
+    }
+
+    .header a,
+    p {
+        font-size: 14px;
+    }
+    .heading h2{
+        font-size: 20px;
+    }
+    th,
+    td {
+        padding: 5px;
+        font-size: 15px;
+    }
+
+    caption {
+        padding: 8px;
+    }
+
+    thead {
+        top: 40.7px;
+    }
+
+    td input {
+        padding: 8px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width:350px) {
+    .header h1 {
+        margin-left: 0;
+    }
+
+    .header a {
+        padding: 0;
+    }
+}

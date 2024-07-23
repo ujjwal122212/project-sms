@@ -10,41 +10,56 @@ body {
 }
 
 .leave-section {
-  margin: 20px;
+  margin-top: 10px;
+  padding: 10px;
 }
 
-.leave-header {
-  border-bottom: 2px solid #aaa;
-  padding: 30px 0px 30px 0px;
-}
-
-.header-content {
-  flex-grow: 1;
-  padding: 20px 0 20px 50px;
-  border-radius: 10px;
+.header {
+  width: 100%;
+  height: 70px;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  overflow: hidden;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
-.leave-header h1 {
-  margin-bottom: 10px;
+.header h1 {
+  font-size: 25px;
+  padding: 5px;
+  margin: 5px;
+  padding-top: 0px;
+  margin-top: 0px;
 }
 
-#dash {
-  color: blue;
+.header a {
+  text-decoration: none;
+  color: #007bff;
+  display: inline;
+  padding: 5px 0 5px 5px;
+  margin-left: 5px;
 }
 
+.header p {
+  display: inline;
+}
+.border-bottom{
+  margin-top: 20px;
+  border-bottom: 2px solid #aaa;
+}
 .leave-area {
   display: flex;
   justify-content: center;
   gap: 2.5%;
   flex-wrap: wrap;
-  margin-top: 70px;
+  margin-top: 50px;
 }
 
 .card {
-  width: 23%;
+  width: 200px;
   margin-bottom: 30px;
-  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -62,7 +77,7 @@ body {
 }
 
 .card i {
-  font-size: 70px;
+  font-size: 60px;
   text-align: center;
   color: rgba(18, 112, 176, 1);
 }
@@ -75,26 +90,31 @@ body {
   color: rgba(210, 15, 70, 1);
 }
 
-.card h4 {
-  margin-top: 20px;
-  font-size: 1.2em;
+.card p {
+  margin-top: 4%;
+  font-size: 1em;
   width: 70%;
   text-align: center;
 }
 
 @media screen and (max-width:991px) {
-  .leave-area {
-    justify-content: space-between;
-  }
-
   .card {
-    width: 30%;
+    width: 150px;
+  }
+  .card i{
+    font-size: 50px;
+  }
+  .card h4{
+    font-size: 14px;
   }
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:768px) {
+  .leave-section{
+    margin-left: 60px;
+  }
   .card {
-    width: 45%;
+    width: 135px;
   }
 }
 
@@ -108,23 +128,28 @@ body {
   }
 
   .leave-section {
-    margin-left: 70px;
+    margin-left: 50px;
+    overflow-x: hidden;
   }
 
   .leave-area {
+    margin-top: 30px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   .card {
-    width: 70%;
+    width: 45%;
   }
 
   .card i {
-    font-size: 100px;
+    font-size: 40px;
   }
 
-  .card h4 {
-    font-size: 2rem;
+  .card p {
+    font-size: 15px;
+  }
+  body, p, h1, h2, h3, h4, h5, h6, label {
+    font-size: 16px;
   }
 }

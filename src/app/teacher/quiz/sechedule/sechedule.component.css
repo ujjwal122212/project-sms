@@ -1,0 +1,434 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Inter", sans-serif;
+}
+
+.Quiz-area {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.header {
+    width: 100%;
+    height: 70px;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    overflow: hidden;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.header h1 {
+    font-size: 25px;
+    padding: 5px;
+    margin: 5px;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.header a {
+    text-decoration: none;
+    color: #007bff;
+    display: inline;
+    padding: 5px 0 5px 5px;
+    margin-left: 5px;
+}
+
+.header p {
+    display: inline;
+}
+
+.border-bottom {
+    margin-top: 20px;
+    border-bottom: 2px solid #aaa;
+}
+
+
+.heading {
+    display: inline-block;
+    margin-top: 30px;
+}
+
+.heading h2 {
+    border-bottom: 2px solid black;
+}
+
+.quiz-header h3 {
+    margin-bottom: 15px;
+}
+
+.select-area {
+    display: flex;
+    margin-top: 30px;
+    /* gap: 30px; */
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.card {
+    /* width: calc(25% - 30px); */
+    width: 32%;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.card p {
+    font-size: 1.2rem;
+}
+
+.card select {
+    font-size: 1rem;
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 10px;
+}
+
+.card select:hover {
+    cursor: pointer;
+}
+
+#button {
+    /* margin: 50px 30px 20px 40px; */
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+}
+
+#button input {
+    font-size: 1.5rem;
+    border-radius: 30px;
+    padding: 8px;
+    background-color: yellowgreen;
+}
+
+#button input:hover {
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
+
+.placeholder {
+    color: #aaa;
+}
+
+.quiz-title-section {
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 30px 10%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.quiz-title-section .first {
+    padding: 20px;
+    /* width: 950px; */
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    border-top: 10px solid rgba(0, 157, 179, 1);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+}
+
+.first h2 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #aaa;
+}
+
+.first p {
+    padding: 10px 0;
+    border-bottom: 1px solid #aaa;
+}
+
+.quiz-title-section .second {
+    margin: 30px 0;
+    /* width: 950px; */
+    padding-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.second .one {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 10px;
+    flex-wrap: wrap;
+}
+
+.one .left {
+    width: 55%;
+    padding: 20px;
+    /* border: 1px solid red; */
+    border-bottom: 1px solid #444;
+    background-color: #ddd;
+    font-size: 1.5rem;
+}
+
+.one .right {
+    width: 40%;
+    /* border: 1px solid red; */
+}
+
+/* .right span {
+    padding-top: 12px;
+    padding-left: 5px;
+    font-size: 40px;
+    background-color: #ddd;
+    border-radius: 10px 0 0 10px;
+} */
+
+.right select {
+    border: none;
+    border-radius: none;
+    padding-left: 10px;
+    height: 100%;
+    width: 100%;
+    font-size: 1.5rem;
+    font-family: "Inter", sans-serif;
+    background-color: #ddd;
+    border-radius: 10px;
+}
+
+.right select:hover {
+    cursor: pointer;
+}
+
+.second .two {
+    padding: 0 20px 20px 20px;
+    margin: 20px;
+    font-size: 1.5rem;
+    gap: 10px;
+    border-bottom: 1px solid #aaa;
+}
+
+#r-button {
+    /* padding: 10px; */
+    transform: scale(1.5);
+    margin-right: 10px;
+}
+
+#r-button,
+label:hover {
+    cursor: pointer;
+}
+
+.second .three {
+    margin: 20px;
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+}
+
+.three span {
+    font-size: 1.2rem;
+}
+
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 20px;
+    border-radius: 30px;
+    border: 2px solid gray;
+}
+
+.toggle:after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: gray;
+    /* top: 0px;  */
+    top: -7px;
+    left: -3px;
+    transition: 0.5s ease-in-out;
+}
+
+.checkbox:checked+.toggle::after {
+    left: 35px;
+}
+
+.checkbox:checked+.toggle {
+    /* background-color: green; */
+}
+
+
+.checkbox {
+    display: none;
+}
+
+.quiz-title-section .third p {
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.third p i {
+    font-size: 30px;
+    color: black;
+}
+
+.third p span {
+    font-size: 1.7rem;
+    margin-left: 20px;
+}
+
+.third p i,
+span:hover {
+    cursor: pointer;
+}
+
+.quiz-title-section .fourth {
+    display: flex;
+    gap: 5%;
+    /* flex-wrap: wrap; */
+    justify-content: end;
+}
+
+.date-area button,
+.submit-area button {
+    padding: 15px;
+    font-size: 1.5rem;
+    border-radius: 50px;
+    background-color: yellowgreen;
+}
+
+.date-area button i,
+.submit-area button i {
+    margin-right: 10px;
+    color: black;
+}
+
+.date-area button:hover {
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
+
+.submit-area button:hover {
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
+
+
+/* Media Query */
+
+@media screen and (max-width:768px) {
+    .Quiz-area{
+        margin-left: 60px;
+    }
+    .card {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .one .left {
+        width: 100%;
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .one .right {
+        width: 100%;
+    }
+
+    .right select {
+        padding: 20px;
+        font-size: 1rem;
+    }
+
+    #r-button {
+        transform: scale(1);
+    }
+
+    .second .two {
+        font-size: 1rem;
+    }
+
+    .third p i {
+        font-size: 20px;
+    }
+
+    .third p span {
+        font-size: 1.2rem;
+    }
+
+    .date-area button,
+    .submit-area button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+
+}
+
+@media screen and (max-width:497px) {
+    .Quiz-area{
+        margin-left: 50px;
+        overflow-x: hidden;
+    }
+    .heading h2 {
+        font-size: 20px;
+    }
+
+    .quiz-header {
+        margin: 0px 10px 50px 10px;
+    }
+
+    .header-content {
+        padding: 20px 0px 20px 10px;
+    }
+
+
+    .quiz-title-section {
+        padding: 30px 20px;
+        margin: 40px 0px;
+    }
+
+    #button {
+        padding: 0 30px;
+    }
+
+    .quiz-title-section .third p {
+        margin-bottom: 20px;
+    }
+
+    .quiz-title-section .fourth {
+        flex-direction: column;
+    }
+
+    .date-area {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .submit-area {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+}
+@media screen and (max-width:350px) {
+    .header h1{
+      margin-left: 0 ;
+    }
+    .header a {
+      padding: 0;
+    }
+  }

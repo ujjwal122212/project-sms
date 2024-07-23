@@ -9,79 +9,61 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-
-
-.quiz-header {
-  border-bottom: 1px solid #444;
-  margin: 20px 30px 50px 40px;
-  padding: 30px 0px 30px 0px;
+.Quiz-area {
+  margin-top: 10px;
+  padding: 10px;
 }
 
-.header-content {
-  flex-grow: 1;
-  padding: 20px 0 20px 50px;
-  border-radius: 10px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-}
-
-.quiz-header h3 {
-  margin-bottom: 10px;
-}
-
-#dash {
-  color: blue;
-}
-
-.quiz-section {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 20px 30px 20px 40px;
-  gap: 50px;
-}
-
-.quiz-left {
-  height: auto;
-  width: 40%;
+.header {
+  width: 100%;
+  height: 70px;
+  border-radius: 7px;
   display: flex;
   flex-direction: column;
-  padding: 40px 40px 0 40px;
-  max-height: 400px;
-  gap: 30px;
-  /* margin: 0 400px; */
-  border-radius: 10px;
+  justify-content: center;
+  align-items: start;
+  overflow: hidden;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
-.card {
-  border: 1px solid black;
-  padding: 10px 0 10px 20px;
-  border-radius: 10px;
+.header h1 {
+  font-size: 25px;
+  padding: 5px;
+  margin: 5px;
+  padding-top: 0px;
+  margin-top: 0px;
 }
 
-.card:first-child {
-  background: #4394D4;
-  color: white;
+.header a {
+  text-decoration: none;
+  color: #007bff;
+  display: inline;
+  padding: 5px 0 5px 5px;
+  margin-left: 5px;
 }
 
-.card p {
-  display: flex;
-  gap: 30%;
-}
-.card p:hover{
-  cursor: pointer;
+.header p {
+  display: inline;
 }
 
-.quiz-right {
-  height: auto;
-  width: calc(60% - 50px);
+.border-bottom {
+  margin-top: 20px;
+  border-bottom: 2px solid #aaa;
+}
+.heading {
+  display: inline-block;
+  margin-top: 30px;
+}
+
+.heading h2 {
+  border-bottom: 2px solid black;
 }
 
 .table-section {
+  margin-top: 40px;
   width: 100%;
-  padding-bottom: auto;
-  height: 400px;
+  max-height: 500px;
   overflow: auto;
-  /* background-color: green; */
   border-radius: 10px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
@@ -94,24 +76,25 @@ table {
 
 th {
   border: 1px solid #ddd;
-  padding: 10px ;
+  padding: 10px;
   text-align: center;
 }
 
 td {
   text-align: center;
   border: 1px solid #ddd;
-  padding: 10px ;
+  padding: 10px;
 }
 
 td input {
   padding: 10px;
   font-size: 1rem;
-  border-radius: 10px;
-  background-color:greenyellow;
+  border-radius: 30px;
+  background-color: greenyellow;
 }
-td input:hover{
-  background-color:blue;
+
+td input:hover {
+  background-color: blue;
   color: white;
   cursor: pointer;
 }
@@ -138,13 +121,57 @@ caption {
 /* Media Queries */
 
 
-@media screen and (max-width:767px) {
-      .quiz-left{
-          width: 100%;
-         padding-bottom: 40px;
-         height: auto;
-      }
-      .quiz-right{
-          width: 100%;
-      }
+@media screen and (max-width:768px) {
+  .Quiz-area {
+    margin-left: 60px;
+  }
+}
+
+@media screen and (max-width:497px) {
+  .table-section{
+    margin: 40px 0;
+  }
+  .Quiz-area {
+    margin-left: 50px;
+    overflow-x: hidden;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .header a,
+  p {
+    font-size: 14px;
+  }
+.heading h2{
+  font-size: 20px;
+}
+  th,
+  td {
+    padding: 5px;
+    font-size: 15px;
+  }
+
+  caption {
+    padding: 8px;
+  }
+
+  thead {
+    top: 40.7px;
+  }
+
+  td input {
+    padding: 8px;
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width:350px) {
+  .header h1{
+    margin-left: 0 ;
+  }
+  .header a {
+    padding: 0;
+  }
 }
