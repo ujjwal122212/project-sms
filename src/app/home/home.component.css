@@ -18,8 +18,6 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-
-
 }
 
 #more-info {
@@ -90,16 +88,16 @@ h3 {
       width: 30%;
   }
 }
+@media screen and (max-width:767px){
+  .home-section {
+    margin: 20px 10px 0 60px;
+}
+}
 
 @media screen and (max-width:479px) {
   .container {
       overflow-x: hidden;
   }
-
-  .home-section {
-      margin: 20px;
-  }
-
   .card {
       width: 48%;
   }
