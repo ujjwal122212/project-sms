@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--font_style_student), sans-serif;
+}
+.grid-container {
+  padding: 20px;
+  /* background-color: yellow; */
+  width: 100%;
+  height: 100%;
+}
+.header {
+  border: 1px solid black;
+  width: 100%;
+  height: 70px;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.header h1 {
+  font-size: 25px;
+  padding: 5px;
+  margin: 5px;
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+.header a {
+  text-decoration: none;
+  color: #007bff;
+  display: inline;
+  padding: 5px;
+  margin: 5px;
+}
+
+.header p {
+  display: inline;
+}
+.main-container {
+  width: 100%;
+  height: 100%;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container h1 {
+  font-size: 1.5em;
+  text-align: start;
+  border-bottom: 1.5px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  border-bottom: 1.5px solid #ddd;
+  padding-bottom: 15px;
+  overflow-x: auto;
+}
+
+.filter label {
+  margin-right: 4%;
+}
+
+.filter select {
+  margin-right: 4%;
+  padding: 5px;
+  font-size: 16px;
+  width: 15%;
+}
+
+.snd-table button a {
+  text-decoration: none;
+  font-size: 20px;
+  color: #007bff;
+}
+
+.snd-table button {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+#submit,
+.snd-table button a {
+  background-color: #ccff33;
+  border: none;
+  padding: 10px 30px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#submit:hover,
+.snd-table button a {
+  background-color: #b3e600;
+}
+.snd-table[input="checkbox"] {
+  font-size: 16px;
+  color: #ccff33;
+}
+.homework-table {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 15%;
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.fst-table th,
+.fst-table td {
+  border: 1px solid #ddd;
+  padding: 16px;
+  text-align: center;
+}
+.snd-table th,
+.snd-table td {
+  padding: 10px;
+  text-align: center;
+}
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.fst-table {
+  width: 100%;
+  padding-left: 5%;
+}
+.snd-table {
+  border: 0 solid #ddd;
+  padding-right: 5%;
+  width: 70%;
+  /* background: yellow; */
+}
+.checkbox-text {
+  font-size: 2rem;
+}
+
+.checkbox-text:hover {
+  transform: scale(1.4);
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 767px) {
+  .homework-table {
+    flex-wrap: wrap;
+  }
+}

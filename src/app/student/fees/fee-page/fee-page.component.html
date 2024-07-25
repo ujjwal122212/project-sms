@@ -1,1 +1,270 @@
-<p>fee-page works!</p>
+<div class="grid-container">
+  <div class="header">
+    <h1>Courses</h1>
+    <div>
+      <span><a href="#">Dashboard</a></span>
+      <span><a href="#">/ Fees</a></span>
+    </div>
+  </div>
+  <div class="main-div">
+    <div class="card">
+      <div class="profile">
+        <img
+          src="./IMG-20230508-WA0028.jpg"
+          alt="Profile Picture"
+          class="profile-picture"
+        />
+      </div>
+
+      <div class="sub">
+        <ul>
+          <li><strong class="name">Ram Singh</strong></li>
+          <li><strong>Admission No.:</strong> 022GUS2320</li>
+          <li><strong>Class:</strong> B.Tech (CSE) 2022-23 II Sem IV</li>
+          <li><strong>Division:</strong> Section-33</li>
+          <li><strong>Roll No.:</strong> 22</li>
+          <li>
+            <strong>Programme:</strong> Bachelor of Technology in Computer
+            Science and Engineering [SCSE101]
+          </li>
+          <li>
+            <strong>Application No.:</strong> UG2(This is a preadmission
+            application No)
+          </li>
+          <li><strong>PRN:</strong>2358</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mid"></div>
+
+    <div class="table">
+      <h2 class="title">Fee Table</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Sr.No.</th>
+            <th>Session</th>
+            <th>Fee Type</th>
+            <th>Head Name</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>2022-2023</td>
+            <td>Academic Fees</td>
+            <td>TUITION FEE</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>2022-2023</td>
+            <td>Academic Fees</td>
+            <td>EXAM FEE</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>2022-2023</td>
+            <td>Academic Fees</td>
+            <td>CAUTION MONEY- NON REFUNDABLE</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>2022-2023</td>
+            <td>Miscellaneous Fees</td>
+            <td>STUDENT ID FEE MISC</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>2022-2023</td>
+            <td>Academic Fees</td>
+            <td>EXCESS FEE</td>
+            <td>-12</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>2023-2024</td>
+            <td>Academic Fees</td>
+            <td>TUITION FEE</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>2023-2024</td>
+            <td>Academic Fees</td>
+            <td>EXAM FEE</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>2024-2025</td>
+            <td>Academic Fees</td>
+            <td>TUITION FEE</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>2024-2025</td>
+            <td>Academic Fees</td>
+            <td>EXAM FEE</td>
+            <td>12</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="footer-row">
+            <td colspan="4">Amount to Pay :</td>
+            <td>0</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  <!-- Button -->
+  <div class="btn">
+    <button class="nextBtn" class="btnText">
+      <a routerLink="/pay">Paytem</a>
+    </button>
+  </div>
+  <!-- ================ -->
+  <div class="table table2" style="margin-bottom: 2rem">
+    <h2 class="title">Fee History</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Sr.No.</th>
+          <th>Transaction Id</th>
+          <th>Date of Deposite</th>
+          <th>Transaction Type</th>
+          <th>Amount</th>
+          <th>Remarks</th>
+          <th>Print Reciept</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>20222023</td>
+          <td>2022-2023</td>
+          <td>UPI</td>
+          <td>2500</td>
+          <td>Successful</td>
+          <td>
+            <a routerLink="/reciept" style="color: black"
+              ><i class="ri-printer-fill"></i
+            ></a>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>20222023</td>
+          <td>2022-2023</td>
+          <td>UPI</td>
+          <td>2500</td>
+          <td>Successful</td>
+          <td>
+            <a routerLink="/reciept" style="color: black"
+              ><i class="ri-printer-fill"></i
+            ></a>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>20222023</td>
+          <td>2022-2023</td>
+          <td>UPI</td>
+          <td>2500</td>
+          <td>Successful</td>
+          <td>
+            <a routerLink="/reciept" style="color: black"
+              ><i class="ri-printer-fill"></i
+            ></a>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>20222023</td>
+          <td>2022-2023</td>
+          <td>UPI</td>
+          <td>2500</td>
+          <td>Successful</td>
+          <td>
+            <a routerLink="/reciept" style="color: black"
+              ><i class="ri-printer-fill"></i
+            ></a>
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>20222023</td>
+          <td>2022-2023</td>
+          <td>UPI</td>
+          <td>2500</td>
+          <td>Successful</td>
+          <td>
+            <a routerLink="/reciept" style="color: black"
+              ><i class="ri-printer-fill"></i
+            ></a>
+          </td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>20222023</td>
+          <td>2022-2023</td>
+          <td>UPI</td>
+          <td>2500</td>
+          <td>Successful</td>
+          <td>
+            <a routerLink="/reciept" style="color: black"
+              ><i class="ri-printer-fill"></i
+            ></a>
+          </td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>20222023</td>
+          <td>2022-2023</td>
+          <td>UPI</td>
+          <td>2500</td>
+          <td>Successful</td>
+          <td>
+            <a routerLink="/reciept" style="color: black"
+              ><i class="ri-printer-fill"></i
+            ></a>
+          </td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>20222023</td>
+          <td>2022-2023</td>
+          <td>UPI</td>
+          <td>2500</td>
+          <td>Successful</td>
+          <td>
+            <a routerLink="/reciept" style="color: black"
+              ><i class="ri-printer-fill"></i
+            ></a>
+          </td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>20222023</td>
+          <td>2022-2023</td>
+          <td>UPI</td>
+          <td>2500</td>
+          <td>Successful</td>
+          <td>
+            <a routerLink="/reciept" style="color: black"
+              ><i class="ri-printer-fill"></i
+            ></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
