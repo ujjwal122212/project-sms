@@ -17,6 +17,11 @@ import { LeavePageComponent } from './teacher/leave/leave-page/leave-page.compon
 import { ViewBalanceComponent } from './teacher/leave/view-balance/view-balance.component';
 import { ViewStatusComponent } from './teacher/leave/view-status/view-status.component';
 import { UpcomingComponent } from './teacher/quiz/upcoming/upcoming.component';
+import { TQuizComponent } from './teacher/quiz/t-quiz/t-quiz.component';
+import { OngoingComponent } from './teacher/quiz/ongoing/ongoing.component';
+import { SecheduleComponent } from './teacher/quiz/sechedule/sechedule.component';
+import { AssesmentComponent } from './teacher/quiz/assesment/assesment.component';
+
 
 
 
@@ -36,7 +41,15 @@ export const routes: Routes = [
 
 // for teacher quizess
 
-{ 'path': 'quizzes', 'title': 'quizzes', component:UpcomingComponent},
+{ 'path': 'quizzes', 'title': 'quizzes', component:TQuizComponent},
+
+{ 'path': 'quizzes', children :[
+  
+  { 'path': 'upcoming', 'title': 'upcoming-quizzes', component:UpcomingComponent},
+  { 'path': 'ongoing', 'title': 'ongoing-quizzes', component:OngoingComponent},
+  { 'path': 'schedule', 'title': 'schedule-quizzes', component:SecheduleComponent},
+  { 'path': 'Assesment', 'title': 'Assesment-quizzes', component:AssesmentComponent},
+]},
 
 //for tsudent page
 
