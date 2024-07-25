@@ -1,30 +1,46 @@
-
 .apply-leave-section {
-  margin: 20px;
+  margin-top: 10px;
+  padding: 10px;
 }
 
-.leave-header {
-  border-bottom: 2px solid #aaa;
-  padding: 10px 0px 10px 0px;
-}
-
-.header-content {
-  flex-grow: 1;
-  padding: 20px 0 20px 50px;
-  border-radius: 10px;
+.header {
+  width: 100%;
+  height: 70px;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  overflow: hidden;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
-.leave-header h1 {
-  margin-bottom: 10px;
+.header h1 {
+  font-size: 25px;
+  padding: 5px;
+  margin: 5px;
+  padding-top: 0px;
+  margin-top: 0px;
 }
 
-#dash {
-  color: blue;
+.header a {
+  text-decoration: none;
+  color: #007bff;
+  display: inline;
+  padding: 5px 0 5px 5px;
+  margin-left: 5px;
+}
+
+.header p {
+  display: inline;
+}
+.border-bottom{
+  margin-top: 20px;
+  border-bottom: 2px solid #aaa;
 }
 
 .apply-form-area {
-  margin-top: 70px;
+  margin-top: 40px;
   border-radius: 10px;
   padding: 0 10%;
   display: flex;
@@ -42,7 +58,7 @@
 .header-section h2 {
   text-align: center;
   padding: 20px;
-  font-size: 1.7rem;
+  font-size: 1.2rem;
 }
 
 .form-area {
@@ -61,7 +77,7 @@
 
 .card h3 {
   padding: 10px;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
 }
 
 .card #box {
@@ -71,7 +87,8 @@
   font-size: 1rem;
   border: 1px solid #aaa;
 }
-.card #box:hover{
+
+.card #box:hover {
   cursor: pointer;
 }
 
@@ -84,7 +101,8 @@ textarea {
   border-radius: 10px;
   height: 30px;
 }
-.files::file-selector-button:hover{
+
+.files::file-selector-button:hover {
   cursor: pointer;
 }
 
@@ -104,7 +122,8 @@ textarea {
   background-color: yellowgreen;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-button:hover{
+
+button:hover {
   cursor: pointer;
   background-color: blue;
   color: white;
@@ -113,63 +132,61 @@ button:hover{
 
 @media screen and (max-width:991px) {
   .form-area {
-      padding: 0 5%;
+    padding: 0 5%;
   }
 
   .card #box {
-      width: 50%;
+    width: 50%;
   }
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:768px) {
   .apply-leave-section {
-      margin: 20px;
+    margin-left: 60px;
   }
 
   .card {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .card h3 {
-      width: 100%;
-      text-align: center;
+    width: 100%;
+    text-align: center;
   }
 
   .card #box {
-      width: 80%;
+    width: 80%;
   }
 
   .files::file-selector-button {
-      margin-left: 10%;
+    margin-left: 10%;
   }
 }
 
 @media screen and (max-width:497px) {
+  .apply-leave-section {
+    margin-left: 50px;
+  }
+
   .header-content {
-      padding: 10px;
+    padding: 10px;
   }
 
   .header-content h1 {
-      font-size: 30px;
+    font-size: 30px;
   }
 
   .header-section h2 {
-      font-size: 15px;
+    font-size: 15px;
   }
 
   .card #box {
-      width: 100%;
-  }
-  .card h3{
-      font-size: 15px;
-  }
-  input#box.files {
-      padding-left: 60px;
+    width: 100%;
   }
 
-  .files::file-selector-button {
-      display: block;
-      margin: 0;
+  .card h3 {
+    font-size: 15px;
   }
+
 }
