@@ -6,7 +6,10 @@ import { StudentHelpComponent } from './help/student-help.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PerformanceComponent } from './performance/performance.component';
-import { Quiz1Component } from './student/fees/quiz/quiz1/quiz1.component';
+import { StudentProfileComponent } from './student/Profile/student-profile/student-profile.component';
+import { ProfileCardComponent } from './student/profile-card/profile-card.component';
+import { Quiz1Component } from './student/quiz/quiz1/quiz1.component';
+import { Quiz2Component } from './student/quiz/quiz2/quiz2.component';
 import { ApplyLeaveComponent } from './teacher/leave/apply-leave/apply-leave.component';
 import { CancelLeaveComponent } from './teacher/leave/cancel-leave/cancel-leave.component';
 import { HolidayCalenderComponent } from './teacher/leave/holiday-calender/holiday-calender.component';
@@ -36,9 +39,22 @@ export const routes: Routes = [
 
 { 'path': 'quizzes', 'title': 'quizzes', component:UpcomingComponent},
 
-//for tsudent page
+//for student page
+//student quizzes
 
 { 'path': 'quiz1', 'title': 'quiz', component:Quiz1Component},
+
+{ 'path': 'quiz1',children:[
+  { 'path': 'quiz2', 'title': 'quiz', component:Quiz2Component},
+]},
+
+// profile_page
+
+{ 'path': 'profile', 'title': 'profile', component:StudentProfileComponent},
+
+// profile_card
+
+{ 'path': 'pw', 'title': 'pw', component:ProfileCardComponent},
 
 
 

@@ -81,6 +81,7 @@ nav .user-info {
 .user-info .user-icon {
   font-size: 2rem;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .user-text {
@@ -251,3 +252,14 @@ body.dark-mode .menu a {
       transition: width 0.3s, margin-left 0.3s;
   }
 }
+.more-options span{
+  font-size: 30px;
+  margin-right: 5px;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+.more-options span:hover {
+  color: orange;
+}
+
+
