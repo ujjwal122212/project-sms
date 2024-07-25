@@ -1,0 +1,157 @@
+.active {
+  background-color: #5c7594;
+}
+
+.menu {
+  width: 200px;
+  background: var(--sidebar_color_student);
+  flex-shrink: 0;
+  transition: width 0.3s, left 0.3s;
+  position:sticky; /* Relative position by default */
+  z-index: 2;
+  height: 100vh;
+  overflow-y: auto;
+}
+.name {
+  background: #FDC300;
+  height: 50px;
+  text-align: end;
+  line-height: 50px;
+  padding-right: 20px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.menu a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  border-bottom: 1px solid #fff;
+}
+
+.menu.collapsed+.main-content {
+  margin-left: 50px; /* Adjusted to margin-left for fixed positioning */
+}
+
+.menu.collapsed {
+  width: 50px;
+}
+
+.menu.collapsed a {
+  justify-content: center;
+}
+
+.menu.collapsed a span {
+  display: none;
+}
+
+.menu.expanded {
+  width: 200px;
+}
+
+.main-content {
+  margin-left: 200px; /* Initial margin to make space for the menu */
+  transition: margin-left 0.3s; /* Smooth transition */
+}
+
+.main-content.shifted {
+  margin-left: 0;
+  width: 100%;
+}
+
+#icon {
+  color: var(--icon_color_admin);
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode nav {
+  background-color: #333;
+  color: #e0e0e0;
+}
+
+body.dark-mode .menu {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+
+body.dark-mode .menu a {
+  color: #e0e0e0;
+  border-bottom: 1px solid #444;
+}
+
+@media screen and (max-width: 768px) {
+  .menu {
+    position: fixed; /* Fixed position for smaller screens */
+    top: 0;
+    left: 0;
+  }
+  .menu.collapsed+.main-content nav .logo img {
+    margin-left: 100px;
+    transition: width 0.3s, margin-left 0.3s;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    overflow: hidden;
+  }
+  .menu {
+    width: 50px;
+  }
+
+  .menu.expanded {
+    width: 200px;
+  }
+
+  .main-content {
+    margin-left: 50px; /* Adjust for smaller screens */
+    margin-right: 50px; /* Adjust for right scroll */
+    transition: margin-left 0.3s, margin-right 0.3s; /* Smooth transition */
+    overflow-x: auto; /* Allow horizontal scrolling */
+  }
+
+  .main-content.shifted {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  nav {
+    overflow: hidden;
+  }
+
+  .user-text {
+    display: none;
+  }
+
+  .user-info {
+    width: 30px;
+  }
+
+  .logo img {
+    margin-left: 30px;
+  }
+
+  .menu.expanded a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu.expanded a span {
+    display: inline;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .menu.collapsed+.main-content nav .logo img {
+    margin-left: 70px;
+    transition: width 0.3s, margin-left 0.3s;
+  }
+}
