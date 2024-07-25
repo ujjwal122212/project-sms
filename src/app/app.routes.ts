@@ -53,12 +53,7 @@ export const routes: Routes = [
   { 'path': 'schedule', 'title': 'schedule-quizzes', component:SecheduleComponent},
   { 'path': 'Assesment', 'title': 'Assesment-quizzes', component:AssesmentComponent},
 ]},
-{
-  'path':'homework','title':'home-work',component:HomeWorkComponent
-},
-{
-  'path':'attendence','title':'attendence',component:AttendenceComponent
-},
+
 
 { 'path': 'help', 'title': 'help', component:StudentHelpComponent},
   { 'path': '', 'title': 'Home', component:HomeComponent},
@@ -70,20 +65,13 @@ export const routes: Routes = [
   },
 
   { 'path': 'time', 'title': 'time-table', component:TimeTableComponent},
-  // { 'path': '**', component: NotFoundComponent },
+  { 'path': '**', component: NotFoundComponent },
   {
     'path':'reciept',component:RecieptComponent
   },
   {'path':'pay',component:PaymentComponent},
-  {'path':'fees',component:FeePageComponent}
-
-
-
-
-
-
-
-
+  {'path':'fees',component:FeePageComponent},
+  
 
 ];
 
