@@ -21,6 +21,13 @@ import { TQuizComponent } from './teacher/quiz/t-quiz/t-quiz.component';
 import { OngoingComponent } from './teacher/quiz/ongoing/ongoing.component';
 import { SecheduleComponent } from './teacher/quiz/sechedule/sechedule.component';
 import { AssesmentComponent } from './teacher/quiz/assesment/assesment.component';
+import { RecieptComponent } from './student/fees/reciept/reciept.component';
+import { PaymentComponent } from './student/fees/payment/payment.component';
+import { FeePageComponent } from './student/fees/fee-page/fee-page.component';
+import { HomeWorkComponent } from './teacher/home-work/home-work.component';
+import { AttendenceComponent } from './teacher/attendence/attendence.component';
+
+
 
 
 
@@ -68,13 +75,12 @@ export const routes: Routes = [
 
   { 'path': 'time', 'title': 'time-table', component:TimeTableComponent},
   { 'path': '**', component: NotFoundComponent },
-
-
-
-
-
-
-
+  {
+    'path':'reciept',component:RecieptComponent
+  },
+  {'path':'pay',component:PaymentComponent},
+  {'path':'fees',component:FeePageComponent},
+  
 
 ];
 

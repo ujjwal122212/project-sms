@@ -1,0 +1,178 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.header {
+  /* background-color: #d4c4c4; */
+  color: #413030;
+  padding: 5px;
+  margin: 1px auto;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-methods {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.payment-btn {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 750;
+  font-size: 1rem;
+}
+
+.payment-btn:hover {
+  background-color: #3e8e41;
+}
+
+.payment-form {
+  margin-top: 20px;
+}
+.payment-form form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.payment-form form label {
+  font-size: 1.1rem;
+  font-weight: 750;
+}
+
+.payment-form h3 {
+  margin-top: 0;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc4;
+  font-size: 15px;
+}
+input[type="text"]:hover {
+  border: #3e8e41;
+}
+
+.submit-btn {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #3e8e41;
+}
+/* Base styles for the container */
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Header styles */
+.header h2 {
+  text-align: center;
+}
+
+/* Payment button styles */
+.payment-btn {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+/* Payment form styles */
+.payment-form {
+  margin-top: 20px;
+}
+
+/* Input styles */
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Submit button styles */
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff; /* Blue */
+  color: white;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .payment-btn,
+  .submit-btn {
+    padding: 12px;
+  }
+
+  input {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .payment-btn,
+  .submit-btn {
+    padding: 10px;
+  }
+
+  input {
+    padding: 6px;
+  }
+}

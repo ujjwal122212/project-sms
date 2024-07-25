@@ -1,0 +1,163 @@
+* {
+  font-family: Arial, sans-serif;
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.receipt-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  /* background: yellow; */
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 15%;
+
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border-bottom: 2px solid black;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header .logo {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+
+  border: #6666660a;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.receipt-container .header .sub1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 10px;
+  position: relative;
+  margin-bottom: auto;
+}
+.receipt-container .header .sub1 .school-name {
+  font-size: 1remm;
+  font-weight: 800;
+  margin-bottom: 2px;
+  text-align: center;
+}
+
+.office-copy {
+  font-size: 12px;
+  color: #666;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-around;
+}
+.payment-breakdown {
+  display: flex;
+  padding-left: 109px;
+}
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding-left: 109px;
+}
+
+.receipt-no,
+.student-name,
+.enrollment-no,
+.cheque-dd-no,
+.payment-mode,
+.session,
+.academic-year,
+.cheque-dd-date,
+.class,
+.date-of-receipt,
+.date-of-deposit,
+.amount-in-words,
+.remark,
+.erp-transaction {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.address {
+  font-size: 12px;
+  color: #666;
+}
+
+.phone {
+  font-size: 1rem;
+  color: #180f0f;
+  font-weight: 600;
+}
+
+.receipt-details {
+  margin-bottom: 1rem;
+  padding-bottom: 10px;
+  color: rgb(18, 18, 17);
+  font-weight: 400;
+}
+
+/* Table */
+.payment-breakdown {
+  margin: 0px;
+  padding: 0px 20px 0px 20px;
+  position: relative;
+  overflow: auto;
+  margin-bottom: auto;
+}
+.payment-breakdown table {
+  width: 100%;
+  height: auto;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #4caf50;
+  color: white;
+}
+td {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #262829;
+}
+.icon {
+  position: absolute;
+  font-size: 2.5rem;
+  color: black;
+  top: 10;
+  right: 0;
+  padding-right: 200px;
+  cursor: pointer;
+}
