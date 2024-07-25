@@ -14,6 +14,10 @@ import { HolidayCalenderComponent } from './teacher/leave/holiday-calender/holid
 import { CancelLeaveComponent } from './teacher/leave/cancel-leave/cancel-leave.component';
 import { UpcomingComponent } from './teacher/quiz/upcoming/upcoming.component';
 import { StudentHelpComponent } from './help/student-help.component';
+import { TQuizComponent } from './teacher/quiz/t-quiz/t-quiz.component';
+import { OngoingComponent } from './teacher/quiz/ongoing/ongoing.component';
+import { SecheduleComponent } from './teacher/quiz/sechedule/sechedule.component';
+import { AssesmentComponent } from './teacher/quiz/assesment/assesment.component';
 
 
 
@@ -33,7 +37,16 @@ export const routes: Routes = [
 
 // for teacher quizess
 
-{ 'path': 'quizzes', 'title': 'quizzes', component:UpcomingComponent},
+{ 'path': 'quizzes', 'title': 'quizzes', component:TQuizComponent},
+
+{ 'path': 'quizzes', children :[
+  
+  { 'path': 'upcoming', 'title': 'upcoming-quizzes', component:UpcomingComponent},
+  { 'path': 'ongoing', 'title': 'ongoing-quizzes', component:OngoingComponent},
+  { 'path': 'schedule', 'title': 'schedule-quizzes', component:SecheduleComponent},
+  { 'path': 'Assesment', 'title': 'Assesment-quizzes', component:AssesmentComponent},
+]},
+
 
 { 'path': 'help', 'title': 'help', component:StudentHelpComponent},
   { 'path': '', 'title': 'Home', component:HomeComponent},

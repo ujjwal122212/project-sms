@@ -1,59 +1,54 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html,
-body {
-    font-family: "Inter", sans-serif;
-}
-
 .cancel-leave-area {
-    margin: 50px;
+    margin-top: 10px;
+    padding: 10px;
 }
 
-.cancel-header {
-    border-bottom: 2px solid #aaa;
-    padding: 30px 0px 30px 0px;
-}
-
-.header-content {
-    flex-grow: 1;
-    padding: 20px 0 20px 50px;
-    border-radius: 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-}
-
-.cancel-header h1 {
-    margin-bottom: 10px;
-}
-
-#dash {
-    color: blue;
-}
-
-/* .table-section{
-    margin-top: 50px;
+.header {
+    width: 100%;
+    height: 70px;
+    border-radius: 7px;
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-} */
-.first-table {
-    margin-top: 50px;
-    width: 100%;
-    max-height: 300px;
-    overflow: auto;
-    border-radius: 10px;
+    justify-content: center;
+    align-items: start;
+    overflow: hidden;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
+.header h1 {
+    font-size: 25px;
+    padding: 5px;
+    margin: 5px;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.header a {
+    text-decoration: none;
+    color: #007bff;
+    display: inline;
+    padding: 5px 0 5px 5px;
+    margin-left: 5px;
+}
+
+.header p {
+    display: inline;
+}
+.border-bottom{
+    margin-top: 20px;
+    border-bottom: 2px solid #aaa;
+  }
+.table-section {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 40px 0;
+}
+
+.first-table,
 .second-table {
-    margin-top: 50px;
-    width: 100%;
-    max-height: 300px;
     overflow: auto;
+    max-height: 300px;
     border-radius: 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
@@ -63,22 +58,21 @@ table {
     border-spacing: 0;
 }
 
-th {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
-
+th,
 td {
     text-align: center;
     border: 1px solid #ddd;
     padding: 10px;
 }
+th{
+    padding: 10px 0px;
+    font-size: 15px;
+}
 
 caption {
     position: sticky;
     top: 0;
-    padding: 10px;
+    padding: 5px 0px;
     background-color: #4394DF;
     font-size: 1.3rem;
     color: white;
@@ -86,39 +80,57 @@ caption {
 
 thead {
     position: sticky;
-    top: 44.7px;
+    top: 34.7px;
     background: #f1f1f1;
 }
 
-.files::file-selector-button {
+#file::file-selector-button {
     padding: 5px;
     border-radius: 10px;
-    margin-left: 40px;
+    font-size: 15px;
 }
-
-.files::file-selector-button:hover {
+#file::file-selector-button:hover{
+    cursor: pointer;
+}
+button {
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 15px;
+    background-color: red;
+    color: white;
+}
+button:hover{
     cursor: pointer;
 }
 
-@media screen and (max-width:991px) {
+@media screen and (max-width:991px){
+      th,td,#file::file-selector-button,button{
+        font-size: 13px;
+      }
+      #file::file-selector-button{
+        padding: 2px;
+        border-radius: 8px;
+      }
+      th,td{
+        padding: 10px 5px;
+      }
+      button{
+        padding: 3px;
+      }
+}
+@media screen and (max-width:768px) {
     .cancel-leave-area {
-        margin: 30px;
+        margin-left: 60px;
     }
 }
-
-@media screen and (max-width:497px) {
+@media screen and (max-width:497px){
     .cancel-leave-area {
-        margin: 20px;
+        margin-left:50px;
+        overflow-x: hidden;
     }
-
     .header-content {
         padding: 10px 0 10px 10px;
     }
-
-    .cancel-header h1 {
-        margin-bottom: 7px;
-    }
-
     th,
     td {
         padding: 5px;
@@ -131,10 +143,5 @@ thead {
 
     thead {
         top: 40.7px;
-    }
-}
-@media screen and (max-width:350px){
-    .cancel-header h1{
-        font-size: 25px;
     }
 }
