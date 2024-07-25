@@ -22,6 +22,9 @@ import { RecieptComponent } from './student/fees/reciept/reciept.component';
 import { PaymentComponent } from './student/fees/payment/payment.component';
 import { FeePageComponent } from './student/fees/fee-page/fee-page.component';
 import { HomeWorkComponent } from './teacher/home-work/home-work.component';
+import { AttendenceComponent } from './teacher/attendence/attendence.component';
+
+
 
 
 
@@ -52,6 +55,9 @@ export const routes: Routes = [
 ]},
 {
   'path':'homework','title':'home-work',component:HomeWorkComponent
+},
+{
+  'path':'attendence','title':'attendence',component:AttendenceComponent
 },
 
 { 'path': 'help', 'title': 'help', component:StudentHelpComponent},
