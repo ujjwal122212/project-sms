@@ -80,7 +80,12 @@ export const routes: Routes = [
   },
   {'path':'pay',component:PaymentComponent},
   {'path':'fees',component:FeePageComponent},
-  
+  {
+    'path':'homework',component:HomeWorkComponent
+  },
+  {
+    'path':' attendence',component:AttendenceComponent
+  }
 
 ];
 
