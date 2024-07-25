@@ -1,7 +1,7 @@
 import { ViewLeaveBookComponent } from './teacher/leave/view-leave-book/view-leave-book.component';
 
 import { Routes } from '@angular/router';
-import { AddTeacherComponent } from './Admin/add-teacher/add-teacher.component';
+// import { AddTeacherComponent } from './Admin/add-teacher/add-teacher.component';
 import { CoursesComponent } from './courses/courses.component';
 import { StudentHelpComponent } from './help/student-help.component';
 import { HomeComponent } from './home/home.component';
@@ -16,7 +16,6 @@ import { ViewBalanceComponent } from './teacher/leave/view-balance/view-balance.
 import { ViewStatusComponent } from './teacher/leave/view-status/view-status.component';
 import { UpcomingComponent } from './teacher/quiz/upcoming/upcoming.component';
 import { TimeTableComponent } from './time-table/time-table.component';
-import { AddStudentComponent } from './Admin/add-student/add-student.component';
 
 
 
@@ -25,10 +24,12 @@ export const routes: Routes = [
   // Admin Routes
 
   //for add teacher
-  { 'path': 'add-teacher', 'title': 'Add-teacher', component: AddTeacherComponent },
+  // // { 'path': 'add-teacher', 'title': 'Add-teacher', component: AddTeacherComponent },
+  // { 'path': 'add-teacher', 'title': 'Add-teacher', component: AddTeacherComponent },
 
-  //for add student
-  { 'path': 'add-student', 'title': 'Add-teacher', component: AddStudentComponent },
+
+  // //for add student
+  // { 'path': 'add-student', 'title': 'Add-student', component: AddTeacherComponent },
 
 
 
