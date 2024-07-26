@@ -1,62 +1,17 @@
-h3 {
-  padding-right: 20px;
-}
-
-:root {
-  --nav_color_student: #FDC300;
-  --sidebar_color_student: #042954;
-  --font_style_student: "Inter";
-  --nav_color_admin: #4394DF;
-  --sidebar_color_admin: #284A6A;
-  --backcolor_admin: #bbc7d2;
-  --icon_color_admin: #FDC300;
-}
-
-
-
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-
-
-}
-
-#more-info {
-  padding: 2px;
-  margin: 0.5px;
-  font-size: x-large;
-  align-items: center;
-  align-content: center;
-  align-self: center;
-}
-
-.main-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  /* width: calc(100% - 200px); */
-  width: 100%;
-  overflow: auto;
-  /* background-color: white; */
-  /* transition: transform 0.3s ease; */
-}
 
 .home-section {
-  /* background-color: aqua; */
-  margin: 35px;
+  margin-top: 10px;
+  padding: 10px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  column-gap: 2%;
   align-items: center;
-  /* transition: transform 0.3s ease; */
 }
 
 .card {
   padding-top: 10px;
   width: 15%;
   margin-bottom: 30px;
-  /* border: 1px solid yellowgreen; */
   text-align: center;
   overflow: hidden;
 }
@@ -66,8 +21,6 @@ h3 {
   max-width: 100%;
   border-radius: 50%;
   height: 100px;
-  /* transition: transform 0.3s ease; */
-  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
 }
 
 .card img:hover {
@@ -76,31 +29,42 @@ h3 {
 }
 
 .card p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-align: center;
   padding: 0;
 }
 
-@media screen and (max-width:991px) {
-  .container {
-      overflow-x: hidden;
+@media screen  and (max-width:991px){
+  .card img{
+    max-width: 80%;
   }
-
-  .card {
-      width: 30%;
+  .card p {
+    font-size: 1.1rem;
   }
 }
-
-@media screen and (max-width:479px) {
-  .container {
-      overflow-x: hidden;
+@media screen  and (max-width:768px){
+  .home-section{
+    margin-left: 60px;
+    column-gap: 6%;
   }
-
-  .home-section {
-      margin: 20px;
+  .card{
+    width: 20%;
   }
-
-  .card {
-      width: 48%;
+  .card p{
+    font-size: 1rem;
+  }
+  
+}
+@media screen  and (max-width:497px){
+  .home-section{
+    margin-left: 50px;
+    overflow-x: hidden;
+    column-gap: 4%;
+  }
+  .card{
+    width: 48%;
+  }
+  .card p{
+    font-size: 1.1rem;
   }
 }
