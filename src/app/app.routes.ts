@@ -90,9 +90,13 @@ export const routes: Routes = [
 {
   'path':'attendence',component:AttendenceComponent
 },
-{
-  'path':'t-time-table','title':'t-time-table',component:TTimeTableComponent
-},
+{'path':'t-time-table','title':'t-time-table',component:TTimeTableComponent},
+
+{'path':'t-time-table', children:[{
+  'path':'attendence2',component:AttendenceComponent
+
+}]},
+
 { 'path': '*', component: NotFoundComponent },
 ];
 
