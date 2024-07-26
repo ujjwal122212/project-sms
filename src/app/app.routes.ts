@@ -2,11 +2,10 @@ import { ViewLeaveBookComponent } from './teacher/leave/view-leave-book/view-lea
 
 import { RouterModule, Routes } from '@angular/router';
 
-import { Routes } from '@angular/router';
+
 
 // import { AddTeacherComponent } from './Admin/add-teacher/add-teacher.component';
-import { CoursesComponent } from './courses/courses.component';
-import { StudentHelpComponent } from './help/student-help.component';
+
 
 import { HomeComponent } from './home/home.component';
 // import { PerformanceComponent } from './performance/performance.component';
@@ -80,7 +79,7 @@ export const routes: Routes = [
 { 'path': 'quizzes', 'title': 'quizzes', component:TQuizComponent},
 
 { 'path': 'quizzes', children :[
-  
+
   { 'path': 'upcoming', 'title': 'upcoming-quizzes', component:UpcomingComponent},
   { 'path': 'ongoing', 'title': 'ongoing-quizzes', component:OngoingComponent},
   { 'path': 'schedule', 'title': 'schedule-quizzes', component:SecheduleComponent},
@@ -115,7 +114,7 @@ export const routes: Routes = [
 
 
   { 'path': 'time', 'title': 'time-table', component:TimeTableComponent},
-  
+
   {
     'path':'reciept',component:RecieptComponent
   },
@@ -127,7 +126,7 @@ export const routes: Routes = [
   {
     'path':' attendence',component:AttendenceComponent
   },
-  
+
 // homework
 {'path':'mainhomework','title':'mainhomework',component:MainHomeworkComponent},
 {
