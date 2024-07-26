@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-attendence',
+  selector: 'app-time-table',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './attendence.component.html',
-  styleUrl: './attendence.component.css'
+  templateUrl: './time-table.component.html',
+  styleUrl: './time-table.component.css'
 })
-export class AttendenceComponent {
+export class TimeTableComponent {
 
 }

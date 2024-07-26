@@ -4,130 +4,148 @@
     <h1>Homework</h1>
     <div>
       <span><a href="#">Dashboard</a></span>
-      <span><p>/ Homework</p></span>
+      <span>
+        <p>/ Homework</p>
+      </span>
     </div>
   </div>
   <div class="main-container">
-    <h1>Check Homework</h1>
+    <div><h1>Check Homework</h1></div>
     <div class="filter">
-      <label for="class">Class</label>
-      <select id="class" aria-placeholder="Please select">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
-      <label for="section">Section:</label>
-      <select id="section" placeholder="Please select">
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="C">C</option>
-      </select>
-      <label for="subject">Subject:</label>
-      <select id="subject" placeholder="Please select">
-        <option value="math">Maths</option>
-        <option value="English">English</option>
-        <option value="Hindi">Hindi</option>
-      </select>
-      <button id="submit">Submit</button>
-    </div>
-    <div class="homework-table">
-      <div class="fst-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Sr. No.</th>
-              <th>Student Name</th>
-              <th>Marks</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Mr.X</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Mr.X</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Mr.X</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Mr.X</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Mr.X</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>Mr.X</td>
-              <td>100</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="card-section">
+        <div class="card">
+          <p>Class :</p>
+          <select id="class" aria-placeholder="Please select">
+            <option value="0" selected disabled>Select class</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <div class="card">
+          <p>Section :</p>
+          <select id="class" aria-placeholder="Please select">
+            <option value="0" selected disabled>Select section</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <div class="card">
+          <p>Subject :</p>
+          <select id="class" aria-placeholder="Please select">
+            <option value="0" selected disabled>Select subject</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
       </div>
-      <div class="snd-table">
-        <table>
-          <tr style="padding: 10px; visibility: hidden"></tr>
-          <tr>
-            <td>
-              <button><a href="#">Open File</a></button>
-            </td>
+      <div class class="submit-button">
+        <button id="submit">Submit</button>
+      </div>
+    </div>
+    <div class="homework-section">
+      <h1>Homework Details</h1>
+      <div class="table-section">
+        <div class="fst-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Sr. No.</th>
+                <th>Student Name</th>
+                <th>Marks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Mr.X</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Mr.X</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Mr.X</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Mr.X</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Mr.X</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Mr.X</td>
+                <td>100</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="snd-table">
+          <table>
+            <!-- <tr style="padding: 10px; visibility: hidden"></tr> -->
+            <tr>
+              <td>
+                <button><a href="#">Open File</a></button>
+              </td>
 
-            <td><input type="checkbox" class="checkbox-text" /></td>
-            <!-- </td> -->
-          </tr>
-          <tr>
-            <td>
-              <button><a href="#">Open File</a></button>
-            </td>
+              <td><input type="checkbox" class="checkbox-text" /></td>
+              <!-- </td> -->
+            </tr>
+            <tr>
+              <td>
+                <button><a href="#">Open File</a></button>
+              </td>
 
-            <td><input type="checkbox" class="checkbox-text" /></td>
-            <!-- </td> -->
-          </tr>
-          <tr>
-            <td>
-              <button><a href="#">Open File</a></button>
-            </td>
+              <td><input type="checkbox" class="checkbox-text" /></td>
+              <!-- </td> -->
+            </tr>
+            <tr>
+              <td>
+                <button><a href="#">Open File</a></button>
+              </td>
 
-            <td><input type="checkbox" class="checkbox-text" /></td>
-            <!-- </td> -->
-          </tr>
-          <tr>
-            <td>
-              <button><a href="#">Open File</a></button>
-            </td>
+              <td><input type="checkbox" class="checkbox-text" /></td>
+              <!-- </td> -->
+            </tr>
+            <tr>
+              <td>
+                <button><a href="#">Open File</a></button>
+              </td>
 
-            <td><input type="checkbox" class="checkbox-text" /></td>
-            <!-- </td> -->
-          </tr>
-          <tr>
-            <td>
-              <button><a href="#">Open File</a></button>
-            </td>
+              <td><input type="checkbox" class="checkbox-text" /></td>
+              <!-- </td> -->
+            </tr>
+            <tr>
+              <td>
+                <button><a href="#">Open File</a></button>
+              </td>
 
-            <td><input type="checkbox" class="checkbox-text" /></td>
-            <!-- </td> -->
-          </tr>
-          <tr>
-            <td>
-              <button>
-                <a href="#" style="display: block">Open File</a>
-              </button>
-            </td>
+              <td><input type="checkbox" class="checkbox-text" /></td>
+              <!-- </td> -->
+            </tr>
+            <tr>
+              <td>
+                <button>
+                  <a href="#" style="display: block">Open File</a>
+                </button>
+              </td>
 
-            <td><input type="checkbox" class="checkbox-text" /></td>
-            <!-- </td> -->
-          </tr>
-        </table>
+              <td><input type="checkbox" class="checkbox-text" /></td>
+              <!-- </td> -->
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>

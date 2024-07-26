@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AttendenceComponent } from './attendence.component';
+import { TimeTableComponent } from './time-table.component';
 
-describe('AttendenceComponent', () => {
-  let component: AttendenceComponent;
-  let fixture: ComponentFixture<AttendenceComponent>;
+describe('TimeTableComponent', () => {
+  let component: TimeTableComponent;
+  let fixture: ComponentFixture<TimeTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AttendenceComponent]
+      imports: [TimeTableComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AttendenceComponent);
+    fixture = TestBed.createComponent(TimeTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

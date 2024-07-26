@@ -103,10 +103,10 @@ select:hover {
   justify-content: center;
 }
 
-.homework-section {
+.section {
   margin-top: 10px;
 }
-.homework-section h1 {
+.section h1 {
   display: inline-block;
 }
 .table-section {
@@ -125,7 +125,7 @@ table {
 }
 
 .fst-table {
-  width: 55%;
+  width: 100%;
 }
 
 .fst-table th {
@@ -140,34 +140,6 @@ table {
   text-align: center;
 }
 
-.snd-table {
-  width: 35%;
-  margin-top: 50px;
-  /* border: 1px solid black; */
-}
-
-.snd-table td {
-  border: none;
-  padding: 7px;
-}
-
-.snd-table button a {
-  text-decoration: none;
-  font-size: 20px;
-  color: #007bff;
-}
-
-.snd-table button {
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-  border-radius: 10px;
-}
-.snd-table td button {
-  border-radius: 10px;
-}
 #submit,
 .snd-table button a {
   background-color: #ccff33;
@@ -177,12 +149,7 @@ table {
   font-size: 16px;
 }
 
-#submit:hover,
-.snd-table button a:hover {
-  background-color: #b3e600;
-}
-
-.snd-table[input="checkbox"] {
+.fst-table[input="checkbox"] {
   font-size: 16px;
   color: #ccff33;
 }
@@ -219,12 +186,23 @@ table {
   .fst-table {
     min-width: 375px;
   }
-  .snd-table {
-    min-width: 300px;
-  }
-  .snd-table button a {
-    font-size: 16px;
-  }
+}
+/*  */
+
+.data .sub-data ul .attendance {
+  background-color: #9977cb;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  border-radius: 20px;
+  margin-top: 5px;
+}
+.data .sub-data ul .attendance:hover {
+  color: white;
+  background-color: rgb(195, 195, 188);
+  transition: all 0.1s;
 }
 
 @media screen and (max-width: 497px) {
@@ -233,7 +211,7 @@ table {
     overflow-x: hidden;
   }
   .main-container h1,
-  .homework-section {
+  .section {
     font-size: 18px;
   }
   #submit {
