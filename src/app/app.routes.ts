@@ -1,5 +1,7 @@
 import { ViewLeaveBookComponent } from './teacher/leave/view-leave-book/view-leave-book.component';
 
+import { RouterModule, Routes } from '@angular/router';
+
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 // import { PerformanceComponent } from './performance/performance.component';
@@ -26,6 +28,9 @@ import { PaymentComponent } from './student/fees/payment/payment.component';
 import { FeePageComponent } from './student/fees/fee-page/fee-page.component';
 import { HomeWorkComponent } from './teacher/home-work/home-work.component';
 import { AttendenceComponent } from './teacher/attendence/attendence.component';
+import { MainHomeworkComponent } from './teacher/main-homework/main-homework.component';
+import { GivenworkComponent } from './teacher/givenwork/givenwork.component';
+import { TTimeTableComponent } from './teacher/t-time-table/t-time-table.component';
 
 
 
@@ -74,7 +79,7 @@ export const routes: Routes = [
   },
 
   { 'path': 'time', 'title': 'time-table', component:TimeTableComponent},
-  { 'path': '**', component: NotFoundComponent },
+  
   {
     'path':'reciept',component:RecieptComponent
   },
@@ -85,7 +90,25 @@ export const routes: Routes = [
   },
   {
     'path':' attendence',component:AttendenceComponent
-  }
+  },
+  
+// homework
+{'path':'mainhomework','title':'mainhomework',component:MainHomeworkComponent},
+{
+  'path':'givenwork','title':'givenwork',component:GivenworkComponent
+},
 
+// attendence
+{
+  'path':'attendence',component:AttendenceComponent
+},
+{'path':'t-time-table','title':'t-time-table',component:TTimeTableComponent},
+
+{'path':'t-time-table', children:[{
+  'path':'attendence2',component:AttendenceComponent
+
+}]},
+
+{ 'path': '*', component: NotFoundComponent },
 ];
 

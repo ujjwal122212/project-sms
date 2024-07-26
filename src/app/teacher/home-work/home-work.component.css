@@ -3,9 +3,11 @@
   margin: 0;
   padding: 0;
 }
+
 body{
   font-family: "Inter",sans-serif;
 }
+
 
 a {
   text-decoration: none;
@@ -65,9 +67,10 @@ a {
 
 .main-container h1 {
   display: inline-block;
-  font-size: 1.2em;
+
+  font-size: 1.5em;
   border-bottom: 1.5px solid #ddd;
-  margin-bottom: 10px;
+
 }
 
 .filter {
@@ -108,12 +111,15 @@ select:hover {
   justify-content: center;
 }
 
-.homework-section{
+
+.homework-section {
   margin-top: 10px;
 }
-.homework-section h1{
+.homework-section h1 {
   display: inline-block;
 }
+=======
+
 .table-section {
   margin-top: 10px;
   display: flex;
@@ -134,16 +140,19 @@ table {
 }
 
 .fst-table th {
+
   border: 1px solid #ddd;
   padding: 16px;
   text-align: center;
 }
 
 .fst-table td {
+
   border: 1px solid #ddd;
   padding: 16px;
   text-align: center;
 }
+
 
 .snd-table {
   width: 35%;
@@ -153,19 +162,37 @@ table {
 
 .snd-table td {
   border: none;
-  padding: 5px;
+  padding: 7px;
 }
 
-button{
-  border-radius: 10px;
-  padding: 10px 30px;
-  background-color: #ccff33;
+.snd-table button a {
+  text-decoration: none;
+  font-size: 20px;
   color: #007bff;
-  font-size: 16px;
-  border: 2px solid #ddd;
 }
-button:hover{
+
+.snd-table button {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  border-radius: 10px;
+}
+.snd-table td button {
+  border-radius: 10px;
+}
+#submit,
+.snd-table button a {
+  background-color: #ccff33;
+  border: none;
+  padding: 10px 30px;
   cursor: pointer;
+  font-size: 16px;
+}
+
+#submit:hover,
+.snd-table button a:hover {
   background-color: #b3e600;
 }
 
@@ -184,14 +211,11 @@ button:hover{
   cursor: pointer;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
-
-/* submit-button */
-
-#submit{
-  color: black;
+#submit {
+  border-radius: 10px;
   font-size: 1.4rem;
-  padding:  8px 20px;
 }
+
 
 @media screen and (max-width: 768px) {
   .grid-container {
@@ -202,33 +226,37 @@ button:hover{
     width: 100%;
     margin-bottom: 20px;
   }
-  .submit-button{
+
+  .submit-button {
     padding-top: 20px;
   }
-  .table-section{
+  .table-section {
     column-gap: 40px;
   }
-  .fst-table{
+  .fst-table {
     min-width: 375px;
   }
-  .snd-table{
+  .snd-table {
     min-width: 300px;
   }
-  .snd-table button a{
+  .snd-table button a {
+
     font-size: 16px;
   }
 }
 
 
-@media screen and (max-width: 497px){
-  .grid-container{
+@media screen and (max-width: 497px) {
+  .grid-container {
     margin-left: 50px;
     overflow-x: hidden;
   }
-  .main-container h1,.homework-section{
+  .main-container h1,
+  .homework-section {
     font-size: 18px;
   }
-  #submit{
+  #submit {
+
     font-size: 16px;
   }
 }

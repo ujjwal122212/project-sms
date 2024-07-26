@@ -187,6 +187,23 @@ table {
     min-width: 375px;
   }
 }
+/*  */
+
+.data .sub-data ul .attendance {
+  background-color: #9977cb;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  border-radius: 20px;
+  margin-top: 5px;
+}
+.data .sub-data ul .attendance:hover {
+  color: white;
+  background-color: rgb(195, 195, 188);
+  transition: all 0.1s;
+}
 
 @media screen and (max-width: 497px) {
   .grid-container {
