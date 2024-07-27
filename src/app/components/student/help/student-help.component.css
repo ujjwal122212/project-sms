@@ -44,6 +44,9 @@
   margin-top: 20px;
   border-bottom: 2px solid #aaa;
 }
+.content{
+  margin-bottom: 5px;
+}
 
 .doubt-section {
   margin-top: 50px;
@@ -73,7 +76,7 @@
   height: 220px;
   border-radius: 10px;
   /* border: 1px solid black; */
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .card:hover {
@@ -91,7 +94,7 @@
   height: 220px;
   /* border: 1px solid black; */
   border-radius: 10px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .file-section input {
@@ -140,16 +143,17 @@ textarea:hover {
 }
 
 .submit-button button {
-  /* margin-right: 0px; */
-  font-size: 2rem;
-  border-radius: 5px;
-  background-color: yellowgreen;
+  padding: 8px 20px;
+  font-size: 1.3rem;
+  border-radius: 10px;
+  background-color: #ccff33;
+  border: 2px solid #ddd;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
+.submit-button button:hover {
   cursor: pointer;
-  background-color: blue;
-  color: white;
+  background-color: #b3e600;
 }
 
 .contact-section {
@@ -174,11 +178,7 @@ button:hover {
   height: 300px;
   overflow: auto;
   border-radius: 10px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-}
-
-.contact-table:hover {
-  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 table {
@@ -216,23 +216,14 @@ thead {
   .support-section {
     margin-left: 60px;
   }
+  table{
+    min-width: 780px;
+  }
 }
 
 @media screen and (max-width:497px) {
   .support-section {
     margin-left: 50px;
     overflow-x: hidden;
-  }
-  th,
-  td {
-      padding: 5px;
-      font-size: 15px;
-  }
-  caption{
-      padding: 8px;
-  }
-  .card p {
-      font-size: 1rem;
-  }
-  
+  } 
 }
