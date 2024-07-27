@@ -18,6 +18,11 @@ import { ViewStatusComponent } from './components/teacher/leave/view-status/view
 import { HomeWorkComponent } from './components/teacher/home-work/home-work.component';
 import { CheckHomeworkComponent } from './components/teacher/homework/check-homework/check-homework.component';
 import { GiveHomeworkComponent } from './components/teacher/homework/give-homework/give-homework.component';
+import { TQuizComponent } from './components/teacher/quiz/t-quiz/t-quiz.component';
+import { UpcomingComponent } from './components/teacher/quiz/upcoming/upcoming.component';
+import { OngoingComponent } from './components/teacher/quiz/ongoing/ongoing.component';
+import { SecheduleComponent } from './components/teacher/quiz/sechedule/sechedule.component';
+import { AssesmentComponent } from './components/teacher/quiz/assesment/assesment.component';
 
 
 
@@ -31,7 +36,7 @@ export const routes: Routes = [
 //for student pages
 
 //student dashboard
-{ 'path': '', 'title': 'Home', component:HomeComponent},
+{ 'path': 'S-home', 'title': 'Home', component:HomeComponent},
 
 { 'path': '',children:[
   { 'path': 'quiz1', 'title': 'Quizzes', component:Quiz1Component},
@@ -74,6 +79,21 @@ export const routes: Routes = [
 
 // Teacher Routing
 
+// for teacher quizess
+
+
+//   { 'path': 'quizzes', 'title': 'quizzes', component: UpcomingComponent },
+
+{ 'path': 'Tquizzes', 'title': 'quizzes', component:TQuizComponent},
+
+{ 'path': 'Tquizzes', children :[
+
+  { 'path': 'upcoming', 'title': 'upcoming-quizzes', component:UpcomingComponent},
+  { 'path': 'ongoing', 'title': 'ongoing-quizzes', component:OngoingComponent},
+  { 'path': 'schedule', 'title': 'schedule-quizzes', component:SecheduleComponent},
+  { 'path': 'Assesment', 'title': 'Assesment-quizzes', component:AssesmentComponent},
+]},
+
 // for teacher leave
   { 'path': 'leave', 'title': 'leave', component: LeavePageComponent },
 
@@ -109,20 +129,7 @@ export const routes: Routes = [
   // //for add student
   // { 'path': 'add-student', 'title': 'Add-student', component: AddTeacherComponent },
 
-//   // for teacher quizess
-
-
-//   { 'path': 'quizzes', 'title': 'quizzes', component: UpcomingComponent },
-
-// { 'path': 'quizzes', 'title': 'quizzes', component:TQuizComponent},
-
-// { 'path': 'quizzes', children :[
-
-//   { 'path': 'upcoming', 'title': 'upcoming-quizzes', component:UpcomingComponent},
-//   { 'path': 'ongoing', 'title': 'ongoing-quizzes', component:OngoingComponent},
-//   { 'path': 'schedule', 'title': 'schedule-quizzes', component:SecheduleComponent},
-//   { 'path': 'Assesment', 'title': 'Assesment-quizzes', component:AssesmentComponent},
-// ]},
+//
 
 
 //   //for tsudent page
