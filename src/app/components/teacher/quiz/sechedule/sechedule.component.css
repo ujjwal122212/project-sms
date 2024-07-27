@@ -16,7 +16,7 @@ body {
 
 .header {
     width: 100%;
-    height: 70px;
+    height: 75px;
     border-radius: 7px;
     display: flex;
     flex-direction: column;
@@ -30,7 +30,7 @@ body {
     font-size: 25px;
     padding: 5px;
     margin: 5px;
-    padding-top: 0px;
+    padding-top: 5px;
     margin-top: 0px;
 }
 
@@ -50,7 +50,9 @@ body {
     margin-top: 20px;
     border-bottom: 2px solid #aaa;
 }
-
+.content{
+   padding-bottom: 10px;
+}
 
 .heading {
     display: inline-block;
@@ -78,7 +80,7 @@ body {
     width: 32%;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .card p {
@@ -91,6 +93,8 @@ body {
     width: 100%;
     padding: 10px 0;
     border-radius: 10px;
+    height: 50px;
+    border:  1px solid #ddd;
 }
 
 .card select:hover {
@@ -111,12 +115,13 @@ body {
     font-size: 1.5rem;
     border-radius: 30px;
     padding: 8px;
-    background-color: yellowgreen;
+    background-color: #ccff33;
+    border: 2px solid #ddd;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 #button input:hover {
-    background-color: blue;
-    color: white;
+    background-color: #b3e600;
     cursor: pointer;
 }
 
@@ -128,7 +133,7 @@ body {
     margin-top: 20px;
     border-radius: 10px;
     padding: 30px 10%;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .quiz-title-section .first {
@@ -137,8 +142,7 @@ body {
     /* border: 1px solid black; */
     border-radius: 10px;
     border-top: 10px solid rgba(0, 157, 179, 1);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .first h2 {
@@ -156,7 +160,7 @@ body {
     /* width: 950px; */
     padding-bottom: 20px;
     border-radius: 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .second .one {
@@ -299,10 +303,12 @@ span:hover {
 
 .date-area button,
 .submit-area button {
-    padding: 15px;
+    padding: 10px;
     font-size: 1.5rem;
     border-radius: 50px;
-    background-color: yellowgreen;
+    background-color: #ccff33;
+    border: 2px solid #ddd;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .date-area button i,
@@ -312,14 +318,12 @@ span:hover {
 }
 
 .date-area button:hover {
-    background-color: blue;
-    color: white;
+    background-color: #b3e600;
     cursor: pointer;
 }
 
 .submit-area button:hover {
-    background-color: blue;
-    color: white;
+    background-color: #b3e600;
     cursor: pointer;
 }
 
