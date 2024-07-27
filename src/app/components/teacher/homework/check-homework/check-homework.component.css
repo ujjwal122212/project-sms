@@ -1,0 +1,257 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body{
+    font-family: "Inter",sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .grid-container {
+    margin-top: 10px;
+    padding: 10px;
+  }
+  
+  .header {
+    width: 100%;
+    height: 75px;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    overflow: hidden;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
+  
+  .header h1 {
+    font-size: 25px;
+    padding: 5px;
+    margin: 5px;
+    padding-top: 5px;
+    margin-top: 0px;
+  }
+  
+  .header a {
+    text-decoration: none;
+    color: #007bff;
+    display: inline;
+    padding: 5px 0 5px 5px;
+    margin-left: 5px;
+  }
+  
+  .header p {
+    display: inline;
+  }
+  .border-bottom{
+    margin-top: 20px;
+    border-bottom: 2px solid #aaa;
+  }
+
+  .content{
+    padding-bottom: 10px;
+  }
+  
+  .main-container {
+    width: 100%;
+    height: 100%;
+    margin: 40px auto;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .main-container h1 {
+    display: inline-block;
+    font-size: 1.2em;
+    border-bottom: 1.5px solid #ddd;
+    margin-bottom: 10px;
+  }
+  
+  .filter {
+    margin-bottom: 20px;
+    margin-top: 15px;
+    border-bottom: 1.5px solid #ddd;
+    overflow-x: auto;
+  }
+  
+  .card-section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  
+  .card p {
+    margin-bottom: 5px;
+  }
+  
+  .card select {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  select:hover {
+    cursor: pointer;
+  }
+  
+  .submit-button {
+    padding: 30px 0 5px 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .homework-section{
+    margin-top: 10px;
+  }
+  .homework-section h1{
+    display: inline-block;
+  }
+  .table-section {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    max-height: 500px;
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .fst-table {
+    width: 55%;
+  }
+  
+  .fst-table th {
+    border: 1px solid #ddd;
+    padding: 16px;
+    text-align: center;
+  }
+  
+  .fst-table td {
+    border: 1px solid #ddd;
+    padding: 16px;
+    text-align: center;
+  }
+  
+  .snd-table {
+    width: 35%;
+    margin-top: 50px;
+    /* border: 1px solid black; */
+  }
+  
+  .snd-table td {
+    border: none;
+    padding: 5px;
+  }
+  
+  button{
+    border-radius: 10px;
+    padding: 10px 30px;
+    background-color: #ccff33;
+    color: #007bff;
+    font-size: 16px;
+    border: 2px solid #ddd;
+  }
+  button:hover{
+    cursor: pointer;
+    background-color: #b3e600;
+  }
+  
+  
+  .snd-table[input="checkbox"] {
+    font-size: 16px;
+    color: #ccff33;
+  }
+  
+  .checkbox-text {
+    transform: scale(1.5);
+  }
+  
+  .checkbox-text:hover {
+    transform: scale(1.8);
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* submit-button */
+  
+  #submit{
+    color: black;
+    font-size: 1.4rem;
+    padding:  8px 20px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .grid-container {
+      margin-left: 60px;
+    }
+    .card {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .submit-button{
+      padding-top: 20px;
+    }
+    .table-section{
+      column-gap: 40px;
+    }
+    .fst-table{
+      min-width: 375px;
+    }
+    .snd-table{
+      min-width: 300px;
+    }
+    .snd-table button a{
+      font-size: 16px;
+    }
+  }
+  
+  
+  @media screen and (max-width: 497px){
+    .grid-container{
+      margin-left: 50px;
+      overflow-x: hidden;
+    }
+    .main-container h1,.homework-section h1{
+      font-size: 18px;
+    }
+    .header p,a{
+        font-size: 14px;
+    }
+    #submit{
+      font-size: 16px;
+    }
+  }
+  
+  @media screen and (max-width:350px) {
+    .header h1 {
+        margin-left: 0;
+    }
+
+    .header a {
+        padding: 0;
+    }
+}
