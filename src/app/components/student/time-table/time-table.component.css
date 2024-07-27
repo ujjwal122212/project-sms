@@ -66,6 +66,9 @@ body.dark-mode thead {
 .header p {
   display: inline;
 }
+.content{
+  margin-bottom: 5px;
+}
 .border-bottom{
   margin-top: 20px;
   border-bottom: 2px solid #aaa;
@@ -83,7 +86,7 @@ body.dark-mode thead {
   width: 30%;
   /* flex-grow: 1; */
   border-radius: 10px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
 }
 
@@ -95,8 +98,10 @@ body.dark-mode thead {
 
 .card select {
   width: 100%;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
+  border: 1px solid #ddd;
+  height: 50px;
 }
 .card select:hover{
   cursor: pointer;
@@ -104,9 +109,12 @@ body.dark-mode thead {
 
 .card input {
   width: 100%;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
+  border: 1px solid #ddd;
+  height: 50px;
 }
+
 .card input:hover{
   cursor: pointer;
 }
@@ -121,8 +129,7 @@ body.dark-mode thead {
   height: 300px;
   overflow: auto;
   border-radius: 10px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 table {
@@ -160,7 +167,7 @@ caption {
 
 
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
 
   .time-table-section{
       margin-left: 60px;
@@ -171,6 +178,9 @@ caption {
   .card {
       width: 100%;
   }
+  table{
+    min-width: 780px;
+  }
 }
 
 @media screen and (max-width:479px) {
@@ -180,20 +190,5 @@ caption {
   }
   .search-section {
       row-gap: 30px;
-  }
-
-  th,
-  td {
-      padding: 5px;
-      font-size: 15px;
-  }
-  caption{
-      padding: 8px;
-  }
-  .card p {
-      font-size: 1rem;
-  }
-  thead{
-      top: 38.3px;
   }
 }

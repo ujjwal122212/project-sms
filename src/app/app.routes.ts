@@ -15,6 +15,9 @@ import { HolidayCalenderComponent } from './components/teacher/leave/holiday-cal
 import { ViewBalanceComponent } from './components/teacher/leave/view-balance/view-balance.component';
 import { ViewLeaveBookComponent } from './components/teacher/leave/view-leave-book/view-leave-book.component';
 import { ViewStatusComponent } from './components/teacher/leave/view-status/view-status.component';
+import { HomeWorkComponent } from './components/teacher/home-work/home-work.component';
+import { CheckHomeworkComponent } from './components/teacher/homework/check-homework/check-homework.component';
+import { GiveHomeworkComponent } from './components/teacher/homework/give-homework/give-homework.component';
 
 
 
@@ -85,7 +88,16 @@ export const routes: Routes = [
     ]
   },
 
+// for teacher homework
+{ 'path': 'T-homework', 'title': 'homework', component: HomeWorkComponent },
 
+{
+  'path': 'T-homework', children: [
+    { 'path': 'check-homework', 'title': 'homework', component: CheckHomeworkComponent },
+    { 'path': 'give-homework', 'title': 'homework', component: GiveHomeworkComponent },
+
+  ]
+},
 
   // Admin Routes
 
