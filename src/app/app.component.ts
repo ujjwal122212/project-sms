@@ -1,21 +1,28 @@
 
 
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
-import { MenubarComponent } from './menubar/menubar.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { TMenubarComponent } from './teacher/t-menubar/t-menubar.component';
-import { TNavbarComponent } from "./teacher/t-navbar/t-navbar.component";
+import { NavbarComponent } from './components/student/navbar/navbar.component';
+
+import { MenubarComponent } from './components/student/menubar/menubar.component';
+import { TNavbarComponent } from './components/teacher/t-navbar/t-navbar.component';
+import { TMenubarComponent } from './components/teacher/t-menubar/t-menubar.component';
+import { MainNavbarComponent } from './components/Main-Page/main-navbar/main-navbar.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, MenubarComponent, TMenubarComponent, TNavbarComponent],
+  imports: [RouterOutlet,MenubarComponent,NavbarComponent,RouterLink,TNavbarComponent,TMenubarComponent,MainNavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'sms';
+  title = 'I-Portal';
+  constructor(private router: Router) {}
+
+  goToAbout() {
+    this.router.navigate(['/Login-page']);
+  }
 }
