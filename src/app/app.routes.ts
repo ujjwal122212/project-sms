@@ -23,6 +23,7 @@ import { UpcomingComponent } from './components/teacher/quiz/upcoming/upcoming.c
 import { OngoingComponent } from './components/teacher/quiz/ongoing/ongoing.component';
 import { SecheduleComponent } from './components/teacher/quiz/sechedule/sechedule.component';
 import { AssesmentComponent } from './components/teacher/quiz/assesment/assesment.component';
+import { TDashboardComponent } from './components/teacher/t-dashboard/t-dashboard.component';
 
 
 
@@ -38,8 +39,13 @@ export const routes: Routes = [
 //student dashboard
 { 'path': 'S-home', 'title': 'Home', component:HomeComponent},
 
-{ 'path': '',children:[
+{ 'path': 'S-home',children:[
   { 'path': 'quiz1', 'title': 'Quizzes', component:Quiz1Component},
+  { 'path': 'courses', 'title': 'Courses', component:CoursesComponent},
+  { 'path': 'performance', 'title': 'Performance', component:PerformanceComponent},
+  { 'path': 'timetable', 'title': 'Time-Table',component:TimeTableComponent},
+  { 'path': 'fee', 'title': 'Fees',component:FeePageComponent},
+  { 'path': 'help', 'title': 'Help',component:StudentHelpComponent},
 ]},
 
 
@@ -48,11 +54,7 @@ export const routes: Routes = [
 
 { 'path': 'quiz1',children:[
   { 'path': 'quiz2', 'title': 'Quizzes|take-quiz', component:Quiz2Component},
-  { 'path': 'courses', 'title': 'Courses', component:CoursesComponent},
-  { 'path': 'performance', 'title': 'Performance', component:PerformanceComponent},
-  { 'path': 'timetable', 'title': 'Time-Table',component:TimeTableComponent},
-  { 'path': 'fee', 'title': 'Fees',component:FeePageComponent},
-  { 'path': 'help', 'title': 'Help',component:StudentHelpComponent},
+
 ]},
 
 
@@ -79,10 +81,10 @@ export const routes: Routes = [
 
 // Teacher Routing
 
+//for teacher dashboard
+{ 'path': 'T-home', 'title': 'Dashboard', component:TDashboardComponent},
+
 // for teacher quizess
-
-
-//   { 'path': 'quizzes', 'title': 'quizzes', component: UpcomingComponent },
 
 { 'path': 'Tquizzes', 'title': 'quizzes', component:TQuizComponent},
 
@@ -115,7 +117,6 @@ export const routes: Routes = [
   'path': 'T-homework', children: [
     { 'path': 'check-homework', 'title': 'homework', component: CheckHomeworkComponent },
     { 'path': 'give-homework', 'title': 'homework', component: GiveHomeworkComponent },
-
   ]
 },
 
