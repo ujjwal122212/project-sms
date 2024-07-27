@@ -24,6 +24,7 @@ import { OngoingComponent } from './components/teacher/quiz/ongoing/ongoing.comp
 import { SecheduleComponent } from './components/teacher/quiz/sechedule/sechedule.component';
 import { AssesmentComponent } from './components/teacher/quiz/assesment/assesment.component';
 import { TDashboardComponent } from './components/teacher/t-dashboard/t-dashboard.component';
+import { THomeworkPageComponent } from './components/teacher/homework/t-homework-page/t-homework-page.component';
 
 
 
@@ -111,7 +112,7 @@ export const routes: Routes = [
   },
 
 // for teacher homework
-{ 'path': 'T-homework', 'title': 'homework', component: HomeWorkComponent },
+{ 'path': 'T-homework', 'title': 'homework', component:THomeworkPageComponent },
 
 {
   'path': 'T-homework', children: [
