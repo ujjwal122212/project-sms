@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-time-table',
+  selector: 'app-home',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './time-table.component.html',
-  styleUrl: './time-table.component.css'
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
 })
-export class TimeTableComponent {
+export class HomeComponent {
 
 }
