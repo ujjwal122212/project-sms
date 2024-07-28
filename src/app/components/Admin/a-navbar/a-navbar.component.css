@@ -1,0 +1,173 @@
+h3 {
+  padding-right: 20px;
+}
+
+:root {
+  --nav_color_student: #FDC300;
+  --sidebar_color_student: #042954;
+  --font_style_student: "Inter";
+  --nav_color_admin: #4394DF;
+  --sidebar_color_admin: #284A6A;
+  --backcolor_admin: #bbc7d2;
+  --icon_color_admin: #FDC300;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: var(--font_style_student), sans-serif;
+}
+
+
+
+nav {
+  width: 100%;
+  height: 51px;
+  display: flex;
+  background-color: #f1f1f1;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+nav .logo {
+  flex-grow: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav .logo img {
+  width: 50px;
+}
+
+nav .nav-icons {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  height: 100%;
+  align-items: center;
+  margin-right: 15px;
+}
+
+#nav_icon {
+  cursor: pointer;
+}
+
+#nav_icon:hover {
+  color: #FDC300;
+}
+
+nav .user-info {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  /* border-left: 2px solid rgb(207, 197, 197); */
+}
+
+.user-info .user-icon {
+  font-size: 2rem;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.user-icon{
+  border-left: 2px solid rgb(207, 197, 197);
+}
+.user-text {
+  height: 100%;
+  font-weight: 700;
+}
+
+.user-text h3 {
+  font-size: 1.6rem;
+  padding-top: 10px;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode nav {
+  background-color: #333;
+  color: #e0e0e0;
+}
+
+body.dark-mode .menu {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+
+body.dark-mode .menu a {
+  color: #e0e0e0;
+  border-bottom: 1px solid #444;
+}
+
+.more-options span{
+  width: 40px;
+  font-size: 30px;
+  font-weight: 700;
+  margin-right: 5px;
+  padding-bottom: 10px;
+}
+.more-options span:hover {
+  cursor: pointer;
+  color: orange;
+}
+
+@media (max-width: 768px) {
+
+  nav {
+      overflow: hidden;
+  }
+  nav .user-info{
+    flex-grow: 0;
+   width: 100px;
+  }
+  .user-text {
+      display: none;
+  }
+
+  .logo img {
+      margin-left: 70px;
+  }
+
+  .menu.expanded a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .menu.expanded a span {
+      display: inline;
+  }
+
+}
+
+@media screen and (max-width:479px) {
+  .menu.collapsed+.main-content nav .logo img {
+      margin-left: 70px;
+      transition: width 0.3s, margin-left 0.3s;
+  }
+}
+.more-options span{
+  font-size: 30px;
+  margin-right: 5px;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+.more-options span:hover {
+  color: orange;
+}
+
+
