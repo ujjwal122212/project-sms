@@ -25,6 +25,10 @@ import { AssesmentComponent } from './components/teacher/quiz/assesment/assesmen
 import { TDashboardComponent } from './components/teacher/t-dashboard/t-dashboard.component';
 import { THomeworkPageComponent } from './components/teacher/homework/t-homework-page/t-homework-page.component';
 import { THelpComponent } from './components/teacher/t-help/t-help.component';
+import { ADashboardComponent } from './components/Admin/a-dashboard/a-dashboard.component';
+import { AddNewStudentComponent } from './components/Admin/addStudent/add-new-student/add-new-student.component';
+import { ViewStudentComponent } from './components/Admin/addStudent/view-student/view-student.component';
+import { EditStudentComponent } from './components/Admin/addStudent/edit-student/edit-student.component';
 
 
 
@@ -85,6 +89,13 @@ export const routes: Routes = [
 //for teacher dashboard
 { 'path': 'T-home', 'title': 'Dashboard', component:TDashboardComponent},
 
+{ 'path': 'T-home',children:[
+  { 'path': 'Tquizzes', 'title': 'quizzes', component:TQuizComponent},
+  { 'path': 'leave', 'title': 'leave', component: LeavePageComponent },
+  { 'path': 'T-homework', 'title': 'homework', component:THomeworkPageComponent },
+  { 'path': 'tHelp', 'title': 'Help', component:THelpComponent },
+]},
+
 // for teacher quizess
 
 { 'path': 'Tquizzes', 'title': 'quizzes', component:TQuizComponent},
@@ -124,7 +135,23 @@ export const routes: Routes = [
 //for teacher help
 { 'path': 'tHelp', 'title': 'Help', component:THelpComponent },
 
+
+
+//============================================================================================
   // Admin Routes
+
+  //Admin dashboard
+  { 'path': 'ahome', 'title': 'Help', component:ADashboardComponent },
+
+
+  //add student
+  { 'path': 'viewstudent', 'title': 'View-Student', component:ViewStudentComponent },
+
+  { 'path': 'viewstudent',children:[
+    { 'path': 'addstudent', 'title': 'Add-Student', component:AddNewStudentComponent },
+    { 'path': 'editstudent', 'title': 'edit-Student', component:EditStudentComponent },
+
+  ]},
 
   //for add teacher
   // // { 'path': 'add-teacher', 'title': 'Add-teacher', component: AddTeacherComponent },
