@@ -15,7 +15,6 @@ import { HolidayCalenderComponent } from './components/teacher/leave/holiday-cal
 import { ViewBalanceComponent } from './components/teacher/leave/view-balance/view-balance.component';
 import { ViewLeaveBookComponent } from './components/teacher/leave/view-leave-book/view-leave-book.component';
 import { ViewStatusComponent } from './components/teacher/leave/view-status/view-status.component';
-import { HomeWorkComponent } from './components/teacher/home-work/home-work.component';
 import { CheckHomeworkComponent } from './components/teacher/homework/check-homework/check-homework.component';
 import { GiveHomeworkComponent } from './components/teacher/homework/give-homework/give-homework.component';
 import { TQuizComponent } from './components/teacher/quiz/t-quiz/t-quiz.component';
@@ -25,6 +24,12 @@ import { SecheduleComponent } from './components/teacher/quiz/sechedule/sechedul
 import { AssesmentComponent } from './components/teacher/quiz/assesment/assesment.component';
 import { TDashboardComponent } from './components/teacher/t-dashboard/t-dashboard.component';
 import { THomeworkPageComponent } from './components/teacher/homework/t-homework-page/t-homework-page.component';
+import { THelpComponent } from './components/teacher/t-help/t-help.component';
+import { ADashboardComponent } from './components/Admin/a-dashboard/a-dashboard.component';
+import { AddNewStudentComponent } from './components/Admin/addStudent/add-new-student/add-new-student.component';
+import { ViewStudentComponent } from './components/Admin/addStudent/view-student/view-student.component';
+import { EditStudentComponent } from './components/Admin/addStudent/edit-student/edit-student.component';
+import { AttendenceComponent } from './components/teacher/attendence/attendence.component';
 
 
 
@@ -42,6 +47,13 @@ export const routes: Routes = [
 
 { 'path': 'S-home',children:[
   { 'path': 'quiz1', 'title': 'Quizzes', component:Quiz1Component},
+
+  //quiz
+  { 'path': 'quiz1',children:[
+    { 'path': 'quiz2', 'title': 'Quizzes|take-quiz', component:Quiz2Component},
+
+  ]},
+
   { 'path': 'courses', 'title': 'Courses', component:CoursesComponent},
   { 'path': 'performance', 'title': 'Performance', component:PerformanceComponent},
   { 'path': 'timetable', 'title': 'Time-Table',component:TimeTableComponent},
@@ -85,6 +97,43 @@ export const routes: Routes = [
 //for teacher dashboard
 { 'path': 'T-home', 'title': 'Dashboard', component:TDashboardComponent},
 
+{ 'path': 'T-home',children:[
+  { 'path': 'Tquizzes', 'title': 'quizzes', component:TQuizComponent},
+  { 'path': 'Tquizzes', children :[
+
+    { 'path': 'upcoming', 'title': 'upcoming-quizzes', component:UpcomingComponent},
+    { 'path': 'ongoing', 'title': 'ongoing-quizzes', component:OngoingComponent},
+    { 'path': 'schedule', 'title': 'schedule-quizzes', component:SecheduleComponent},
+    { 'path': 'Assesment', 'title': 'Assesment-quizzes', component:AssesmentComponent},
+  ]},
+  { 'path': 'leave', 'title': 'leave', component: LeavePageComponent },
+  {
+    'path': 'leave', children: [
+      { 'path': 'apply-leave', 'title': 'apply-leave', component: ApplyLeaveComponent },
+      { 'path': 'cancel-leave', 'title': 'cancel-leave', component: CancelLeaveComponent },
+      { 'path': 'holiday-calender', 'title': 'holiday-calender', component: HolidayCalenderComponent},
+      { 'path': 'view-balance', 'title': 'view-balance', component:ViewBalanceComponent },
+      { 'path': 'view-leave-book', 'title': 'view-leave-book', component:ViewLeaveBookComponent},
+      { 'path': 'view-status', 'title': 'view-status', component: ViewStatusComponent},
+    ]
+  },
+
+  { 'path': 'T-homework', 'title': 'homework', component:THomeworkPageComponent },
+
+  {
+    'path': 'T-homework', children: [
+      { 'path': 'check-homework', 'title': 'homework', component: CheckHomeworkComponent },
+      { 'path': 'give-homework', 'title': 'homework', component: GiveHomeworkComponent },
+    ]
+  },
+  { 'path': 'T-attendence', 'title': 'Attendence', component:AttendenceComponent },
+
+  { 'path': 'tHelp', 'title': 'Help', component:THelpComponent },
+]},
+
+// attendence
+{ 'path': 'T-attendence', 'title': 'Attendence', component:AttendenceComponent },
+
 // for teacher quizess
 
 { 'path': 'Tquizzes', 'title': 'quizzes', component:TQuizComponent},
@@ -121,7 +170,26 @@ export const routes: Routes = [
   ]
 },
 
+//for teacher help
+{ 'path': 'tHelp', 'title': 'Help', component:THelpComponent },
+
+
+
+//============================================================================================
   // Admin Routes
+
+  //Admin dashboard
+  { 'path': 'ahome', 'title': 'Help', component:ADashboardComponent },
+
+
+  //add student
+  { 'path': 'viewstudent', 'title': 'View-Student', component:ViewStudentComponent },
+
+  { 'path': 'viewstudent',children:[
+    { 'path': 'addstudent', 'title': 'Add-Student', component:AddNewStudentComponent },
+    { 'path': 'editstudent', 'title': 'edit-Student', component:EditStudentComponent },
+
+  ]},
 
   //for add teacher
   // // { 'path': 'add-teacher', 'title': 'Add-teacher', component: AddTeacherComponent },

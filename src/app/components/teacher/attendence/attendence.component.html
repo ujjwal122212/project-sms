@@ -2,15 +2,18 @@
 <div class="grid-container">
   <div class="header">
     <h1>Attendance</h1>
-    <div>
+    <div class="content">
       <span><a href="#">Dashboard</a></span>
       <span>
         <p>/ Attendance</p>
       </span>
     </div>
   </div>
+  <div class="border-bottom"></div>
   <div class="main-container">
-    <div><h1>Mark Attendance</h1></div>
+    <div>
+      <h1>Mark Attendance</h1>
+    </div>
     <div class="filter">
       <div class="card-section">
         <div class="card">
@@ -45,10 +48,7 @@
         </div>
         <div class="card">
           <p>Subject :</p>
-          <select id="class" aria-placeholder="Please select">
-            <option value="0" selected disabled>please select...</option>
-            <input type="date" />
-          </select>
+          <input type="date" />
         </div>
       </div>
       <div class class="submit-button">
@@ -58,138 +58,134 @@
     <div class="section">
       <h1>Attendence Details</h1>
       <div class="table-section">
-        <div class="fst-table">
-          <table>
-            <caption
-              style="font-size: 1.5rem; font-weight: 600; padding-bottom: 1rem"
-            >
-              Attendance of 2024-25 for Class xyz
-            </caption>
-            <thead>
-              <tr>
-                <th>Sr.no</th>
-                <th>Roll number</th>
-                <th>Name</th>
-                <th>Class</th>
-                <th>DOB</th>
-                <th>Mark</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>01.</td>
-                <td>820</td>
-                <td>Mr.X</td>
-                <td>3</td>
-                <td>25/01/2018</td>
-                <td>
-                  <input type="checkbox" checked />
-                </td>
-              </tr>
+        <table>
+          <caption>
+            Attendance of 2024-25 for Class xyz
+          </caption>
+          <thead>
+            <tr>
+              <th>Sr.no</th>
+              <th>Roll number</th>
+              <th>Name</th>
+              <th>Class</th>
+              <th>DOB</th>
+              <th>Mark</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01.</td>
+              <td>820</td>
+              <td>Mr.X</td>
+              <td>3</td>
+              <td>25/01/2018</td>
+              <td>
+                <input type="checkbox"  class="check" />
+              </td>
+            </tr>
 
-              <tr>
-                <td>011.</td>
-                <td>820</td>
-                <td>Mr.X</td>
-                <td>3</td>
-                <td>25/01/2018</td>
-                <td>
-                  <input type="checkbox" checked />
-                </td>
-              </tr>
-              <tr>
-                <td>01.</td>
-                <td>820</td>
-                <td>Mr.X</td>
-                <td>3</td>
-                <td>25/01/2018</td>
-                <td>
-                  <input type="checkbox" checked />
-                </td>
-              </tr>
-              <tr>
-                <td>01.</td>
-                <td>820</td>
-                <td>Mr.X</td>
-                <td>3</td>
-                <td>25/01/2018</td>
-                <td>
-                  <input type="checkbox" checked />
-                </td>
-              </tr>
-              <tr>
-                <td>011.</td>
-                <td>820</td>
-                <td>Mr.X</td>
-                <td>3</td>
-                <td>25/01/2018</td>
-                <td>
-                  <input type="checkbox" checked />
-                </td>
-              </tr>
-              <tr>
-                <td>01.</td>
-                <td>820</td>
-                <td>Mr.X</td>
-                <td>3</td>
-                <td>25/01/2018</td>
-                <td>
-                  <input type="checkbox" checked />
-                </td>
-              </tr>
-              <tr>
-                <td>01.</td>
-                <td>820</td>
-                <td>Mr.X</td>
-                <td>3</td>
-                <td>25/01/2018</td>
-                <td>
-                  <input type="checkbox" checked />
-                </td>
-              </tr>
-              <tr>
-                <td>011.</td>
-                <td>820</td>
-                <td>Mr.X</td>
-                <td>3</td>
-                <td>25/01/2018</td>
-                <td>
-                  <input type="checkbox" checked />
-                </td>
-              </tr>
-              <tr>
-                <td>01.</td>
-                <td>820</td>
-                <td>Mr.X</td>
-                <td>3</td>
-                <td>25/01/2018</td>
-                <td>
-                  <input type="checkbox" checked />
-                </td>
-              </tr>
-              <tr>
-                <td>01.</td>
-                <td>820</td>
-                <td>Mr.X</td>
-                <td>3</td>
-                <td>25/01/2018</td>
-                <td>
-                  <input type="checkbox" checked />
-                </td>
-              </tr>
-              <tr>
-                <td>011.</td>
-                <td>820</td>
-                <td>Mr.X</td>
-                <td>3</td>
-                <td>25/01/2018</td>
-                <td>
-                  <input type="checkbox" checked />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            <tr>
+              <td>011.</td>
+              <td>820</td>
+              <td>Mr.X</td>
+              <td>3</td>
+              <td>25/01/2018</td>
+              <td>
+                <input type="checkbox"  class="check"/>
+              </td>
+            </tr>
+            <tr>
+              <td>01.</td>
+              <td>820</td>
+              <td>Mr.X</td>
+              <td>3</td>
+              <td>25/01/2018</td>
+              <td>
+                <input type="checkbox"  class="check" />
+              </td>
+            </tr>
+            <tr>
+              <td>01.</td>
+              <td>820</td>
+              <td>Mr.X</td>
+              <td>3</td>
+              <td>25/01/2018</td>
+              <td>
+                <input type="checkbox"  class="check" />
+              </td>
+            </tr>
+            <tr>
+              <td>011.</td>
+              <td>820</td>
+              <td>Mr.X</td>
+              <td>3</td>
+              <td>25/01/2018</td>
+              <td>
+                <input type="checkbox"  class="check"/>
+              </td>
+            </tr>
+            <tr>
+              <td>01.</td>
+              <td>820</td>
+              <td>Mr.X</td>
+              <td>3</td>
+              <td>25/01/2018</td>
+              <td>
+                <input type="checkbox"  class="check" />
+              </td>
+            </tr>
+            <tr>
+              <td>01.</td>
+              <td>820</td>
+              <td>Mr.X</td>
+              <td>3</td>
+              <td>25/01/2018</td>
+              <td>
+                <input type="checkbox"  class="check"/>
+              </td>
+            </tr>
+            <tr>
+              <td>011.</td>
+              <td>820</td>
+              <td>Mr.X</td>
+              <td>3</td>
+              <td>25/01/2018</td>
+              <td>
+                <input type="checkbox"  class="check"/>
+              </td>
+            </tr>
+            <tr>
+              <td>01.</td>
+              <td>820</td>
+              <td>Mr.X</td>
+              <td>3</td>
+              <td>25/01/2018</td>
+              <td>
+                <input type="checkbox"  class="check"/>
+              </td>
+            </tr>
+            <tr>
+              <td>01.</td>
+              <td>820</td>
+              <td>Mr.X</td>
+              <td>3</td>
+              <td>25/01/2018</td>
+              <td>
+                <input type="checkbox"  class="check"/>
+              </td>
+            </tr>
+            <tr>
+              <td>011.</td>
+              <td>820</td>
+              <td>Mr.X</td>
+              <td>3</td>
+              <td>25/01/2018</td>
+              <td>
+                <input type="checkbox"  class="check"/>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
