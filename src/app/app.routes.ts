@@ -29,6 +29,7 @@ import { ADashboardComponent } from './components/Admin/a-dashboard/a-dashboard.
 import { AddNewStudentComponent } from './components/Admin/addStudent/add-new-student/add-new-student.component';
 import { ViewStudentComponent } from './components/Admin/addStudent/view-student/view-student.component';
 import { EditStudentComponent } from './components/Admin/addStudent/edit-student/edit-student.component';
+import { AttendenceComponent } from './components/teacher/attendence/attendence.component';
 
 
 
@@ -52,7 +53,7 @@ export const routes: Routes = [
     { 'path': 'quiz2', 'title': 'Quizzes|take-quiz', component:Quiz2Component},
 
   ]},
-  
+
   { 'path': 'courses', 'title': 'Courses', component:CoursesComponent},
   { 'path': 'performance', 'title': 'Performance', component:PerformanceComponent},
   { 'path': 'timetable', 'title': 'Time-Table',component:TimeTableComponent},
@@ -125,9 +126,13 @@ export const routes: Routes = [
       { 'path': 'give-homework', 'title': 'homework', component: GiveHomeworkComponent },
     ]
   },
+  { 'path': 'T-attendence', 'title': 'Attendence', component:AttendenceComponent },
 
   { 'path': 'tHelp', 'title': 'Help', component:THelpComponent },
 ]},
+
+// attendence
+{ 'path': 'T-attendence', 'title': 'Attendence', component:AttendenceComponent },
 
 // for teacher quizess
 
