@@ -2,15 +2,18 @@
 <div class="grid-container">
   <div class="header">
     <h1>Time Table</h1>
-    <div>
+    <div class="content">
       <span><a href="#">Dashboard</a></span>
       <span>
         <p>/ Time table</p>
       </span>
     </div>
   </div>
+  <div class="border-bottom"></div>
   <div class="main-container">
-    <div><h1>Time table</h1></div>
+    <div>
+      <h1>Time table</h1>
+    </div>
     <div class="filter">
       <div class="card-section">
         <div class="card">
@@ -25,10 +28,10 @@
           </select>
         </div>
         <div class="card">
-          <p>Months :</p>
+          <p>Month :</p>
           <select id="class" aria-placeholder="Please select">
             <option value="0" selected disabled>please select...</option>
-            <option value="">please select</option>
+            <!-- <option value="">please select</option> -->
             <option value="">January</option>
             <option value="">February</option>
             <option value="">March</option>
@@ -47,12 +50,12 @@
           <p>Subject :</p>
           <select id="class" aria-placeholder="Please select">
             <option value="0" selected disabled>please select...</option>
-            <option value="">please select</option>
-            <option value="">January</option>
-            <option value="">February</option>
-            <option value="">March</option>
-            <option value="">April</option>
-            <option value="">May</option>
+            <!-- <option value="">please select</option> -->
+            <option value="">Hindi</option>
+            <option value="">English</option>
+            <option value="">Math</option>
+            <option value="">Science</option>
+            <option value="">Social Science</option>
           </select>
         </div>
       </div>
@@ -63,1179 +66,1178 @@
     <div class="section">
       <h1>Time table Details</h1>
       <div class="table-section">
-        <div class="fst-table">
-          <table>
-            <caption
-              style="font-size: 1.5rem; font-weight: 600; padding-bottom: 1rem"
-            >
-              Timetable of 2024-25 for Class xyz
-            </caption>
-            <thead>
-              <tr>
-                <th>Time Slots</th>
-                <th>Sunday</th>
-                <th>Monday</th>
-                <th>Tuesday</th>
-                <th>Wednusday</th>
-                <th>Thursday</th>
-                <th>Friday</th>
-                <th>Saturday</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>8:20</td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance" routerLink="attendence2">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a>Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+
+        <table>
+          <caption >
+            Timetable of 2024-25 for Class xyz
+          </caption>
+          <thead>
+            <tr>
+              <th>Time Slots</th>
+              <th>Sunday</th>
+              <th>Monday</th>
+              <th>Tuesday</th>
+              <th>Wednusday</th>
+              <th>Thursday</th>
+              <th>Friday</th>
+              <th>Saturday</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>8:20</td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance" routerLink="T-attendence">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a>Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance" routerLink="/attendence2">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <!-- <a routerLink="/attendence">Attendance</a> -->
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance" routerLink="T-attendence">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <!-- <a routerLink="/attendence">Attendance</a> -->
+                          <a>Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence2">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance" routerLink="T-attendence">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a>Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <a routerLink="/attendence2">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence2">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence2">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence2">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td>8:20</td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence2">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>8:20</td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence2">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence2">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence2">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence2">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td>8:20</td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>8:20</td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td>8:20</td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>8:20</td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a>
                              -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td>8:20</td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>8:20</td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td>8:20</td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>8:20</td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td>8:20</td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>8:20</td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td>8:20</td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>8:20</td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td>8:20</td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>8:20</td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-              </tr>
-              <tr>
-                <td>8:20</td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>8:20</td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-                <td>
-                  <div class="data">
-                    <div class="sub-data">
-                      <ul>
-                        <li>Math</li>
-                        <li>10th</li>
-                        <li>
-                          <button class="attendance">
-                            <!-- <a href="attendance.html">Attendance</a> -->
-                            <a routerLink="/attendence">Attendance</a>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
+                </div>
+              </td>
+              <td>
+                <div class="data">
+                  <div class="sub-data">
+                    <ul>
+                      <li>Math</li>
+                      <li>10th</li>
+                      <li>
+                        <button class="attendance">
+                          <!-- <a href="attendance.html">Attendance</a> -->
+                          <a routerLink="T-attendence">Attendance</a>
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
       </div>
     </div>
   </div>
