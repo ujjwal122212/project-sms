@@ -46,6 +46,13 @@ export const routes: Routes = [
 
 { 'path': 'S-home',children:[
   { 'path': 'quiz1', 'title': 'Quizzes', component:Quiz1Component},
+
+  //quiz
+  { 'path': 'quiz1',children:[
+    { 'path': 'quiz2', 'title': 'Quizzes|take-quiz', component:Quiz2Component},
+
+  ]},
+  
   { 'path': 'courses', 'title': 'Courses', component:CoursesComponent},
   { 'path': 'performance', 'title': 'Performance', component:PerformanceComponent},
   { 'path': 'timetable', 'title': 'Time-Table',component:TimeTableComponent},
@@ -91,8 +98,34 @@ export const routes: Routes = [
 
 { 'path': 'T-home',children:[
   { 'path': 'Tquizzes', 'title': 'quizzes', component:TQuizComponent},
+  { 'path': 'Tquizzes', children :[
+
+    { 'path': 'upcoming', 'title': 'upcoming-quizzes', component:UpcomingComponent},
+    { 'path': 'ongoing', 'title': 'ongoing-quizzes', component:OngoingComponent},
+    { 'path': 'schedule', 'title': 'schedule-quizzes', component:SecheduleComponent},
+    { 'path': 'Assesment', 'title': 'Assesment-quizzes', component:AssesmentComponent},
+  ]},
   { 'path': 'leave', 'title': 'leave', component: LeavePageComponent },
+  {
+    'path': 'leave', children: [
+      { 'path': 'apply-leave', 'title': 'apply-leave', component: ApplyLeaveComponent },
+      { 'path': 'cancel-leave', 'title': 'cancel-leave', component: CancelLeaveComponent },
+      { 'path': 'holiday-calender', 'title': 'holiday-calender', component: HolidayCalenderComponent},
+      { 'path': 'view-balance', 'title': 'view-balance', component:ViewBalanceComponent },
+      { 'path': 'view-leave-book', 'title': 'view-leave-book', component:ViewLeaveBookComponent},
+      { 'path': 'view-status', 'title': 'view-status', component: ViewStatusComponent},
+    ]
+  },
+
   { 'path': 'T-homework', 'title': 'homework', component:THomeworkPageComponent },
+
+  {
+    'path': 'T-homework', children: [
+      { 'path': 'check-homework', 'title': 'homework', component: CheckHomeworkComponent },
+      { 'path': 'give-homework', 'title': 'homework', component: GiveHomeworkComponent },
+    ]
+  },
+
   { 'path': 'tHelp', 'title': 'Help', component:THelpComponent },
 ]},
 
