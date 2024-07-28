@@ -15,7 +15,6 @@ import { HolidayCalenderComponent } from './components/teacher/leave/holiday-cal
 import { ViewBalanceComponent } from './components/teacher/leave/view-balance/view-balance.component';
 import { ViewLeaveBookComponent } from './components/teacher/leave/view-leave-book/view-leave-book.component';
 import { ViewStatusComponent } from './components/teacher/leave/view-status/view-status.component';
-import { HomeWorkComponent } from './components/teacher/home-work/home-work.component';
 import { CheckHomeworkComponent } from './components/teacher/homework/check-homework/check-homework.component';
 import { GiveHomeworkComponent } from './components/teacher/homework/give-homework/give-homework.component';
 import { TQuizComponent } from './components/teacher/quiz/t-quiz/t-quiz.component';
@@ -25,6 +24,7 @@ import { SecheduleComponent } from './components/teacher/quiz/sechedule/sechedul
 import { AssesmentComponent } from './components/teacher/quiz/assesment/assesment.component';
 import { TDashboardComponent } from './components/teacher/t-dashboard/t-dashboard.component';
 import { THomeworkPageComponent } from './components/teacher/homework/t-homework-page/t-homework-page.component';
+import { THelpComponent } from './components/teacher/t-help/t-help.component';
 
 
 
@@ -120,6 +120,9 @@ export const routes: Routes = [
     { 'path': 'give-homework', 'title': 'homework', component: GiveHomeworkComponent },
   ]
 },
+
+//for teacher help
+{ 'path': 'tHelp', 'title': 'Help', component:THelpComponent },
 
   // Admin Routes
 
