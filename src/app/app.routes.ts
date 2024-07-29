@@ -32,6 +32,8 @@ import { EditStudentComponent } from './components/Admin/addStudent/edit-student
 import { AttendenceComponent } from './components/teacher/attendence/attendence.component';
 import { ManagementComponent } from './components/teacher/management/management.component';
 import { TTimeTableComponent } from './components/teacher/t-time-table/t-time-table.component';
+import { PaymentComponent } from './components/student/fees/payment/payment.component';
+import { RecieptComponent } from './components/student/fees/reciept/reciept.component';
 
 
 
@@ -62,7 +64,13 @@ export const routes: Routes = [
       { 'path': 'courses', 'title': 'Courses', component: CoursesComponent },
       { 'path': 'performance', 'title': 'Performance', component: PerformanceComponent },
       { 'path': 'timetable', 'title': 'Time-Table', component: TimeTableComponent },
+
       { 'path': 'fee', 'title': 'Fees', component: FeePageComponent },
+      {'path':'fee', children: [
+        {'path':'payment','title':'payment',component:PaymentComponent},
+        {'path':'receipt','title':'receipt',component:RecieptComponent}
+      ]},
+     
       { 'path': 'help', 'title': 'Help', component: StudentHelpComponent },
     ]
   },
@@ -90,9 +98,13 @@ export const routes: Routes = [
   //student Time table
   { 'path': 'timetable', 'title': 'Time-Table', component: TimeTableComponent },
 
-  //student Time table
+  //student fees
   { 'path': 'fee', 'title': 'Fees', component: FeePageComponent },
-
+  {'path':'fee', children: [
+    {'path':'payment','title':'payment',component:PaymentComponent},
+    {'path':'receipt','title':'receipt',component:RecieptComponent}
+  ]},
+  
   //student help
   { 'path': 'help', 'title': 'Help', component: StudentHelpComponent },
 
@@ -145,12 +157,12 @@ export const routes: Routes = [
           'path': 'T-attendence', component: AttendenceComponent
         }]
       },
-
+      { 'path': 'Management-Component', 'title': 'Management-Component', component: ManagementComponent },
     ]
   },
 
   // management
-  { 'path': 'Management-Component ', 'title': 'Management-Component ', component: ManagementComponent },
+  { 'path': 'Management-Component', 'title': 'Management-Component', component: ManagementComponent },
 
   // attendence
   { 'path': 'T-attendence', 'title': 'Attendence', component: AttendenceComponent },

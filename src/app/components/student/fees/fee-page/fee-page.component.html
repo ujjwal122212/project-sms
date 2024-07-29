@@ -1,24 +1,23 @@
 <div class="grid-container">
   <div class="header">
     <h1>Courses</h1>
-    <div>
+    <div class="content">
       <span><a href="#">Dashboard</a></span>
-      <span><a href="#">/ Fees</a></span>
+      <span>
+        <p>/ Fees</p>
+      </span>
     </div>
   </div>
+  <div class="border-bottom"></div>
   <div class="main-div">
     <div class="card">
       <div class="profile">
-        <img
-          src="../../../../assets/images/dp.jpg"
-          alt="Profile Picture"
-          class="profile-picture"
-        />
+        <img src="../../../../assets/images/ranjan.jpg" alt="Profile Picture" class="profile-picture" />
       </div>
 
       <div class="sub">
         <ul>
-          <li><strong class="name">Ram Singh</strong></li>
+          <li><strong class="name">Ranjan Kumar</strong></li>
           <li><strong>Admission No.:</strong> 022GUS2320</li>
           <li><strong>Class:</strong> B.Tech (CSE) 2022-23 II Sem IV</li>
           <li><strong>Division:</strong> Section-33</li>
@@ -35,11 +34,11 @@
         </ul>
       </div>
     </div>
-    <div class="mid"></div>
+  </div>
 
-    <div class="table">
+  <div class="table-section">
+    <div class="first-table">
       <h2 class="title">Fee Table</h2>
-
       <table>
         <thead>
           <tr>
@@ -123,148 +122,129 @@
         </tfoot>
       </table>
     </div>
-  </div>
-  <!-- Button -->
-  <div class="btn">
-    <button class="nextBtn">
-      <a routerLink="/pay">Paytem</a>
-    </button>
-  </div>
-  <!-- ================ -->
-  <div class="table table2" style="margin-bottom: 2rem">
-    <h2 class="title">Fee History</h2>
+    <div class="btn">
+      <button class="nextBtn" routerLink="payment">
+        <a>Paytm</a>
+      </button>
+    </div>
+    <div class="second-table">
+      <h2 class="title">Fee History</h2>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Sr.No.</th>
-          <th>Transaction Id</th>
-          <th>Date of Deposite</th>
-          <th>Transaction Type</th>
-          <th>Amount</th>
-          <th>Remarks</th>
-          <th>Print Reciept</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>20222023</td>
-          <td>2022-2023</td>
-          <td>UPI</td>
-          <td>2500</td>
-          <td>Successful</td>
-          <td>
-            <a routerLink="/reciept" style="color: black"
-              ><i class="ri-printer-fill"></i
-            ></a>
-          </td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>20222023</td>
-          <td>2022-2023</td>
-          <td>UPI</td>
-          <td>2500</td>
-          <td>Successful</td>
-          <td>
-            <a routerLink="/reciept" style="color: black"
-              ><i class="ri-printer-fill"></i
-            ></a>
-          </td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>20222023</td>
-          <td>2022-2023</td>
-          <td>UPI</td>
-          <td>2500</td>
-          <td>Successful</td>
-          <td>
-            <a routerLink="/reciept" style="color: black"
-              ><i class="ri-printer-fill"></i
-            ></a>
-          </td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>20222023</td>
-          <td>2022-2023</td>
-          <td>UPI</td>
-          <td>2500</td>
-          <td>Successful</td>
-          <td>
-            <a routerLink="/reciept" style="color: black"
-              ><i class="ri-printer-fill"></i
-            ></a>
-          </td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>20222023</td>
-          <td>2022-2023</td>
-          <td>UPI</td>
-          <td>2500</td>
-          <td>Successful</td>
-          <td>
-            <a routerLink="/reciept" style="color: black"
-              ><i class="ri-printer-fill"></i
-            ></a>
-          </td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>20222023</td>
-          <td>2022-2023</td>
-          <td>UPI</td>
-          <td>2500</td>
-          <td>Successful</td>
-          <td>
-            <a routerLink="/reciept" style="color: black"
-              ><i class="ri-printer-fill"></i
-            ></a>
-          </td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>20222023</td>
-          <td>2022-2023</td>
-          <td>UPI</td>
-          <td>2500</td>
-          <td>Successful</td>
-          <td>
-            <a routerLink="/reciept" style="color: black"
-              ><i class="ri-printer-fill"></i
-            ></a>
-          </td>
-        </tr>
-        <tr>
-          <td>8</td>
-          <td>20222023</td>
-          <td>2022-2023</td>
-          <td>UPI</td>
-          <td>2500</td>
-          <td>Successful</td>
-          <td>
-            <a routerLink="/reciept" style="color: black"
-              ><i class="ri-printer-fill"></i
-            ></a>
-          </td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td>20222023</td>
-          <td>2022-2023</td>
-          <td>UPI</td>
-          <td>2500</td>
-          <td>Successful</td>
-          <td>
-            <a routerLink="/reciept" style="color: black"
-              ><i class="ri-printer-fill"></i
-            ></a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Sr.No.</th>
+            <th>Transaction Id</th>
+            <th>Date of Deposite</th>
+            <th>Transaction Type</th>
+            <th>Amount</th>
+            <th>Remarks</th>
+            <th>Print Reciept</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>20222023</td>
+            <td>2022-2023</td>
+            <td>UPI</td>
+            <td>2500</td>
+            <td>Successful</td>
+            <td>
+              <a routerLink="receipt" style="color: black"><i class="ri-printer-fill"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>20222023</td>
+            <td>2022-2023</td>
+            <td>UPI</td>
+            <td>2500</td>
+            <td>Successful</td>
+            <td>
+              <a routerLink="receipt" style="color: black"><i class="ri-printer-fill"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>20222023</td>
+            <td>2022-2023</td>
+            <td>UPI</td>
+            <td>2500</td>
+            <td>Successful</td>
+            <td>
+              <a routerLink="receipt" style="color: black"><i class="ri-printer-fill"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>20222023</td>
+            <td>2022-2023</td>
+            <td>UPI</td>
+            <td>2500</td>
+            <td>Successful</td>
+            <td>
+              <a routerLink="receipt" style="color: black"><i class="ri-printer-fill"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>20222023</td>
+            <td>2022-2023</td>
+            <td>UPI</td>
+            <td>2500</td>
+            <td>Successful</td>
+            <td>
+              <a routerLink="receipt" style="color: black"><i class="ri-printer-fill"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>20222023</td>
+            <td>2022-2023</td>
+            <td>UPI</td>
+            <td>2500</td>
+            <td>Successful</td>
+            <td>
+              <a routerLink="receipt" style="color: black"><i class="ri-printer-fill"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>20222023</td>
+            <td>2022-2023</td>
+            <td>UPI</td>
+            <td>2500</td>
+            <td>Successful</td>
+            <td>
+              <a routerLink="receipt" style="color: black"><i class="ri-printer-fill"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>20222023</td>
+            <td>2022-2023</td>
+            <td>UPI</td>
+            <td>2500</td>
+            <td>Successful</td>
+            <td>
+              <a routerLink="receipt" style="color: black"><i class="ri-printer-fill"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>20222023</td>
+            <td>2022-2023</td>
+            <td>UPI</td>
+            <td>2500</td>
+            <td>Successful</td>
+            <td>
+              <a routerLink="receipt" style="color: black"><i class="ri-printer-fill"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
   </div>
-</div>
