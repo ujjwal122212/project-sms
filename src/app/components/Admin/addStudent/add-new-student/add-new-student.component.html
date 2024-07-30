@@ -1,73 +1,27 @@
-<div class="container">
-  <h2>Add Student Details</h2>
+<div class="form-container">
+  <h2>Add Student</h2>
   <form>
-      <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name">
-      </div>
-      <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" id="username" name="username">
-      </div>
-      <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password">
-      </div>
-      <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email">
-      </div>
-      <div class="form-group">
-          <label for="fatherName">Father Name</label>
-          <input type="text" id="fatherName" name="fatherName">
-      </div>
-      <div class="form-group">
-          <label for="phone">Phone</label>
-          <input type="tel" id="phone" name="phone">
-      </div>
-      <div class="form-group">
-          <label for="class">Class</label>
-          <select id="class" name="class">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <!-- Add more classes as needed -->
-          </select>
-      </div>
-      <div class="form-group">
-          <label for="section">Section</label>
-          <select id="section" name="section">
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <!-- Add more sections as needed -->
-          </select>
-      </div>
-      <div class="form-group">
-          <label for="gender">Gender</label>
-          <input type="text" id="gender" name="gender">
-      </div>
-      <div class="form-group">
-          <label for="bloodGroup">Blood Group</label>
-          <input type="text" id="bloodGroup" name="bloodGroup">
-      </div>
-      <div class="form-group">
-          <label for="city">City</label>
-          <input type="text" id="city" name="city">
-      </div>
-      <div class="form-group">
-          <label for="age">Age</label>
-          <input type="number" id="age" name="age">
-      </div>
-      <div class="form-group">
-          <label for="rollNo">Roll No</label>
-          <input type="text" id="rollNo" name="rollNo">
-      </div>
-      <div class="form-group">
-          <label for="dob">Date of Birth</label>
-          <input type="date" id="dob" name="dob">
-      </div>
-      <div class="form-buttons">
-          <button type="submit">Submit</button>
-          <button type="button" onclick="window.history.back()">Back</button>
-      </div>
+      <label for="first-name">First name</label>
+      <input type="text" id="first-name" name="first-name" required>
+      
+      <label for="last-name">Last name</label>
+      <input type="text" id="last-name" name="last-name" required>
+
+      <label for="last-name">Admission Number</label>
+      <input type="Admission Number" id="Admission Number" name="Admission Number" required>
+      
+      <label for="email">Email address</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="mobile">Mobile</label>
+      <input type="tel" id="mobile" name="mobile" required>
+
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" name="dob">
+
+      <label for="Father's Name">Father's Name</label>
+      <input type="Father's Name" id="Father's Name" name="Father's Name" required>
+      
+      <button type="submit">Add Student</button>
   </form>
 </div>

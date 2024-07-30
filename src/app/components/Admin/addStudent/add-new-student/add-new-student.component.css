@@ -1,76 +1,66 @@
-.container {
-  background-color: white;
+.form-container {
+  background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 600px;
-  margin-left: 300px;
-  margin-top: 40px;
+  width: 100%;
+  max-width: 400px;
+  margin-left: 450px;
+  margin-top: 50px;
 }
 
 h2 {
   text-align: center;
-  color: #4b4bff;
   margin-bottom: 20px;
+  color: #f1c40f;
 }
 
 form {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
-.form-group {
-  width: 48%;
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  display: block;
+label {
   margin-bottom: 5px;
-  color: #4b4bff;
+  font-weight: bold;
 }
 
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 8px;
+input {
+  padding: 10px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-.form-buttons {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.form-buttons button {
-  width: 48%;
+button {
   padding: 10px;
+  background-color: #f1c40f;
+  color: #fff;
   border: none;
   border-radius: 4px;
-  background-color: #4b4bff;
-  color: white;
   cursor: pointer;
+  font-size: 16px;
 }
 
-.form-buttons button[type="button"] {
-  background-color: #50c878;
+button:hover {
+  background-color: #d4ac0d;
 }
 
 @media (max-width: 600px) {
-  .form-group {
-      width: 100%;
+  .form-container {
+      padding: 15px;
+  }
+  
+  h2 {
+      font-size: 20px;
   }
 
-  .form-buttons button {
-      width: 100%;
-      margin-bottom: 10px;
+  input {
+      padding: 8px;
   }
 
-  .form-buttons button:last-child {
-      margin-bottom: 0;
+  button {
+      padding: 8px;
+      font-size: 14px;
   }
 }
