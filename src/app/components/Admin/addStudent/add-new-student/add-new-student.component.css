@@ -1,66 +1,76 @@
-.form-container {
-  background-color: #fff;
+.container {
+  background-color: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-  margin-left: 450px;
-  margin-top: 50px;
+  width: 90%;
+  max-width: 600px;
+  margin-left: 300px;
+  margin-top: 40px;
 }
 
 h2 {
   text-align: center;
+  color: #4b4bff;
   margin-bottom: 20px;
-  color: #f1c40f;
 }
 
 form {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-label {
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input {
-  padding: 10px;
+.form-group {
+  width: 48%;
   margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #4b4bff;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-button {
-  padding: 10px;
-  background-color: #f1c40f;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
-button:hover {
-  background-color: #d4ac0d;
+.form-buttons button {
+  width: 48%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4b4bff;
+  color: white;
+  cursor: pointer;
+}
+
+.form-buttons button[type="button"] {
+  background-color: #50c878;
 }
 
 @media (max-width: 600px) {
-  .form-container {
-      padding: 15px;
-  }
-  
-  h2 {
-      font-size: 20px;
+  .form-group {
+      width: 100%;
   }
 
-  input {
-      padding: 8px;
+  .form-buttons button {
+      width: 100%;
+      margin-bottom: 10px;
   }
 
-  button {
-      padding: 8px;
-      font-size: 14px;
+  .form-buttons button:last-child {
+      margin-bottom: 0;
   }
 }
