@@ -1,0 +1,204 @@
+.student-page {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.header {
+    width: 100%;
+    height: 75px;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    overflow: hidden;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.header h1 {
+    font-size: 25px;
+    padding: 5px;
+    margin: 5px;
+    padding-top: 5px;
+    margin-top: 0px;
+}
+
+.header a {
+    text-decoration: none;
+    color: #007bff;
+    display: inline;
+    padding: 5px 0 5px 5px;
+    margin-left: 5px;
+}
+
+.header p {
+    display: inline;
+}
+
+.border-bottom {
+    margin-top: 20px;
+    border-bottom: 2px solid #aaa;
+}
+
+.content {
+    padding-bottom: 10px;
+}
+
+.student-area {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-section {
+    width: 48%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #f1f1f1;
+}
+
+.right-section {
+    width: 48%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #f1f1f1;
+}
+
+.profile {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.left li {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.right li {
+    width: 100%;
+    padding: 20px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+li strong {
+    width: 50%;
+}
+
+li strong p {
+    display: flex;
+    justify-content: space-between;
+}
+
+li span {
+    width: 45%;
+}
+
+span input {
+    width: 100%;
+    margin-left: 30px;
+}
+
+.left {
+    width: 90%;
+    padding: 50px 0 0 10px;
+}
+
+.info {
+    display: flex;
+    margin: 30px 10px 0 10px;
+    justify-content: center;
+    border-top: 2px solid #ddd;
+}
+
+.right {
+    width: 90%;
+    padding: 10px 0;
+}
+
+.left li span {
+    text-align: end;
+}
+
+.left li span:nth-child(1) {
+    text-align: start;
+}
+
+.right li span:nth-child(1) {
+    text-align: start;
+}
+
+.right li span {
+    text-align: end;
+}
+
+h2 {
+    border-bottom: 2px solid #444;
+}
+
+@media screen and (max-width:991px) {
+    span input {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .student-page {
+        margin-left: 60px;
+    }
+}
+
+@media screen and (max-width:479px) {
+    .student-page {
+        margin-left: 50px;
+        overflow-x: hidden;
+    }
+
+    .student-area {
+        flex-direction: column-reverse;
+        row-gap: 50px;
+    }
+
+    .left-section,
+    .right-section {
+        width: 100%;
+    }
+
+    .profile-picture {
+        width: 180px;
+        height: 180px;
+    }
+
+    .header a,
+    p {
+        font-size: 13px;
+    }
+
+    h2 {
+        padding-top: 20px;
+    }
+}
+
+@media screen and (max-width:360px) {
+
+    .header a,
+    p {
+        font-size: 12px;
+    }
+}
