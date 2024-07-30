@@ -30,10 +30,12 @@ import { AddNewStudentComponent } from './components/Admin/addStudent/add-new-st
 import { ViewStudentComponent } from './components/Admin/addStudent/view-student/view-student.component';
 import { EditStudentComponent } from './components/Admin/addStudent/edit-student/edit-student.component';
 import { AttendenceComponent } from './components/teacher/attendence/attendence.component';
-import { ManagementComponent } from './components/teacher/management/management.component';
 import { TTimeTableComponent } from './components/teacher/t-time-table/t-time-table.component';
 import { PaymentComponent } from './components/student/fees/payment/payment.component';
 import { RecieptComponent } from './components/student/fees/reciept/reciept.component';
+import { ManagementPageComponent } from './components/teacher/student-management/management-page/management-page.component';
+import { ClassPageComponent } from './components/teacher/student-management/class-page/class-page.component';
+import { StudentpageComponent } from './components/teacher/student-management/studentpage/studentpage.component';
 
 
 
@@ -66,11 +68,13 @@ export const routes: Routes = [
       { 'path': 'timetable', 'title': 'Time-Table', component: TimeTableComponent },
 
       { 'path': 'fee', 'title': 'Fees', component: FeePageComponent },
-      {'path':'fee', children: [
-        {'path':'payment','title':'payment',component:PaymentComponent},
-        {'path':'receipt','title':'receipt',component:RecieptComponent}
-      ]},
-     
+      {
+        'path': 'fee', children: [
+          { 'path': 'payment', 'title': 'payment', component: PaymentComponent },
+          { 'path': 'receipt', 'title': 'receipt', component: RecieptComponent }
+        ]
+      },
+
       { 'path': 'help', 'title': 'Help', component: StudentHelpComponent },
     ]
   },
@@ -100,11 +104,13 @@ export const routes: Routes = [
 
   //student fees
   { 'path': 'fee', 'title': 'Fees', component: FeePageComponent },
-  {'path':'fee', children: [
-    {'path':'payment','title':'payment',component:PaymentComponent},
-    {'path':'receipt','title':'receipt',component:RecieptComponent}
-  ]},
-  
+  {
+    'path': 'fee', children: [
+      { 'path': 'payment', 'title': 'payment', component: PaymentComponent },
+      { 'path': 'receipt', 'title': 'receipt', component: RecieptComponent }
+    ]
+  },
+
   //student help
   { 'path': 'help', 'title': 'Help', component: StudentHelpComponent },
 
@@ -157,12 +163,32 @@ export const routes: Routes = [
           'path': 'T-attendence', component: AttendenceComponent
         }]
       },
-      { 'path': 'Management-Component', 'title': 'Management-Component', component: ManagementComponent },
+      { 'path': 'student-management', 'title': 'student-management', component: ManagementPageComponent },
+      {
+        'path': 'student-management', children: [
+          { 'path': 'class-page', 'title': 'class-page', component: ClassPageComponent },
+          {
+            'path': 'class-page', children: [
+              { 'path': 'student-page', 'title': 'student-page', component: StudentpageComponent }
+            ]
+          }
+        ]
+      },
     ]
   },
 
   // management
-  { 'path': 'Management-Component', 'title': 'Management-Component', component: ManagementComponent },
+  { 'path': 'student-management', 'title': 'student-management', component: ManagementPageComponent },
+  {
+    'path': 'student-management', children: [
+      { 'path': 'class-page', 'title': 'class-page', component: ClassPageComponent },
+      {
+        'path': 'class-page', children: [
+          { 'path': 'student-page', 'title': 'student-page', component: StudentpageComponent }
+        ]
+      }
+    ]
+  },
 
   // attendence
   { 'path': 'T-attendence', 'title': 'Attendence', component: AttendenceComponent },
