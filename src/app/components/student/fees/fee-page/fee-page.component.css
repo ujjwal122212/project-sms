@@ -283,8 +283,7 @@ tr:nth-child(even) {
   .profile-picture{
     border-radius: 50%;
     height: 220px;
-    width: 220px;
-    object-fit: cover;
+    width: 220px; 
   }
   .sub{
     border-top: 2px solid #444;
