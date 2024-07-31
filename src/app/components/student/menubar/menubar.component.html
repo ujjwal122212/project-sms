@@ -1,5 +1,5 @@
 <div class="item menu">
-  <div class="name">
+  <div class="name"><span>I Portal</span>
     <i class="ri-menu-line"></i>
   </div>
   <a
@@ -38,7 +38,7 @@
     ><i class="ri-calendar-schedule-fill" id="icon"></i>
     <span>Time Table</span> <i class="ri-arrow-right-s-line"></i
   ></a>
-  <a routerLink="/fee"
+  <a routerLink="/fee" routerLinkActive="active"
     ><i class="ri-money-rupee-circle-fill" id="icon"></i> <span>Fees</span>
     <i class="ri-arrow-right-s-line"></i
   ></a>
@@ -46,7 +46,7 @@
     ><i class="ri-customer-service-fill" id="icon"></i> <span>Services</span>
     <i class="ri-arrow-right-s-line"></i
   ></a>
-  <a routerLink="/#"
+  <a routerLink="/assignment-page" routerLinkActive="active"
     ><i class="ri-article-line" id="icon"></i> <span>Homework</span>
     <i class="ri-arrow-right-s-line"></i
   ></a>
@@ -56,7 +56,7 @@
     routerLinkActive="active"
     [routerLinkActiveOptions]="{ exact: true }"
     ariaCurrentWhenActive="page"
-    ><i class="ri-question-line" id="icon"></i> <span>Help</span>
+    ><i class="ri-question-line" id="icon"></i> <span>Help & Support</span>
     <i class="ri-arrow-right-s-line"></i
   ></a>
 </div>
