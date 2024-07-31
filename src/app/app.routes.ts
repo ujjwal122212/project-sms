@@ -33,14 +33,26 @@ import { AttendenceComponent } from './components/teacher/attendence/attendence.
 import { ManagementComponent } from './components/teacher/management/management.component';
 import { TTimeTableComponent } from './components/teacher/t-time-table/t-time-table.component';
 
+import { OpenSerComponent } from './components/student/Student-service/open-ser/open-ser.component';
+import { IdCardComponent } from './components/student/Student-service/id-card/id-card.component';
+import { EditIdCardComponent } from './components/student/Student-service/edit-id-card/edit-id-card.component';
+import { TransportServiceComponent } from './components/student/Student-service/transport-service/transport-service.component';
+import { FreeStructComponent } from './components/student/Student-service/free-struct/free-struct.component';
+import { ChangeCurrentPickPlaceComponent } from './components/student/Student-service/change-current-pick-place/change-current-pick-place.component';
+import { MedicalServicesComponent } from './components/student/Student-service/medical-services/medical-services.component';
+import { DownloadFreeComponent } from './components/student/Student-service/download-free/download-free.component';
+// import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
+
 
 
 export const routes: Routes = [
-
+  
 
   //Login page
   { 'path': 'Login-page', 'title': 'leave', component: LoginPageComponent },
 
+  // Main-Profile
+  // {'path':'reset-Password','title':'reset-Password',component:ResetPasswordComponent},
 
   //for student pages
 
@@ -96,7 +108,27 @@ export const routes: Routes = [
   //student help
   { 'path': 'help', 'title': 'Help', component: StudentHelpComponent },
 
-
+// student service
+{
+  'path':'Open-SerComponent','title':'OpenSerComponent',component:OpenSerComponent
+},
+{
+  'path':'Id-CardComponent','title':'Id-CardComponent',component:IdCardComponent
+},
+{
+  'path':'Edit-IdCardComponent','title':'Edit-IdCardComponent',component:EditIdCardComponent
+},
+{
+  'path':'Transport-ServiceComponent','title':'Transport-ServiceComponent',component:TransportServiceComponent
+},
+{'path':'Change-CurrentPickPlaceComponent','title':'ChangeCurrentPickPlaceComponent',component:ChangeCurrentPickPlaceComponent},
+{
+  'path':'Medical-ServicesComponent','title':'MedicalServicesComponent',component:MedicalServicesComponent
+},
+{'path':'Free-StructComponent','title':'Free-StructComponent',component:FreeStructComponent}
+,{
+  'path':'download-Free','title':'download-Free',component:DownloadFreeComponent
+},
   // =============================================================================================
 
 
