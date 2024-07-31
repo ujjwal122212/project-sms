@@ -36,6 +36,8 @@ import { RecieptComponent } from './components/student/fees/reciept/reciept.comp
 import { ManagementPageComponent } from './components/teacher/student-management/management-page/management-page.component';
 import { ClassPageComponent } from './components/teacher/student-management/class-page/class-page.component';
 import { StudentpageComponent } from './components/teacher/student-management/studentpage/studentpage.component';
+import { AssignmentPageComponent } from './components/student/homework/assignment-page/assignment-page.component';
+import { HomeworkPageComponent } from './components/student/homework/homework-page/homework-page.component';
 
 
 
@@ -74,6 +76,10 @@ export const routes: Routes = [
           { 'path': 'receipt', 'title': 'receipt', component: RecieptComponent }
         ]
       },
+      {'path':'assignment-page','title':'assignment-page',component:AssignmentPageComponent},
+      {'path':'assignment-page',children:[
+        {'path':'homework-page','title':'homework-page',component:HomeworkPageComponent}
+      ]},
 
       { 'path': 'help', 'title': 'Help', component: StudentHelpComponent },
     ]
@@ -110,7 +116,11 @@ export const routes: Routes = [
       { 'path': 'receipt', 'title': 'receipt', component: RecieptComponent }
     ]
   },
-
+  // student homework
+  {'path':'assignment-page','title':'assignment-page',component:AssignmentPageComponent},
+  {'path':'assignment-page',children:[
+    {'path':'homework-page','title':'homework-page',component:HomeworkPageComponent}
+  ]},
   //student help
   { 'path': 'help', 'title': 'Help', component: StudentHelpComponent },
 
