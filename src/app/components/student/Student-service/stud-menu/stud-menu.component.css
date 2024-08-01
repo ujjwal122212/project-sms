@@ -1,0 +1,254 @@
+/* 
+
+.text {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 45px;
+  text-align: center;
+  background: #1d1f21;
+  letter-spacing: 0.8px;
+}
+ul {
+  height: 100%;
+  background-color: #186cc6;
+  width: 100%;
+  list-style: none;
+}
+ul li {
+  line-height: 45px;
+  border-bottom: 1px solid white;
+}
+ul li a {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding-left: 10%;
+  font-weight: 550;
+  display: block;
+  width: 100%;
+  border-left: 3px solid transparent;
+}
+ul li a:hover {
+  color: cyan;
+  background: #608dbe;
+  border-left-color: cyan;
+}
+ul .feat-show .show {
+  display: block;
+}
+ul .serv-show .show1 {
+  display: block;
+}
+ul ul {
+  position: static;
+  display: none;
+}
+ul ul li {
+  line-height: 35px;
+  border: none;
+  background: #2b6cb1;
+}
+ul ul li a {
+  font-size: 17px;
+  color: #e6e6e6;
+  padding-left: 18%;
+}
+ul li a span {
+  
+  top: 50%;
+  right: 20px;
+  position: absolute;
+  transform: translateY(-50%);
+  font-size: 18px;
+}
+ul li a:hover span {
+  transform: translateY(-50%) rotate(-180deg);
+}
+
+.right {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+ 
+
+  padding-bottom: 2.5%;
+}
+#icon {
+  color: var(--icon_color_admin);
+}
+
+@media (max-width: 480px) {
+  ul li a span {
+    padding-left: 1%;
+  }
+}
+@media (max-width: 375px) {
+  ul li a span {
+    padding-left: 0%;
+  }
+  .text {
+    font-size: 0.8rem;
+  }
+  ul li a {
+    padding-left: 1px;
+  }
+}
+
+@media (max-width: 1100px) {
+  ul li a span {
+    padding-left: 50%;
+  }
+}
+@media (max-width: 937px) {
+  ul li a span {
+    padding-left: 40%;
+  }
+}
+@media (max-width: 825px) {
+  ul li a span {
+    padding-left: 30%;
+  }
+}
+@media (max-width: 541px) {
+  ul li a span {
+    padding-left: 10%;
+  }
+}
+@media (max-width: 489px) {
+  ul li a span {
+    padding-left: 2%;
+  }
+} */
+
+/* main */
+.quiz-container {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.header {
+  width: 100%;
+  height: 75px;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  overflow: hidden;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.header h1 {
+  font-size: 25px;
+  padding: 5px;
+  margin: 5px;
+  padding-top: 5px;
+  margin-top: 0px;
+}
+
+.header a {
+  text-decoration: none;
+  color: #007bff;
+  display: inline;
+  padding: 5px 0 5px 5px;
+  margin-left: 5px;
+}
+
+.header p {
+  display: inline;
+}
+
+.border-bottom {
+  margin-top: 20px;
+  border-bottom: 2px solid #aaa;
+}
+.content {
+  padding-bottom: 10px;
+}
+
+.card-section {
+  margin-top: 50px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 7%;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 200px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  max-height: 550px;
+  overflow: hidden;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.card i {
+  font-size: 60px;
+  text-align: center;
+  color: rgba(18, 112, 176, 1);
+}
+
+.card p {
+  margin-top: 4%;
+  font-size: 1em;
+  width: 70%;
+  text-align: center;
+}
+
+@media screen and (max-width: 991px) {
+  .card-section {
+    column-gap: 30px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .quiz-container {
+    margin-left: 60px;
+  }
+  .card-section {
+    padding: 20px 0;
+  }
+}
+@media screen and (max-width: 497px) {
+  .quiz-container {
+    margin-left: 50px;
+    overflow-x: hidden;
+  }
+  .card-section {
+    justify-content: space-around;
+    column-gap: 20px;
+  }
+  .card {
+    width: 45%;
+    margin-bottom: 20px;
+  }
+  .card i {
+    font-size: 40px;
+  }
+
+  .card p {
+    font-size: 14px;
+  }
+}
