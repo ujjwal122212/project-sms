@@ -4,7 +4,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-fee-page',
   standalone: true,
-  imports: [RouterLink,RouterLinkActive],
+  imports: [RouterLink],
   templateUrl: './fee-page.component.html',
   styleUrl: './fee-page.component.css'
 })

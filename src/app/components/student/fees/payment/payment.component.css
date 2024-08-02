@@ -146,33 +146,9 @@ input {
   color: white;
 }
 
-/* Media queries for responsiveness */
-@media (max-width: 768px) {
-  .container {
-    padding: 15px;
-  }
-
-  .payment-btn,
-  .submit-btn {
-    padding: 12px;
-  }
-
-  input {
-    padding: 8px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 10px;
-  }
-
-  .payment-btn,
-  .submit-btn {
-    padding: 10px;
-  }
-
-  input {
-    padding: 6px;
+@media screen  and (max-width:768px){
+  .container{
+    margin-left: 60px;
+    margin-right: 20px;
   }
 }
