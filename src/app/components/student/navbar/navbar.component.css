@@ -3,13 +3,13 @@ h3 {
 }
 
 :root {
-  --nav_color_student: #FDC300;
+  --nav_color_student: #fdc300;
   --sidebar_color_student: #042954;
   --font_style_student: "Inter";
-  --nav_color_admin: #4394DF;
-  --sidebar_color_admin: #284A6A;
+  --nav_color_admin: #4394df;
+  --sidebar_color_admin: #284a6a;
   --backcolor_admin: #bbc7d2;
-  --icon_color_admin: #FDC300;
+  --icon_color_admin: #fdc300;
 }
 
 * {
@@ -23,14 +23,14 @@ body {
   font-family: var(--font_style_student), sans-serif;
 }
 
-
-
 nav {
   width: 100%;
   height: 51px;
   display: flex;
   background-color: #f1f1f1;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   overflow: hidden;
   position: sticky;
   top: 0;
@@ -63,7 +63,7 @@ nav .nav-icons {
 }
 
 #nav_icon:hover {
-  color: #FDC300;
+  color: #fdc300;
 }
 
 nav .user-info {
@@ -140,21 +140,18 @@ body.dark-mode .menu a {
 .three-dot {
   height: 50px;
 }
-.three-dot p{
-  /* height: 100%; */
-}
-#dot{
+
+#dot {
   padding-top: 20px;
   font-size: 30px;
   font-weight: 700;
 }
-#dot:hover{
+#dot:hover {
   cursor: pointer;
   color: orange;
 }
 
 @media (max-width: 768px) {
-
   nav {
     overflow: hidden;
   }
@@ -181,11 +178,10 @@ body.dark-mode .menu a {
   .menu.expanded a span {
     display: inline;
   }
-
 }
 
-@media screen and (max-width:479px) {
-  .menu.collapsed+.main-content nav .logo img {
+@media screen and (max-width: 479px) {
+  .menu.collapsed + .main-content nav .logo img {
     margin-left: 70px;
     transition: width 0.3s, margin-left 0.3s;
   }
@@ -200,4 +196,18 @@ body.dark-mode .menu a {
 
 .more-options span:hover {
   color: orange;
+}
+
+.main1 {
+  width: 250px;
+  height: 300px;
+  position: fixed;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  font-size: 1rem;
+  top: 60px;
+  right: 10px;
+  padding-top: 1rem;
+  background-color: rgb(95, 90, 90);
 }
