@@ -52,7 +52,7 @@ import { DownloadFreeComponent } from './components/student/Student-service/down
 
 
 export const routes: Routes = [
-  
+
 
   //Login page
   { 'path': 'Login-page', 'title': 'leave', component: LoginPageComponent },

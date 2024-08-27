@@ -1,3 +1,48 @@
+<!-- @if(studentList && studentList.length>0){
+  <table mat-table [dataSource]="studentList" class="mat-elevation-z8">
+
+
+
+
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Age">
+      <th mat-header-cell *matHeaderCellDef> Age </th>
+      <td mat-cell *matCellDef="let element"> {{element.Age}} </td>
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="display"></tr>
+    <tr mat-row *matRowDef="let row; columns: display;"></tr>
+  </table>
+
+}
+
+<table>
+  <thead>
+    <tr>
+    <th>Name</th>
+    <th>Age</th>
+
+    </tr>
+    </thead>
+    <tbody>
+ <tr *ngFor="let student of studentList">
+  <td>{{ student.Name }}</td>
+ <td>{{ student.Age }}</td>
+
+ </tr>
+ </tbody>
+</table> -->
+
+
+
+
 <div class="container">
   <h1>Students Lists</h1>
   <button class="add-student" routerLink="addstudent">Add Student</button>
@@ -6,41 +51,36 @@
           <tr>
               <th>ID</th>
               <th>Name</th>
-              <th>Course</th>
-              <th>Admission No.</th>
+              <th>Age</th>
+              <th>Class</th>
+              <th>Section</th>
               <th>Email</th>
               <th>Phone</th>
+              <th>Father's name</th>
+              <th>Password</th>
               <th>Created At</th>
               <th>Action</th>
           </tr>
       </thead>
       <tbody>
-          <tr>
-              <td>1</td>
-              <td>Om Prakash</td>
-              <td>BCA</td>
-              <td>22SCSE1012200</td>
-              <td>omgmail.com</td>
-              <td>9876549878</td>
-              <td>2023-05-28T02:32:53.000000Z</td>
+          <tr *ngFor="let student of studentList">
+              <td>{{ student.EnrollmentNo }}</td>
+              <td>{{ student.Name }}</td>
+              <td>{{ student.Age }}</td>
+              <td>{{ student.Class }}</td>
+              <td>{{ student.Section }}</td>
+              <td>{{ student.Email}}</td>
+              <td>{{ student.Mobile}}</td>
+              <td>{{ student.FathersName }}</td>
+              <td>{{ student.Password }}</td>
+              <td>{{ student.EnrollmentDate }}</td>
+
               <td class="action-button">
                   <button class="edit" routerLink="editstudent">Edit</button>
                   <button class="delete">Delete</button>
               </td>
           </tr>
-          <tr>
-              <td>2</td>
-              <td>Ved Prakash N</td>
-              <td>bca</td>
-              <td>22SCSE1012200</td>
-              <td>vedgmail.com</td>
-              <td>9874569877</td>
-              <td>2023-05-28T02:59:07.000000Z</td>
-              <td class="action-button">
-                  <button class="edit" routerLink="editstudent">Edit</button>
-                  <button class="delete">Delete</button>
-              </td>
-          </tr>
+
       </tbody>
   </table>
 </div>
