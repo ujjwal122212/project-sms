@@ -42,37 +42,37 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Receipt page
-function printPage() {
-  var body = document.getElementById("body").innerHTML;
-  var data = document.getElementById("data").innerHTML;
+// function printPage() {
+//   var body = document.getElementById("body").innerHTML;
+//   var data = document.getElementById("data").innerHTML;
 
-  document.getElementById("body").innerHTML = data;
-  window.print();
-  document.getElementById("body").innerHTML = body;
-}
+//   document.getElementById("body").innerHTML = data;
+//   window.print();
+//   document.getElementById("body").innerHTML = body;
+// }
 
-// Payment
-const cardBtn = document.getElementById("card-btn");
-const upiBtn = document.getElementById("upi-btn");
-const cardForm = document.getElementById("card-form");
-const upiForm = document.getElementById("upi-form");
-const submitBtns = document.getElementsByClassName("submit-btn");
+// // Payment
+// const cardBtn = document.getElementById("card-btn");
+// const upiBtn = document.getElementById("upi-btn");
+// const cardForm = document.getElementById("card-form");
+// const upiForm = document.getElementById("upi-form");
+// const submitBtns = document.getElementsByClassName("submit-btn");
 
-cardBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  cardForm.style.display = "block";
-  upiForm.style.display = "none";
-});
+// cardBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   cardForm.style.display = "block";
+//   upiForm.style.display = "none";
+// });
 
-upiBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  cardForm.style.display = "none";
-  upiForm.style.display = "block";
-});
+// upiBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   cardForm.style.display = "none";
+//   upiForm.style.display = "block";
+// });
 
-Array.prototype.forEach.call(submitBtns, (btn) => {
-  btn.addEventListener("click", (e) => {
-    cardForm.style.display = "none";
-    upiForm.style.display = "none";
-  });
-});
+// Array.prototype.forEach.call(submitBtns, (btn) => {
+//   btn.addEventListener("click", (e) => {
+//     cardForm.style.display = "none";
+//     upiForm.style.display = "none";
+//   });
+// });
