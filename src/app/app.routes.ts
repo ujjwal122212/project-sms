@@ -47,6 +47,7 @@ import { FreeStructComponent } from './components/student/Student-service/free-s
 import { ChangeCurrentPickPlaceComponent } from './components/student/Student-service/change-current-pick-place/change-current-pick-place.component';
 import { MedicalServicesComponent } from './components/student/Student-service/medical-services/medical-services.component';
 import { DownloadFreeComponent } from './components/student/Student-service/download-free/download-free.component';
+import { AddStudentComponent } from './components/Admin/addStudent/add-student/add-student.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
 
@@ -299,7 +300,7 @@ export const routes: Routes = [
 
   {
     'path': 'viewstudent', children: [
-      { 'path': 'addstudent', 'title': 'Add-Student', component: AddNewStudentComponent },
+      { 'path': 'addstudent', 'title': 'Add-Student', component: AddStudentComponent },
       { 'path': 'editstudent', 'title': 'edit-Student', component: EditStudentComponent },
 
     ]

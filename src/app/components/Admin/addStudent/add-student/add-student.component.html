@@ -1,0 +1,46 @@
+<div class="main-container">
+
+  <form (ngSubmit)="postStudentData()" >
+    <div class="la">
+    <label>Name</label>
+  </div>
+    <div>
+      <input [(ngModel)]="student.name" name="name">
+    </div>
+
+    <label>Age</label>
+    <div>
+      <input [(ngModel)]="student.age" name="age" >
+    </div>
+
+    <label>Class</label>
+    <div>
+      <input [(ngModel)]="student.class" name="class">
+    </div>
+
+    <label>Section</label>
+    <div>
+      <input [(ngModel)]="student.section" name="section">
+    </div>
+
+    <label>Email</label>
+    <div>
+      <input [(ngModel)]="student.email" name="email">
+    </div>
+
+    <label>Mobile</label>
+    <div>
+      <input [(ngModel)]="student.mobile" name="mobile">
+    </div>
+
+    <label>Father's Name</label>
+    <div>
+      <input [(ngModel)]="student.fatherName" name="fatherName">
+    </div>
+
+    <div class="btn">
+      <button type="submit">Submit</button>
+    </div>
+
+  </form>
+</div>

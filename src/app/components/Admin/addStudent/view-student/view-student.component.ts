@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { IStudent } from '../../../../Interfaces/student';
 import { HttpService } from '../../../../http.service';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-view-student',
@@ -12,15 +13,39 @@ import { CommonModule } from '@angular/common';
   styleUrl: './view-student.component.css'
 })
 export class ViewStudentComponent {
-  studentList:IStudent[]=[];
- httpService=inject(HttpService);
- display:string[]=['EnrollmentNo','Name','Age','Class','Section','Email','Mobile','FathersName','Password','EnrollmentDate']
 
- ngOnInit(){
+  constructor(private http: HttpClient) {
+    this.getAllUser();
+  }
 
-  this.httpService.GetAllStudent().subscribe(result=>{
-    this.studentList=result;
-    console.table(this.studentList);
-  })
- }
+  userList: any[] = [];
+
+
+  getAllUser() {
+    debugger;
+    this.http.get("https://localhost:7262/GetStudents").subscribe((result: any) => {
+      // debugger;
+      this.userList = result;
+    })
+  }
+
+//delete user
+
+deleteEmployee(id: number) {
+  const url = `https://localhost:7262/DeleteStudents/` + id;
+
+  this.http.delete(url, { responseType: 'text' })
+    .subscribe(
+      response => {
+        console.log('Response:', response);
+        alert('Student deleted successfully.');
+        this.getAllUser();
+      },
+      error => {
+        console.error('Error:', error);
+        alert('Failed to delete student.');
+      }
+    );
+}
+
 }
