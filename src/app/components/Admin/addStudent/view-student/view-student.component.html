@@ -1,46 +1,3 @@
-<!-- @if(studentList && studentList.length>0){
-  <table mat-table [dataSource]="studentList" class="mat-elevation-z8">
-
-
-
-
-    <ng-container matColumnDef="Name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
-    </ng-container>
-
-
-    <ng-container matColumnDef="Age">
-      <th mat-header-cell *matHeaderCellDef> Age </th>
-      <td mat-cell *matCellDef="let element"> {{element.Age}} </td>
-    </ng-container>
-
-
-
-    <tr mat-header-row *matHeaderRowDef="display"></tr>
-    <tr mat-row *matRowDef="let row; columns: display;"></tr>
-  </table>
-
-}
-
-<table>
-  <thead>
-    <tr>
-    <th>Name</th>
-    <th>Age</th>
-
-    </tr>
-    </thead>
-    <tbody>
- <tr *ngFor="let student of studentList">
-  <td>{{ student.Name }}</td>
- <td>{{ student.Age }}</td>
-
- </tr>
- </tbody>
-</table> -->
-
-
 
 
 <div class="container">
@@ -62,8 +19,9 @@
               <th>Action</th>
           </tr>
       </thead>
+      @for(student of userList; track $index){
       <tbody>
-          <tr *ngFor="let student of studentList">
+
               <td>{{ student.EnrollmentNo }}</td>
               <td>{{ student.Name }}</td>
               <td>{{ student.Age }}</td>
@@ -77,10 +35,11 @@
 
               <td class="action-button">
                   <button class="edit" routerLink="editstudent">Edit</button>
-                  <button class="delete">Delete</button>
+                  <button class="delete" (click)="deleteEmployee(student.EnrollmentNo)">Delete</button>
               </td>
-          </tr>
+
 
       </tbody>
+    }
   </table>
 </div>

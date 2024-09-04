@@ -11,11 +11,12 @@ import { TMenubarComponent } from './components/teacher/t-menubar/t-menubar.comp
 import { MainNavbarComponent } from './components/Main-Page/main-navbar/main-navbar.component';
 import { ANavbarComponent } from './components/Admin/a-navbar/a-navbar.component';
 import { AMenubarComponent } from './components/Admin/a-menubar/a-menubar.component';
+import { AddStudentComponent } from "./components/Admin/addStudent/add-student/add-student.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MenubarComponent, NavbarComponent, RouterLink, TNavbarComponent, TMenubarComponent, MainNavbarComponent, ANavbarComponent, AMenubarComponent,],
+  imports: [RouterOutlet, MenubarComponent, NavbarComponent, RouterLink, TNavbarComponent, TMenubarComponent, MainNavbarComponent, ANavbarComponent, AMenubarComponent, AddStudentComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

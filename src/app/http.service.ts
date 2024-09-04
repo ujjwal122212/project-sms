@@ -6,12 +6,5 @@ import { IStudent } from './Interfaces/student';
   providedIn: 'root'
 })
 export class HttpService {
-  http=inject(HttpClient);
 
-  constructor() { }
-
-
-  GetAllStudent(){
-    return this.http.get<IStudent[]>("https://localhost:7262/GetStudents");
-  }
 }
