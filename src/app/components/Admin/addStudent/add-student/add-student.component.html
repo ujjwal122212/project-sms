@@ -1,6 +1,6 @@
 <div class="main-container">
 
-  <form (ngSubmit)="postStudentData()" >
+  <form (ngSubmit)="postStudentData()" #form="ngForm" novalidate>
     <div class="la">
     <label>Name</label>
   </div>
@@ -10,7 +10,7 @@
 
     <label>Age</label>
     <div>
-      <input [(ngModel)]="student.age" name="age" >
+      <input [(ngModel)]="student.age" name="age" type="number">
     </div>
 
     <label>Class</label>
@@ -30,7 +30,17 @@
 
     <label>Mobile</label>
     <div>
-      <input [(ngModel)]="student.mobile" name="mobile">
+      <input [(ngModel)]="student.mobile" #mobile="ngModel" name="mobile" minlength="10" [ngClass]="{ 'is-invalid': mobile.invalid && mobile.touched}">
+
+      @if (mobile.touched  &&  mobile.errors?.['required']){
+        <p style="display: inline; color: red;">*</p>
+        <br>
+        <span style="color: red; margin-left: 80px;"> Required </span>
+      }
+
+      @else if (mobile.touched  && mobile.errors?.['minlength']) {
+        <span style="color: red;">minimum 10 character required</span>
+      }
     </div>
 
     <label>Father's Name</label>
@@ -39,7 +49,7 @@
     </div>
 
     <div class="btn">
-      <button type="submit">Submit</button>
+      <button type="submit" [disabled]="form.invalid">Submit</button>
     </div>
 
   </form>

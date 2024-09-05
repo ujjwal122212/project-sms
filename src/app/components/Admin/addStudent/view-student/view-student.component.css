@@ -1,13 +1,14 @@
 .container {
   width: 100%;
-  max-width: 1000px;
+  /* height: fit-content; */
+  max-width: 1250px;
   margin: 20px;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-left: 50px;
-  margin-top: 50px;
+  margin-left: 40px;
+  margin-top: 30px;
 }
 
 h1 {
@@ -28,8 +29,11 @@ h1 {
 
 table {
   width: 100%;
+  /* height: fit-content; */
   border-collapse: collapse;
   align-items: center;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
 }
 
 thead {
