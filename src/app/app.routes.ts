@@ -292,7 +292,7 @@ export const routes: Routes = [
   // Admin Routes
 
   //Admin dashboard
-  { 'path': 'ahome', 'title': 'Help', component: ADashboardComponent },
+  { 'path': 'ahome', 'title': 'Dashboard', component: ADashboardComponent },
 
 
   //add student

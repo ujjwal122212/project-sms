@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-view-student',
   standalone: true,
-  imports: [RouterLink,CommonModule],
+  imports: [RouterLink, CommonModule],
   templateUrl: './view-student.component.html',
   styleUrl: './view-student.component.css'
 })
@@ -22,30 +22,37 @@ export class ViewStudentComponent {
 
 
   getAllUser() {
-    debugger;
+    // debugger;
     this.http.get("https://localhost:7262/GetStudents").subscribe((result: any) => {
       // debugger;
       this.userList = result;
     })
   }
 
-//delete user
+  //delete user
 
-deleteEmployee(id: number) {
-  const url = `https://localhost:7262/DeleteStudents/` + id;
+  deleteEmployee(id: number) {
+    const url = `https://localhost:7262/DeleteStudents/` + id;
 
-  this.http.delete(url, { responseType: 'text' })
-    .subscribe(
-      response => {
-        console.log('Response:', response);
-        alert('Student deleted successfully.');
-        this.getAllUser();
-      },
-      error => {
-        console.error('Error:', error);
-        alert('Failed to delete student.');
-      }
-    );
-}
+    this.http.delete(url, { responseType: 'text' })
+      .subscribe(
+        response => {
+          console.log('Response:', response);
+          alert('Student deleted successfully.');
+          this.getAllUser();
+        },
+        error => {
+          console.error('Error:', error);
+          alert('Failed to delete student.');
+        }
+      );
+  }
 
+  // view-student dark mode
+  // view_student_dark_mode() {
+  //   const element = document.querySelector('.view-container') as HTMLDivElement;
+  //   const table_header=document.querySelector('#table_header') as HTMLTableRowElement;
+  //   element.classList.toggle('dark');
+  //   table_header.classList.toggle('table_header');
+  // }
 }

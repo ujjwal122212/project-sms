@@ -1,18 +1,20 @@
 .active {
   background-color: #3f364e;
 }
+
 .menu {
-  width: 200px;
-  background-color:#2e1065;
+  width: 50px;
+  background-color: #2e1065;
   flex-shrink: 0;
   transition: width 0.3s, left 0.3s;
-  position:sticky;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 10;
   height: 100vh;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
+
 .name {
   background: #FDC300;
   height: 50px;
@@ -25,22 +27,14 @@
   display: flex;
   justify-content: space-between;
 }
-.name span{
+
+.name span {
   font-weight: 600;
   font-size: 23px;
   font-style: italic;
   margin-left: 60px;
   color: #fff;
 }
-
-
-.menu.collapsed .name {
-  display: block;
-}
-.menu.collapsed .name span{
-  display: none;
-}
-
 
 .menu a {
   display: flex;
@@ -51,80 +45,25 @@
   color: white;
   border-bottom: 1px solid #fff;
 }
-
-.menu.collapsed {
-  width: 50px;
+.end {
+  margin-left: 20px;
 }
 
-.menu.collapsed a {
-  justify-content: center;
-}
-
-.menu.collapsed a span {
-  display: none;
-}
-
-.menu.expanded {
+.toggle {
   width: 200px;
 }
-
 #icon {
   color: #FDC300;
 }
-
-body.dark-mode {
-  background-color: #121212;
-  color: #e0e0e0;
+.dark{
+  background-color: black;
+  color: white;
 }
-
-body.dark-mode nav {
-  background-color: #333;
-  color: #e0e0e0;
-}
-
-body.dark-mode .menu {
-  background: #1e1e1e;
-  color: #e0e0e0;
-}
-
-body.dark-mode .menu a {
-  color: #e0e0e0;
-  border-bottom: 1px solid #444;
-}
-
 @media screen and (max-width: 768px) {
   .menu {
     position: fixed;
     top: 0;
     left: 0;
   }
-
-  .menu.expanded {
-    width: 200px;
-  }
-
-  .menu.expanded a {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .menu.expanded a span {
-    display: inline;
-  }
-  .menu.expanded .name {
-    display: flex;
-    justify-content: space-between;
-  }
-  .menu.expanded .name span{
-    display: block;
-  }
 }
-
-
-
-
-
-
-
 

@@ -35,4 +35,5 @@ export class AddStudentComponent {
           console.error('Error:', error);
         });
     }
+
 }
