@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { IStudent } from '../../../../Interfaces/student';
 import { HttpService } from '../../../../http.service';
 import { CommonModule } from '@angular/common';
@@ -22,7 +22,7 @@ export class ViewStudentComponent {
 
 
   getAllUser() {
-    debugger;
+    // debugger;
     this.http.get("https://localhost:7262/GetStudents").subscribe((result: any) => {
       // debugger;
       this.userList = result;
@@ -32,20 +32,30 @@ export class ViewStudentComponent {
 //delete user
 
 deleteEmployee(id: number) {
-  const url = `https://localhost:7262/DeleteStudents/` + id;
+  const isDelete=confirm("Are you sure you want to delete");
+  if(isDelete){
+    const url = `https://localhost:7262/DeleteStudents/` + id;
 
-  this.http.delete(url, { responseType: 'text' })
-    .subscribe(
-      response => {
-        console.log('Response:', response);
-        alert('Student deleted successfully.');
-        this.getAllUser();
-      },
-      error => {
-        console.error('Error:', error);
-        alert('Failed to delete student.');
-      }
-    );
+    this.http.delete(url, { responseType: 'text' })
+      .subscribe(
+        response => {
+          console.log('Response:', response);
+          alert('Student deleted successfully.');
+          this.getAllUser();
+        },
+        error => {
+          console.error('Error:', error);
+          alert('Failed to delete student.');
+        }
+      );
+  }
+
 }
+
+router = inject(Router);
+onEdit(id: number) {
+  console.log(id);
+  this.router.navigateByUrl("/employee/"+id)
+ }
 
 }

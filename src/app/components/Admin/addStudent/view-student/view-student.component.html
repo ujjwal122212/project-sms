@@ -34,7 +34,7 @@
               <td>{{ student.EnrollmentDate }}</td>
 
               <td class="action-button">
-                  <button class="edit" routerLink="editstudent">Edit</button>
+                  <button class="edit" (click)="onEdit(student.EnrollmentNo)">Edit</button>
                   <button class="delete" (click)="deleteEmployee(student.EnrollmentNo)">Delete</button>
               </td>
 

@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-student',
@@ -31,8 +32,62 @@ export class AddStudentComponent {
         .subscribe(response => {
           console.log('Response:', response);
           alert("Student is added Succesfully");
+          this.router.navigateByUrl("/viewstudent")
         }, error => {
           console.error('Error:', error);
         });
     }
+
+    route=inject(ActivatedRoute);
+  Studentid! :number;
+  isEdit=false;
+  ngOnInit() {
+
+    this.Studentid=this.route.snapshot.params['id'];
+    if(this.Studentid){
+      this.isEdit=true;
+  this.getStudentById(this.Studentid);
+
+    }
+  }
+
+  getStudentById(Studentid: number){
+    this.http.get("https://localhost:7262/GetStudente/"+Studentid).subscribe((result: any) => {
+      console.log(result);
+      this.student = result;
+
+
+    })
+  }
+
+
+  router = inject(Router);
+  UpdateStudent(studentId:number){
+
+    const url = 'https://localhost:7262/EditStudent/'+studentId;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    this.http.put(url, this.student, { headers: headers, responseType: 'text' })
+      .subscribe(
+        response => {
+          console.log('Response:', response);
+          alert("Student Updated succesfully");
+          this.router.navigateByUrl("/viewstudent")
+
+        },
+        error => {
+          console.error('Error:', error);
+        }
+      );
+
+  }
+
+  Save(){
+if(this.isEdit){
+  this.UpdateStudent(this.Studentid);
+}
+else{
+  this.postStudentData();
+}
+  }
 }
