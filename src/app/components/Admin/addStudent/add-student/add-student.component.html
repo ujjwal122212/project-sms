@@ -1,6 +1,12 @@
 <div class="main-container">
+  @if(isEdit){
+    <h2>EDIT STUDENT</h2>
+  }
+  @else {<h2>CREATE STUDENT</h2>}
 
-  <form (ngSubmit)="postStudentData()" >
+  <br>
+
+  <form >
     <div class="la">
     <label>Name</label>
   </div>
@@ -39,7 +45,14 @@
     </div>
 
     <div class="btn">
-      <button type="submit">Submit</button>
+      @if(isEdit){
+        <button type="submit" (click)="Save()">Update</button>
+      }
+      @else{
+        <button type="submit" (click)="postStudentData()">Submit</button>
+      }
+
+      <button type="back" class="back">Back</button>
     </div>
 
   </form>

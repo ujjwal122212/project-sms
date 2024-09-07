@@ -1,8 +1,9 @@
 
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -36,4 +37,27 @@ constructor(private http: HttpClient) {}
         console.error('Error:', error);
       });
   }
+
+  route=inject(ActivatedRoute);
+  Studentid! :number;
+  isEdit=false;
+  ngOnInit() {
+
+    this.Studentid=this.route.snapshot.params['id'];
+    if(this.Studentid){
+      this.isEdit=true;
+  this.getStudentById(this.Studentid);
+
+    }
+  }
+
+  getStudentById(Studentid: number){
+    this.http.get("https://localhost:7262/GetStudent/"+Studentid).subscribe((result: any) => {
+      console.log(result);
+      // this.student = result;
+
+
+    })
+  }
+
 }

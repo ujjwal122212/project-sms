@@ -306,74 +306,11 @@ export const routes: Routes = [
     ]
   },
 
-  //for add teacher
-  // // { 'path': 'add-teacher', 'title': 'Add-teacher', component: AddTeacherComponent },
-  // { 'path': 'add-teacher', 'title': 'Add-teacher', component: AddTeacherComponent },
+  {
+    path:'employee/:id',
+    component:AddStudentComponent
+  },
 
-
-  // //for add student
-  // { 'path': 'add-student', 'title': 'Add-student', component: AddTeacherComponent },
-
-  //
-
-
-  //   //for tsudent page
-
-  //   { 'path': 'quiz1', 'title': 'quiz', component: Quiz1Component },
-
-
-
-  //   { 'path': 'help', 'title': 'help', component: StudentHelpComponent },
-  //   { 'path': '', 'title': 'Home', component: HomeComponent },
-  //   { 'path': 'performance', 'title': 'Performance', component: PerformanceComponent },
-  //   { 'path': 'courses', 'title': 'Courses', component: CoursesComponent },
-  //   {
-  //     'path': 'courses', children: [
-  //     ]
-  //   },
-
-
-  //   { 'path': 'time', 'title': 'time-table', component: TimeTableComponent },
-
-
-
-
-
-  //   { 'path': '**', component: NotFoundComponent },
-
-
-
-  //   { 'path': 'time', 'title': 'time-table', component:TimeTableComponent},
-
-  //   {
-  //     'path':'reciept',component:RecieptComponent
-  //   },
-  //   {'path':'pay',component:PaymentComponent},
-  //   {'path':'fees',component:FeePageComponent},
-  //   {
-  //     'path':'homework',component:HomeWorkComponent
-  //   },
-  //   {
-  //     'path':' attendence',component:AttendenceComponent
-  //   },
-
-  // // homework
-  // {'path':'mainhomework','title':'mainhomework',component:MainHomeworkComponent},
-  // {
-  //   'path':'givenwork','title':'givenwork',component:GivenworkComponent
-  // },
-
-
-  // // attendence
-  // {
-  //   'path':'attendence',component:AttendenceComponent
-  // },
-  // {'path':'t-time-table','title':'t-time-table',component:TTimeTableComponent},
-
-  // {'path':'t-time-table', children:[{
-  //   'path':'attendence2',component:AttendenceComponent
-
-  // }]},
 
 ];
 

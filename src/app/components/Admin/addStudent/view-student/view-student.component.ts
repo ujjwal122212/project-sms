@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { IStudent } from '../../../../Interfaces/student';
 import { HttpService } from '../../../../http.service';
 import { CommonModule } from '@angular/common';
@@ -30,9 +30,13 @@ export class ViewStudentComponent {
     })
   }
 
-  //delete user
 
-  deleteEmployee(id: number) {
+//delete user
+
+deleteEmployee(id: number) {
+  const isDelete=confirm("Are you sure you want to delete");
+  if(isDelete){
+
     const url = `https://localhost:7262/DeleteStudents/` + id;
 
     this.http.delete(url, { responseType: 'text' })
@@ -49,18 +53,14 @@ export class ViewStudentComponent {
       );
   }
 
-  // view-student dark mode
-  // view_student_dark_mode() {
-  //   const element = document.querySelector('.view-container') as HTMLDivElement;
-  //   const table_header=document.querySelector('#table_header') as HTMLTableRowElement;
-  //   element.classList.toggle('dark');
-  //   table_header.classList.toggle('table_header');
-  // }
-  isDarkMode = false;
-  ngOnInit() {
-    this.darkModeService.isDarkMode$.subscribe(
-      (darkMode) => (this.isDarkMode = darkMode)
-    );
-  }
+
+}
+
+
+router = inject(Router);
+onEdit(id: number) {
+  console.log(id);
+  this.router.navigateByUrl("/employee/"+id)
+ }
 
 }
