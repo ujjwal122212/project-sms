@@ -1,4 +1,6 @@
-
+.is-invalid{
+  border: 2px solid red;
+}
 .main-container {
 
   max-width: 400px;
@@ -11,9 +13,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
-  /* height: 100vh; */
 
+  margin-top: 70px;
+
+
+  /* height: 100vh; */
+  
 }
 
 
@@ -106,7 +111,7 @@ form .btn {
   .btn button {
     font-size: 14px;
     padding: 8px 16px;
-    
+
   }
 }
 label {

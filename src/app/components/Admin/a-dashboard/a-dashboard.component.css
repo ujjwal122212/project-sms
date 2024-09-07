@@ -1,15 +1,14 @@
 
 .home-section {
-    margin-top: 10px;
-    padding: 10px;
     display: flex;
     flex-wrap: wrap;
     column-gap: 2%;
-    align-items: center;
+    padding-top: 10px;
+    /* padding: 70px 10px 0 60px; */
   }
   
   .card {
-    padding-top: 10px;
+    padding-top: 20px;
     width: 15%;
     margin-bottom: 30px;
     text-align: center;
@@ -21,6 +20,7 @@
     width: 100px;
     border-radius: 50%;
     height: 100px;
+    margin-bottom: 5px;
   }
   
   .card img:hover {
@@ -34,6 +34,8 @@
     padding: 0;
   }
   
+
+
   @media screen  and (max-width:991px){
     .card img{
       max-width: 80%;
@@ -68,4 +70,8 @@
       font-size: 1.1rem;
     }
   }
-  
+
+  /* .dark-mode {
+    background-color:#333;
+    color: white;
+  } */

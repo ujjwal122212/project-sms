@@ -6,7 +6,7 @@
 
   <br>
 
-  <form >
+  <form #form="ngForm" novalidate>
     <div class="la">
     <label>Name</label>
   </div>
@@ -31,12 +31,18 @@
 
     <label>Email</label>
     <div>
-      <input [(ngModel)]="student.email" name="email">
+      <input [(ngModel)]="student.email" name="email" #email="ngModel" email >
+
+
+      @if (email.touched  && email.errors?.['email']) {
+        <span style="color: red;">Enter valid Email</span>
+      }
     </div>
 
     <label>Mobile</label>
     <div>
-      <input [(ngModel)]="student.mobile" name="mobile">
+      <input [(ngModel)]="student.mobile" #mobile="ngModel" name="mobile" required [ngClass]="{ 'is-invalid': mobile.invalid && mobile.touched}">
+
     </div>
 
     <label>Father's Name</label>
@@ -46,10 +52,10 @@
 
     <div class="btn">
       @if(isEdit){
-        <button type="submit" (click)="Save()">Update</button>
+        <button type="submit" (click)="Save()" [disabled]="form.invalid">Update</button>
       }
       @else{
-        <button type="submit" (click)="postStudentData()">Submit</button>
+        <button type="submit" (click)="postStudentData()" [disabled]="form.invalid">Submit</button>
       }
 
       <button type="back" class="back">Back</button>

@@ -1,13 +1,22 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
+import { ToastrService } from 'ngx-toastr';
+
+
 
 @Component({
   selector: 'app-view-student',
   standalone: true,
+
   imports: [CommonModule, FormsModule],
+
+  imports: [RouterLink, CommonModule],
+
   templateUrl: './view-student.component.html',
   styleUrls: ['./view-student.component.css']
 })
@@ -19,9 +28,15 @@ export class ViewStudentComponent implements OnInit {
   totalPages = 1;
   pageNumbers: number[] = [];
 
+
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
+
+  toastr=inject(ToastrService);
+
+  constructor(private http: HttpClient) {
+
     this.getAllUser();
   }
 
@@ -32,54 +47,43 @@ export class ViewStudentComponent implements OnInit {
     });
   }
 
-  deleteEmployee(id: number) {
-    const isDelete = confirm("Are you sure you want to delete");
-    if (isDelete) {
-      const url = `https://localhost:7262/DeleteStudents/${id}`;
-      this.http.delete(url, { responseType: 'text' })
-        .subscribe(
-          () => {
-            alert('Student deleted successfully.');
-            this.getAllUser();
-          },
-          () => alert('Failed to delete student.')
-        );
-    }
+
+//delete user
+
+deleteEmployee(id: number) {
+  const isDelete=confirm("Are you sure you want to delete");
+  if(isDelete){
+
+    const url = `https://localhost:7262/DeleteStudents/` + id;
+
+    this.http.delete(url, { responseType: 'text' })
+      .subscribe(
+        response => {
+          console.log('Response:', response);
+          // alert('Student deleted successfully.');
+          this.toastr.error('Student Deleted Succesfully');
+          // this.toastr.info('Please confirm', 'Confirmation');
+
+
+          this.getAllUser();
+        },
+        error => {
+          console.error('Error:', error);
+          alert('Failed to delete student.');
+        }
+      );
   }
 
-  onEdit(id: number) {
-    this.router.navigateByUrl(`/employee/${id}`);
-  }
 
-  calculatePagination() {
-    const filteredList = this.filteredUserList;
-    this.totalPages = Math.ceil(filteredList.length / this.pageSize);
-    this.pageNumbers = Array.from({ length: this.totalPages }, (_, i) => i + 1);
-  }
+}
 
-  setPage(page: number) {
-    this.currentPage = page;
-  }
 
-  previousPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-    }
-  }
+router = inject(Router);
+onEdit(id: number) {
+  console.log(id);
+  this.router.navigateByUrl("/employee/"+id)
+ }
 
-  nextPage() {
-    if (this.currentPage < this.totalPages) {
-      this.currentPage++;
-    }
-  }
-
-  get filteredUserList() {
-    const lowerCaseSearchTerm = this.searchTerm.toLowerCase();
-    return this.userList.filter(student =>
-      student.EnrollmentNo.toString().toLowerCase().includes(lowerCaseSearchTerm) ||
-      student.Name.toLowerCase().includes(lowerCaseSearchTerm)
-    );
-  }
 
   get paginatedUserList() {
     const start = (this.currentPage - 1) * this.pageSize;

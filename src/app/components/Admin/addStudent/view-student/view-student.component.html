@@ -1,6 +1,8 @@
+
 <div class="container">
   <h1>Students List</h1>
   <button class="add-student" routerLink="addstudent">Add Student</button>
+
 
   <!-- Search Box -->
   <div class="search-box">
@@ -11,6 +13,7 @@
       (ngModelChange)="calculatePagination()"
     />
   </div>
+
 
   <table>
     <thead>
@@ -67,5 +70,6 @@
     <button (click)="nextPage()" [disabled]="currentPage === totalPages">
       Next
     </button>
+
   </div>
 </div>

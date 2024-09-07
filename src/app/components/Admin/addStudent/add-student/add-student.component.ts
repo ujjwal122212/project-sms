@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-student',
@@ -12,6 +13,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './add-student.component.css'
 })
 export class AddStudentComponent {
+
+  toastr=inject(ToastrService);
+
   student:any={
     name: '',
     age: '',
@@ -31,12 +35,15 @@ export class AddStudentComponent {
       this.http.post(url, this.student, { headers: headers, responseType: 'text' })
         .subscribe(response => {
           console.log('Response:', response);
-          alert("Student is added Succesfully");
-          this.router.navigateByUrl("/viewstudent")
+          this.router.navigateByUrl("/viewstudent");
+          this.toastr.success('Student Added Succesfully');
+          // alert("Student is added Succesfully");
+
         }, error => {
           console.error('Error:', error);
         });
     }
+
 
     route=inject(ActivatedRoute);
   Studentid! :number;
@@ -57,6 +64,7 @@ export class AddStudentComponent {
       this.student = result;
 
 
+
     })
   }
 
@@ -71,8 +79,10 @@ export class AddStudentComponent {
       .subscribe(
         response => {
           console.log('Response:', response);
-          alert("Student Updated succesfully");
-          this.router.navigateByUrl("/viewstudent")
+          this.router.navigateByUrl("/viewstudent");
+          // alert("Student Updated succesfully");
+          this.toastr.success('Student Updated Succesfully');
+
 
         },
         error => {
@@ -90,4 +100,5 @@ else{
   this.postStudentData();
 }
   }
+
 }
