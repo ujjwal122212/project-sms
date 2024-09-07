@@ -4,6 +4,7 @@ import { IStudent } from '../../../../Interfaces/student';
 import { HttpService } from '../../../../http.service';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -14,6 +15,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './view-student.component.css'
 })
 export class ViewStudentComponent {
+
+  toastr=inject(ToastrService);
 
   constructor(private http: HttpClient) {
     this.getAllUser();
@@ -43,7 +46,11 @@ deleteEmployee(id: number) {
       .subscribe(
         response => {
           console.log('Response:', response);
-          alert('Student deleted successfully.');
+          // alert('Student deleted successfully.');
+          this.toastr.error('Student Deleted Succesfully');
+          // this.toastr.info('Please confirm', 'Confirmation');
+
+
           this.getAllUser();
         },
         error => {
