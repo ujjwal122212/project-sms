@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { DarkModeService } from '../../../dark-mode.service';
+
 @Component({
   selector: 'app-a-dashboard',
   standalone: true,
@@ -18,13 +18,5 @@ export class ADashboardComponent {
   //  dash?.classList.toggle('dark');
   // }
 
-  isDarkMode = false;
 
-  constructor(private darkModeService: DarkModeService) {}
-
-  ngOnInit() {
-    this.darkModeService.isDarkMode$.subscribe(
-      (darkMode) => (this.isDarkMode = darkMode)
-    );
-  }
 }

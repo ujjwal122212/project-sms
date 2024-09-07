@@ -4,7 +4,7 @@ import { IStudent } from '../../../../Interfaces/student';
 import { HttpService } from '../../../../http.service';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { DarkModeService } from '../../../../dark-mode.service';
+
 
 @Component({
   selector: 'app-view-student',
@@ -15,7 +15,7 @@ import { DarkModeService } from '../../../../dark-mode.service';
 })
 export class ViewStudentComponent {
 
-  constructor(private http: HttpClient, private darkModeService: DarkModeService) {
+  constructor(private http: HttpClient) {
     this.getAllUser();
   }
 
