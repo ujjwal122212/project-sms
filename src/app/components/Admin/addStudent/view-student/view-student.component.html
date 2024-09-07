@@ -1,37 +1,38 @@
-
-
-<div class="container">
+<div class="view-container">
   <h1>Students Lists</h1>
   <button class="add-student" routerLink="addstudent">Add Student</button>
-  <table>
-      <thead>
+  <div class="section">
+    <div class="table-section">
+      <table>
+        <thead id="table_header" [ngClass]=" {'table_header' : isDarkMode } ">
           <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Age</th>
-              <th>Class</th>
-              <th>Section</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Father's name</th>
-              <th>Password</th>
-              <th>Created At</th>
-              <th>Action</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Class</th>
+            <th>Section</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Father's name</th>
+            <th>Password</th>
+            <th>Created At</th>
+            <th>Action</th>
           </tr>
-      </thead>
-      @for(student of userList; track $index){
-      <tbody>
+        </thead>
+        @for(student of userList; track $index){
+        <tbody>
 
-              <td>{{ student.EnrollmentNo }}</td>
-              <td>{{ student.Name }}</td>
-              <td>{{ student.Age }}</td>
-              <td>{{ student.Class }}</td>
-              <td>{{ student.Section }}</td>
-              <td>{{ student.Email}}</td>
-              <td>{{ student.Mobile}}</td>
-              <td>{{ student.FathersName }}</td>
-              <td>{{ student.Password }}</td>
-              <td>{{ student.EnrollmentDate }}</td>
+          <td>{{ student.EnrollmentNo }}</td>
+          <td>{{ student.Name }}</td>
+          <td>{{ student.Age }}</td>
+          <td>{{ student.Class }}</td>
+          <td>{{ student.Section }}</td>
+          <td>{{ student.Email}}</td>
+          <td>{{ student.Mobile}}</td>
+          <td>{{ student.FathersName }}</td>
+          <td>{{ student.Password }}</td>
+          <td>{{ student.EnrollmentDate }}</td>
+
 
               <td class="action-button">
                   <button class="edit" (click)="onEdit(student.EnrollmentNo)">Edit</button>
@@ -39,7 +40,10 @@
               </td>
 
 
-      </tbody>
-    }
-  </table>
+
+        </tbody>
+        }
+      </table>
+    </div>
+  </div>
 </div>

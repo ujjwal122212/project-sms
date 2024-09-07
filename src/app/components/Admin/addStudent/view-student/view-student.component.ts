@@ -4,17 +4,18 @@ import { IStudent } from '../../../../Interfaces/student';
 import { HttpService } from '../../../../http.service';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { DarkModeService } from '../../../../dark-mode.service';
 
 @Component({
   selector: 'app-view-student',
   standalone: true,
-  imports: [RouterLink,CommonModule],
+  imports: [RouterLink, CommonModule],
   templateUrl: './view-student.component.html',
   styleUrl: './view-student.component.css'
 })
 export class ViewStudentComponent {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private darkModeService: DarkModeService) {
     this.getAllUser();
   }
 
@@ -29,11 +30,13 @@ export class ViewStudentComponent {
     })
   }
 
+
 //delete user
 
 deleteEmployee(id: number) {
   const isDelete=confirm("Are you sure you want to delete");
   if(isDelete){
+
     const url = `https://localhost:7262/DeleteStudents/` + id;
 
     this.http.delete(url, { responseType: 'text' })
@@ -50,7 +53,9 @@ deleteEmployee(id: number) {
       );
   }
 
+
 }
+
 
 router = inject(Router);
 onEdit(id: number) {

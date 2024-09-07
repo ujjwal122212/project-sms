@@ -38,6 +38,7 @@ export class AddStudentComponent {
         });
     }
 
+
     route=inject(ActivatedRoute);
   Studentid! :number;
   isEdit=false;
@@ -90,4 +91,5 @@ else{
   this.postStudentData();
 }
   }
+
 }
