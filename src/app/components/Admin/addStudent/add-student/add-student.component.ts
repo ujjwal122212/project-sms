@@ -55,6 +55,7 @@ export class AddStudentComponent {
     this.http.get("https://localhost:7262/GetStudente/"+Studentid).subscribe((result: any) => {
       console.log(result);
       this.student = result;
+      
 
 
     })
