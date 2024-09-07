@@ -1,12 +1,11 @@
 .view-container {
-  /* margin: 70px 0 0 60px; */
-  padding: 70px 10px 0 60px;
-  /* background-color: #dc3545; */
-  height: 100%;
-  min-height: 100vh;
+  /* height: 100%; */
+  /* min-height: 100vh; */
+  padding: 10px;
 }
 
 h1 {
+  padding-top: 10px;
   margin-bottom: 20px;
   text-align: center;
   font-size: 20px;
@@ -23,14 +22,28 @@ h1 {
   border-radius: 4px;
   cursor: pointer;
 }
-
+.section{
+  overflow-x: auto;
+  position: relative;
+  min-height: 520px;
+  overflow-y: hidden;
+  top: 0;
+  /* background-color: #dc3545; */
+}
 .table-section {
   overflow-x: auto;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
- 
-  height: 500px;
+
+  /* height: 500px; */
   /* border-top: 2px solid #333; */
+  max-height: 500px;
+  width: 100%;
+  overflow: auto;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  position: absolute;
+  top: 30px;
 }
 
 table {
@@ -75,7 +88,7 @@ button.delete {
   cursor: pointer;
 }
 
-td.action-button{
+td.action-button {
   min-width: 150px;
 }
 
@@ -83,6 +96,9 @@ td.action-button{
   /* .view-container {
     padding:0 0 0 50px;
   } */
+  .view-container{
+    margin-left: 50px;
+  }
 }
 
 @media screen and (max-width:600px) {
@@ -124,17 +140,24 @@ td.action-button{
     margin-bottom: 20px;
     border-bottom: 2px solid black;
   }
-  td:nth-child(1){
+
+  td:nth-child(1) {
     border-top: 2px solid black;
   }
 }
 
 
 /* dark mode  */
-.dark{
+.dark {
   background-color: #333;
   color: white;
 }
-.table_header{
+
+.table_header {
   color: black;
+}
+
+.dark-mode {
+  background-color: #333;
+  color: white;
 }

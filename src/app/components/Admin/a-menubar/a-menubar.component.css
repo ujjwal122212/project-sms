@@ -7,7 +7,7 @@
   background-color: #2e1065;
   flex-shrink: 0;
   transition: width 0.3s, left 0.3s;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   z-index: 10;
@@ -26,6 +26,9 @@
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 
 .name span {

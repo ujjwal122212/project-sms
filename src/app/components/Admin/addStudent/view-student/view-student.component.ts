@@ -4,6 +4,7 @@ import { IStudent } from '../../../../Interfaces/student';
 import { HttpService } from '../../../../http.service';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { DarkModeService } from '../../../../dark-mode.service';
 
 @Component({
   selector: 'app-view-student',
@@ -14,7 +15,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ViewStudentComponent {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private darkModeService: DarkModeService) {
     this.getAllUser();
   }
 
@@ -55,4 +56,11 @@ export class ViewStudentComponent {
   //   element.classList.toggle('dark');
   //   table_header.classList.toggle('table_header');
   // }
+  isDarkMode = false;
+  ngOnInit() {
+    this.darkModeService.isDarkMode$.subscribe(
+      (darkMode) => (this.isDarkMode = darkMode)
+    );
+  }
+
 }
