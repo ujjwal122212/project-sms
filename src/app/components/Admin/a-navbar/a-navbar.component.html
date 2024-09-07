@@ -1,9 +1,9 @@
-<nav>
+<nav [ngClass]="isdark==true ? 'dark' : '' ">
   <div class="logo">
     <img src="assets/images/logo.png" alt="Logo">
   </div>
   <div class="nav-icons">
-    <i class="ri-contrast-2-line" id="nav_icon"></i>
+    <i class="ri-contrast-2-line" id="nav_icon" (click)="dark_mode()"></i>
     <i class="ri-notification-4-line" id="nav_icon"></i>
     <i class="ri-message-3-line" id="nav_icon"></i>
   </div>
