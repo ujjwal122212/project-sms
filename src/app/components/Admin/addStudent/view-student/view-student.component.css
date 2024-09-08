@@ -87,11 +87,22 @@ button.delete {
   border-radius: 4px;
   cursor: pointer;
 }
-.action-button {
-  width: 150px;
+
+td.action-button {
+  min-width: 150px;
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width:768px) {
+  /* .view-container {
+    padding:0 0 0 50px;
+  } */
+  .view-container{
+    margin-left: 50px;
+  }
+}
+
+@media screen and (max-width:600px) {
+
   table,
   thead,
   tbody,
@@ -99,31 +110,16 @@ button.delete {
   td,
   tr {
     display: block;
-
   }
-}
-
 
   thead tr {
     display: none;
   }
 
-
-  table,
-  thead,
-  tbody,
-  th,
-  td,
-  tr {
-
-    margin-bottom: 10px;
-  }
-
   td {
-    padding-left: 50%;
+    /* padding-left: 50%; */
     position: relative;
-    text-align: right;
-
+    text-align: center;
   }
 
   td:before {
@@ -137,50 +133,31 @@ button.delete {
 
   .add-student {
     width: 100%;
+  }
 
+  td.action-button {
+    width: 100%;
+    margin-bottom: 20px;
+    border-bottom: 2px solid black;
+  }
+
+  td:nth-child(1) {
+    border-top: 2px solid black;
   }
 }
 
-/* Pagination */
-.pagination {
-  text-align: center;
-  margin-top: 20px;
-}
 
-.pagination button {
-  padding: 4px 16px;
-  margin: 0 5px;
-  border: none;
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  cursor: pointer;
-}
-
-.pagination button.active {
-  background-color: #4caf50;
+/* dark mode  */
+.dark {
+  background-color: #333;
   color: white;
 }
 
-.pagination button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+.table_header {
+  color: black;
 }
 
-.pagination button:hover:not(:disabled) {
-  background-color: #ddd;
+.dark-mode {
+  background-color: #333;
+  color: white;
 }
-
-/* Filter */
-.search-box {
-  margin-bottom: 20px;
-}
-
-.search-box input {
-  border-radius: 10px;
-  border: 1px solid grey;
-  padding: 6px;
-  font-size: 16px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
