@@ -29,6 +29,7 @@ h1 {
   overflow-y: hidden;
   top: 0;
   /* background-color: #dc3545; */
+  margin: 0px 20px 0px 20px;
 }
 .table-section {
   overflow-x: auto;
