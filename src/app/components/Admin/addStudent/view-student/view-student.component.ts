@@ -21,6 +21,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./view-student.component.css']
 })
 export class ViewStudentComponent {
+
   toastr=inject(ToastrService);
 
   constructor(private http: HttpClient) {
@@ -53,7 +54,8 @@ deleteEmployee(id: number) {
           console.log('Response:', response);
           // alert('Student deleted successfully.');
           this.toastr.error('Student Deleted Succesfully');
-          // this.toastr.info('Please confirm', 'Confirmation');
+          // alertify.confirm('Confirm Message');
+          this.toastr.info('Please confirm', 'Confirmation');
 
 
           this.getAllUser();
@@ -74,5 +76,5 @@ onEdit(id: number) {
   console.log(id);
   this.router.navigateByUrl("/employee/"+id)
  }
-  
+
 }
