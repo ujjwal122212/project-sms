@@ -8,15 +8,15 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-student',
   standalone: true,
-  imports: [FormsModule,CommonModule,HttpClientModule],
+  imports: [FormsModule, CommonModule, HttpClientModule],
   templateUrl: './add-student.component.html',
   styleUrl: './add-student.component.css'
 })
 export class AddStudentComponent {
 
-  toastr=inject(ToastrService);
+  toastr = inject(ToastrService);
 
-  student:any={
+  student: any = {
     name: '',
     age: '',
     class: '',
@@ -26,40 +26,40 @@ export class AddStudentComponent {
     fatherName: '',
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-    postStudentData() {
-      const url = 'https://localhost:7262/CreateStudents';
-      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  postStudentData() {
+    const url = 'https://localhost:7262/CreateStudents';
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-      this.http.post(url, this.student, { headers: headers, responseType: 'text' })
-        .subscribe(response => {
-          console.log('Response:', response);
-          this.router.navigateByUrl("/viewstudent");
-          this.toastr.success('Student Added Succesfully');
-          // alert("Student is added Succesfully");
+    this.http.post(url, this.student, { headers: headers, responseType: 'text' })
+      .subscribe(response => {
+        console.log('Response:', response);
+        this.router.navigateByUrl("/viewstudent");
+        this.toastr.success('Student Added Succesfully');
+        // alert("Student is added Succesfully");
 
-        }, error => {
-          console.error('Error:', error);
-        });
-    }
+      }, error => {
+        console.error('Error:', error);
+      });
+  }
 
 
-    route=inject(ActivatedRoute);
-  Studentid! :number;
-  isEdit=false;
+  route = inject(ActivatedRoute);
+  Studentid!: number;
+  isEdit = false;
   ngOnInit() {
 
-    this.Studentid=this.route.snapshot.params['id'];
-    if(this.Studentid){
-      this.isEdit=true;
-  this.getStudentById(this.Studentid);
+    this.Studentid = this.route.snapshot.params['id'];
+    if (this.Studentid) {
+      this.isEdit = true;
+      this.getStudentById(this.Studentid);
 
     }
   }
 
-  getStudentById(Studentid: number){
-    this.http.get("https://localhost:7262/GetStudente/"+Studentid).subscribe((result: any) => {
+  getStudentById(Studentid: number) {
+    this.http.get("https://localhost:7262/GetStudente/" + Studentid).subscribe((result: any) => {
       console.log(result);
       this.student = result;
 
@@ -70,9 +70,9 @@ export class AddStudentComponent {
 
 
   router = inject(Router);
-  UpdateStudent(studentId:number){
+  UpdateStudent(studentId: number) {
 
-    const url = 'https://localhost:7262/EditStudent/'+studentId;
+    const url = 'https://localhost:7262/EditStudent/' + studentId;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     this.http.put(url, this.student, { headers: headers, responseType: 'text' })
@@ -92,13 +92,17 @@ export class AddStudentComponent {
 
   }
 
-  Save(){
-if(this.isEdit){
-  this.UpdateStudent(this.Studentid);
-}
-else{
-  this.postStudentData();
-}
+  Save() {
+    if (this.isEdit) {
+      this.UpdateStudent(this.Studentid);
+    }
+    else {
+      this.postStudentData();
+    }
+  }
+
+  goto(){
+    this.router.navigateByUrl("/viewstudent");
   }
 
 }

@@ -55,7 +55,7 @@ deleteEmployee(id: number) {
           // alert('Student deleted successfully.');
           this.toastr.error('Student Deleted Succesfully');
           // alertify.confirm('Confirm Message');
-          this.toastr.info('Please confirm', 'Confirmation');
+          // this.toastr.info('Please confirm', 'Confirmation');
 
 
           this.getAllUser();
