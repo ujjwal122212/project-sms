@@ -1,49 +1,77 @@
 <div class="view-container"></div>
-  <h1>Students Lists</h1>
-  <button class="add-student" routerLink="addstudent">Add Student</button>
-  <div class="section">
-    <div class="table-section">
-      <table>
-        <thead id="table_header">
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Class</th>
-            <th>Section</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Father's name</th>
-            <th>Password</th>
-            <th>Created At</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        @for(student of userList; track $index){
-        <tbody>
+<h1>Students List</h1>
+<button class="add-student" routerLink="addstudent">Add Student</button>
 
+<!-- Search Box -->
+<div class="search-box">
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="Search by Name or ID"
+    (ngModelChange)="calculatePagination(); setPage(1)"
+  />
+</div>
+
+<div class="section">
+  <div class="table-section">
+    <table>
+      <thead id="table_header">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Class</th>
+          <th>Section</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Father's Name</th>
+          <th>Password</th>
+          <th>Created At</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of paginatedUserList">
           <td>{{ student.EnrollmentNo }}</td>
           <td>{{ student.Name }}</td>
           <td>{{ student.Age }}</td>
           <td>{{ student.Class }}</td>
           <td>{{ student.Section }}</td>
-          <td>{{ student.Email}}</td>
-          <td>{{ student.Mobile}}</td>
+          <td>{{ student.Email }}</td>
+          <td>{{ student.Mobile }}</td>
           <td>{{ student.FathersName }}</td>
           <td>{{ student.Password }}</td>
           <td>{{ student.EnrollmentDate }}</td>
+          <td class="action-button">
+            <button class="edit" (click)="onEdit(student.EnrollmentNo)">
+              Edit
+            </button>
+            <button
+              class="delete"
+              (click)="deleteEmployee(student.EnrollmentNo)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-
-              <td class="action-button">
-                  <button class="edit" (click)="onEdit(student.EnrollmentNo)">Edit</button>
-                  <button class="delete" (click)="deleteEmployee(student.EnrollmentNo)">Delete</button>
-              </td>
-
-
-
-        </tbody>
-        }
-      </table>
+    <!-- Pagination Controls -->
+    <div class="pagination">
+      <button (click)="previousPage()" [disabled]="currentPage === 1">
+        Previous
+      </button>
+      <button
+        *ngFor="let page of pageNumbers"
+        (click)="setPage(page)"
+        [class.active]="currentPage === page"
+      >
+        {{ page }}
+      </button>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+        Next
+      </button>
     </div>
   </div>
-
+</div>
