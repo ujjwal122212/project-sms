@@ -1,65 +1,76 @@
 <div class="main-container">
   @if(isEdit){
-    <h2>EDIT STUDENT</h2>
+  <h2>UPDATE STUDENT</h2>
   }
-  @else {<h2>CREATE STUDENT</h2>}
+  @else {<h2>ADD STUDENT</h2>}
 
   <br>
-
-  <form #form="ngForm" novalidate>
-    <div class="la">
-    <label>Name</label>
-  </div>
-    <div>
-      <input [(ngModel)]="student.name" name="name">
-    </div>
-
-    <label>Age</label>
-    <div>
-      <input [(ngModel)]="student.age" name="age" >
-    </div>
-
-    <label>Class</label>
-    <div>
-      <input [(ngModel)]="student.class" name="class">
-    </div>
-
-    <label>Section</label>
-    <div>
-      <input [(ngModel)]="student.section" name="section">
-    </div>
-
-    <label>Email</label>
-    <div>
-      <input [(ngModel)]="student.email" name="email" #email="ngModel" email >
-
-
-      @if (email.touched  && email.errors?.['email']) {
-        <span style="color: red;">Enter valid Email</span>
-      }
-    </div>
-
-    <label>Mobile</label>
-    <div>
-      <input [(ngModel)]="student.mobile" #mobile="ngModel" name="mobile" required [ngClass]="{ 'is-invalid': mobile.invalid && mobile.touched}">
-
-    </div>
-
-    <label>Father's Name</label>
-    <div>
-      <input [(ngModel)]="student.fatherName" name="fatherName">
-    </div>
-
-    <div class="btn">
-      @if(isEdit){
+  <div class="form-area">
+    <form action="" #form="ngForm" novalidate>
+      <div class="first">
+        <div class="one">
+          <label for="">Name</label>
+          <div class="input">
+            <input [(ngModel)]="student.name" name="name">
+          </div>
+        </div>
+        <div class="two">
+          <label for="">Age</label>
+          <div class="input">
+            <input [(ngModel)]="student.age" name="age">
+          </div>
+        </div>
+      </div>
+      <div class="second">
+        <div class="one">
+          <label for="">Class</label>
+          <div class="input">
+            <input [(ngModel)]="student.class" name="class">
+          </div>
+        </div>
+        <div class="two">
+          <label for="">Section</label>
+          <div class="input">
+            <input [(ngModel)]="student.section" name="section">
+          </div>
+        </div>
+      </div>
+      <div class="third">
+        <div class="one">
+          <label for="">Email</label>
+          <div class="input">
+            <input [(ngModel)]="student.email" name="email" #email="ngModel" email>
+            @if (email.touched && email.errors?.['email']) {
+            <span style="color: red;">Enter valid Email</span>
+            }
+          </div>
+        </div>
+        <div class="two">
+          <label for="">Mobile</label>
+          <div class="input">
+            <input [(ngModel)]="student.mobile" #mobile="ngModel" name="mobile" required
+              [ngClass]="{ 'is-invalid': mobile.invalid && mobile.touched}">
+          </div>
+        </div>
+      </div>
+      <div class="fourth">
+        <div class="one">
+          <label for="">Father's Name</label>
+          <div class="input">
+            <input [(ngModel)]="student.fatherName" name="fatherName">
+          </div>
+        </div>
+      </div>
+      <div class="button-area">
+        @if(isEdit){
         <button type="submit" (click)="Save()" [disabled]="form.invalid">Update</button>
-      }
-      @else{
+        }
+        @else{
         <button type="submit" (click)="postStudentData()" [disabled]="form.invalid">Submit</button>
-      }
+        }
+        <button type="button" (click)="goto()">Back</button>
+      </div>
+    </form>
+  </div>
 
-      <button type="back" class="back">Back</button>
-    </div>
-
-  </form>
 </div>
