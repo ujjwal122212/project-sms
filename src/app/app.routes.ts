@@ -26,7 +26,7 @@ import { TDashboardComponent } from './components/teacher/t-dashboard/t-dashboar
 import { THomeworkPageComponent } from './components/teacher/homework/t-homework-page/t-homework-page.component';
 import { THelpComponent } from './components/teacher/t-help/t-help.component';
 import { ADashboardComponent } from './components/Admin/a-dashboard/a-dashboard.component';
-import { AddNewStudentComponent } from './components/Admin/addStudent/add-new-student/add-new-student.component';
+
 import { ViewStudentComponent } from './components/Admin/addStudent/view-student/view-student.component';
 import { EditStudentComponent } from './components/Admin/addStudent/edit-student/edit-student.component';
 import { AttendenceComponent } from './components/teacher/attendence/attendence.component';
