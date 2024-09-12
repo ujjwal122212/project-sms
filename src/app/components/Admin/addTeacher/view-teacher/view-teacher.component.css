@@ -1,45 +1,125 @@
-.container {
+.view-container {
+  /* height: 100%; */
+  /* min-height: 100vh; */
+  padding: 10px;
+  margin-left: 60px;
+  margin-top: 60px;
+  padding-left: 0;
+}
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  max-width: 1000px;
-  margin: 20px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-left: 50px;
-  margin-top: 50px;
-}
-
-h1 {
+  margin-top: 10px;
+  background-color: #e7e5e4;
   margin-bottom: 20px;
-  text-align: center;
+  padding: 10px 5px;
+  border-radius: 10px;
+}
+h1 {
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.add-student {
-  display: block;
-  margin: 0 auto 20px auto;
+.header button{
+  border-radius: 10px;
   padding: 10px 20px;
+  align-content: center;
+  font-size: 18px;
+  /* color: white; */
+  font-weight: bold;
   background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+}
+.search-box {
+  display: flex;
+  justify-content: end;
+  gap: 30px;
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  border-radius: 10px;
+  border: 1px solid grey;
+  padding: 6px;
+  font-size: 16px;
+  width: 20%;
+  box-sizing: border-box;
+}
+h3{
+  font-size: 20px;
+  align-self: center;
+  font-weight: bold;
+}
+.section {
+  overflow-x: hidden;
+  /* position: relative; */
+  /* min-height: 550px; */
+  overflow-y: hidden;
+  top: 0;
+  /* background-color: #dc3545; */
+  margin: 0px 10px ;
+}
+.table-section {
+  /* position: absolute; */
+  top: 0px;
+  overflow-x: auto;
+  width: 100%;
+  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 table {
+
   width: 100%;
   border-collapse: collapse;
-  align-items: center;
+  border-radius: 8px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+/* Pagination */
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+  padding-bottom: 10px;
+}
+
+.pagination button {
+  padding: 4px 16px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #ddd;
 }
 
 thead {
   background-color: #f0f0f0;
+  position: sticky;
+  top: 0px;
 }
 
-th, td {
+th,
+td {
   padding: 10px;
   text-align: center;
   border: 1px solid #ddd;
+  /* font-weight: 600; */
 }
 
 th {
@@ -64,39 +144,45 @@ button.delete {
   border-radius: 4px;
   cursor: pointer;
 }
-.action-button{
-  width: 150px;
+
+td.action-button {
+  min-width: 150px;
 }
 
-@media (max-width: 600px) {
-  table, thead, tbody, th, td, tr {
-      display: block;
-  }
-  
-  thead tr {
-      display: none;
-  }
-
-  tr {
-      margin-bottom: 10px;
-  }
-
-  td {
-      padding-left: 50%;
-      position: relative;
-      text-align: right;
-  }
-
-  td:before {
-      content: attr(data-label);
-      position: absolute;
-      left: 10px;
-      width: calc(50% - 20px);
-      text-align: left;
-      font-weight: bold;
-  }
-
-  .add-student {
-      width: 100%;
+@media screen and (max-width: 768px) {
+  .search-box input{
+    width: 40%;
   }
 }
+@media screen and (max-width: 479px){
+  .view-container{
+    overflow-x: hidden;
+  }
+ .header h1{
+  font-size: 18px;
+ }
+ .header button{
+  font-size: 16px;
+ }
+ .search-box input{
+  width: 80%;
+  padding: 5px 10px;
+}
+
+.pagination button{
+  padding: 4px 8px;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

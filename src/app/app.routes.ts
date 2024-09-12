@@ -28,7 +28,7 @@ import { THelpComponent } from './components/teacher/t-help/t-help.component';
 import { ADashboardComponent } from './components/Admin/a-dashboard/a-dashboard.component';
 
 import { ViewStudentComponent } from './components/Admin/addStudent/view-student/view-student.component';
-import { EditStudentComponent } from './components/Admin/addStudent/edit-student/edit-student.component';
+
 import { AttendenceComponent } from './components/teacher/attendence/attendence.component';
 import { TTimeTableComponent } from './components/teacher/t-time-table/t-time-table.component';
 import { PaymentComponent } from './components/student/fees/payment/payment.component';
@@ -48,6 +48,8 @@ import { ChangeCurrentPickPlaceComponent } from './components/student/Student-se
 import { MedicalServicesComponent } from './components/student/Student-service/medical-services/medical-services.component';
 import { DownloadFreeComponent } from './components/student/Student-service/download-free/download-free.component';
 import { AddStudentComponent } from './components/Admin/addStudent/add-student/add-student.component';
+import { ViewTeacherComponent } from './components/Admin/addTeacher/view-teacher/view-teacher.component';
+import { AddNewTeacherComponent } from './components/Admin/addTeacher/add-new-teacher/add-new-teacher.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
 
@@ -301,7 +303,6 @@ export const routes: Routes = [
   {
     'path': 'viewstudent', children: [
       { 'path': 'addstudent', 'title': 'Add-Student', component: AddStudentComponent },
-      { 'path': 'editstudent', 'title': 'edit-Student', component: EditStudentComponent },
 
     ]
   },
@@ -311,6 +312,16 @@ export const routes: Routes = [
     component:AddStudentComponent
   },
 
+  // ADD Teachers
+  { 'path': 'viewTeacher', 'title': 'View-Teacher', component: ViewTeacherComponent },
 
+  { 'path': 'viewTeacher', children:[
+    { 'path': 'addTeacher', 'title': 'Add-Teacher', component: AddNewTeacherComponent },
+  ]},
+
+  {
+    path:'teacher/:id',
+    component:AddNewTeacherComponent
+  },
 ];
 
