@@ -29,10 +29,13 @@
         <div class="two">
           <label for="">Age</label>
           <div class="input">
-            <input [(ngModel)]="student.age" name="age" type="number" #age="ngModel" [ngClass]="{ 'is-invalid': age.invalid && age.touched}" minlength="1" maxlength="3" required>
+
+            <input [(ngModel)]="student.age" name="age" type="number" #age="ngModel"
+              [ngClass]="{ 'is-invalid': age.invalid && age.touched}" minlength="1" maxlength="3" required>
             @if (age.touched && age.errors?.['required']) {
-              <span style="color: red;">This is Required*</span>
-              }
+            <span style="color: red;">This is Required*</span>
+            }
+
           </div>
         </div>
       </div>
@@ -42,8 +45,10 @@
           <div class="input">
 
 
+
             <select [(ngModel)]="student.class" name="class" required #class="ngModel"  [ngClass]="{ 'is-invalid': class.invalid && class.touched}">
               <option value="">Choose..</option>
+
               <option value="Prep">Prep</option>
               <option value="Nursury">Nursury</option>
               <option value="LKG">LKG</option>
@@ -63,21 +68,24 @@
 
             </select>
             @if (class.touched && class.errors?.['required']) {
-              <span style="color: red;">This is Required*</span>
-              }
+            <span style="color: red;">This is Required*</span>
+            }
 
           </div>
         </div>
         <div class="two">
           <label for="">Section</label>
           <div class="input">
-            <select [(ngModel)]="student.section" name="section" required #section="ngModel" [ngClass]="{ 'is-invalid': section.invalid && section.touched}">
-            <option value="">Choose...</option>
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-          </select>
-          @if (section.touched && section.errors?.['required']) {
+
+            <select [(ngModel)]="student.section" name="section" required #section="ngModel"
+              [ngClass]="{ 'is-invalid': section.invalid && section.touched}">
+              <option value="" selected disabled>Choose...</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+            </select>
+            @if (section.touched && section.errors?.['required']) {
+
             <span style="color: red;">This is Required*</span>
             }
           </div>
