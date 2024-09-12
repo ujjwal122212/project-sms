@@ -47,8 +47,7 @@
 
 
             <select [(ngModel)]="student.class" name="class" required #class="ngModel"  [ngClass]="{ 'is-invalid': class.invalid && class.touched}">
-              <option value="">Choose..</option>
-
+              <option value="" selected disabled>Choose..</option>
               <option value="Prep">Prep</option>
               <option value="Nursury">Nursury</option>
               <option value="LKG">LKG</option>
