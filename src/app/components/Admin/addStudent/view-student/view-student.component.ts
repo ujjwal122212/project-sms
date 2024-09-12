@@ -31,7 +31,7 @@ export class ViewStudentComponent {
   userList: any[] = [];
   searchTerm: string = '';
   currentPage = 1;
-  pageSize =5;
+  pageSize =6;
   totalPages = 1;
   pageNumbers: number[] = [];
 

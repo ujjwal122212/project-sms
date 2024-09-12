@@ -1,55 +1,57 @@
 <div class="item menu" [ngClass]="width">
   <div class="name"><span *ngIf="is_text_display_none">I Portal</span>
     @if(width=='toggle'){
-      <i class="ri-close-large-line"  (click)="menu_expanded()"></i>
+    <i class="ri-close-large-line" (click)="menu_expanded()"></i>
     }
     @else{
-      <i class="ri-menu-line end" (click)="menu_collapsed()" ></i> 
+    <i class="ri-menu-line end" (click)="menu_collapsed()"></i>
     }
   </div>
-  <a routerLink="/ahome" routerLinkActive="active"><i class="ri-dashboard-2-line" id="icon"></i>
-    <span *ngIf="is_text_display_none">Dashboard</span> <i class="ri-arrow-right-s-line"></i>
-  </a>
-  <a routerLink="/viewstudent" routerLinkActive="active"><i class="fa-solid fa-building-columns" id="icon"></i>
-    <span *ngIf="is_text_display_none">Student</span> <i class="ri-arrow-right-s-line"></i>
-  </a>
+  <div class="tags">
+    <a routerLink="/ahome" routerLinkActive="active"><i class="ri-dashboard-2-line" id="icon"></i>
+      <span *ngIf="is_text_display_none">Dashboard</span> <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a routerLink="/viewstudent" routerLinkActive="active"><i class="fa-solid fa-building-columns" id="icon"></i>
+      <span *ngIf="is_text_display_none">Student</span> <i class="ri-arrow-right-s-line"></i>
+    </a>
 
-  <a routerLink="g" routerLinkActive="active"><i class="fa-solid fa-chalkboard-user" id="icon"></i>
-    <span *ngIf="is_text_display_none">Teacher</span> <i class="ri-arrow-right-s-line"></i>
-  </a>
-  <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-person" id="icon"></i>
-    <span *ngIf="is_text_display_none">Parents</span> <i class="ri-arrow-right-s-line"></i>
-  </a>
-  <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-book" id="icon"></i>
-    <span *ngIf="is_text_display_none">Library</span> <i class="ri-arrow-right-s-line"></i>
-  </a>
-  <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-book-open-reader" id="icon"></i>
-    <span *ngIf="is_text_display_none">Class</span> <i class="ri-arrow-right-s-line"></i>
-  </a>
-  <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-book-atlas" id="icon"></i>
-    <span *ngIf="is_text_display_none">Subject</span> <i class="ri-arrow-right-s-line"></i>
-  </a>
-  <a routerLink="#" routerLinkActive="active"><i class="fa-regular fa-calendar-days" id="icon"></i>
-    <span *ngIf="is_text_display_none">Class Routine</span> <i class="ri-arrow-right-s-line"></i>
-  </a>
-  <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-square-check" id="icon"></i>
-    <span *ngIf="is_text_display_none">Attendance</span> <i class="ri-arrow-right-s-line"></i>
-  </a>
-  <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-clipboard-list" id="icon"></i>
-    <span *ngIf="is_text_display_none">Exam</span> <i class="ri-arrow-right-s-line"></i>
-  </a>
-  <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-van-shuttle" id="icon"></i>
-    <span *ngIf="is_text_display_none">Transport</span> <i class="ri-arrow-right-s-line"></i>
-  </a>
-  <a routerLink="#" routerLinkActive="active"><i class="fa-regular fa-building" id="icon"></i>
-    <span *ngIf="is_text_display_none">Hostel</span> <i class="ri-arrow-right-s-line"></i>
-  </a>
-  <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-newspaper" id="icon"></i>
-    <span *ngIf="is_text_display_none">Notice</span> <i class="ri-arrow-right-s-line"></i>
-  </a>
+    <a routerLink="g" routerLinkActive="active"><i class="fa-solid fa-chalkboard-user" id="icon"></i>
+      <span *ngIf="is_text_display_none">Teacher</span> <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-person" id="icon"></i>
+      <span *ngIf="is_text_display_none">Parents</span> <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-book" id="icon"></i>
+      <span *ngIf="is_text_display_none">Library</span> <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-book-open-reader" id="icon"></i>
+      <span *ngIf="is_text_display_none">Class</span> <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-book-atlas" id="icon"></i>
+      <span *ngIf="is_text_display_none">Subject</span> <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a routerLink="#" routerLinkActive="active"><i class="fa-regular fa-calendar-days" id="icon"></i>
+      <span *ngIf="is_text_display_none">Class Routine</span> <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-square-check" id="icon"></i>
+      <span *ngIf="is_text_display_none">Attendance</span> <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-clipboard-list" id="icon"></i>
+      <span *ngIf="is_text_display_none">Exam</span> <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-van-shuttle" id="icon"></i>
+      <span *ngIf="is_text_display_none">Transport</span> <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a routerLink="#" routerLinkActive="active"><i class="fa-regular fa-building" id="icon"></i>
+      <span *ngIf="is_text_display_none">Hostel</span> <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-newspaper" id="icon"></i>
+      <span *ngIf="is_text_display_none">Notice</span> <i class="ri-arrow-right-s-line"></i>
+    </a>
 
-  <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-gears" id="icon"></i>
-    <span *ngIf="is_text_display_none">Account</span> <i class="ri-arrow-right-s-line"></i>
-  </a>
+    <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-gears" id="icon"></i>
+      <span *ngIf="is_text_display_none">Account</span> <i class="ri-arrow-right-s-line"></i>
+    </a>
+  </div>
 
 </div>
