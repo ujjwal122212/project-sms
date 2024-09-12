@@ -1,46 +1,66 @@
-<div class="container">
-  <h1>Teachers Lists</h1>
-  <button class="add-student">Add Teacher</button>
-  <table>
-      <thead>
+<div class="view-container">
+  <div class="header">
+    <h1>Teacher List</h1>
+    <button class="add-teacher" routerLink="addTeacher">Add Teacher</button>
+  </div>
+  <div class="search-box">
+    <h3>Search</h3>
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by Name or ID"
+      (ngModelChange)="calculatePagination(); setPage(1)" />
+  </div>
+  <div class="section">
+    <div class="table-section">
+      <table>
+        <thead id="table_header">
           <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Course</th>
-              <th>Qualification</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Created At</th>
-              <th>Action</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Father's Name</th>
+            <th>Password</th>
+            <th>Created At</th>
+            <th>Action</th>
           </tr>
-      </thead>
-      <tbody>
-          <tr>
-              <td>1</td>
-              <td>Om Prakash</td>
-              <td>BCA</td>
-              <td>P.H.D</td>
-              <td>omgmail.com</td>
-              <td>9876549878</td>
-              <td>2023-05-28T02:32:53.000000Z</td>
-              <td class="action-button">
-                  <button class="edit">Edit</button>
-                  <button class="delete">Delete</button>
-              </td>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Teacher of paginatedUserList">
+            <td>{{ Teacher.EnrollmentNo }}</td>
+            <td>{{ Teacher.Name }}</td>
+            <td>{{ Teacher.Age }}</td>
+            <td>{{ Teacher.Email }}</td>
+            <td>{{ Teacher.Mobile }}</td>
+            <td>{{ Teacher.FathersName }}</td>
+            <td>{{ Teacher.Password }}</td>
+            <td>{{ Teacher.EnrollmentDate }}</td>
+            <td class="action-button">
+              <button class="edit" (click)="onEdit(Teacher.EnrollmentNo)">
+                Edit
+              </button>
+              <button class="delete" (click)="deleteTeacher(Teacher.EnrollmentNo)">
+                Delete
+              </button>
+            </td>
           </tr>
-          <tr>
-              <td>2</td>
-              <td>Ved Prakash N</td>
-              <td>bca</td>
-              <td>M.Tech</td>
-              <td>vedgmail.com</td>
-              <td>9874569877</td>
-              <td>2023-05-28T02:59:07.000000Z</td>
-              <td class="action-button">
-                  <button class="edit">Edit</button>
-                  <button class="delete">Delete</button>
-              </td>
-          </tr>
-      </tbody>
-  </table>
+        </tbody>
+      </table>
+    </div>
+    <!-- Pagination Controls -->
+    <div class="pagination">
+      <button (click)="previousPage()" [disabled]="currentPage === 1">
+        Previous
+      </button>
+      <button *ngFor="let page of pageNumbers" (click)="setPage(page)" [class.active]="currentPage === page">
+        {{ page }}
+      </button>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+        Next
+      </button>
+    </div>
+  </div>
+
 </div>
+
+
+<!-- Search Box -->
