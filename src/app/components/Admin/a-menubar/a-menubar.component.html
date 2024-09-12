@@ -1,6 +1,6 @@
 <div class="item menu" [ngClass]="width">
   <div class="name"><span *ngIf="is_text_display_none">I Portal</span>
-    @if(width=='toggle'){
+    @if(width){
     <i class="ri-close-large-line" (click)="menu_expanded()"></i>
     }
     @else{
@@ -8,10 +8,10 @@
     }
   </div>
   <div class="tags">
-    <a routerLink="/ahome" routerLinkActive="active"><i class="ri-dashboard-2-line" id="icon"></i>
+    <a routerLink="/ahome" routerLinkActive="active" (click)="collapse()"><i class="ri-dashboard-2-line" id="icon" ></i>
       <span *ngIf="is_text_display_none">Dashboard</span> <i class="ri-arrow-right-s-line"></i>
     </a>
-    <a routerLink="/viewstudent" routerLinkActive="active"><i class="fa-solid fa-building-columns" id="icon"></i>
+    <a routerLink="/viewstudent" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-building-columns" id="icon"></i>
       <span *ngIf="is_text_display_none">Student</span> <i class="ri-arrow-right-s-line"></i>
     </a>
 

@@ -19,7 +19,11 @@ export class AMenubarComponent {
   }
   menu_expanded() {
     this.is_text_display_none = false;
-    this.width = "";
+    this.width = '';
+  }
+  collapse(){
+    this.is_text_display_none = false;
+    this.width = '';
   }
   menu_dark(){
     const ex=document.querySelector('.menu') as HTMLDivElement;
