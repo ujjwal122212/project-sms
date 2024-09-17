@@ -16,13 +16,13 @@
   font-weight: bold;
   padding-top: 20px;
   font-size: 20px;
-  
+  border-top: 1px solid #ddd;
+  padding-bottom: 20px;
+  background-color: #FDC300;
 }
 
 .form-area {
   padding: 0 100px;
-  border-top: 1px solid #ddd;
-  padding-top: 30px;
 
 }
 
