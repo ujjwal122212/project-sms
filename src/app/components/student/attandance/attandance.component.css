@@ -1,0 +1,112 @@
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  margin-top: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.attendance-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.btn {
+  margin-top: 22px;
+  width: fit-content;
+  height: fit-content;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 500px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .attendance-form {
+      flex-direction: column;
+  }
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.attendance-record {
+  overflow-x: auto;
+}
+
+.attendance-record table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.attendance-record th,
+.attendance-record td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.attendance-record th {
+  background-color: #f2f2f2;
+}
+
+p {
+  text-align: center;
+  background-color: #e0f7fa;
+  padding: 10px;
+  margin: 0;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .attendance-record table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+  }
+
+  .attendance-record th, .attendance-record td {
+      display: inline-block;
+  }
+}

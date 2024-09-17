@@ -50,6 +50,7 @@ import { DownloadFreeComponent } from './components/student/Student-service/down
 import { AddStudentComponent } from './components/Admin/addStudent/add-student/add-student.component';
 import { ViewTeacherComponent } from './components/Admin/addTeacher/view-teacher/view-teacher.component';
 import { AddNewTeacherComponent } from './components/Admin/addTeacher/add-new-teacher/add-new-teacher.component';
+import { AttandanceComponent } from './components/student/attandance/attandance.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
 
@@ -83,6 +84,7 @@ export const routes: Routes = [
       { 'path': 'courses', 'title': 'Courses', component: CoursesComponent },
       { 'path': 'performance', 'title': 'Performance', component: PerformanceComponent },
       { 'path': 'timetable', 'title': 'Time-Table', component: TimeTableComponent },
+      { 'path': 'StudentAttendence', 'title': 'Attendence', component: AttandanceComponent },
 
       { 'path': 'fee', 'title': 'Fees', component: FeePageComponent },
       {
@@ -122,6 +124,9 @@ export const routes: Routes = [
 
   //student Time table
   { 'path': 'timetable', 'title': 'Time-Table', component: TimeTableComponent },
+
+  //Student Attendence
+  { 'path': 'StudentAttendence', 'title': 'Attendence', component: AttandanceComponent },
 
   //student fees
   { 'path': 'fee', 'title': 'Fees', component: FeePageComponent },
