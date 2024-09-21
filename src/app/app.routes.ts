@@ -52,6 +52,7 @@ import { ViewTeacherComponent } from './components/Admin/addTeacher/view-teacher
 import { AddNewTeacherComponent } from './components/Admin/addTeacher/add-new-teacher/add-new-teacher.component';
 import { AttandanceComponent } from './components/student/attandance/attandance.component';
 import { THomeComponent } from './components/teacher/t-home/t-home.component';
+import { SDashboardComponent } from './components/student/s-dashboard/s-dashboard.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
 
@@ -69,6 +70,7 @@ export const routes: Routes = [
 
   //student dashboard
   { 'path': 'S-home', 'title': 'Home', component: HomeComponent },
+  { 'path': 'S-dashboard', 'title': 'Home', component: SDashboardComponent },
 
   {
     'path': 'S-home', children: [

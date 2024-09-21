@@ -1,0 +1,226 @@
+.grid-container {
+  margin: 10px;
+  padding: 10px;
+}
+
+.card_container {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+  justify-content: space-around;
+  
+  
+}
+.card {
+  border: 1px solid #000;
+  margin: 7px;
+  
+  flex: 1 1 200px;
+  text-align: center;
+  height: 90px;
+  border-radius: 9px;
+  box-shadow: 2px 2px 0px 0px black;
+  max-width: calc(50% - 20px);
+  margin-left: 25px;
+}
+
+/* Styling for the card labels */
+.lable {
+  margin-top: 70px;
+  background-color: #FDC300;
+  border-radius: 0px 0px 9px 9px;
+  font-weight: 900;
+}
+
+/* Container for the time table and announcements */
+.container2 {
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+}
+
+.time_table {
+  grid-row: span 2;
+  border: 1px solid black;
+  border-radius: 9px;
+  box-shadow: 2px 2px 0px 0px black;
+  height: 425px;
+  overflow: auto;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+  margin-left: 25px;
+  margin-top: 30px;
+  
+}
+
+.time_table table {
+  width: 100%;
+  border-collapse: collapse;
+  
+}
+
+.time_table th, .time_table td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+ 
+  
+  
+}
+
+.time_table th {
+  background-color: #FDC300;
+  position: sticky;
+  top: 0;
+  
+ 
+  
+}
+
+.annonc_link {
+  width: 100%;
+  max-width: 400px;
+ 
+  
+}
+
+/* Styling for announcements and important links */
+.Announcement, .links {
+  border: 1px solid black;
+  display: block;
+  border-radius: 9px;
+  box-shadow: 2px 2px 0px 0px black;
+  margin-bottom: 20px;
+  height: 200px;
+  margin-top: 30px;
+
+}
+
+/* Styling for the text in announcements and links */
+.text {
+  background: #FDC300;
+  text-align: left;
+  font-size: 25px;
+  font-weight: 600;
+  border-radius: 9px 9px 0px 0px;
+  padding: 10px;
+  width: 100%;
+  /* position: sticky;
+  top: 0; */
+}
+
+
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode nav {
+  background-color: #333;
+  color: #e0e0e0;
+}
+
+body.dark-mode .menu {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+
+body.dark-mode .menu a {
+  color: #e0e0e0;
+  border-bottom: 1px solid #444;
+}
+
+body.dark-mode .card{
+  background-color: #333;
+  color: #e0e0e0;
+}
+
+body.dark-mode .time_table{
+  background-color: #333;
+  color: #e0e0e0;
+}
+body.dark-mode .Announcement{
+  background-color: #333;
+  color: #e0e0e0;
+}
+body.dark-mode .links{
+  background-color: #333;
+  color: #e0e0e0;
+}
+
+
+@media (max-width: 768px) {
+  .menu {
+      width: 50px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      z-index: 10;
+      background: var(--sidebar_color_student);
+  }
+
+  .menu.expanded {
+      width: 200px;
+  }
+
+  .main-content.shifted {
+      margin-left: 0;
+      width: 100%;
+  }
+
+  .header {
+      margin: 10px;
+      padding: 10px;
+      height: auto;
+  }
+
+  .header h1 {
+      font-size: 18px;
+      padding-bottom: 5px;
+  }
+
+  .header div {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .grid-container {
+      margin-left: 50px;
+      transition: margin-left 0.3s;
+  }
+
+  .menu.expanded+.main-content .grid-container {
+      margin-left: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .menu.collapsed+.main-content nav {
+      /* width: calc(100% - 50px); */
+      width: calc(100%);
+  }
+
+  .main-content {
+      /* width: calc(100% - 200px); */
+      width: calc(100%);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container2 {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+  }
+
+  .time_table {
+      margin-right: 20px;
+      margin-bottom: 0;
+  }
+
+  .annonc_link {
+      margin-left: 20px;
+  }
+}
