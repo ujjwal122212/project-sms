@@ -1,0 +1,288 @@
+.view-container {
+  padding: 10px;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  /* background-color: red; */
+  /* padding: 20px; */
+  /* padding-top: 100px; */
+  width: 100vw;
+  /* overflow: hidden; */
+  position: relative;
+  width: 100%;
+}
+.main {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  background-color: aliceblue;
+  /* background: yellow; */
+}
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  /* border-right: 2px solid #000; */
+  padding-right: 10px;
+  padding-left: 10px;
+  height: 100%;
+}
+/* +++++++++++++++++++++++++++++ */
+/* top -row */
+.top-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 3%;
+  margin-top: 1%;
+  height: auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  height: auto;
+  margin: 10px;
+  padding: 30px 20px;
+  /* background: rgb(160, 138, 226); */
+  border-radius: 15px;
+  box-shadow: 0 10px 20px 0 #6b8ece77,
+    inset 0px -7px 12px 1px rgb(107, 143, 179);
+  transition: all 0.4s ease-in-out;
+}
+.card:nth-child(even) {
+  background-color: #fbbf24;
+}
+.card:nth-child(odd) {
+  background-color: #60a5fa;
+}
+.card:hover {
+  animation: all 10s linear infinite;
+  box-shadow: 0 17px 45px 0 #2b3a5d, inset 0px -7px 12px 1px rgb(183, 147, 240);
+  cursor: pointer;
+  transform: translateY(-10px);
+  transition: all 0.4s ease-in-out;
+}
+
+.card:active {
+  transform: scale(0.96);
+}
+.card h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+.card p {
+  font-size: 1.2rem;
+  color: white;
+  margin: 5px 0 0;
+  font-weight: bold;
+}
+
+/* Midle */
+.middle-row {
+  display: flex;
+  margin-bottom: 4%;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 10px;
+}
+.student {
+  background-color: #ffffff;
+  border-radius: 15px;
+  /* lefft side box shaodw */
+  box-shadow: 0 10px 20px 0 #6b8ece77,
+    inset 0px -7px 12px 1px rgb(107, 143, 179);
+  transition: all 0.4s ease-in-out;
+  padding: 20px;
+  flex: 1;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.header h3 {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.student-header .icon {
+  font-size: 1.5em;
+  color: #9ca3af;
+}
+.chart {
+  height: 400px;
+  background-color: #e5e7eb;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+/* Buttom-row */
+.bottom-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 12%;
+  /* background-color: red; */
+  padding: 10px;
+  gap: 12px;
+}
+.pipe {
+  flex: 2;
+}
+.mid {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  flex: 1;
+  /* height: 200px; */
+
+  justify-content: space-between;
+}
+.sub {
+  height: 200px;
+}
+.sub .chart {
+  height: 50%;
+}
+.side-bar {
+  margin-top: 1%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-right: 20px;
+  height: 100%;
+}
+/* Agenda */
+.side-bar .agenda {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px 0 #6b8ece77,
+    inset 0px -7px 12px 1px rgb(107, 143, 179);
+  transition: all 0.4s ease-in-out;
+  padding: 20px;
+  flex: 1;
+  height: auto;
+}
+
+.agenda,
+.messages {
+  flex: 1;
+  margin-bottom: 12%;
+}
+.agenda .date {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.agenda .date h3 {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.agenda .date .icon {
+  font-size: 1.5em;
+  color: #9ca3af;
+}
+.agenda .calendar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.agenda .calendar div {
+  text-align: center;
+  flex: 1;
+}
+.agenda .calendar div span {
+  display: block;
+  font-size: 0.9em;
+  color: #9ca3af;
+}
+.agenda .calendar div strong {
+  display: block;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+.agenda .events {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.agenda .event {
+  background-color: #f3f4f6;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.agenda .event h4 {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+}
+.agenda .event p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #9ca3af;
+}
+
+/* Message */
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px 0 #6b8ece77,
+    inset 0px -7px 12px 1px rgb(107, 143, 179);
+  transition: all 0.4s ease-in-out;
+  padding: 20px;
+  flex: 1;
+  height: auto;
+}
+.messages .message {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+.messages .message img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.messages .message .message-content {
+  flex: 1;
+}
+
+.messages .message .message-content h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.messages .message .message-content p {
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 5px 0 0;
+}
