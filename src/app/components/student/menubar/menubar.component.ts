@@ -1,14 +1,29 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-menubar',
   standalone: true,
-  imports: [RouterLink,RouterLinkActive],
+  imports: [RouterLink,RouterLinkActive,CommonModule],
   templateUrl: './menubar.component.html',
   styleUrl: './menubar.component.css'
 })
 export class MenubarComponent {
+  is_text_display_none: boolean = false;
+  width: string = '';
 
+  menu_collapsed() {
+    this.is_text_display_none = true;
+    this.width = "toggle";
+  }
+  menu_expanded() {
+    this.is_text_display_none = false;
+    this.width = '';
+  }
+  collapse(){
+    this.is_text_display_none = false;
+    this.width = '';
+  }
 
 }

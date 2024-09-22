@@ -2,7 +2,7 @@
   background-color: #5c7594;
 }
 .menu {
-  width: 200px;
+  width: 50px;
   background-color:#042954;
   flex-shrink: 0;
   transition: width 0.3s, left 0.3s;
@@ -12,6 +12,7 @@
   z-index: 10;
   height: 100vh;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 .name {
   background: #FDC300;
@@ -117,7 +118,13 @@ body.dark-mode .menu a {
     display: block;
   }
 }
+.end {
+  margin-left: 20px;
+}
 
+.toggle {
+  width: 200px;
+}
 
 
 
