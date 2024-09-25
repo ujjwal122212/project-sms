@@ -1,5 +1,6 @@
 .view-container {
-  padding: 10px;
+  /* padding: 10px; */
+  margin: 40px 0px 0px 40px;
 }
 .container {
   display: flex;
@@ -18,7 +19,7 @@
   height: 100%;
   width: 100%;
   padding: 10px;
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
   /* background: yellow; */
 }
 .main-content {
