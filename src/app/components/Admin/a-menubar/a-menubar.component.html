@@ -8,7 +8,10 @@
     }
   </div>
   <div class="tags">
-    <a routerLink="/ahome" routerLinkActive="active" (click)="collapse()"><i class="ri-dashboard-2-line" id="icon" ></i>
+    <a routerLink="/ahome" routerLinkActive="active" (click)="collapse()"><i class="ri-home-3-line" id="icon" ></i>
+      <span *ngIf="is_text_display_none">Home</span> <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a routerLink="admin-home" routerLinkActive="active"><i class="ri-dashboard-2-line" id="icon"></i>
       <span *ngIf="is_text_display_none">Dashboard</span> <i class="ri-arrow-right-s-line"></i>
     </a>
     <a routerLink="/viewstudent" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-building-columns" id="icon"></i>
@@ -49,9 +52,7 @@
       <span *ngIf="is_text_display_none">Notice</span> <i class="ri-arrow-right-s-line"></i>
     </a>
 
-    <a routerLink="admin-home" routerLinkActive="active"><i class="fa-solid fa-gears" id="icon"></i>
-      <span *ngIf="is_text_display_none">Account</span> <i class="ri-arrow-right-s-line"></i>
-    </a>
+
   </div>
 
 </div>
