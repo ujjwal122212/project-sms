@@ -4,6 +4,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { pipe } from 'rxjs';
 
 @Component({
   selector: 'app-add-student',
@@ -15,6 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AddStudentComponent {
 
   toastr = inject(ToastrService);
+  
 
   student: any = {
     name: '',

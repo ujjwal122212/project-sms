@@ -17,20 +17,46 @@
         </div>
         <div class="card-section">
             <div class="card">
-                <h4>Previous Doubt</h4>
-                <div class="content"></div>
+                <h4 >Previous Doubts</h4>
+                <div class="content">
+
+                  <table>
+                    <thead>
+                        <tr>
+
+                            <td>Doubts</td>
+                            <td>Created Date</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let Doubts of DoubtsList">
+
+                          <td>{{Doubts.DoubtText}}</td>
+                          <td>{{Doubts.CreatedAt| date:'dd-MM-YYYY'}}</td>
+                          <td class="action-button">
+                            <button class="edit">
+                              Edit
+                            </button>
+                            <button class="delete">
+                              Delete
+                            </button>
+                          </td>
+                      </tr>
+                  </tbody>
+
+                  </table>
+                </div>
             </div>
             <div class="text-area">
-                <div class="file-section">
-                    <input type="file" class="files">
-                </div>
+
                 <div class="text-section">
-                    <textarea placeholder="Type your doubt....."></textarea>
+                    <textarea #doubtText placeholder="Type your doubt....." ></textarea>
                 </div>
             </div>
         </div>
         <div class="submit-button">
-            <button type="submit" class="submit-button">Submit</button>
+            <button type="submit" class="submit-button" (click)="addDoubtStudent(doubtText.value)">Submit</button>
         </div>
     </div>
     <div class="contact-section">

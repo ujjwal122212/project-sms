@@ -2,6 +2,29 @@
   background-color: #5c7594;
 }
 
+button.edit {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+button.delete {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+td.action-button {
+  min-width: 150px;
+}
+
 .support-section {
   margin-top: 10px;
   padding: 10px;
@@ -46,6 +69,7 @@
 }
 .content{
   padding-bottom: 10px;
+
 }
 
 .doubt-section {
@@ -68,6 +92,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+
 }
 
 .card {
@@ -77,6 +102,7 @@
   border-radius: 10px;
   /* border: 1px solid black; */
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  overflow-y: scroll;
 }
 
 .card:hover {
@@ -225,5 +251,5 @@ thead {
   .support-section {
     margin-left: 50px;
     overflow-x: hidden;
-  } 
+  }
 }
