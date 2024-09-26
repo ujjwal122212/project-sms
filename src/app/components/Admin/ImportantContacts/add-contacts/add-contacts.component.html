@@ -1,0 +1,152 @@
+<!-- <div class="main-container">
+  @if(isEdit){
+  <h2>UPDATE STUDENT</h2>
+  }
+  @else {<h2>ADD STUDENT</h2>}
+
+  <br>
+  <div class="form-area">
+    <form action="" #form="ngForm" novalidate>
+      <div class="first">
+        <div class="one">
+
+          <label for="">Name</label>
+          <div class="input">
+            <input [(ngModel)]="student.name" name="name" #name="ngModel" required pattern="^[a-zA-Z\s]+$"
+              [ngClass]="{ 'is-invalid': name.invalid && name.touched}">
+
+            @if (name.touched && name.errors?.['required']){
+            <span style="color: red;">This is Required*</span>
+            }
+
+            @else if (name.touched && name.errors?.['pattern']) {
+            <span style="color: red;">Enter a Valid Name</span>
+            }
+          </div>
+        </div>
+
+
+        <div class="two">
+          <label for="">Age</label>
+          <div class="input">
+
+            <input [(ngModel)]="student.age" name="age" type="number" #age="ngModel"
+              [ngClass]="{ 'is-invalid': age.invalid && age.touched}" minlength="1" maxlength="3" required>
+            @if (age.touched && age.errors?.['required']) {
+            <span style="color: red;">This is Required*</span>
+            }
+
+          </div>
+        </div>
+      </div>
+      <div class="second">
+        <div class="one">
+          <label for="">Class</label>
+          <div class="input">
+
+
+
+            <select [(ngModel)]="student.class" name="class" required #class="ngModel"  [ngClass]="{ 'is-invalid': class.invalid && class.touched}">
+              <option value="" selected disabled>Choose..</option>
+              <option value="Prep">Prep</option>
+              <option value="Nursury">Nursury</option>
+              <option value="LKG">LKG</option>
+              <option value="UKG">UKG</option>
+              <option value="1st">1st</option>
+              <option value="2nd">2nd</option>
+              <option value="3rd">3rd</option>
+              <option value="4th">4th</option>
+              <option value="5th">5th</option>
+              <option value="6th">6th</option>
+              <option value="7th">7th</option>
+              <option value="8th">8th</option>
+              <option value="9th">9th</option>
+              <option value="10th">10th</option>
+              <option value="11th">11th</option>
+              <option value="12th">12th</option>
+
+            </select>
+            @if (class.touched && class.errors?.['required']) {
+            <span style="color: red;">This is Required*</span>
+            }
+
+          </div>
+        </div>
+        <div class="two">
+          <label for="">Section</label>
+          <div class="input">
+
+            <select [(ngModel)]="student.section" name="section" required #section="ngModel"
+              [ngClass]="{ 'is-invalid': section.invalid && section.touched}">
+              <option value="" selected disabled>Choose...</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+            </select>
+            @if (section.touched && section.errors?.['required']) {
+
+            <span style="color: red;">This is Required*</span>
+            }
+          </div>
+        </div>
+      </div>
+      <div class="third">
+        <div class="one">
+          <label for="">Email</label>
+          <div class="input">
+            <input [(ngModel)]="student.email" name="email" #email="ngModel" email
+              [ngClass]="{ 'is-invalid': email.invalid}">
+            @if (email.touched && email.errors?.['email']) {
+            <span style="color: red;">Enter valid Email</span>
+            }
+          </div>
+        </div>
+        <div class="two">
+          <label for="">Mobile</label>
+          <div class="input">
+            <input [(ngModel)]="student.mobile" #mobile="ngModel" name="mobile" required
+              [ngClass]="{ 'is-invalid': mobile.invalid && mobile.touched}" minlength="10" maxlength="10"
+              pattern="^[0-9]*$">
+            @if (mobile.touched && mobile.errors?.['required']){
+            <span style="color: red;">This is Required*</span>
+            }
+
+            @else if (mobile.touched && mobile.errors?.['minlength']) {
+            <span style="color: red;">minimum 10 character required</span>
+            }
+            @else if (mobile.touched && mobile.errors?.['pattern']) {
+            <span style="color: red;">Enter a Valid Number</span>
+            }
+
+          </div>
+        </div>
+      </div>
+      <div class="fourth">
+        <div class="one">
+          <label for="">Father's Name</label>
+          <div class="input">
+            <input [(ngModel)]="student.fatherName" name="fatherName" #fatherName="ngModel" required
+              pattern="^[a-zA-Z\s]+$" [ngClass]="{ 'is-invalid': fatherName.invalid && fatherName.touched}">
+            @if (fatherName.touched && fatherName.errors?.['required']){
+            <span style="color: red;">This is Required*</span>
+            }
+
+            @else if (fatherName.touched && fatherName.errors?.['pattern']) {
+            <span style="color: red;">Enter a Valid Name</span>
+            }
+          </div>
+        </div>
+      </div>
+      <div class="button-area">
+        @if(isEdit){
+        <button type="submit" (click)="Save()" [disabled]="form.invalid">Update</button>
+        }
+        @else{
+        <button type="submit" (click)="postStudentData()" [disabled]="form.invalid">Submit</button>
+        }
+        <button type="button" (click)="goto()">Back</button>
+      </div>
+    </form>
+  </div>
+
+</div> -->

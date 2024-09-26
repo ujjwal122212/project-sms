@@ -1,59 +1,61 @@
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
+import { ADashboardComponent } from './components/Admin/a-dashboard/a-dashboard.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { CoursesComponent } from './components/student/courses/courses.component';
+import { FeePageComponent } from './components/student/fees/fee-page/fee-page.component';
+import { StudentHelpComponent } from './components/student/help/student-help.component';
 import { HomeComponent } from './components/student/home/home.component';
+import { PerformanceComponent } from './components/student/performance/performance.component';
 import { Quiz1Component } from './components/student/quiz/quiz1/quiz1.component';
 import { Quiz2Component } from './components/student/quiz/quiz2/quiz2.component';
-import { CoursesComponent } from './components/student/courses/courses.component';
-import { PerformanceComponent } from './components/student/performance/performance.component';
 import { TimeTableComponent } from './components/student/time-table/time-table.component';
-import { StudentHelpComponent } from './components/student/help/student-help.component';
-import { FeePageComponent } from './components/student/fees/fee-page/fee-page.component';
-import { LeavePageComponent } from './components/teacher/leave/leave-page/leave-page.component';
+import { CheckHomeworkComponent } from './components/teacher/homework/check-homework/check-homework.component';
+import { GiveHomeworkComponent } from './components/teacher/homework/give-homework/give-homework.component';
+import { THomeworkPageComponent } from './components/teacher/homework/t-homework-page/t-homework-page.component';
 import { ApplyLeaveComponent } from './components/teacher/leave/apply-leave/apply-leave.component';
 import { CancelLeaveComponent } from './components/teacher/leave/cancel-leave/cancel-leave.component';
 import { HolidayCalenderComponent } from './components/teacher/leave/holiday-calender/holiday-calender.component';
+import { LeavePageComponent } from './components/teacher/leave/leave-page/leave-page.component';
 import { ViewBalanceComponent } from './components/teacher/leave/view-balance/view-balance.component';
 import { ViewLeaveBookComponent } from './components/teacher/leave/view-leave-book/view-leave-book.component';
 import { ViewStatusComponent } from './components/teacher/leave/view-status/view-status.component';
-import { CheckHomeworkComponent } from './components/teacher/homework/check-homework/check-homework.component';
-import { GiveHomeworkComponent } from './components/teacher/homework/give-homework/give-homework.component';
-import { TQuizComponent } from './components/teacher/quiz/t-quiz/t-quiz.component';
-import { UpcomingComponent } from './components/teacher/quiz/upcoming/upcoming.component';
+import { AssesmentComponent } from './components/teacher/quiz/assesment/assesment.component';
 import { OngoingComponent } from './components/teacher/quiz/ongoing/ongoing.component';
 import { SecheduleComponent } from './components/teacher/quiz/sechedule/sechedule.component';
-import { AssesmentComponent } from './components/teacher/quiz/assesment/assesment.component';
+import { TQuizComponent } from './components/teacher/quiz/t-quiz/t-quiz.component';
+import { UpcomingComponent } from './components/teacher/quiz/upcoming/upcoming.component';
 import { TDashboardComponent } from './components/teacher/t-dashboard/t-dashboard.component';
-import { THomeworkPageComponent } from './components/teacher/homework/t-homework-page/t-homework-page.component';
 import { THelpComponent } from './components/teacher/t-help/t-help.component';
-import { ADashboardComponent } from './components/Admin/a-dashboard/a-dashboard.component';
 
 import { ViewStudentComponent } from './components/Admin/addStudent/view-student/view-student.component';
 
-import { AttendenceComponent } from './components/teacher/attendence/attendence.component';
-import { TTimeTableComponent } from './components/teacher/t-time-table/t-time-table.component';
 import { PaymentComponent } from './components/student/fees/payment/payment.component';
 import { RecieptComponent } from './components/student/fees/reciept/reciept.component';
-import { ManagementPageComponent } from './components/teacher/student-management/management-page/management-page.component';
-import { ClassPageComponent } from './components/teacher/student-management/class-page/class-page.component';
-import { StudentpageComponent } from './components/teacher/student-management/studentpage/studentpage.component';
 import { AssignmentPageComponent } from './components/student/homework/assignment-page/assignment-page.component';
 import { HomeworkPageComponent } from './components/student/homework/homework-page/homework-page.component';
+import { AttendenceComponent } from './components/teacher/attendence/attendence.component';
+import { ClassPageComponent } from './components/teacher/student-management/class-page/class-page.component';
+import { ManagementPageComponent } from './components/teacher/student-management/management-page/management-page.component';
+import { StudentpageComponent } from './components/teacher/student-management/studentpage/studentpage.component';
+import { TTimeTableComponent } from './components/teacher/t-time-table/t-time-table.component';
 
-import { OpenSerComponent } from './components/student/Student-service/open-ser/open-ser.component';
-import { IdCardComponent } from './components/student/Student-service/id-card/id-card.component';
-import { EditIdCardComponent } from './components/student/Student-service/edit-id-card/edit-id-card.component';
-import { TransportServiceComponent } from './components/student/Student-service/transport-service/transport-service.component';
-import { FreeStructComponent } from './components/student/Student-service/free-struct/free-struct.component';
-import { ChangeCurrentPickPlaceComponent } from './components/student/Student-service/change-current-pick-place/change-current-pick-place.component';
-import { MedicalServicesComponent } from './components/student/Student-service/medical-services/medical-services.component';
-import { DownloadFreeComponent } from './components/student/Student-service/download-free/download-free.component';
 import { AddStudentComponent } from './components/Admin/addStudent/add-student/add-student.component';
-import { ViewTeacherComponent } from './components/Admin/addTeacher/view-teacher/view-teacher.component';
 import { AddNewTeacherComponent } from './components/Admin/addTeacher/add-new-teacher/add-new-teacher.component';
-import { AttandanceComponent } from './components/student/attandance/attandance.component';
-import { THomeComponent } from './components/teacher/t-home/t-home.component';
-import { SDashboardComponent } from './components/student/s-dashboard/s-dashboard.component';
+import { ViewTeacherComponent } from './components/Admin/addTeacher/view-teacher/view-teacher.component';
 import { AdminHomeComponent } from './components/Admin/admin-home/admin-home.component';
+import { AddContactsComponent } from './components/Admin/ImportantContacts/add-contacts/add-contacts.component';
+import { ViewContactsComponent } from './components/Admin/ImportantContacts/view-contacts/view-contacts.component';
+import { AttandanceComponent } from './components/student/attandance/attandance.component';
+import { SDashboardComponent } from './components/student/s-dashboard/s-dashboard.component';
+import { ChangeCurrentPickPlaceComponent } from './components/student/Student-service/change-current-pick-place/change-current-pick-place.component';
+import { DownloadFreeComponent } from './components/student/Student-service/download-free/download-free.component';
+import { EditIdCardComponent } from './components/student/Student-service/edit-id-card/edit-id-card.component';
+import { FreeStructComponent } from './components/student/Student-service/free-struct/free-struct.component';
+import { IdCardComponent } from './components/student/Student-service/id-card/id-card.component';
+import { MedicalServicesComponent } from './components/student/Student-service/medical-services/medical-services.component';
+import { OpenSerComponent } from './components/student/Student-service/open-ser/open-ser.component';
+import { TransportServiceComponent } from './components/student/Student-service/transport-service/transport-service.component';
+import { THomeComponent } from './components/teacher/t-home/t-home.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
 
@@ -334,5 +336,11 @@ export const routes: Routes = [
     path:'teacher/:id',
     component:AddNewTeacherComponent
   },
+
+
+
+  //Important Contacts
+  { 'path': 'view', 'title': 'view-contact', component: ViewContactsComponent },
+  { 'path': 'addContact', 'title': 'Add-contact', component: AddContactsComponent },
 ];
 

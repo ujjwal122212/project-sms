@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-a-menubar',
@@ -29,4 +29,6 @@ export class AMenubarComponent {
     const ex=document.querySelector('.menu') as HTMLDivElement;
     ex.classList.toggle('dark');
   }
+
+
 }

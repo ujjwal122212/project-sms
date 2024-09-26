@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="border-bottom">
-        
+
     </div>
     <div class="doubt-section">
         <div class="doubt-header">
@@ -49,47 +49,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>01</td>
-                        <td>Ranjan Kumar</td>
-                        <td>Class Teacher</td>
-                        <td>+91 7839098314</td>
-                        <td>ranjancheeta</td>
-                    </tr>
-                    <tr>
-                        <td>02</td>
-                        <td>Ranjan Kumar</td>
-                        <td>Class Teacher</td>
-                        <td>+91 7839098314</td>
-                        <td>ranjancheeta</td>
-                    </tr>
-                    <tr>
-                        <td>03</td>
-                        <td>Ranjan Kumar</td>
-                        <td>Class Teacher</td>
-                        <td>+91 7839098314</td>
-                        <td>ranjancheeta</td>
-                    </tr>
-                    <tr>
-                        <td>04</td>
-                        <td>Ranjan Kumar</td>
-                        <td>Class Teacher</td>
-                        <td>+91 7839098314</td>
-                        <td>ranjancheeta</td>
-                    </tr>
-                    <tr>
-                        <td>05</td>
-                        <td>Ranjan Kumar</td>
-                        <td>Class Teacher</td>
-                        <td>+91 7839098314</td>
-                        <td>ranjancheeta</td>
-                    </tr>
-                    <tr>
-                        <td>06</td>
-                        <td>Ranjan Kumar</td>
-                        <td>Class Teacher</td>
-                        <td>+91 7839098314</td>
-                        <td>ranjancheeta</td>
+                    <tr *ngFor="let student of User">
+                        <td>{{student.id}}</td>
+                        <td>{{student.name}}</td>
+                        <td>{{student.work}}</td>
+                        <td>{{student.mobilenumber}}</td>
+                        <td>{{student.emailid}}</td>
                     </tr>
                 </tbody>
             </table>

@@ -21,7 +21,10 @@
     <a routerLink="/viewTeacher" routerLinkActive="active"  (click)="collapse()"><i class="fa-solid fa-chalkboard-user" id="icon"></i>
       <span *ngIf="is_text_display_none">Teacher</span> <i class="ri-arrow-right-s-line"></i>
     </a>
-    <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-person" id="icon"></i>
+    <a routerLink="/view" routerLinkActive="active"  (click)="collapse()"><i class="fa-solid fa-chalkboard-user" id="icon"></i>
+      <span *ngIf="is_text_display_none">Teacher</span> <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a routerLink="/viewContact" routerLinkActive="active"><i class="fa-solid fa-person" id="icon"></i>
       <span *ngIf="is_text_display_none">Parents</span> <i class="ri-arrow-right-s-line"></i>
     </a>
     <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-book" id="icon"></i>
