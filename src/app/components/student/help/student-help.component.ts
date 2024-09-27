@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-student-help',
@@ -11,7 +12,11 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './student-help.component.css'
 })
 export class StudentHelpComponent {
+  toastr=inject(ToastrService);
   responseMessage: string = '';
+  hh:any={
+    dd:""
+  }
 
   DoubtsList:any[]=[];
   User:any[]=[];
@@ -52,6 +57,10 @@ export class StudentHelpComponent {
               this.responseMessage = 'Doubt added successfully!';
               console.log(response);
               this.GetDoubts();
+              this.hh={
+                dd:''
+
+              }
 
 
             },
@@ -62,4 +71,37 @@ export class StudentHelpComponent {
           );
       }
 
+
+      //delete Doubts
+      deleteDoubts(id: number) {
+        const isDelete=confirm("Are you sure you want to delete");
+        if(isDelete){
+
+          const url = `https://localhost:7262/DeleteDoubtStudents/` + id;
+
+          this.http.delete(url, { responseType: 'text' })
+            .subscribe(
+              response => {
+                console.log('Response:', response);
+
+                this.toastr.error('Doubts Deleted Succesfully');
+                this.GetDoubts();
+
+              },
+              error => {
+                console.error('Error:', error);
+                alert('Failed to delete .');
+              }
+            );
+
 }
+      }
+
+      //edit doubts
+
+      EditDoubts(doubt:any){
+        this.hh=doubt;
+        console.log(doubt)
+
+      }
+    }

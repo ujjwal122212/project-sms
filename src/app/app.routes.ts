@@ -56,6 +56,7 @@ import { MedicalServicesComponent } from './components/student/Student-service/m
 import { OpenSerComponent } from './components/student/Student-service/open-ser/open-ser.component';
 import { TransportServiceComponent } from './components/student/Student-service/transport-service/transport-service.component';
 import { THomeComponent } from './components/teacher/t-home/t-home.component';
+import { StudentAdmissionComponent } from './components/Admin/student-admission/student-admission.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
 
@@ -337,7 +338,8 @@ export const routes: Routes = [
     component:AddNewTeacherComponent
   },
 
-
+//Student Admission
+{ 'path': 'StuAdmission', 'title': 'Admission', component: StudentAdmissionComponent },
 
   //Important Contacts
   { 'path': 'view', 'title': 'view-contact', component: ViewContactsComponent },

@@ -16,7 +16,7 @@ import { pipe } from 'rxjs';
 export class AddStudentComponent {
 
   toastr = inject(ToastrService);
-  
+
 
   student: any = {
     name: '',
@@ -62,7 +62,7 @@ export class AddStudentComponent {
 
   getStudentById(Studentid: number) {
     this.http.get("https://localhost:7262/GetStudente/" + Studentid).subscribe((result: any) => {
-      debugger;
+      // debugger;
       console.log(result);
       this.student = result;
 

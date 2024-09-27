@@ -35,10 +35,10 @@
                           <td>{{Doubts.DoubtText}}</td>
                           <td>{{Doubts.CreatedAt| date:'dd-MM-YYYY'}}</td>
                           <td class="action-button">
-                            <button class="edit">
+                            <button class="edit" (click)="EditDoubts(Doubts.DoubtText)" >
                               Edit
                             </button>
-                            <button class="delete">
+                            <button class="delete" (click)="deleteDoubts(Doubts.DoubtId)">
                               Delete
                             </button>
                           </td>
@@ -51,7 +51,7 @@
             <div class="text-area">
 
                 <div class="text-section">
-                    <textarea #doubtText placeholder="Type your doubt....." ></textarea>
+                    <textarea #doubtText [(ngModel)]="hh.dd" placeholder="Type your doubt....." ></textarea>
                 </div>
             </div>
         </div>
