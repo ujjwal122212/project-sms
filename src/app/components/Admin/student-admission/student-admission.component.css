@@ -1,87 +1,87 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 
 .container {
-    max-width: 600px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
+  max-width: 600px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
 }
 
 h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: bold;
-    text-decoration: underline;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 h3 {
-    margin-top: 20px;
-    color: #333;
-    text-decoration: underline;
+  margin-top: 20px;
+  color: #333;
+  text-decoration: underline;
 }
 
 .form-group {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .form-group textarea {
-    height: 80px;
-    resize: vertical;
+  height: 80px;
+  resize: vertical;
 }
 
 .form-group button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .form-group button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 @media (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
+  .container {
+      padding: 10px;
+  }
 
-    .form-group label {
-        font-size: 14px;
-    }
+  .form-group label {
+      font-size: 14px;
+  }
 
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-        font-size: 14px;
-    }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+      font-size: 14px;
+  }
 
-    .form-group button {
-        font-size: 14px;
-    }
+  .form-group button {
+      font-size: 14px;
+  }
 }

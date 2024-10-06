@@ -1,105 +1,114 @@
 <div class="container">
     <h2>Student Registration Form</h2>
     <form>
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name">
-        </div>
-        <div class="form-group">
-            <label for="dob">DOB:</label>
-            <input type="date" id="dob" name="dob">
-        </div>
-        <div class="form-group">
-            <label for="gender">Gender:</label>
-            <select id="gender" name="gender">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="blood-group">Blood Group:</label>
-            <input type="text" id="blood-group" name="blood-group" placeholder="A+, O-, etc.">
-        </div>
-        <h2>PARENT'S DETAILS</h2>
-        <div class="form-group">
-            <label for="father-name">Father's Name:</label>
-            <input type="text" id="father-name" name="father-name">
-        </div>
-        <div class="form-group">
-            <label for="mother-name">Mother's Name:</label>
-            <input type="text" id="mother-name" name="mother-name">
-        </div>
-        <div class="form-group">
-            <label for="father-occupation">Father's Occupation:</label>
-            <input type="text" id="father-occupation" name="father-occupation">
-        </div>
-        <div class="form-group">
-            <label for="mother-occupation">Mother's Occupation:</label>
-            <input type="text" id="mother-occupation" name="mother-occupation">
-        </div>
-        <div class="form-group">
-            <label for="income">Monthly Family Income:</label>
-            <input type="text" id="income" name="income">
-        </div>
-        <div class="form-group">
-            <label for="mobile">Mobile:</label>
-            <input type="tel" id="mobile" name="mobile">
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email">
-        </div>
-        <h2>ADDRESS LINE</h2>
-        <div class="form-group">
-            <label for="state">State:</label>
-            <input type="text" id="state" name="state">
-        </div>
-        <div class="form-group">
-            <label for="district">District:</label>
-            <input type="text" id="district" name="district">
-        </div>
-        <div class="form-group">
-            <label for="pincode">Pincode:</label>
-            <input type="text" id="pincode" name="pincode">
-        </div>
-        <div class="form-group">
-            <label for="address">Address:</label>
-            <textarea id="address" name="address"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="image">Image of Student:</label>
-            <input type="file" id="image" name="image">
-        </div>
-        <div class="form-group">
-            <label for="class">Class:</label>
-            <select id="class" name="class">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="section">Section:</label>
-            <select id="section" name="section">
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-            </select>
-        </div>
+      <div class="form-group" >
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" [(ngModel)]="StudentName">
+    </div>
+    <div class="form-group">
+        <label for="dob">DOB:</label>
+        <input type="date" id="dob" name="dob"  [(ngModel)]="DateOfBirth">
+    </div>
+    <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" [(ngModel)]="Gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="blood-group">Blood Group:</label>
+        <input type="text" id="blood-group" name="blood-group" placeholder="A+, O-, etc." [(ngModel)]="BloodGroup">
+    </div>
+    <h2>PARENT'S DETAILS</h2>
+    <div class="form-group">
+        <label for="father-name">Father's Name:</label>
+        <input type="text" id="father-name" name="father-name" [(ngModel)]="FathersName">
+    </div>
+    <div class="form-group">
+        <label for="mother-name">Mother's Name:</label>
+        <input type="text" id="mother-name" name="mother-name" [(ngModel)]="MothersName">
+    </div>
+    <div class="form-group">
+        <label for="father-occupation">Father's Occupation:</label>
+        <input type="text" id="father-occupation" name="father-occupation" [(ngModel)]="FatherOccupation">
+    </div>
+    <div class="form-group">
+        <label for="mother-occupation">Mother's Occupation:</label>
+        <input type="text" id="mother-occupation" name="mother-occupation" [(ngModel)]="MotherOccupation">
+    </div>
+    <div class="form-group">
+        <label for="income">Monthly Family Income:</label>
+        <input type="text" id="income" name="income" [(ngModel)]="FamilyIncome">
+    </div>
+    <div class="form-group">
+        <label for="mobile">Mobile:</label>
+        <input type="tel" id="mobile" name="mobile" [(ngModel)]="Mobile">
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="Email">
+    </div>
+    <h2>ADDRESS LINE</h2>
+    <div class="form-group">
+        <label for="state">State:</label>
+        <select id="state" name="state" (change)="getDistrictById()" [(ngModel)]="StateId" [(ngModel)]="State">
+          <option value="">Select a state</option>
+          <option *ngFor="let item of StateList  " [value]="item.stateId" >{{item.stateName}}</option>
 
-        <div class="form-group">
-            <button type="submit">Submit</button>
-        </div>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="district">District:</label>
+        <select id="district" name="district" [(ngModel)]="District">
+          <option value="">Select a district</option>
+
+            <option  *ngFor="let item of DistrictList  " [value]="item.districtId" >{{item.districtName}}</option>
+
+      </select>
+    </div>
+    <div class="form-group">
+        <label for="pincode">Pincode:</label>
+        <input type="text" id="pincode" name="pincode" [(ngModel)]="Pincode">
+    </div>
+    <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" [(ngModel)]="Address"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="image">Image of Student:</label>
+        <input type="file" id="image" name="image" (change)="onFileSelected($event)">
+    </div>
+    <div class="form-group">
+        <label for="class">Class:</label>
+        <select id="class" name="class" [(ngModel)]="Class">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="section">Section:</label>
+        <select id="section" name="section" [(ngModel)]="Section">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" (click)="onSubmit()">Submit</button>
+    </div>
     </form>
 </div>
 
