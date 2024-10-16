@@ -1,76 +1,175 @@
-<div class="support-section">
+<!-- <div class="support-section">
     <div class="header">
-        <h1>Help & Support</h1>
-        <div class="content">
-            <span><a href="#">Dashboard</a></span>
-            <span><p> / Help & Support</p></span>
-        </div>
+      <h1>Help & Support</h1>
+      <div class="content">
+        <span><a href="#">Dashboard</a></span>
+        <span><p>/ Help & Support</p></span>
+      </div>
     </div>
     <div class="border-bottom"></div>
     <div class="doubt-section">
-        <div class="doubt-header">
-            <h3>Doubt Section</h3>
+      <div class="doubt-header">
+        <h3>Doubt Section</h3>
+      </div>
+      <div class="card-section">
+        <div class="card">
+          <h4>Previous Doubts</h4>
+          <div class="content">
+            <table>
+              <thead>
+                <tr>
+                  <td>Doubts</td>
+                  <td>Created Date</td>
+                  <td>Action</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let doubt of DoubtsList">
+                  <td>{{ doubt.DoubtText }}</td>
+                  <td>{{ doubt.CreatedAt | date : "dd-MM-YYYY" }}</td>
+                  <td class="action-button">
+                    <button class="edit" (click)="editDoubts(doubt)">
+                      Edit
+                    </button>
+                    <button class="delete" (click)="deleteDoubts(doubt.DoubtId)">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div class="card-section">
-            <div class="card">
-                <h4>Previous Doubts</h4>
-                <div class="content">
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Doubts</td>
-                                <td>Created Date</td>
-                                <td>Action</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let doubt of DoubtsList">
-                                <td>{{doubt.DoubtText}}</td>
-                                <td>{{doubt.CreatedAt | date:'dd-MM-YYYY'}}</td>
-                                <td class="action-button">
-                                    <button class="edit" (click)="editDoubts(doubt)">Edit</button>
-                                    <button class="delete" (click)="deleteDoubts(doubt.DoubtId)">Delete</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="text-area">
-                <div class="text-section">
-                    <textarea #doubtText [(ngModel)]="hh.dd" placeholder="Type your doubt....."></textarea>
-                </div>
-            </div>
+        <div class="text-area">
+          <div class="text-section">
+            <textarea
+              [(ngModel)]="hh.dd"
+              placeholder="Type your doubt....."
+            ></textarea>
+          </div>
         </div>
-        <div class="submit-button">
-            <button type="submit" (click)="addDoubtStudent(hh.dd)">Submit</button>
-        </div>
+      </div>
+      <div class="submit-button">
+        <button type="submit" (click)="addOrEditDoubt()">
+          {{ isEditing ? 'Update' : 'Submit' }}
+        </button>
+      </div>
     </div>
     <div class="contact-section">
-        <div class="contact-header">
-            <h3>Important Contacts</h3>
-        </div>
-        <div class="contact-table">
-            <table>
-                <thead>
-                    <tr>
-                        <td>S.N</td>
-                        <td>NAME</td>
-                        <td>WORK</td>
-                        <td>MOBILE NO.</td>
-                        <td>Email-ID</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let student of User">
-                        <td>{{student.id}}</td>
-                        <td>{{student.name}}</td>
-                        <td>{{student.work}}</td>
-                        <td>{{student.mobilenumber}}</td>
-                        <td>{{student.emailid}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+      <div class="contact-header">
+        <h3>Important Contacts</h3>
+      </div>
+      <div class="contact-table">
+        <table>
+          <thead>
+            <tr>
+              <td>S.N</td>
+              <td>NAME</td>
+              <td>WORK</td>
+              <td>MOBILE NO.</td>
+              <td>Email-ID</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of User">
+              <td>{{ student.id }}</td>
+              <td>{{ student.name }}</td>
+              <td>{{ student.work }}</td>
+              <td>{{ student.mobilenumber }}</td>
+              <td>{{ student.emailid }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-</div>
+  </div>
+   -->
+
+   <div class="support-section">
+    <div class="header">
+      <h1>Help & Support</h1>
+      <div class="content">
+        <span><a href="#">Dashboard</a></span>
+        <span><p>/ Help & Support</p></span>
+      </div>
+    </div>
+    <div class="border-bottom"></div>
+    
+    <div class="doubt-section">
+      <div class="doubt-header">
+        <h3>Doubt Section</h3>
+      </div>
+      
+      <div class="card-section">
+        <div class="card">
+          <h4>Previous Doubts</h4>
+          <div class="content">
+            <table>
+              <thead>
+                <tr>
+                  <td>Doubts</td>
+                  <td>Created Date</td>
+                  <td>Action</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let doubt of DoubtsList">
+                  <td>{{ doubt.DoubtText }}</td>
+                  <td>{{ doubt.CreatedAt | date : 'dd-MM-YYYY' }}</td>
+                  <td class="action-button">
+                    <button class="edit" (click)="editDoubts(doubt)">Edit</button>
+                    <button class="delete" (click)="deleteDoubts(doubt.DoubtId)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+  
+        <div class="text-area">
+          <div class="text-section">
+            <textarea 
+              [(ngModel)]="hh.dd" 
+              placeholder="Type your doubt....."
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <div class="submit-button">
+        <button type="submit" (click)="addOrEditDoubt()">
+          {{ isEditing ? 'Update' : 'Submit' }}
+        </button>
+      </div>
+    </div>
+    
+    <div class="contact-section">
+      <div class="contact-header">
+        <h3>Important Contacts</h3>
+      </div>
+      
+      <div class="contact-table">
+        <table>
+          <thead>
+            <tr>
+              <td>S.N</td>
+              <td>NAME</td>
+              <td>WORK</td>
+              <td>MOBILE NO.</td>
+              <td>Email-ID</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of User">
+              <td>{{ student.id }}</td>
+              <td>{{ student.name }}</td>
+              <td>{{ student.work }}</td>
+              <td>{{ student.mobilenumber }}</td>
+              <td>{{ student.emailid }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
