@@ -110,6 +110,10 @@ td.action-button {
 }
 
 .card h4 {
+  position: sticky;
+  top: 0;
+  background-color: yellow;
+  z-index: 2;
   padding: 10px;
   border-bottom: 1px solid gray;
 }
