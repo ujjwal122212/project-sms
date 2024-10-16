@@ -80,7 +80,7 @@ export class AddStudentCourseComponent implements OnInit {
     if (this.selectedSectionId) {
       this.loadSubjectBySectionId(this.selectedSectionId);
     } else {
-      alert("Please select a section");
+      alert("Please select a Class and a section");
     }
   }
   setformstate() {
