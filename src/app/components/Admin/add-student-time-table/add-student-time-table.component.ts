@@ -91,7 +91,7 @@ export class AddStudentTimeTableComponent implements OnInit {
     if (this.selectedSectionId) {
       this.loadTimeTableBySectionId(this.selectedSectionId);
     } else {
-      alert("Please select a section");
+      alert("Please select a Class and a section");
     }
   }
   insertTimetable() {
