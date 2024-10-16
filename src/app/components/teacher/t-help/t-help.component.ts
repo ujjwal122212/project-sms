@@ -12,7 +12,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./t-help.component.css'],
 })
 export class THelpComponent {
-  
   toastr = inject(ToastrService);
   responseMessage: string = '';
   hh: { dd: string } = { dd: '' };
@@ -25,20 +24,20 @@ export class THelpComponent {
   }
 
   fetchUserList() {
-    this.http.get('https://localhost:7262/GetContacts').subscribe(
-      (res: any) => (this.User = res),
-      (error) => this.toastr.error('Error fetching contacts.')
-    );
+    this.http
+      .get(
+        'https://localhost:7262/api/TeacherimportantContact/GetTeacherimportantContact'
+      )
+      .subscribe((res: any) => (this.User = res));
   }
 
   fetchDoubts() {
-    this.http.get('https://localhost:7262/GetDoubtStudents').subscribe(
-      (res: any) => {
+    this.http
+      .get('https://localhost:7262/GetDoubtStudents')
+      .subscribe((res: any) => {
         this.DoubtsList = res;
         console.table(res);
-      },
-      (error) => this.toastr.error('Error fetching doubts.')
-    );
+      });
   }
 
   addDoubtStudent(doubtText: string): void {
