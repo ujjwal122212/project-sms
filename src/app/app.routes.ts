@@ -58,6 +58,7 @@ import { TransportServiceComponent } from './components/student/Student-service/
 import { THomeComponent } from './components/teacher/t-home/t-home.component';
 import { StudentAdmissionComponent } from './components/Admin/student-admission/student-admission.component';
 import { AddStudentCourseComponent } from './components/Admin/add-student-course/add-student-course.component';
+import { AddStudentTimeTableComponent } from './components/Admin/add-student-time-table/add-student-time-table.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
 
@@ -345,6 +346,7 @@ export const routes: Routes = [
   //Important Contacts
   { 'path': 'view', 'title': 'view-contact', component: ViewContactsComponent },
   { 'path': 'addContact', 'title': 'Add-contact', component: AddContactsComponent },
-  {path:'addstudentCourse',title:'StudentCourse',component:AddStudentCourseComponent}
+  {path:'addstudentCourse',title:'StudentCourse',component:AddStudentCourseComponent},
+  {path:'studenttimetable',title:'StudentTimeTable',component:AddStudentTimeTableComponent}
 ];
 
