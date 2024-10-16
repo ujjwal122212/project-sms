@@ -5,7 +5,7 @@
 }
 
 .container {
-  max-width: 1000px; /* Increased width for better spacing */
+  max-width: 1000px;
   background-color: white;
   padding: 20px;
   border-radius: 10px;
@@ -22,8 +22,8 @@ h2 {
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Three equal columns */
-  gap: 15px; /* Space between grid items */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
 }
 
 .form-group {
@@ -50,7 +50,7 @@ h2 {
 }
 
 .form-group-full {
-  grid-column: span 3; /* Full width button */
+  grid-column: span 3;
 }
 
 button {
@@ -68,10 +68,10 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* Responsive layout */
+
 @media (max-width: 768px) {
   .form-grid {
-    grid-template-columns: 1fr; /* Single column on small screens */
+    grid-template-columns: 1fr;
   }
 
   .container {

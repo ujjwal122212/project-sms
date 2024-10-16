@@ -8,30 +8,35 @@
     }
   </div>
   <div class="tags">
-    <a routerLink="/ahome" routerLinkActive="active" (click)="collapse()"><i class="ri-home-3-line" id="icon" ></i>
+    <a routerLink="/ahome" routerLinkActive="active" (click)="collapse()"><i class="ri-home-3-line" id="icon"></i>
       <span *ngIf="is_text_display_none">Home</span> <i class="ri-arrow-right-s-line"></i>
     </a>
     <a routerLink="admin-home" routerLinkActive="active"><i class="ri-dashboard-2-line" id="icon"></i>
       <span *ngIf="is_text_display_none">Dashboard</span> <i class="ri-arrow-right-s-line"></i>
     </a>
-    <a routerLink="/viewstudent" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-building-columns" id="icon"></i>
+    <a routerLink="/viewstudent" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-building-columns"
+        id="icon"></i>
       <span *ngIf="is_text_display_none">Student</span> <i class="ri-arrow-right-s-line"></i>
     </a>
 
-    <a routerLink="/viewTeacher" routerLinkActive="active"  (click)="collapse()"><i class="fa-solid fa-chalkboard-user" id="icon"></i>
+    <a routerLink="/viewTeacher" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-chalkboard-user"
+        id="icon"></i>
       <span *ngIf="is_text_display_none">Teacher</span> <i class="ri-arrow-right-s-line"></i>
     </a>
-    <a routerLink="/view" routerLinkActive="active"  (click)="collapse()"><i class="fa-solid fa-chalkboard-user" id="icon"></i>
+    <a routerLink="/view" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-chalkboard-user"
+        id="icon"></i>
       <span *ngIf="is_text_display_none">Important Contacts</span> <i class="ri-arrow-right-s-line"></i>
     </a>
     <a routerLink="/viewContact" routerLinkActive="active"><i class="fa-solid fa-person" id="icon"></i>
       <span *ngIf="is_text_display_none">Parents</span> <i class="ri-arrow-right-s-line"></i>
     </a>
-    <a routerLink="/StuAdmission" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-book" id="icon"></i>
+    <a routerLink="/StuAdmission" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-book"
+        id="icon"></i>
       <span *ngIf="is_text_display_none">Student Admission</span> <i class="ri-arrow-right-s-line"></i>
     </a>
-    <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-book-open-reader" id="icon"></i>
-      <span *ngIf="is_text_display_none">Class</span> <i class="ri-arrow-right-s-line"></i>
+    <a routerLink="/addstudentCourse" routerLinkActive="active" (click)="collapse()"><i
+        class="fa-solid fa-book-open-reader" id="icon"></i>
+      <span *ngIf="is_text_display_none">Student Course</span> <i class="ri-arrow-right-s-line"></i>
     </a>
     <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-book-atlas" id="icon"></i>
       <span *ngIf="is_text_display_none">Subject</span> <i class="ri-arrow-right-s-line"></i>
