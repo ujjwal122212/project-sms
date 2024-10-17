@@ -15,7 +15,7 @@
         <div class="card" id="card-1">
             <p>Acadmic Year : </p>
             <select>
-                <option value=""  selected disabled>please select</option>
+                <option value="" selected disabled>please select</option>
                 <option value="">o1</option>
                 <option value="">o2</option>
                 <option value="">o3</option>
@@ -43,97 +43,25 @@
             <caption>Timetable of 2024-25 for Class xyz</caption>
             <thead>
                 <tr>
-                    <th>Time-Slots</th>
-                    <th>Sunday</th>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednusday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                    <th>Saturday</th>
+                    @for(header of tableHeader;track $index){
+                    <th>{{header}}</th>
+                    }
                 </tr>
             </thead>
             <tbody>
+                @for(timetable of timeTable;track $index){
                 <tr>
-                    <td>8:20-9:20</td>
-                    <td>Data 1</td>
-                    <td>Data 2</td>
-                    <td>Data 3</td>
-                    <td>Data 4</td>
-                    <td>Data 5</td>
-                    <td>Data 6</td>
-                    <td>Data 7</td>
+                    <td>{{$index+1}}</td>
+                    <td>{{timetable.timeSlot}}</td>
+                    <td style="color: blue;">{{timetable.sunday}}</td>
+                    <td>{{timetable.monday}}</td>
+                    <td>{{timetable.tuesday}}</td>
+                    <td>{{timetable.wednesday}}</td>
+                    <td>{{timetable.thursday}}</td>
+                    <td>{{timetable.friday}}</td>
+                    <td>{{timetable.saturday}}</td>
                 </tr>
-                <tr>
-                    <td>8:20-9:20</td>
-                    <td>Data 1</td>
-                    <td>Data 2</td>
-                    <td>Data 3</td>
-                    <td>Data 4</td>
-                    <td>Data 5</td>
-                    <td>Data 6</td>
-                    <td>Data 7</td>
-                </tr>
-                <tr>
-                    <td>8:20-9:20</td>
-                    <td>Data 1</td>
-                    <td>Data 2</td>
-                    <td>Data 3</td>
-                    <td>Data 4</td>
-                    <td>Data 5</td>
-                    <td>Data 6</td>
-                    <td>Data 7</td>
-                </tr>
-                <tr>
-                    <td>8:20-9:20</td>
-                    <td>Data 1</td>
-                    <td>Data 2</td>
-                    <td>Data 3</td>
-                    <td>Data 4</td>
-                    <td>Data 5</td>
-                    <td>Data 6</td>
-                    <td>Data 7</td>
-                </tr>
-                <tr>
-                    <td>8:20-9:20</td>
-                    <td>Data 1</td>
-                    <td>Data 2</td>
-                    <td>Data 3</td>
-                    <td>Data 4</td>
-                    <td>Data 5</td>
-                    <td>Data 6</td>
-                    <td>Data 7</td>
-                </tr>
-                <tr>
-                    <td>8:20-9:20</td>
-                    <td>Data 1</td>
-                    <td>Data 2</td>
-                    <td>Data 3</td>
-                    <td>Data 4</td>
-                    <td>Data 5</td>
-                    <td>Data 6</td>
-                    <td>Data 7</td>
-                </tr>
-                <tr>
-                    <td>8:20-9:20</td>
-                    <td>Data 1</td>
-                    <td>Data 2</td>
-                    <td>Data 3</td>
-                    <td>Data 4</td>
-                    <td>Data 5</td>
-                    <td>Data 6</td>
-                    <td>Data 7</td>
-                </tr>
-                <tr>
-                    <td>8:20-9:20</td>
-                    <td>Data 1</td>
-                    <td>Data 2</td>
-                    <td>Data 3</td>
-                    <td>Data 4</td>
-                    <td>Data 5</td>
-                    <td>Data 6</td>
-                    <td>Data 7</td>
-                </tr>
+                }
             </tbody>
         </table>
     </div>
