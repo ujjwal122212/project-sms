@@ -13,17 +13,17 @@ import { StudenttimetableService } from '../../../Services/studenttimetable.serv
 export class AddStudentTimeTableComponent implements OnInit {
   timetableservice = inject(StudenttimetableService)
   timetableForm: FormGroup = new FormGroup({});
-  dayArray:string[]=['S.NO','TimeSlot','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Action'];
-  timeSlotArray:string[]=['7:00-8:00','8:00-9:00','9:00-10:00','10:00-11:00','11:00-12:00','1:00-2:00','2:00-3:00'];
+  dayArray: string[] = ['S.NO', 'TimeSlot', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Action'];
+  timeSlotArray: string[] = ['7:00-8:00', '8:00-9:00', '9:00-10:00', '10:00-11:00', '11:00-12:00', '1:00-2:00', '2:00-3:00'];
   constructor(private fb: FormBuilder) { }
   Sections: any[] = [];
   Classes: any[] = [];
   timeTable: any[] = [];
   setformstate() {
     this.timetableForm = this.fb.group({
-      timetableId: [0],
+      timetbaleId: [0],
       classId: [''],
-      sectionId: ['', Validators.required],
+      sectionId: [''],
       timeSlot: ['', Validators.required],
       sunday: ['Leave', Validators.required],
       monday: ['', Validators.required],
@@ -102,16 +102,75 @@ export class AddStudentTimeTableComponent implements OnInit {
     const formvalue = this.timetableForm.value;
     this.timetableservice.addTimeTable(formvalue).subscribe((data: any) => {
       alert("TimeTable Added Suuccessfully");
+      // this.loadTimeTableBySectionId(1);
       this.timetableForm.reset();
       this.CloseModel();
     })
   }
+  updateTimeTable(id: number) {
+    this.openform();
+    this.timetableservice.getTimeTableById(id).subscribe((res: any) => {
+      console.log(res);
+      this.timetableForm.patchValue({
+        timetbaleId: res.timetbaleId,
+        timeSlot: res.timeSlot,
+        sunday: res.sunday,
+        monday: res.monday,
+        tuesday: res.tuesday,
+        wednesday: res.wednesday,
+        thursday: res.thursday,
+        friday: res.friday,
+        saturday: res.saturday
+      })
+    })
+  }
+
+  update() {
+    if (this.timetableForm.invalid) {
+      alert("Please fill valid details");
+      return;
+    }
+    else if (this.timetableForm.valid) {
+      const formvalue = this.timetableForm.value;
+      this.timetableservice.updateTimetable(formvalue).subscribe(
+        response => {
+          alert('Timetable updated successfully!');
+          // this.loadTimeTableBySectionId(1);
+          this.timetableForm.reset();
+          this.CloseModel();
+        },
+        error => {
+          alert('Error updating timetable');
+        }
+      );
+    }
+  }
+
+
+
+
   onSubmit() {
-    this.insertTimetable();
+    if (this.timetableForm.value.timetbaleId == 0) {
+      this.insertTimetable();
+    }
+    else if(this.timetableForm.value.timetbaleId>0){
+      // this.update1();
+      this.update();
+    }
+  }
+  deleteTimeTable(id: number) {
+    const isConfirm = confirm("Are you sure to want to delete the time table  ?");
+    if (isConfirm) {
+      this.timetableservice.deleteTimeTable(id).subscribe((res: any) => {
+        alert("TimeTable Deleted Successfully");
+        // this.loadTimeTableBySectionId(1);
+      })
+    }
   }
   ngOnInit(): void {
     this.setformstate();
     this.loadClasses();
+    // this.loadTimeTableBySectionId(1);
   }
 
 }

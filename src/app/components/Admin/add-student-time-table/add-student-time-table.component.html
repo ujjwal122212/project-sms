@@ -48,8 +48,8 @@
                         <td>{{table.friday}}</td>
                         <td>{{table.saturday}}</td>
                         <td class="action-button">
-                            <button class="edit">Edit</button>
-                            <button class="delete">Delete</button>
+                            <button class="edit" (click)="updateTimeTable(table.timetbaleId)">Edit</button>
+                            <button class="delete" (click)="deleteTimeTable(table.timetbaleId)">Delete</button>
                         </td>
                     </tr>
                     }
@@ -68,8 +68,15 @@
 
 
 <div class="form-area" id="formModel">
+    @if(timetableForm.value.timetbaleId==0){
     <h1>Add Student TimeTable</h1>
+    }
+    @else {
+    <h1>Update Student TimeTable</h1>
+    }
+
     <form action="" [formGroup]="timetableForm" (ngSubmit)="onSubmit()">
+        @if(timetableForm.value.timetbaleId==0){
         <div class="card-area">
             <div class="card">
                 <select name="" id="" (change)="onClassChange($event)" formControlName="classId">
@@ -88,7 +95,13 @@
                 </select>
             </div>
             <div class="card">
-                <input type="text" placeholder="Enter a TimeSlot" formControlName="timeSlot" name="timeSlot">
+                <!-- <input type="text" placeholder="Enter a TimeSlot" formControlName="timeSlot" name="timeSlot"> -->
+                <select name="" id="" formControlName="timeSlot">
+                    <option value="" selected disabled>Select a timeslot</option>
+                    @for(timeslot of timeSlotArray;track $index){
+                    <option [value]="timeslot">{{timeslot}}</option>
+                    }
+                </select>
             </div>
             <div class="card">
                 <input type="text" placeholder="Enter a Subject for Monday" formControlName="monday" name="monday">
@@ -97,20 +110,64 @@
                 <input type="text" placeholder="Enter a Subject for Tuesday" formControlName="tuesday" name="tuesday">
             </div>
             <div class="card">
-                <input type="text" placeholder="Enter a Subject for Wednesday" formControlName="wednesday" name="wednesday">
+                <input type="text" placeholder="Enter a Subject for Wednesday" formControlName="wednesday"
+                    name="wednesday">
             </div>
             <div class="card">
-                <input type="text" placeholder="Enter a Subject for Thursday" formControlName="thursday" name="thursday">
+                <input type="text" placeholder="Enter a Subject for Thursday" formControlName="thursday"
+                    name="thursday">
             </div>
             <div class="card">
                 <input type="text" placeholder="Enter a Subject for Friday" formControlName="friday" name="friday">
             </div>
             <div class="card">
-                <input type="text" placeholder="Enter a Subject for Saterday" formControlName="saturday" name="saturday">
+                <input type="text" placeholder="Enter a Subject for Saterday" formControlName="saturday"
+                    name="saturday">
             </div>
         </div>
+        }
+        @else {
+        <div class="card-area">
+            <div class="card">
+                <!-- <input type="text" placeholder="Enter a TimeSlot" formControlName="timeSlot" name="timeSlot"> -->
+                <select name="" id="" formControlName="timeSlot">
+                    <option value="" selected disabled>Select a timeslot</option>
+                    @for(timeslot of timeSlotArray;track $index){
+                    <option [value]="timeslot">{{timeslot}}</option>
+                    }
+                </select>
+            </div>
+            <div class="card">
+                <input type="text" placeholder="Enter a Subject for Monday" formControlName="monday" name="monday">
+            </div>
+            <div class="card">
+                <input type="text" placeholder="Enter a Subject for Tuesday" formControlName="tuesday" name="tuesday">
+            </div>
+            <div class="card">
+                <input type="text" placeholder="Enter a Subject for Wednesday" formControlName="wednesday"
+                    name="wednesday">
+            </div>
+            <div class="card">
+                <input type="text" placeholder="Enter a Subject for Thursday" formControlName="thursday"
+                    name="thursday">
+            </div>
+            <div class="card">
+                <input type="text" placeholder="Enter a Subject for Friday" formControlName="friday" name="friday">
+            </div>
+            <div class="card">
+                <input type="text" placeholder="Enter a Subject for Saterday" formControlName="saturday"
+                    name="saturday">
+            </div>
+        </div>
+        }
         <div class="button-area">
-            <button type="submit" class="submit">Save</button>
+            @if(timetableForm.value.timetbaleId==0){
+            <button type="submit" class="submit" >Save</button>
+            }
+            @else {
+            <button type="submit" class="submit" >Update</button>
+            }
+
             <button type="button" (click)="CloseModel()" class="close">Close</button>
         </div>
     </form>
