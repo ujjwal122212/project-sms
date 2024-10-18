@@ -1,0 +1,39 @@
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TeacherQuizService {
+
+  constructor() { }
+  http = inject(HttpClient);
+  private apiurl = "https://localhost:7262"
+  getClasses() {
+    return this.http.get(`${this.apiurl}/Classes`);
+  }
+  getSectionByClassId(classId: number) {
+    return this.http.get(`${this.apiurl}/${classId}`);
+  }
+  getQuizSubjectBySectionId(sectionId: number) {
+    return this.http.get(`${this.apiurl}/api/QuizSubject/${sectionId}`);
+  }
+  AddQuizSubjects(data:any){
+    return this.http.post(`${this.apiurl}/api/QuizSubject/Add Quiz`,data);
+  }
+  AddQuizTitleAndDescription(data:any){
+    return this.http.post(`${this.apiurl}/api/Quiz/Add Quiz`,data);
+  }
+  getquiztitlebysubjectid(subjectId:number){
+    return this.http.get(`${this.apiurl}/api/Quiz/${subjectId}`);
+  }
+  AddQuestions(data:any){
+    return this.http.post(`${this.apiurl}/api/Question/Add Question`,data);
+  }
+  getquestionbyquizid(quizID:number){
+    return this.http.get(`${this.apiurl}/api/Question/${quizID}`);
+  }
+  addquestionoption(data:any){
+    return this.http.post(`${this.apiurl}/api/QuestionOption/Add QuestionOptions`,data);
+  }
+}
