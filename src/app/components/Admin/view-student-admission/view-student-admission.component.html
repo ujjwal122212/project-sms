@@ -1,0 +1,83 @@
+<div class="reg-area">
+    <div class="header">
+        <h1>Student Admission</h1>
+        <button (click)="openregform()">Add Student</button>
+    </div>
+    <div class="selected-area">
+        <div class="area">
+            <select name="" id=""  [(ngModel)]="selectedClass" (change)="onClassChange($event)">
+                <option value="0"  disabled>Select a Class</option>
+                @for(class of Classes;track $index){
+                <option [value]="class.classId">{{class.className}}</option>
+                }
+            </select>
+        </div>
+        <div class="area">
+            <select name="" id=""  [(ngModel)]="selectedSectionId" (change)="onSectionChange($event)">
+                <option value="0" disabled>Select a Section</option>
+                @for(section of Sections;track $index){
+                <option [value]="section.sectionId">{{section.sectionName}}</option>
+                }
+            </select>
+        </div>
+        <div class="area show">
+            <button type="button" (click)="showCourse()">Show</button>
+        </div>
+    </div>
+    <div class="section">
+        <div class="table-container">
+            @if(Students.length>0){
+            <table>
+                <thead>
+                    <tr>
+                        @for(head of StudentHeading;track $index){
+                        <th>{{head}}</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(student of Students;track $index){
+                    <tr>
+                        <td>{{$index+1}}</td>
+                        <td>{{student.studentName}}</td>
+                        <td>{{student.dateOfBirth | date:'dd-MM-yyyy'}}</td>
+                        <td>{{student.gender}}</td>
+                        <td>{{student.bloodGroup}}</td>
+                        <td>{{student.fathersName}}</td>
+                        <td>{{student.mothersName}}</td>
+                        <td>{{student.fatherOccupation}}</td>
+                        <td>{{student.motherOccupation}}</td>
+                        <td>{{student.familyIncome}}</td>
+                        <td>{{student.mobile}}</td>
+                        <td>{{student.email}}</td>
+                        <td>{{student.state}}</td>
+                        <td>{{student.district}}</td>
+                        <td>{{student.pincode}}</td>
+                        <td>{{student.address}}</td>
+                        <td>
+                            <img 
+                            [src]="'https://localhost:7262/api/Image/'+student.imagePath"  
+                             />
+                        </td>
+                        <td>{{ student.class }}</td>
+                        <td>{{ student.section }}</td>
+                        <td>{{student.password}}</td>
+                        <td>{{student.enrollmentDate}}</td>
+                        <td class="action-button">
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            }
+            @else if (selectedClass==0 || selectedSectionId==0) {
+                <h2 style="text-align: center; padding: 10px; font-weight: bold;">Please select a Class and a Section</h2>
+            }
+            @else if(isSubjectDataEmpty && isCourseFound){
+            <h2 style="text-align: center; padding: 10px; font-weight: bold;">Subject Data Not Found</h2>
+            }
+        </div>
+    </div>
+</div>
