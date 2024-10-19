@@ -109,10 +109,12 @@ td.action-button {
 
 
 .form-area {
-    position: absolute;
-    top: -500px;
-    transform: scale(0.1);
-    visibility: hidden;
+    /* position: relative;
+    top: 70px;
+    left: 70px;
+    right: 20px; */
+    /* transform: scale(0.1); */
+    /* visibility: hidden; */
     /* background-color: #f8fafc; */
     background-color: white;
     overflow-x: hidden;

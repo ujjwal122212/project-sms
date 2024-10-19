@@ -2,6 +2,7 @@ import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core'
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { StudentRegistrationService } from '../../../Services/student-registration.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-admission',
@@ -14,6 +15,7 @@ export class StudentAdmissionComponent implements OnInit {
   regForm: FormGroup = new FormGroup({});
   constructor(private fb: FormBuilder) { }
   regService = inject(StudentRegistrationService);
+  route = inject(Router);
   Classes: any[] = [];
   Sections: any[] = [];
   State: any[] = [];
@@ -22,19 +24,21 @@ export class StudentAdmissionComponent implements OnInit {
   openregform() {
     const stuform = document.getElementById('formModel');
     if (stuform != null) {
-      stuform.classList.add('openform');
+      // stuform.classList.add('openform');
     }
   }
   CloseModel() {
+    this.route.navigateByUrl('/viewstudentadmission');
     this.setregformstate();
-    this.selectedClass=0;
-    this.selectedStateId=0;
-    this.Sections=[];
-    this.District=[];
+    this.selectedClass = 0;
+    this.selectedStateId = 0;
+    this.Sections = [];
+    this.District = [];
     const stuform = document.getElementById('formModel');
     if (stuform != null) {
-      stuform.classList.remove('openform');
+      // stuform.classList.remove('openform');
     }
+
   }
   setregformstate() {
     this.regForm = this.fb.group({
@@ -71,9 +75,9 @@ export class StudentAdmissionComponent implements OnInit {
   onClassChange(event: any) {
     this.selectedClass = event.target.value;
     this.regForm.patchValue({
-      sectionId:0
+      sectionId: 0
     })
-    this.Sections=[];
+    this.Sections = [];
     this.loadSectionBtClasssId(this.selectedClass);
   }
   loadSectionBtClasssId(classId: number) {
@@ -91,9 +95,9 @@ export class StudentAdmissionComponent implements OnInit {
   onStateChange(event: any) {
     this.selectedStateId = event.target.value;
     this.regForm.patchValue({
-      district:''
+      district: ''
     })
-    this.District=[];
+    this.District = [];
     this.loadDistrictByStateId(this.selectedStateId);
   }
   selectedStateId: number = 0;
@@ -139,6 +143,7 @@ export class StudentAdmissionComponent implements OnInit {
       formdata.append('sectionId', this.regForm.get('sectionId')?.value);
       this.regService.addStudent(formdata).subscribe((res: any) => {
         alert("Student Data Added Successfully");
+        this.route.navigateByUrl('/viewstudentadmission');
         this.regForm.reset();
         this.fileInput.nativeElement.value = '';
         this.CloseModel();
