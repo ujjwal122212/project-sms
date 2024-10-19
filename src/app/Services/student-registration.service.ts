@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { forkJoin, map, Observable, of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,21 +8,26 @@ import { inject, Injectable } from '@angular/core';
 export class StudentRegistrationService {
 
   constructor() { }
-  http=inject(HttpClient);
+  http = inject(HttpClient);
   private apiurl = "https://localhost:7262"
   getClasses() {
     return this.http.get(`${this.apiurl}/Classes`);
   }
   getSectionByClassId(classId: number) {
     return this.http.get(`${this.apiurl}/${classId}`);
-  } 
-  getStates(){
+  }
+  getStates() {
     return this.http.get(`${this.apiurl}/api/State`);
   }
-  getDistrictByStateId(stateId:number){
+  getDistrictByStateId(stateId: number) {
     return this.http.get(`${this.apiurl}/api/District/${stateId}`);
   }
-  addStudent(data:FormData){
-    return this.http.post(`${this.apiurl}/RegisterStudent`,data);
+  addStudent(data: FormData) {
+    return this.http.post(`${this.apiurl}/RegisterStudent`, data);
   }
+  getStudentsBySectionID(id: number) {
+    return this.http.get(`${this.apiurl}/GetStudentsBySectionID${id}`);
+  }
+
+
 }
