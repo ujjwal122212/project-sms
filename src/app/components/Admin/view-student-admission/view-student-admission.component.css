@@ -1,0 +1,129 @@
+.reg-area {
+    margin: 60px 10px 0 60px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ddd;
+    padding: 10px 5px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: bold;
+    align-self: center;
+}
+
+button {
+    background-color: yellowgreen;
+    color: black;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.selected-area {
+    width: 100%;
+    display: flex;
+    /* gap: 30px; */
+    justify-content: space-between;
+    /* background-color: pink; */
+    padding: 0 20px;
+}
+
+.selected-area .area {
+    width: 30%;
+}
+
+.show {
+    display: flex;
+    justify-content: center;
+}
+
+.area button {
+    background-color: #007bff;
+    padding: 2px 10px;
+}
+
+.section {
+    overflow: hidden;
+    margin: 40px 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.table-container {
+    /* display: none; */
+    /* margin-top: 20PX; */
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 10px;
+
+}
+
+table {
+    width: 100%;
+    padding: 0 10px;
+
+    border-collapse: collapse;
+}
+
+th {
+    border: 2px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    background-color: #f1f1f1;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+}
+
+button.edit {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    /* cursor: pointer; */
+    margin-right: 5px;
+}
+
+button.delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+td.action-button {
+    min-width: 150px;
+}
+
+select,
+input,
+textarea {
+    border: 2px solid #ddd;
+    width: 100%;
+    border-radius: 5px;
+    padding: 4px 2px;
+}
+
+td img {
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+}
