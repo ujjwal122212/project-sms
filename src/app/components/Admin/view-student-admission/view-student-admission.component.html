@@ -64,8 +64,8 @@
                         <td>{{student.password}}</td>
                         <td>{{student.enrollmentDate}}</td>
                         <td class="action-button">
-                            <button class="edit">Edit</button>
-                            <button class="delete">Delete</button>
+                            <button class="edit" (click)="EditStudent(student.studentID)">Edit</button>
+                            <button class="delete" (click)="deleteStudentbyid(student.studentID)">Delete</button>
                         </td>
                     </tr>
                     }
