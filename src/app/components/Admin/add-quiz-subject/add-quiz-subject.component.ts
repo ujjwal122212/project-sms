@@ -1,22 +1,20 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { StudentCourseService } from '../../../Services/student-course.service';
-import { response } from 'express';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
+import { Component, inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TeacherQuizService } from '../../../Services/teacher-quiz.service';
 
 @Component({
-  selector: 'app-add-student-course',
+  selector: 'app-add-quiz-subject',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule,FormsModule],
-  templateUrl: './add-student-course.component.html',
-  styleUrl: './add-student-course.component.css'
+  imports: [ReactiveFormsModule,CommonModule,FormsModule],
+  templateUrl: './add-quiz-subject.component.html',
+  styleUrl: './add-quiz-subject.component.css'
 })
-export class AddStudentCourseComponent implements OnInit {
-  toastr = inject(ToastrService);
-  courseForm: FormGroup = new FormGroup({});
+export class AddQuizSubjectComponent implements OnInit{
+  quizform: FormGroup = new FormGroup({});
   constructor(private fb: FormBuilder) { }
-  studentCourseService = inject(StudentCourseService);
+
+  quizService = inject(TeacherQuizService);
   openform() {
     const stuform = document.getElementById('formModel');
     if (stuform != null) {
@@ -24,7 +22,7 @@ export class AddStudentCourseComponent implements OnInit {
     }
   }
   CloseModel() {
-    this.setformstate();
+    this.setquizformstate();
     this.selectedClass=0;
     this.selectedSectionId=0;
     this.Sections=[];
@@ -33,12 +31,21 @@ export class AddStudentCourseComponent implements OnInit {
       stuform.classList.remove('openform');
     }
   }
+  setquizformstate() {
+    this.quizform = this.fb.group({
+      subjectId: [0],
+      classId: [0],
+      sectionId: [0],
+      subjectName: ['', Validators.required],
+      subjectCode: ['', Validators.required]
+    })
+  }
   Classes: any[] = [];
   Sections: any[] = [];
   Subjects: any[] = [];
   subjectHeading: string[] = ['S.NO', 'SubjectName', 'SubjectCode', 'Action'];
   loadClasses() {
-    this.studentCourseService.getClasses().subscribe((response: any) => {
+    this.quizService.getClasses().subscribe((response: any) => {
       // console.log(response);
       this.Classes = response;
       console.log(this.Classes);
@@ -47,9 +54,7 @@ export class AddStudentCourseComponent implements OnInit {
   selectedClass: number=0;
   onClassChange(event: any) {
     this.selectedClass = event.target.value;
-    this.courseForm.patchValue({
-      sectionId:''
-    })
+    this.quizform.patchValue({ sectionId: 0 });
     this.selectedSectionId=0;
     this.Sections=[];
     this.Subjects=[];
@@ -58,7 +63,7 @@ export class AddStudentCourseComponent implements OnInit {
     this.loadSectionsByClassId(this.selectedClass);
   }
   loadSectionsByClassId(classId: number): void {
-    this.studentCourseService.getSectionByClassId(classId).subscribe((response: any) => {
+    this.quizService.getSectionByClassId(classId).subscribe((response: any) => {
       this.Sections = response;
       console.log(response);
     })
@@ -66,7 +71,7 @@ export class AddStudentCourseComponent implements OnInit {
 
 
   loadSubjectBySectionId(sectionId: number) {
-    this.studentCourseService.getSubjectBySectionId(sectionId).subscribe((result: any) => {
+    this.quizService.getQuizSubjectBySectionId(sectionId).subscribe((result: any) => {
       this.Subjects = result;
       if (this.Subjects.length === 0) {
         this.isSubjectDataEmpty = true;
@@ -88,37 +93,26 @@ export class AddStudentCourseComponent implements OnInit {
       alert("Please select a Class and a section");
     }
   }
-  setformstate() {
-    this.courseForm = this.fb.group({
-      subjectId: [0],
-      classId: ['', Validators.required],
-      sectionId: ['', Validators.required],
-      subjectName: ['', Validators.required],
-      subjectCode: ['', Validators.required]
-    })
-  }
-  insertSubjects() {
-    if (this.courseForm.invalid) {
-      alert("Please fill all the valid details");
+  insertQuizSubjects() {
+    if (this.quizform.invalid) {
+      alert("Please fill Valid Details");
       return;
     }
-    const formValue = this.courseForm.value;
-    this.studentCourseService.addSubjects(formValue).subscribe((result: any) => {
-      alert("Course Added Successfully");
-      // this.toastr.success('Student Added Succesfully');
-      // this.loadSubjectBySectionId(formValue.sectionId);
-      this.courseForm.reset();
-      this.CloseModel();
-    })
+    else {
+      const formvalue = this.quizform.value;
+      this.quizService.AddQuizSubjects(formvalue).subscribe((res: any) => {
+        alert("Quiz Subjects Added Successfully");
+        this.quizform.reset();
+        this.Sections = [];
+        this.CloseModel();
+      })
+    }
   }
-  onSubmit() {
-    console.log(this.courseForm.value);
-    this.insertSubjects();
+  onSubmit(){
+  this.insertQuizSubjects();
   }
   ngOnInit(): void {
-    this.setformstate();
-    this.loadClasses();
-    // this.loadSubjectBySectionId(1);
+   this.setquizformstate();   
+   this.loadClasses();
   }
-
 }
