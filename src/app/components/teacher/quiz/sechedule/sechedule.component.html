@@ -18,35 +18,26 @@
     <div class="select-area">
         <div class="card">
             <p>Class :</p>
-            <select name="" id="">
+            <select id="Class" name="Class" (change)="GetSectionById()"  [(ngModel)]="ClassId" >
                 <option value="" selected disabled class="placeholder">Please select</option>
-                <option value="option1">Class 1</option>
-                <option value="option2">class 2</option>
-                <option value="option3">class 3</option>
-                <option value="option4">class 4</option>
-                <option value="option5">class 5</option>
+                <option *ngFor="let class of ClassList  " [value]="class.classId" >{{class.className}}</option>
+
             </select>
         </div>
         <div class="card">
             <p>Section :</p>
-            <select name="" id="">
+            <select name="Section" id="Section" (change)="GetSubjectById()"  [(ngModel)]="SectionId">
                 <option value="" selected disabled class="placeholder">Please select </option>
-                <option value="option1">Section 1</option>
-                <option value="option2">Section 2</option>
-                <option value="option3">Section 3</option>
-                <option value="option4">Section 4</option>
-                <option value="option5">Section 5</option>
+                <option  *ngFor="let item of SectionList  " [value]="item.sectionId" >{{item.sectionName}}</option>
+
             </select>
         </div>
         <div class="card">
             <p>Subject :</p>
-            <select name="" id="">
+            <select name="Subject" id="Subject">
                 <option value="" selected disabled class="placeholder"> Please select </option>
-                <option value="option1">Subject 1</option>
-                <option value="option2">Subject 2</option>
-                <option value="option3">Subject 3</option>
-                <option value="option4">Subject 4</option>
-                <option value="option5">Subject 5</option>
+                <option  *ngFor="let item of SubjectList  " [value]="item.subjectId" >{{item.subjectName}}</option>
+
             </select>
         </div>
     </div>

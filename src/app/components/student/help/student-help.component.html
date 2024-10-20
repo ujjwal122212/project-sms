@@ -35,7 +35,7 @@
                           <td>{{Doubts.DoubtText}}</td>
                           <td>{{Doubts.CreatedAt| date:'dd-MM-YYYY'}}</td>
                           <td class="action-button">
-                            <button class="edit" (click)="EditDoubts(Doubts.DoubtText)" >
+                            <button class="edit" (click)="editDoubts(Doubts)" >
                               Edit
                             </button>
                             <button class="delete" (click)="deleteDoubts(Doubts.DoubtId)">
@@ -56,7 +56,9 @@
             </div>
         </div>
         <div class="submit-button">
-            <button type="submit" class="submit-button" (click)="addDoubtStudent(doubtText.value)">Submit</button>
+            <button type="submit" (click)="addOrEditDoubt()">
+                {{ isEditing ? 'Update' : 'Submit' }}
+              </button>
         </div>
     </div>
     <div class="contact-section">
