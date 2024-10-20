@@ -1,100 +1,132 @@
 
 <div class="registration-area">
-    <div class="header">
+    <!-- <div class="header">
         <h1>Student Admission</h1>
         <button (click)="openregform()">Add Student</button>
-    </div>
-</div>
+    </div> -->
 
-<div class="form-area" id="formModel">
-    <h1>Add Student</h1>
-    <form action="" [formGroup]="regForm" (ngSubmit)="onSubmit()">
-        <div class="card-area">
-            <div class="card">
-                <input type="text" placeholder="Enter Student Name" formControlName="studentName" name="name">
-            </div>
-            <div class="card">
-                <input type="date" formControlName="dateOfBirth">
-            </div>
-            <div class="card">
-                <select name="" id="" formControlName="gender">
-                    <option value="" selected disabled>Select a gender</option>
-                    @for(gender of genderArray;track $index){
+
+    <div class="form-area" id="formModel">
+        @if(isEdit){
+        <h1>Update Student</h1>
+        }
+        @else {
+        <h1>Add Student</h1>
+        }
+        <form action="" [formGroup]="regForm" (ngSubmit)="onSubmit()">
+            <div class="card-area">
+                <div class="card">
+                    <input type="text" placeholder="Enter Student Name" formControlName="studentName" name="name">
+                </div>
+                <div class="card">
+                    <input type="date" formControlName="dateOfBirth">
+                </div>
+                <div class="card">
+                    <select name="" id="" formControlName="gender">
+                        <option value="" selected disabled>Select a gender</option>
+                        @for(gender of genderArray;track $index){
                         <option [value]="gender">{{gender}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter blood group" formControlName="bloodGroup" name="bloodGroup">
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter fathers Name" formControlName="fathersName" name="fathersName">
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter Mothers Name" formControlName="mothersName" name="mothersName">
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter fathers occupation" formControlName="fatherOccupation" name="fatherOccupation">
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter mothers occupation" formControlName="motherOccupation" name="motherOccupation">
-            </div>
-            <div class="card">
-                <input type="number" placeholder="Enter family Income" formControlName="familyIncome" name="familyIncome">
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter mobileNo" formControlName="mobile" name="mobile">
-            </div>
-            <div class="card">
-                <input type="email" placeholder="Enter Email" formControlName="email" name="email">
-            </div>
-            <div class="card">
-                <select name="" id="" (change)="onStateChange($event)" formControlName="state">
-                    <option value="" selected disabled>Select a state</option>
-                    @for(state of State;track $index){
+                        }
+                    </select>
+                </div>
+                <div class="card">
+                    <input type="text" placeholder="Enter blood group" formControlName="bloodGroup" name="bloodGroup">
+                </div>
+                <div class="card">
+                    <input type="text" placeholder="Enter fathers Name" formControlName="fathersName"
+                        name="fathersName">
+                </div>
+                <div class="card">
+                    <input type="text" placeholder="Enter Mothers Name" formControlName="mothersName"
+                        name="mothersName">
+                </div>
+                <div class="card">
+                    <input type="text" placeholder="Enter fathers occupation" formControlName="fatherOccupation"
+                        name="fatherOccupation">
+                </div>
+                <div class="card">
+                    <input type="text" placeholder="Enter mothers occupation" formControlName="motherOccupation"
+                        name="motherOccupation">
+                </div>
+                <div class="card">
+                    <input type="number" placeholder="Enter family Income" formControlName="familyIncome"
+                        name="familyIncome">
+                </div>
+                <div class="card">
+                    <input type="text" placeholder="Enter mobileNo" formControlName="mobile" name="mobile">
+                </div>
+                <div class="card">
+                    <input type="email" placeholder="Enter Email" formControlName="email" name="email">
+                </div>
+                <div class="card">
+                    <select name="" id="" (change)="onStateChange($event)" formControlName="state">
+                        <option value="" selected disabled>Select a state</option>
+                        @for(state of State;track $index){
                         <option [value]="state.stateId">{{state.stateName}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <select name="" id="" formControlName="district">
-                    <option value="" selected disabled>Select a district</option>
-                    @for(district of District;track $index){
+                        }
+                    </select>
+                </div>
+                <div class="card">
+                    <select name="" id="" formControlName="district">
+                        <option value="" selected disabled>Select a district</option>
+                        @for(district of District;track $index){
                         <option [value]="district.districtId">{{district.districtName}}</option>
-                    }
-                </select>
+                        }
+                    </select>
+                </div>
+                <div class="card">
+                    <input type="text" placeholder="Enter Pincode" formControlName="pincode" name="pincode">
+                </div>
+                <div class="card">
+                    <textarea name="" id="" placeholder="Enter Address" formControlName="address"></textarea>
+                </div>
+                <div class="card image-card">
+                    <div class="input-div" style="width: 100%;">
+                        <input type="file" (change)="onFileSelected($event)" #fileInput  accept="image/*">
+                    </div>
+                    <div class="image-div">
+                        <div *ngIf="imagePreview" class="image">
+                            <p>New Selected Image</p>
+                            <img [src]="imagePreview" alt="Student Image">
+                        </div>
+                        @if(isEdit){
+                        <div class="image">
+                            <p>previosly uploaded image</p>
+                            <img [src]="'https://localhost:7262/api/Image/'+image" alt="DataBase Image">
+                        </div>
+                        }
+                    </div>
+
+                </div>
+                <div class="card">
+                    <select name="" id="" (change)="onClassChange($event)" formControlName="class">
+                        <option value="" selected disabled>Select a Class</option>
+                        @for(class of Classes;track $index){
+                        <option [value]="class.classId">{{class.className}}</option>
+                        }
+                    </select>
+                </div>
+                <div class="card">
+                    <select name="" id="" formControlName="sectionId">
+                        <option value="0" selected disabled>Select a Section</option>
+                        @for(section of Sections;track $index){
+                        <option [value]="section.sectionId">{{section.sectionName}}</option>
+                        }
+                    </select>
+                </div>
+
             </div>
-            <div class="card">
-                <input type="text" placeholder="Enter Pincode" formControlName="pincode" name="pincode">
+            <div class="button-area">
+                @if(isEdit){
+                <button type="submit" class="submit">Update</button>
+                }
+                @else {
+                <button type="submit" class="submit">Save</button>
+                }
+                <button type="button" (click)="CloseModel()" class="close">Back</button>
             </div>
-            <div class="card">
-                <textarea name="" id="" placeholder="Enter Address" formControlName="address"></textarea>
-            </div>
-            <div class="card">
-                <input type="file" (change)="onFileSelected($event)"  #fileInput >
-            </div>
-            <div class="card">
-                <select name="" id="" (change)="onClassChange($event)" formControlName="class">
-                    <option value="" selected disabled>Select a Class</option>
-                    @for(class of Classes;track $index){
-                    <option [value]="class.classId">{{class.className}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <select name="" id="" formControlName="sectionId">
-                    <option value="0" selected disabled>Select a Section</option>
-                    @for(section of Sections;track $index){
-                    <option [value]="section.sectionId">{{section.sectionName}}</option>
-                    }
-                </select>
-            </div>
-            
-        </div>
-        <div class="button-area">
-            <button type="submit" class="submit">Save</button>
-            <button type="button" (click)="CloseModel()" class="close">Close</button>
-        </div>
-    </form>
+
+        </form>
+    </div>
 </div>
 

@@ -24,7 +24,7 @@ export class ViewStudentAdmissionComponent implements OnInit {
   Students: any[] = [];
   isSubjectDataEmpty = false;
   isCourseFound = false;
-  isClassOrSectionNotSelected = false; 
+  isClassOrSectionNotSelected = false;
 
   selectedClass: number = 0;
   selectedSectionId: number = 0;
@@ -33,9 +33,7 @@ export class ViewStudentAdmissionComponent implements OnInit {
     'Mothers Name', 'Fathers Occupation', 'Mothers Occupation', 'Family Income', 'MobileNo', 'EmailId',
     'State', 'District', 'PinCode', 'Address', 'Student Photo', 'Class', 'Section', 'Password', 'EnrollmentDate', 'Action'];
 
-  ngOnInit(): void { 
-    this.loadClasses();
-  }
+
 
   openregform() {
     this.route.navigateByUrl('/StuAdmission');
@@ -82,7 +80,7 @@ export class ViewStudentAdmissionComponent implements OnInit {
 
   onSectionChange(event: any) {
     this.selectedSectionId = event.target.value;
-    this.isClassOrSectionNotSelected = false; 
+    this.isClassOrSectionNotSelected = false;
   }
 
   showCourse() {
@@ -91,10 +89,29 @@ export class ViewStudentAdmissionComponent implements OnInit {
     if (this.selectedClass === 0 || this.selectedSectionId === 0) {
       this.isClassOrSectionNotSelected = true;
       alert("Please select a class and a Section");
-      return; 
+      return;
     }
 
     this.loadStudentDetailsBySectionId(this.selectedSectionId);
+  }
+
+  deleteStudentbyid(studentID: number) {
+    const isConfirm = confirm("Are you sure to want to delete this record ? ");
+    if (isConfirm) {
+      this.reService.deleteStudentByStudentId(studentID).subscribe((res: any) => {
+        alert("Student data deleted successfully");
+        this.selectedClass = 0;
+        this.selectedSectionId = 0;
+        this.Sections = [];
+        this.Students = [];
+      })
+    }
+  }
+  EditStudent(studentID: number) {
+    this.route.navigateByUrl('/StuAdmission/' + studentID);
+  }
+  ngOnInit(): void {
+    this.loadClasses();
   }
 }
 
