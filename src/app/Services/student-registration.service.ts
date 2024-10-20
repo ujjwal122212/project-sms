@@ -25,9 +25,16 @@ export class StudentRegistrationService {
   addStudent(data: FormData) {
     return this.http.post(`${this.apiurl}/RegisterStudent`, data);
   }
-  getStudentsBySectionID(id: number) {
-    return this.http.get(`${this.apiurl}/GetStudentsBySectionID${id}`);
+  getStudentsBySectionID(sectionId: number) {
+    return this.http.get(`${this.apiurl}/GetStudentsBySectionID/${sectionId}`);
   }
-
-
+  deleteStudentByStudentId(studentID: number) {
+    return this.http.delete(`${this.apiurl}/DeleteStudent/${studentID}`);
+  }
+  getStudentByStudentID(studentID:number){
+    return this.http.get(`${this.apiurl}/GetStudentByID${studentID}`);
+  }
+  UpdateStudentByStudentID(studentID:number,data:FormData){
+    return this.http.put(`${this.apiurl}/EditRegisterdStudent/${studentID}`, data);
+  }
 }
