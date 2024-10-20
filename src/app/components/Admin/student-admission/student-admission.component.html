@@ -6,7 +6,12 @@
 
 
     <div class="form-area" id="formModel">
+        @if(isEdit){
+        <h1>Update Student</h1>
+        }
+        @else {
         <h1>Add Student</h1>
+        }
         <form action="" [formGroup]="regForm" (ngSubmit)="onSubmit()">
             <div class="card-area">
                 <div class="card">
@@ -74,8 +79,23 @@
                 <div class="card">
                     <textarea name="" id="" placeholder="Enter Address" formControlName="address"></textarea>
                 </div>
-                <div class="card">
-                    <input type="file" (change)="onFileSelected($event)" #fileInput>
+                <div class="card image-card">
+                    <div class="input-div" style="width: 100%;">
+                        <input type="file" (change)="onFileSelected($event)" #fileInput  accept="image/*">
+                    </div>
+                    <div class="image-div">
+                        <div *ngIf="imagePreview" class="image">
+                            <p>New Selected Image</p>
+                            <img [src]="imagePreview" alt="Student Image">
+                        </div>
+                        @if(isEdit){
+                        <div class="image">
+                            <p>previosly uploaded image</p>
+                            <img [src]="'https://localhost:7262/api/Image/'+image" alt="DataBase Image">
+                        </div>
+                        }
+                    </div>
+
                 </div>
                 <div class="card">
                     <select name="" id="" (change)="onClassChange($event)" formControlName="class">
@@ -96,7 +116,12 @@
 
             </div>
             <div class="button-area">
+                @if(isEdit){
+                <button type="submit" class="submit">Update</button>
+                }
+                @else {
                 <button type="submit" class="submit">Save</button>
+                }
                 <button type="button" (click)="CloseModel()" class="close">Back</button>
             </div>
         </form>

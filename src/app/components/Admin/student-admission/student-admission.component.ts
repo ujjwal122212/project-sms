@@ -2,7 +2,7 @@ import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core'
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { StudentRegistrationService } from '../../../Services/student-registration.service';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-admission',
@@ -107,12 +107,20 @@ export class StudentAdmissionComponent implements OnInit {
       console.log(this.District);
     })
   }
+  imagePreview: string | ArrayBuffer | null = null;
   onFileSelected(event: any) {
     const file = event.currentTarget.files[0];
     if (file) {
       this.regForm.patchValue({
         imagePath: file
       });
+      this.regForm.get('imagePath')?.updateValueAndValidity();
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreview = reader.result;
+      };
+      reader.readAsDataURL(file);
     }
   }
   @ViewChild('fileInput') fileInput!: ElementRef;
@@ -150,11 +158,124 @@ export class StudentAdmissionComponent implements OnInit {
       })
     }
   }
+
+  async patchImagePathToForm(imagePath: string) {
+    const file = await this.convertImagePathToFile(imagePath, 'studentImage.jpg');
+
+    this.regForm.patchValue({
+      imagePath: file
+    });
+    const inputFileElement = this.fileInput.nativeElement;
+    const fileList: FileList = this.createFileList(file);
+    inputFileElement.files = fileList;
+  }
+
+
+  baseImageUrl: string = 'https://localhost:7262/api/Image/';
+  convertImagePathToFile(imagePath: string, filename: string): Promise<File> {
+    const fullImageUrl = `${this.baseImageUrl}${imagePath}`;
+
+    return fetch(fullImageUrl)
+      .then(response => response.blob())
+      .then(blob => {
+        return new File([blob], filename, { type: blob.type });
+      });
+  }
+
+  createFileList(file: File): FileList {
+    const dataTransfer = new DataTransfer();
+    dataTransfer.items.add(file);
+    return dataTransfer.files;
+  }
+
+
+
+
+  activatedRoute = inject(ActivatedRoute);
+  studentID!: number;
+  isEdit = false;
+  image!: string;
+  async updation() {
+    this.studentID = this.activatedRoute.snapshot.params['studentID'];
+    if (this.studentID) {
+      this.isEdit = true;
+      this.regService.getStudentByStudentID(this.studentID).subscribe(async (result: any) => {
+        console.log("Student result of id ", result);
+        this.image = result.imagePath
+        this.regForm.patchValue(result);
+        if (result.dateOfBirth) {
+          const dateObj = new Date(result.dateOfBirth);
+          const formattedDate = dateObj.toISOString().split('T')[0];
+          result.dateOfBirth = formattedDate;
+        }
+        this.regForm.patchValue({
+          dateOfBirth: result.dateOfBirth
+        });
+        this.onClassChange({ target: { value: result.class } });
+        setTimeout(() => {
+          this.regForm.patchValue({
+            sectionId: result.sectionId
+          });
+        }, 500);
+        this.onStateChange({ target: { value: result.state } });
+        setTimeout(() => {
+          this.regForm.patchValue({
+            district: result.district
+          });
+        }, 500);
+        const responseImage = result.imagePath;
+        await this.patchImagePathToForm(responseImage);
+        console.log("Form Value now", this.regForm.value);
+      })
+    }
+  }
+  updateStudent() {
+    if (this.regForm.invalid) {
+      alert("Please fill all the valid details");
+      return;
+    }
+    else {
+      const formdata = new FormData();
+      const studenID = this.regForm.get('studentID')?.value;
+      formdata.append('studentName', this.regForm.get('studentName')?.value);
+      formdata.append('dateOfBirth', this.regForm.get('dateOfBirth')?.value);
+      formdata.append('gender', this.regForm.get('gender')?.value);
+      formdata.append('bloodGroup', this.regForm.get('bloodGroup')?.value);
+      formdata.append('fathersName', this.regForm.get('fathersName')?.value);
+      formdata.append('mothersName', this.regForm.get('mothersName')?.value);
+      formdata.append('fatherOccupation', this.regForm.get('fatherOccupation')?.value);
+      formdata.append('motherOccupation', this.regForm.get('motherOccupation')?.value);
+      formdata.append('familyIncome', this.regForm.get('familyIncome')?.value);
+      formdata.append('mobile', this.regForm.get('mobile')?.value);
+      formdata.append('email', this.regForm.get('email')?.value);
+      formdata.append('state', this.regForm.get('state')?.value);
+      formdata.append('district', this.regForm.get('district')?.value);
+      formdata.append('pincode', this.regForm.get('pincode')?.value);
+      formdata.append('address', this.regForm.get('address')?.value);
+      formdata.append('StudentImg', this.regForm.get('imagePath')?.value);
+      formdata.append('class', this.regForm.get('class')?.value);
+      formdata.append('sectionId', this.regForm.get('sectionId')?.value);
+      this.regService.UpdateStudentByStudentID(studenID, formdata).subscribe((res: any) => {
+        alert("Student Data Updated Successfully");
+        this.route.navigateByUrl('/viewstudentadmission');
+        this.regForm.reset();
+        this.fileInput.nativeElement.value = '';
+        this.CloseModel();
+      })
+    }
+  }
   onSubmit() {
-    this.insertStudent();
+    if (this.isEdit) {
+      this.updateStudent();
+    }
+    else {
+      this.insertStudent();
+    }
+
   }
   ngOnInit(): void {
     this.setregformstate();
+    this.updation();
     this.loadClasses();
     this.loadState();
   }
