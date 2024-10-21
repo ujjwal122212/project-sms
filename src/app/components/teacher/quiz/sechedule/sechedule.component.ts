@@ -1,11 +1,14 @@
 import { CommonModule } from '@angular/common';
+
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TeacherQuizService } from '../../../../Services/teacher-quiz.service';
 
+
 @Component({
   selector: 'app-sechedule',
   standalone: true,
+
   imports: [ReactiveFormsModule, CommonModule, FormsModule],
   templateUrl: './sechedule.component.html',
   styleUrl: './sechedule.component.css'
