@@ -91,7 +91,6 @@ export class ViewStudentAdmissionComponent implements OnInit {
       alert("Please select a class and a Section");
       return;
     }
-
     this.loadStudentDetailsBySectionId(this.selectedSectionId);
   }
 

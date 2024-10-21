@@ -59,6 +59,8 @@ import { THomeComponent } from './components/teacher/t-home/t-home.component';
 import { StudentAdmissionComponent } from './components/Admin/student-admission/student-admission.component';
 import { AddStudentCourseComponent } from './components/Admin/add-student-course/add-student-course.component';
 import { AddStudentTimeTableComponent } from './components/Admin/add-student-time-table/add-student-time-table.component';
+import { AddQuizSubjectComponent } from './components/Admin/add-quiz-subject/add-quiz-subject.component';
+import { ViewStudentAdmissionComponent } from './components/Admin/view-student-admission/view-student-admission.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
 
@@ -102,10 +104,12 @@ export const routes: Routes = [
           { 'path': 'receipt', 'title': 'receipt', component: RecieptComponent }
         ]
       },
-      {'path':'assignment-page','title':'assignment-page',component:AssignmentPageComponent},
-      {'path':'assignment-page',children:[
-        {'path':'homework-page','title':'homework-page',component:HomeworkPageComponent}
-      ]},
+      { 'path': 'assignment-page', 'title': 'assignment-page', component: AssignmentPageComponent },
+      {
+        'path': 'assignment-page', children: [
+          { 'path': 'homework-page', 'title': 'homework-page', component: HomeworkPageComponent }
+        ]
+      },
 
       { 'path': 'help', 'title': 'Help', component: StudentHelpComponent },
     ]
@@ -146,34 +150,36 @@ export const routes: Routes = [
     ]
   },
   // student homework
-  {'path':'assignment-page','title':'assignment-page',component:AssignmentPageComponent},
-  {'path':'assignment-page',children:[
-    {'path':'homework-page','title':'homework-page',component:HomeworkPageComponent}
-  ]},
+  { 'path': 'assignment-page', 'title': 'assignment-page', component: AssignmentPageComponent },
+  {
+    'path': 'assignment-page', children: [
+      { 'path': 'homework-page', 'title': 'homework-page', component: HomeworkPageComponent }
+    ]
+  },
   //student help
   { 'path': 'help', 'title': 'Help', component: StudentHelpComponent },
 
-// student service
-{
-  'path':'Open-SerComponent','title':'OpenSerComponent',component:OpenSerComponent
-},
-{
-  'path':'Id-CardComponent','title':'Id-CardComponent',component:IdCardComponent
-},
-{
-  'path':'Edit-IdCardComponent','title':'Edit-IdCardComponent',component:EditIdCardComponent
-},
-{
-  'path':'Transport-ServiceComponent','title':'Transport-ServiceComponent',component:TransportServiceComponent
-},
-{'path':'Change-CurrentPickPlaceComponent','title':'ChangeCurrentPickPlaceComponent',component:ChangeCurrentPickPlaceComponent},
-{
-  'path':'Medical-ServicesComponent','title':'MedicalServicesComponent',component:MedicalServicesComponent
-},
-{'path':'Free-StructComponent','title':'Free-StructComponent',component:FreeStructComponent}
-,{
-  'path':'download-Free','title':'download-Free',component:DownloadFreeComponent
-},
+  // student service
+  {
+    'path': 'Open-SerComponent', 'title': 'OpenSerComponent', component: OpenSerComponent
+  },
+  {
+    'path': 'Id-CardComponent', 'title': 'Id-CardComponent', component: IdCardComponent
+  },
+  {
+    'path': 'Edit-IdCardComponent', 'title': 'Edit-IdCardComponent', component: EditIdCardComponent
+  },
+  {
+    'path': 'Transport-ServiceComponent', 'title': 'Transport-ServiceComponent', component: TransportServiceComponent
+  },
+  { 'path': 'Change-CurrentPickPlaceComponent', 'title': 'ChangeCurrentPickPlaceComponent', component: ChangeCurrentPickPlaceComponent },
+  {
+    'path': 'Medical-ServicesComponent', 'title': 'MedicalServicesComponent', component: MedicalServicesComponent
+  },
+  { 'path': 'Free-StructComponent', 'title': 'Free-StructComponent', component: FreeStructComponent }
+  , {
+    'path': 'download-Free', 'title': 'download-Free', component: DownloadFreeComponent
+  },
   // =============================================================================================
 
 
@@ -324,29 +330,34 @@ export const routes: Routes = [
   },
 
   {
-    path:'employee/:id',
-    component:AddStudentComponent
+    path: 'employee/:id',
+    component: AddStudentComponent
   },
 
   // ADD Teachers
   { 'path': 'viewTeacher', 'title': 'View-Teacher', component: ViewTeacherComponent },
 
-  { 'path': 'viewTeacher', children:[
-    { 'path': 'addTeacher', 'title': 'Add-Teacher', component: AddNewTeacherComponent },
-  ]},
-
   {
-    path:'teacher/:id',
-    component:AddNewTeacherComponent
+    'path': 'viewTeacher', children: [
+      { 'path': 'addTeacher', 'title': 'Add-Teacher', component: AddNewTeacherComponent },
+    ]
   },
 
-//Student Admission
-{ 'path': 'StuAdmission', 'title': 'Admission', component: StudentAdmissionComponent },
+  {
+    path: 'teacher/:id',
+    component: AddNewTeacherComponent
+  },
 
+  //Student Admission
+  { 'path': 'StuAdmission', 'title': 'Admission', component: StudentAdmissionComponent },
+  { path: 'StuAdmission/:studentID', component: StudentAdmissionComponent },
   //Important Contacts
   { 'path': 'view', 'title': 'view-contact', component: ViewContactsComponent },
   { 'path': 'addContact', 'title': 'Add-contact', component: AddContactsComponent },
-  {path:'addstudentCourse',title:'StudentCourse',component:AddStudentCourseComponent},
-  {path:'studenttimetable',title:'StudentTimeTable',component:AddStudentTimeTableComponent}
+
+  { path: 'addstudentCourse', title: 'StudentCourse', component: AddStudentCourseComponent },
+  { path: 'studenttimetable', title: 'StudentTimeTable', component: AddStudentTimeTableComponent },
+  { path: 'quizsubject', title: 'StudentQuizSubject', component: AddQuizSubjectComponent },
+  { path: 'viewstudentadmission', title: 'StudentAdmissionList', component: ViewStudentAdmissionComponent }
 ];
 

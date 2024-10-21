@@ -21,12 +21,12 @@ export class StudentAdmissionComponent implements OnInit {
   State: any[] = [];
   District: any[] = [];
   genderArray: string[] = ['Male', 'Female', 'Others'];
-  openregform() {
-    const stuform = document.getElementById('formModel');
-    if (stuform != null) {
-      // stuform.classList.add('openform');
-    }
-  }
+  // openregform() {
+  //   const stuform = document.getElementById('formModel');
+  //   if (stuform != null) {
+  //     // stuform.classList.add('openform');
+  //   }
+  // }
   CloseModel() {
     this.route.navigateByUrl('/viewstudentadmission');
     this.setregformstate();
@@ -34,11 +34,10 @@ export class StudentAdmissionComponent implements OnInit {
     this.selectedStateId = 0;
     this.Sections = [];
     this.District = [];
-    const stuform = document.getElementById('formModel');
-    if (stuform != null) {
-      // stuform.classList.remove('openform');
-    }
-
+    // const stuform = document.getElementById('formModel');
+    // if (stuform != null) {
+    //   stuform.classList.remove('openform');
+    // }
   }
   setregformstate() {
     this.regForm = this.fb.group({
@@ -115,7 +114,6 @@ export class StudentAdmissionComponent implements OnInit {
         imagePath: file
       });
       this.regForm.get('imagePath')?.updateValueAndValidity();
-
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreview = reader.result;
@@ -271,7 +269,6 @@ export class StudentAdmissionComponent implements OnInit {
     else {
       this.insertStudent();
     }
-
   }
   ngOnInit(): void {
     this.setregformstate();

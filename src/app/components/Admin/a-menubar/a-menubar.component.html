@@ -29,7 +29,7 @@
     <a routerLink="/viewContact" routerLinkActive="active"><i class="fa-solid fa-person" id="icon"></i>
       <span *ngIf="is_text_display_none">Parents</span> <i class="ri-arrow-right-s-line"></i>
     </a>
-    <a routerLink="/StuAdmission" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-book"
+    <a routerLink="/viewstudentadmission" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-book"
         id="icon"></i>
       <span *ngIf="is_text_display_none">Student Admission</span> <i class="ri-arrow-right-s-line"></i>
     </a>
@@ -37,8 +37,8 @@
         class="fa-solid fa-book-open-reader" id="icon"></i>
       <span *ngIf="is_text_display_none">Student Subjects</span> <i class="ri-arrow-right-s-line"></i>
     </a>
-    <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-book-atlas" id="icon"></i>
-      <span *ngIf="is_text_display_none">Subject</span> <i class="ri-arrow-right-s-line"></i>
+    <a routerLink="/quizsubject" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-book-atlas" id="icon"></i>
+      <span *ngIf="is_text_display_none"> Quiz Subject</span> <i class="ri-arrow-right-s-line"></i>
     </a>
     <a routerLink="/studenttimetable" routerLinkActive="active" (click)="collapse()"><i class="fa-regular fa-calendar-days" id="icon"></i>
       <span *ngIf="is_text_display_none">Student TimeTable</span> <i class="ri-arrow-right-s-line"></i>
@@ -52,7 +52,7 @@
     <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-van-shuttle" id="icon"></i>
       <span *ngIf="is_text_display_none">Transport</span> <i class="ri-arrow-right-s-line"></i>
     </a>
-    <a routerLink="#" routerLinkActive="active"><i class="fa-regular fa-building" id="icon"></i>
+    <a routerLink="#" routerLinkActive="active" (click)="collapse()"><i class="fa-regular fa-building" id="icon"></i>
       <span *ngIf="is_text_display_none">Hostel</span> <i class="ri-arrow-right-s-line"></i>
     </a>
     <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-newspaper" id="icon"></i>
