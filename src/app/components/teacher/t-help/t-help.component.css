@@ -1,229 +1,255 @@
 #help {
-    background-color: #5c7594;
-  }
-  
-  .support-section {
-    margin-top: 10px;
-    padding: 10px;
-    /* transition: width 0.3s, margin-left 0.3s; */
-  }
-  
-  .header {
-    width: 100%;
-    height: 75px;
-    border-radius: 7px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    overflow: hidden;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-  }
-  
-  .header h1 {
-    font-size: 25px;
-    padding: 5px;
-    margin: 5px;
-    padding-top: 5px;
-    margin-top: 0px;
-  }
-  
-  .header a {
-    text-decoration: none;
-    color: #007bff;
-    display: inline;
-    padding: 5px 0 5px 5px;
-    margin-left: 5px;
-  }
-  
-  .header p {
-    display: inline;
-  }
-  
-  .border-bottom {
-    margin-top: 20px;
-    border-bottom: 2px solid #aaa;
-  }
-  .content{
-    padding-bottom: 10px;
-  }
-  
-  .doubt-section {
-    margin-top: 50px;
-  }
-  
-  .doubt-header {
-    width: 155px;
-    font-size: 1.2rem;
-    border-bottom: 1px solid black;
-  }
-  
-  .doubt-header h3 {
-    padding: 0;
-  }
-  
-  .card-section {
-    /* margin-right: 30px; */
-    margin-top: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-  }
-  
+  background-color: #5c7594;
+}
+
+button.edit {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+button.delete {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+td.action-button {
+  min-width: 150px;
+}
+
+.support-section {
+  margin-top: 10px;
+  padding: 10px;
+  /* transition: width 0.3s, margin-left 0.3s; */
+}
+
+.header {
+  width: 100%;
+  height: 75px;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  overflow: hidden;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.header h1 {
+  font-size: 25px;
+  padding: 5px;
+  margin: 5px;
+  padding-top: 5px;
+  margin-top: 0px;
+}
+
+.header a {
+  text-decoration: none;
+  color: #007bff;
+  display: inline;
+  padding: 5px 0 5px 5px;
+  margin-left: 5px;
+}
+
+.header p {
+  display: inline;
+}
+
+.border-bottom {
+  margin-top: 20px;
+  border-bottom: 2px solid #aaa;
+}
+.content{
+  padding-bottom: 10px;
+
+}
+
+.doubt-section {
+  margin-top: 50px;
+}
+
+.doubt-header {
+  width: 155px;
+  font-size: 1.2rem;
+  border-bottom: 1px solid black;
+}
+
+.doubt-header h3 {
+  padding: 0;
+}
+
+.card-section {
+  /* margin-right: 30px; */
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+
+}
+
+.card {
+  flex-grow: 1;
+  width: 45%;
+  height: 220px;
+  border-radius: 10px;
+  /* border: 1px solid black; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  overflow-y: scroll;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card h4 {
+  padding: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.text-area {
+  flex-grow: 1;
+  width: 45%;
+  height: 220px;
+  /* border: 1px solid black; */
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.file-section input {
+  height: 40px;
+  width: 100%;
+  padding: 5px 0 0 5px;
+}
+
+.files::file-selector-button {
+  height: 30px;
+  border-radius: 10px;
+}
+
+.files::file-selector-button:hover {
+  cursor: pointer;
+}
+
+.text-section textarea {
+  overflow-y: auto;
+  overflow-x: hidden;
+  resize: none;
+  border: none;
+  outline: none;
+  /* padding: 10px; */
+  position: relative;
+  width: 100%;
+  height: 174px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+textarea:hover {
+  cursor: pointer;
+}
+
+::placeholder {
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  font-size: 15px;
+}
+
+.submit-button {
+  text-align: end;
+  margin-top: 10px;
+}
+
+.submit-button button {
+  padding: 8px 20px;
+  font-size: 1.3rem;
+  border-radius: 10px;
+  background-color: #ccff33;
+  border: 2px solid #ddd;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.submit-button button:hover {
+  cursor: pointer;
+  background-color: #b3e600;
+}
+
+.contact-section {
+  margin-top: 20px;
+  /* margin-right: 30px; */
+}
+
+.contact-header {
+  width: 180px;
+  border-bottom: 1px solid black;
+}
+
+.contact-header h3 {
+  padding: 0;
+  font-size: 1.2rem;
+}
+
+.contact-table {
+  margin-top: 50px;
+  /* margin-bottom: 30px; */
+  width: 100%;
+  height: 300px;
+  overflow: auto;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+th {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+td {
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  background: #f1f1f1;
+}
+
+
+@media screen and (max-width:991px) {
   .card {
-    flex-grow: 1;
-    width: 45%;
-    height: 220px;
-    border-radius: 10px;
-    /* border: 1px solid black; */
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-  
-  .card:hover {
-    cursor: pointer;
-  }
-  
-  .card h4 {
-    padding: 10px;
-    border-bottom: 1px solid gray;
-  }
-  
-  .text-area {
-    flex-grow: 1;
-    width: 45%;
-    height: 220px;
-    /* border: 1px solid black; */
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-  
-  .file-section input {
-    height: 40px;
     width: 100%;
-    padding: 5px 0 0 5px;
   }
-  
-  .files::file-selector-button {
-    height: 30px;
-    border-radius: 10px;
+}
+
+@media screen and (max-width:768px) {
+  .support-section {
+    margin-left: 60px;
   }
-  
-  .files::file-selector-button:hover {
-    cursor: pointer;
+  table{
+    min-width: 780px;
   }
-  
-  .text-section textarea {
-    overflow-y: auto;
+}
+
+@media screen and (max-width:497px) {
+  .support-section {
+    margin-left: 50px;
     overflow-x: hidden;
-    resize: none;
-    border: none;
-    outline: none;
-    /* padding: 10px; */
-    position: relative;
-    width: 100%;
-    height: 174px;
-    border-radius: 10px;
-    font-size: 20px;
   }
-  
-  textarea:hover {
-    cursor: pointer;
-  }
-  
-  ::placeholder {
-    position: absolute;
-    top: 2px;
-    left: 5px;
-    font-size: 15px;
-  }
-  
-  .submit-button {
-    text-align: end;
-    margin-top: 10px;
-  }
-  
-  .submit-button button {
-    padding: 8px 20px;
-    font-size: 1.3rem;
-    border-radius: 10px;
-    background-color: #ccff33;
-    border: 2px solid #ddd;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .submit-button button:hover {
-    cursor: pointer;
-    background-color: #b3e600;
-  }
-  
-  .contact-section {
-    margin-top: 20px;
-    /* margin-right: 30px; */
-  }
-  
-  .contact-header {
-    width: 180px;
-    border-bottom: 1px solid black;
-  }
-  
-  .contact-header h3 {
-    padding: 0;
-    font-size: 1.2rem;
-  }
-  
-  .contact-table {
-    margin-top: 50px;
-    /* margin-bottom: 30px; */
-    width: 100%;
-    height: 300px;
-    overflow: auto;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  
-  th {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  td {
-    text-align: center;
-    border: 1px solid #ddd;
-    padding: 10px;
-  }
-  
-  thead {
-    position: sticky;
-    top: 0;
-    background: #f1f1f1;
-  }
-  
-  
-  @media screen and (max-width:991px) {
-    .card {
-      width: 100%;
-    }
-  }
-  
-  @media screen and (max-width:768px) {
-    .support-section {
-      margin-left: 60px;
-    }
-    table{
-      min-width: 780px;
-    }
-  }
-  
-  @media screen and (max-width:497px) {
-    .support-section {
-      margin-left: 50px;
-      overflow-x: hidden;
-    } 
-  }
+}

@@ -1,3 +1,4 @@
+
 <div class="registration-area">
     <!-- <div class="header">
         <h1>Student Admission</h1>
@@ -85,12 +86,12 @@
                     </div>
                     <div class="image-div">
                         <div *ngIf="imagePreview" class="image">
-                            <p>New Selected Image</p>
+                            <p>Newly Selected Image</p>
                             <img [src]="imagePreview" alt="Student Image">
                         </div>
                         @if(isEdit){
                         <div class="image">
-                            <p>previosly uploaded image</p>
+                            <p>Previosly uploaded image</p>
                             <img [src]="'https://localhost:7262/api/Image/'+image" alt="DataBase Image">
                         </div>
                         }
@@ -124,6 +125,8 @@
                 }
                 <button type="button" (click)="CloseModel()" class="close">Back</button>
             </div>
+
         </form>
     </div>
 </div>
+
