@@ -29,9 +29,9 @@ export class ViewStudentAdmissionComponent implements OnInit {
   selectedClass: number = 0;
   selectedSectionId: number = 0;
 
-  StudentHeading: string[] = ['S.NO', 'StudentName', 'D.O.B', 'Gender', 'BloodGroup', 'Fathers Name',
+  StudentHeading: string[] = ['S.NO', 'Student Photo','StudentName', 'D.O.B', 'Gender', 'BloodGroup', 'Fathers Name',
     'Mothers Name', 'Fathers Occupation', 'Mothers Occupation', 'Family Income', 'MobileNo', 'EmailId',
-    'State', 'District', 'PinCode', 'Address', 'Student Photo', 'Class', 'Section', 'Password', 'EnrollmentDate', 'Action'];
+    'State', 'District', 'PinCode', 'Address', 'Class', 'Section', 'Password', 'EnrollmentDate', 'Action'];
 
 
 
@@ -68,7 +68,7 @@ export class ViewStudentAdmissionComponent implements OnInit {
     this.reService.getStudentsBySectionID(sectionId).pipe(
       catchError(error => {
         console.error('Error loading student details:', error);
-        this.isSubjectDataEmpty = true; 
+        this.isSubjectDataEmpty = true;
         return of([]);
       })
     ).subscribe((result: any) => {
