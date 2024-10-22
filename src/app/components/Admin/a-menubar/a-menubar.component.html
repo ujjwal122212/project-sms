@@ -11,7 +11,7 @@
     <a routerLink="/ahome" routerLinkActive="active" (click)="collapse()"><i class="ri-home-3-line" id="icon"></i>
       <span *ngIf="is_text_display_none">Home</span> <i class="ri-arrow-right-s-line"></i>
     </a>
-    <a routerLink="admin-home" routerLinkActive="active"><i class="ri-dashboard-2-line" id="icon"></i>
+    <a routerLink="admin-home" routerLinkActive="active" (click)="collapse()"><i class="ri-dashboard-2-line" id="icon"></i>
       <span *ngIf="is_text_display_none">Dashboard</span> <i class="ri-arrow-right-s-line"></i>
     </a>
     <a routerLink="/viewstudent" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-building-columns"
@@ -43,11 +43,11 @@
     <a routerLink="/studenttimetable" routerLinkActive="active" (click)="collapse()"><i class="fa-regular fa-calendar-days" id="icon"></i>
       <span *ngIf="is_text_display_none">Student TimeTable</span> <i class="ri-arrow-right-s-line"></i>
     </a>
-    <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-square-check" id="icon"></i>
-      <span *ngIf="is_text_display_none">Attendance</span> <i class="ri-arrow-right-s-line"></i>
+    <a routerLink="/studentnotification" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-square-check" id="icon"></i>
+      <span *ngIf="is_text_display_none">Student Notification</span> <i class="ri-arrow-right-s-line"></i>
     </a>
-    <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-clipboard-list" id="icon"></i>
-      <span *ngIf="is_text_display_none">Exam</span> <i class="ri-arrow-right-s-line"></i>
+    <a routerLink="/teachernotification" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-clipboard-list" id="icon"></i>
+      <span *ngIf="is_text_display_none">Teacher Notification</span> <i class="ri-arrow-right-s-line"></i>
     </a>
     <a routerLink="#" routerLinkActive="active"><i class="fa-solid fa-van-shuttle" id="icon"></i>
       <span *ngIf="is_text_display_none">Transport</span> <i class="ri-arrow-right-s-line"></i>

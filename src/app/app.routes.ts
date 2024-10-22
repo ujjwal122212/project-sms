@@ -61,6 +61,9 @@ import { AddStudentCourseComponent } from './components/Admin/add-student-course
 import { AddStudentTimeTableComponent } from './components/Admin/add-student-time-table/add-student-time-table.component';
 import { AddQuizSubjectComponent } from './components/Admin/add-quiz-subject/add-quiz-subject.component';
 import { ViewStudentAdmissionComponent } from './components/Admin/view-student-admission/view-student-admission.component';
+import { StudentNotificationComponent } from './components/Admin/student-notification/student-notification.component';
+import { TeacherNotificationComponent } from './components/Admin/teacher-notification/teacher-notification.component';
+import { ViewTeacherDetailsComponent } from './components/Admin/addTeacher/view-teacher-details/view-teacher-details.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
 
@@ -358,6 +361,9 @@ export const routes: Routes = [
   { path: 'addstudentCourse', title: 'StudentCourse', component: AddStudentCourseComponent },
   { path: 'studenttimetable', title: 'StudentTimeTable', component: AddStudentTimeTableComponent },
   { path: 'quizsubject', title: 'StudentQuizSubject', component: AddQuizSubjectComponent },
-  { path: 'viewstudentadmission', title: 'StudentAdmissionList', component: ViewStudentAdmissionComponent }
+  { path: 'viewstudentadmission', title: 'StudentAdmissionList', component: ViewStudentAdmissionComponent },
+  {path:'studentnotification',title:'StudentNotification',component:StudentNotificationComponent},
+  {path:'teachernotification',title:'TeacherNotification',component:TeacherNotificationComponent},
+  {path:'viewteacherdetails',title:'ViewTeacherDetails',component:ViewTeacherDetailsComponent}
 ];
 

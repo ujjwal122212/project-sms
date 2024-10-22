@@ -21,6 +21,9 @@ export class TeacherQuizService {
   AddQuizSubjects(data:any){
     return this.http.post(`${this.apiurl}/api/QuizSubject/Add Quiz`,data);
   }
+  deleteQuizSubject(subjectId:number){
+    return this.http.delete(`${this.apiurl}/api/QuizSubject/${subjectId}`);
+  }
   AddQuizTitleAndDescription(data:any){
     return this.http.post(`${this.apiurl}/api/Quiz/Add Quiz`,data);
   }
