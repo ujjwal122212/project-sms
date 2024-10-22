@@ -164,6 +164,10 @@ export class AddStudentTimeTableComponent implements OnInit {
       this.timetableservice.deleteTimeTable(id).subscribe((res: any) => {
         alert("TimeTable Deleted Successfully");
         // this.loadTimeTableBySectionId(1);
+        this.selectedClass=0;
+        this.selectedSectionId=0
+        this.Sections=[];
+        this.timeTable=[];
       })
     }
   }

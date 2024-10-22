@@ -6,11 +6,11 @@ import { TeacherQuizService } from '../../../Services/teacher-quiz.service';
 @Component({
   selector: 'app-add-quiz-subject',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule,FormsModule],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule],
   templateUrl: './add-quiz-subject.component.html',
   styleUrl: './add-quiz-subject.component.css'
 })
-export class AddQuizSubjectComponent implements OnInit{
+export class AddQuizSubjectComponent implements OnInit {
   quizform: FormGroup = new FormGroup({});
   constructor(private fb: FormBuilder) { }
 
@@ -23,9 +23,9 @@ export class AddQuizSubjectComponent implements OnInit{
   }
   CloseModel() {
     this.setquizformstate();
-    this.selectedClass=0;
-    this.selectedSectionId=0;
-    this.Sections=[];
+    this.selectedClass = 0;
+    this.selectedSectionId = 0;
+    this.Sections = [];
     const stuform = document.getElementById('formModel');
     if (stuform != null) {
       stuform.classList.remove('openform');
@@ -51,15 +51,15 @@ export class AddQuizSubjectComponent implements OnInit{
       console.log(this.Classes);
     })
   }
-  selectedClass: number=0;
+  selectedClass: number = 0;
   onClassChange(event: any) {
     this.selectedClass = event.target.value;
     this.quizform.patchValue({ sectionId: 0 });
-    this.selectedSectionId=0;
-    this.Sections=[];
-    this.Subjects=[];
-    this.isSubjectDataEmpty=false;
-    this.isCourseFound=false;
+    this.selectedSectionId = 0;
+    this.Sections = [];
+    this.Subjects = [];
+    this.isSubjectDataEmpty = false;
+    this.isCourseFound = false;
     this.loadSectionsByClassId(this.selectedClass);
   }
   loadSectionsByClassId(classId: number): void {
@@ -73,20 +73,21 @@ export class AddQuizSubjectComponent implements OnInit{
   loadSubjectBySectionId(sectionId: number) {
     this.quizService.getQuizSubjectBySectionId(sectionId).subscribe((result: any) => {
       this.Subjects = result;
+      console.log(this.Subjects);
       if (this.Subjects.length === 0) {
         this.isSubjectDataEmpty = true;
       }
     })
   }
-  selectedSectionId: number=0;
+  selectedSectionId: number = 0;
   onSectionChange(event: any) {
     this.selectedSectionId = event.target.value;
   }
-  isCourseFound:boolean=false;
+  isCourseFound: boolean = false;
   isSubjectDataEmpty = false;
   showCourse() {
-    this.isCourseFound=true;
-    this.isSubjectDataEmpty=false;
+    this.isCourseFound = true;
+    this.isSubjectDataEmpty = false;
     if (this.selectedSectionId) {
       this.loadSubjectBySectionId(this.selectedSectionId);
     } else {
@@ -103,16 +104,31 @@ export class AddQuizSubjectComponent implements OnInit{
       this.quizService.AddQuizSubjects(formvalue).subscribe((res: any) => {
         alert("Quiz Subjects Added Successfully");
         this.quizform.reset();
-        this.Sections = [];
         this.CloseModel();
+        this.selectedClass = 0;
+        this.selectedSectionId = 0;
+        // this.Sections = [];
+        // this.Subjects = [];
       })
     }
   }
-  onSubmit(){
-  this.insertQuizSubjects();
+  onSubmit() {
+    this.insertQuizSubjects();
+  }
+  deleteQuizSubject(subjectId: number) {
+    const isConfirm = confirm("Are you sure to want to delete this record ?");
+    if (isConfirm) {
+      this.quizService.deleteQuizSubject(subjectId).subscribe((res: any) => {
+        alert("Quiz Subject Data Deleted Successfully");
+        this.selectedClass = 0;
+        this.selectedSectionId = 0;
+        this.Sections = [];
+        this.Subjects = [];
+      })
+    }
   }
   ngOnInit(): void {
-   this.setquizformstate();   
-   this.loadClasses();
+    this.setquizformstate();
+    this.loadClasses();
   }
 }

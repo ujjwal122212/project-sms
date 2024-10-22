@@ -1,0 +1,63 @@
+<div class="student-notification">
+    <div class="header">
+        <h1>Teacher Notification</h1>
+        <button (click)="openform()">Add Teacher Notifications</button>
+    </div>
+    <div class="section">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Notification Topic</th>
+                        <th>Notification Text</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(notification of studentNotification;track $index){
+                    <tr>
+                        <td>{{$index+1}}</td>
+                        <td>{{notification.NotificationTopic}}</td>
+                        <td>{{notification.NotificationText}}</td>
+                        <td class="action-button">
+                            <button class="edit"
+                                (click)="editStudentNotification(notification.NotificationID)">Edit</button>
+                            <button class="delete"
+                                (click)="deleteStudentNotification(notification.NotificationID)">Delete</button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="form-area" id="formModel">
+    @if(studentNotificationform.value.notificationID==0){
+    <h1>Add Teacher Npotification</h1>
+    }
+    @else {
+    <h1>Update Teacher Notification</h1>
+    }
+    <form action="" [formGroup]="studentNotificationform" (ngSubmit)="onSubmit()">
+        <div class="card-area">
+            <div class="card">
+                <input type="text" placeholder="Enter Notification Topic" formControlName="notificationTopic">
+            </div>
+            <div class="card">
+                <input type="text" placeholder="Enter Notification Text" formControlName="notificationText">
+            </div>
+        </div>
+        <div class="button-area">
+            @if(studentNotificationform.value.notificationID==0){
+            <button type="submit" class="submit">Save</button>
+            }
+            @else {
+            <button type="submit" class="submit">Update</button>
+            }
+            <button type="button" (click)="CloseModel()" class="close">Close</button>
+        </div>
+    </form>
+</div>
