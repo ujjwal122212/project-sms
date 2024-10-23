@@ -234,7 +234,7 @@ export class StudentAdmissionComponent implements OnInit {
     }
     else {
       const formdata = new FormData();
-      const studenID = this.regForm.get('studentID')?.value;
+      const enrollmentNumber = this.regForm.get('enrollmentNumber')?.value;
       formdata.append('studentName', this.regForm.get('studentName')?.value);
       formdata.append('dateOfBirth', this.regForm.get('dateOfBirth')?.value);
       formdata.append('gender', this.regForm.get('gender')?.value);
@@ -253,7 +253,7 @@ export class StudentAdmissionComponent implements OnInit {
       formdata.append('StudentImg', this.regForm.get('imagePath')?.value);
       formdata.append('class', this.regForm.get('class')?.value);
       formdata.append('sectionId', this.regForm.get('sectionId')?.value);
-      this.regService.UpdateStudentByStudentID(studenID, formdata).subscribe((res: any) => {
+      this.regService.UpdateStudentByStudentID(enrollmentNumber, formdata).subscribe((res: any) => {
         alert("Student Data Updated Successfully");
         this.route.navigateByUrl('/viewstudentadmission');
         this.regForm.reset();

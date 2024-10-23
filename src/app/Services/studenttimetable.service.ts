@@ -5,7 +5,7 @@ import { inject, Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class StudenttimetableService {
-
+  sectionId!:number;
   constructor() { }
   http=inject(HttpClient);
   private apiurl="https://localhost:7262";

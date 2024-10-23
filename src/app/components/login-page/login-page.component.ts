@@ -57,6 +57,7 @@ export class LoginPageComponent implements OnInit {
           console.log(res);
           if (formvalue.password == 'Student@123') {
             alert("Login Successfull");
+            this.loginService.enrollmentNumber = res.id;
             this.route.navigateByUrl('/studentlayout/S-home');
           }
           else if (formvalue.password == 'Teacher@123') {
