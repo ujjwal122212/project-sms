@@ -1,1 +1,20 @@
-<p>login-page works!</p>
+<div class="container">
+    <div class="form-container">
+        <p class="title">Login</p>
+        <form class="form" [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+            <input type="text" class="input" placeholder="EnrollmentNo" formControlName="enrollmentNumber"
+                name="studentID" />
+            <input type="password" class="input" placeholder="Password" formControlName="password" name="password" />
+            <select name="" id="" formControlName="role">
+                <option value="" selected disabled>Select Your Role</option>
+                @for (item of rolesArray; track $index) {
+                <option [value]="item">{{item}}</option>
+                }
+            </select>
+            <p class="page-link">
+                <span class="page-link-label">Forgot Password?</span>
+            </p>
+            <button class="form-btn" type="submit">Log in</button>
+        </form>
+    </div>
+</div>

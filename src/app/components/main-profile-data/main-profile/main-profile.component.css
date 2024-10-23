@@ -78,3 +78,7 @@ ul {
     color: grey;
   }
 }
+.logout:hover{
+  background-color: rgb(192, 186, 186);
+  cursor: pointer;
+}

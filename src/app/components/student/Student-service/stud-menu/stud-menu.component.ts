@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { THomeworkPageComponent } from '../../../teacher/homework/t-homework-page/t-homework-page.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-stud-menu',
@@ -10,5 +10,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './stud-menu.component.css'
 })
 export class StudMenuComponent {
-
+  route=inject(Router)
+ gotoId(){
+  this.route.navigateByUrl('/studentlayout/Open-SerComponent/Id-CardComponent')
+ }
 }

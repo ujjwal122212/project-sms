@@ -28,7 +28,7 @@ export class StudentAdmissionComponent implements OnInit {
   //   }
   // }
   CloseModel() {
-    this.route.navigateByUrl('/viewstudentadmission');
+    this.route.navigateByUrl('/adminlayout/viewstudentadmission');
     this.setregformstate();
     this.selectedClass = 0;
     this.selectedStateId = 0;
@@ -41,7 +41,7 @@ export class StudentAdmissionComponent implements OnInit {
   }
   setregformstate() {
     this.regForm = this.fb.group({
-      studentID: [0],
+      enrollmentNumber: [0],
       studentName: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
       gender: ['', Validators.required],

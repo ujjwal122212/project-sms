@@ -8,7 +8,15 @@
     <i class="ri-message-3-line" id="nav_icon"></i>
   </div>
   <div class="user-info">
-    <span class="user-icon" routerLink="/profile" routerLinkActive="active">👤</span>
+    <span class="user-icon" routerLinkActive="active" (click)="openProfile()">
+      👤
+    </span>
+    @if (show) {
+      <div class="main1">
+        <app-main-profile></app-main-profile>
+         <!-- <app-profile-card></app-profile-card> -->
+      </div>
+      }
     <div class="user-text">
       <h3>Teacher</h3>
     </div>
