@@ -64,30 +64,96 @@ import { ViewStudentAdmissionComponent } from './components/Admin/view-student-a
 import { StudentNotificationComponent } from './components/Admin/student-notification/student-notification.component';
 import { TeacherNotificationComponent } from './components/Admin/teacher-notification/teacher-notification.component';
 import { ViewTeacherDetailsComponent } from './components/Admin/addTeacher/view-teacher-details/view-teacher-details.component';
+import { StudentLayoutComponent } from './components/student-layout/student-layout.component';
+import { TeacherLayoutComponent } from './components/teacher-layout/teacher-layout.component';
+import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
 
 
 export const routes: Routes = [
 
+  {
+    path: '', redirectTo: 'Login-page', pathMatch: 'full'
+  },
 
   //Login page
-  { 'path': 'Login-page', 'title': 'leave', component: LoginPageComponent },
-
-  // Main-Profile
-  // {'path':'reset-Password','title':'reset-Password',component:ResetPasswordComponent},
-
-  //for student pages
-
-  //student dashboard
-  { 'path': 'S-home', 'title': 'Home', component: HomeComponent },
-  { 'path': 'S-dashboard', 'title': 'Home', component: SDashboardComponent },
-
+  { 'path': 'Login-page', 'title': 'Login', component: LoginPageComponent },
   {
-    'path': 'S-home', children: [
+    path: 'studentlayout', component: StudentLayoutComponent,
+    children: [
+      // Main-Profile
+      // {'path':'reset-Password','title':'reset-Password',component:ResetPasswordComponent},
+
+      //for student pages
+
+      //student dashboard
+      { 'path': 'S-home', 'title': 'Home', component: HomeComponent },
+      { 'path': 'S-dashboard', 'title': 'Home', component: SDashboardComponent },
+
+      {
+        'path': 'S-home', children: [
+          { 'path': 'quiz1', 'title': 'Quizzes', component: Quiz1Component },
+
+          //quiz
+          {
+            'path': 'quiz1', children: [
+              { 'path': 'quiz2', 'title': 'Quizzes|take-quiz', component: Quiz2Component },
+
+            ]
+          },
+
+          { 'path': 'courses', 'title': 'Courses', component: CoursesComponent },
+          { 'path': 'performance', 'title': 'Performance', component: PerformanceComponent },
+          { 'path': 'timetable', 'title': 'Time-Table', component: TimeTableComponent },
+          { 'path': 'StudentAttendence', 'title': 'Attendence', component: AttandanceComponent },
+
+          { 'path': 'fee', 'title': 'Fees', component: FeePageComponent },
+          {
+            'path': 'fee', children: [
+              { 'path': 'payment', 'title': 'payment', component: PaymentComponent },
+              { 'path': 'receipt', 'title': 'receipt', component: RecieptComponent }
+            ]
+          },
+          { 'path': 'assignment-page', 'title': 'assignment-page', component: AssignmentPageComponent },
+          {
+            'path': 'assignment-page', children: [
+              { 'path': 'homework-page', 'title': 'homework-page', component: HomeworkPageComponent }
+            ]
+          },
+          {
+            'path': 'Open-SerComponent', 'title': 'OpenSerComponent', component: OpenSerComponent
+          },
+          {
+            'path': 'Open-SerComponent', children: [
+              {
+                'path': 'Id-CardComponent', 'title': 'Id-CardComponent', component: IdCardComponent
+              },
+              {
+                'path': 'Edit-IdCardComponent', 'title': 'Edit-IdCardComponent', component: EditIdCardComponent
+              },
+              {
+                'path': 'Transport-ServiceComponent', 'title': 'Transport-ServiceComponent', component: TransportServiceComponent
+              },
+              { 'path': 'Change-CurrentPickPlaceComponent', 'title': 'ChangeCurrentPickPlaceComponent', component: ChangeCurrentPickPlaceComponent },
+              {
+                'path': 'Medical-ServicesComponent', 'title': 'MedicalServicesComponent', component: MedicalServicesComponent
+              },
+              { 'path': 'Free-StructComponent', 'title': 'Free-StructComponent', component: FreeStructComponent }
+              , {
+                'path': 'download-Free', 'title': 'download-Free', component: DownloadFreeComponent
+              },
+            ]
+          },
+          { 'path': 'help', 'title': 'Help', component: StudentHelpComponent },
+
+        ]
+      },
+
+
+      //student Quizzes
       { 'path': 'quiz1', 'title': 'Quizzes', component: Quiz1Component },
 
-      //quiz
       {
         'path': 'quiz1', children: [
           { 'path': 'quiz2', 'title': 'Quizzes|take-quiz', component: Quiz2Component },
@@ -95,11 +161,22 @@ export const routes: Routes = [
         ]
       },
 
+
+      //student courses
       { 'path': 'courses', 'title': 'Courses', component: CoursesComponent },
+
+
+      //student performance
       { 'path': 'performance', 'title': 'Performance', component: PerformanceComponent },
+
+
+      //student Time table
       { 'path': 'timetable', 'title': 'Time-Table', component: TimeTableComponent },
+
+      //Student Attendence
       { 'path': 'StudentAttendence', 'title': 'Attendence', component: AttandanceComponent },
 
+      //student fees
       { 'path': 'fee', 'title': 'Fees', component: FeePageComponent },
       {
         'path': 'fee', children: [
@@ -107,132 +184,111 @@ export const routes: Routes = [
           { 'path': 'receipt', 'title': 'receipt', component: RecieptComponent }
         ]
       },
+      // student homework
       { 'path': 'assignment-page', 'title': 'assignment-page', component: AssignmentPageComponent },
       {
         'path': 'assignment-page', children: [
           { 'path': 'homework-page', 'title': 'homework-page', component: HomeworkPageComponent }
         ]
       },
-
+      //student help
       { 'path': 'help', 'title': 'Help', component: StudentHelpComponent },
-    ]
-  },
 
-
-  //student Quizzes
-  { 'path': 'quiz1', 'title': 'Quizzes', component: Quiz1Component },
-
-  {
-    'path': 'quiz1', children: [
-      { 'path': 'quiz2', 'title': 'Quizzes|take-quiz', component: Quiz2Component },
-
-    ]
-  },
-
-
-  //student courses
-  { 'path': 'courses', 'title': 'Courses', component: CoursesComponent },
-
-
-  //student performance
-  { 'path': 'performance', 'title': 'Performance', component: PerformanceComponent },
-
-
-  //student Time table
-  { 'path': 'timetable', 'title': 'Time-Table', component: TimeTableComponent },
-
-  //Student Attendence
-  { 'path': 'StudentAttendence', 'title': 'Attendence', component: AttandanceComponent },
-
-  //student fees
-  { 'path': 'fee', 'title': 'Fees', component: FeePageComponent },
-  {
-    'path': 'fee', children: [
-      { 'path': 'payment', 'title': 'payment', component: PaymentComponent },
-      { 'path': 'receipt', 'title': 'receipt', component: RecieptComponent }
-    ]
-  },
-  // student homework
-  { 'path': 'assignment-page', 'title': 'assignment-page', component: AssignmentPageComponent },
-  {
-    'path': 'assignment-page', children: [
-      { 'path': 'homework-page', 'title': 'homework-page', component: HomeworkPageComponent }
-    ]
-  },
-  //student help
-  { 'path': 'help', 'title': 'Help', component: StudentHelpComponent },
-
-  // student service
-  {
-    'path': 'Open-SerComponent', 'title': 'OpenSerComponent', component: OpenSerComponent
-  },
-  {
-    'path': 'Id-CardComponent', 'title': 'Id-CardComponent', component: IdCardComponent
-  },
-  {
-    'path': 'Edit-IdCardComponent', 'title': 'Edit-IdCardComponent', component: EditIdCardComponent
-  },
-  {
-    'path': 'Transport-ServiceComponent', 'title': 'Transport-ServiceComponent', component: TransportServiceComponent
-  },
-  { 'path': 'Change-CurrentPickPlaceComponent', 'title': 'ChangeCurrentPickPlaceComponent', component: ChangeCurrentPickPlaceComponent },
-  {
-    'path': 'Medical-ServicesComponent', 'title': 'MedicalServicesComponent', component: MedicalServicesComponent
-  },
-  { 'path': 'Free-StructComponent', 'title': 'Free-StructComponent', component: FreeStructComponent }
-  , {
-    'path': 'download-Free', 'title': 'download-Free', component: DownloadFreeComponent
-  },
-  // =============================================================================================
-
-
-  // Teacher Routing
-
-  { 'path': 'T-dashboard', 'title': 'Dashboard', component: THomeComponent },
-
-  //for teacher dashboard
-  { 'path': 'T-home', 'title': 'Dashboard', component: TDashboardComponent },
-
-  {
-    'path': 'T-home', children: [
-      { 'path': 'Tquizzes', 'title': 'quizzes', component: TQuizComponent },
+      // student service
       {
-        'path': 'Tquizzes', children: [
-
-          { 'path': 'upcoming', 'title': 'upcoming-quizzes', component: UpcomingComponent },
-          { 'path': 'ongoing', 'title': 'ongoing-quizzes', component: OngoingComponent },
-          { 'path': 'schedule', 'title': 'schedule-quizzes', component: SecheduleComponent },
-          { 'path': 'Assesment', 'title': 'Assesment-quizzes', component: AssesmentComponent },
-        ]
+        'path': 'Open-SerComponent', 'title': 'OpenSerComponent', component: OpenSerComponent
       },
-      { 'path': 'leave', 'title': 'leave', component: LeavePageComponent },
       {
-        'path': 'leave', children: [
-          { 'path': 'apply-leave', 'title': 'apply-leave', component: ApplyLeaveComponent },
-          { 'path': 'cancel-leave', 'title': 'cancel-leave', component: CancelLeaveComponent },
-          { 'path': 'holiday-calender', 'title': 'holiday-calender', component: HolidayCalenderComponent },
-          { 'path': 'view-balance', 'title': 'view-balance', component: ViewBalanceComponent },
-          { 'path': 'view-leave-book', 'title': 'view-leave-book', component: ViewLeaveBookComponent },
-          { 'path': 'view-status', 'title': 'view-status', component: ViewStatusComponent },
+        'path': 'Open-SerComponent', children: [
+          {
+            'path': 'Id-CardComponent', 'title': 'Id-CardComponent', component: IdCardComponent
+          },
+          {
+            'path': 'Edit-IdCardComponent', 'title': 'Edit-IdCardComponent', component: EditIdCardComponent
+          },
+          {
+            'path': 'Transport-ServiceComponent', 'title': 'Transport-ServiceComponent', component: TransportServiceComponent
+          },
+          { 'path': 'Change-CurrentPickPlaceComponent', 'title': 'ChangeCurrentPickPlaceComponent', component: ChangeCurrentPickPlaceComponent },
+          {
+            'path': 'Medical-ServicesComponent', 'title': 'MedicalServicesComponent', component: MedicalServicesComponent
+          },
+          { 'path': 'Free-StructComponent', 'title': 'Free-StructComponent', component: FreeStructComponent }
+          , {
+            'path': 'download-Free', 'title': 'download-Free', component: DownloadFreeComponent
+          },
         ]
       },
 
-      { 'path': 'T-homework', 'title': 'homework', component: THomeworkPageComponent },
+
+
+
+    ]
+  },
+  {
+    path: 'teacherlayout', component: TeacherLayoutComponent, children: [
+      // Teacher Routing
+
+      { 'path': 'T-dashboard', 'title': 'Dashboard', component: THomeComponent },
+
+      //for teacher dashboard
+      { 'path': 'T-home', 'title': 'Dashboard', component: TDashboardComponent },
 
       {
-        'path': 'T-homework', children: [
-          { 'path': 'check-homework', 'title': 'homework', component: CheckHomeworkComponent },
-          { 'path': 'give-homework', 'title': 'homework', component: GiveHomeworkComponent },
+        'path': 'T-home', children: [
+          { 'path': 'Tquizzes', 'title': 'quizzes', component: TQuizComponent },
+          {
+            'path': 'Tquizzes', children: [
+
+              { 'path': 'upcoming', 'title': 'upcoming-quizzes', component: UpcomingComponent },
+              { 'path': 'ongoing', 'title': 'ongoing-quizzes', component: OngoingComponent },
+              { 'path': 'schedule', 'title': 'schedule-quizzes', component: SecheduleComponent },
+              { 'path': 'Assesment', 'title': 'Assesment-quizzes', component: AssesmentComponent },
+            ]
+          },
+          { 'path': 'leave', 'title': 'leave', component: LeavePageComponent },
+          {
+            'path': 'leave', children: [
+              { 'path': 'apply-leave', 'title': 'apply-leave', component: ApplyLeaveComponent },
+              { 'path': 'cancel-leave', 'title': 'cancel-leave', component: CancelLeaveComponent },
+              { 'path': 'holiday-calender', 'title': 'holiday-calender', component: HolidayCalenderComponent },
+              { 'path': 'view-balance', 'title': 'view-balance', component: ViewBalanceComponent },
+              { 'path': 'view-leave-book', 'title': 'view-leave-book', component: ViewLeaveBookComponent },
+              { 'path': 'view-status', 'title': 'view-status', component: ViewStatusComponent },
+            ]
+          },
+
+          { 'path': 'T-homework', 'title': 'homework', component: THomeworkPageComponent },
+
+          {
+            'path': 'T-homework', children: [
+              { 'path': 'check-homework', 'title': 'homework', component: CheckHomeworkComponent },
+              { 'path': 'give-homework', 'title': 'homework', component: GiveHomeworkComponent },
+            ]
+          },
+          { 'path': 'T-attendence', 'title': 'Attendence', component: AttendenceComponent },
+          { 'path': 'tHelp', 'title': 'Help', component: THelpComponent },
+          { 'path': 'TTimeTableComponent', 'title': 'TTimeTableComponent', component: TTimeTableComponent },
+          {
+            'path': 'TTimeTableComponent', children: [{
+              'path': 'T-attendence', component: AttendenceComponent
+            }]
+          },
+          { 'path': 'student-management', 'title': 'student-management', component: ManagementPageComponent },
+          {
+            'path': 'student-management', children: [
+              { 'path': 'class-page', 'title': 'class-page', component: ClassPageComponent },
+              {
+                'path': 'class-page', children: [
+                  { 'path': 'student-page', 'title': 'student-page', component: StudentpageComponent }
+                ]
+              }
+            ]
+          },
         ]
       },
-      { 'path': 'T-attendence', 'title': 'Attendence', component: AttendenceComponent },
-      { 'path': 'tHelp', 'title': 'Help', component: THelpComponent },
-      { 'path': 'TTimeTableComponent', 'title': 'TTimeTableComponent', component: TTimeTableComponent },
-      {
-        'path': 'TTimeTableComponent', children: [{
-          'path': 'T-attendence', component: AttendenceComponent
-        }]
-      },
+
+      // management
       { 'path': 'student-management', 'title': 'student-management', component: ManagementPageComponent },
       {
         'path': 'student-management', children: [
@@ -244,126 +300,124 @@ export const routes: Routes = [
           }
         ]
       },
-    ]
-  },
 
-  // management
-  { 'path': 'student-management', 'title': 'student-management', component: ManagementPageComponent },
-  {
-    'path': 'student-management', children: [
-      { 'path': 'class-page', 'title': 'class-page', component: ClassPageComponent },
+      // attendence
+      { 'path': 'T-attendence', 'title': 'Attendence', component: AttendenceComponent },
+
+      // time-table
+      { 'path': 'TTimeTableComponent', 'title': 'TTimeTableComponent', component: TTimeTableComponent },
+
       {
-        'path': 'class-page', children: [
-          { 'path': 'student-page', 'title': 'student-page', component: StudentpageComponent }
+        'path': 'TTimeTableComponent', children: [{
+          'path': 'T-attendence', component: AttendenceComponent
+        }]
+      },
+
+      // for teacher quizess
+
+      { 'path': 'Tquizzes', 'title': 'quizzes', component: TQuizComponent },
+
+      {
+        'path': 'Tquizzes', children: [
+
+          { 'path': 'upcoming', 'title': 'upcoming-quizzes', component: UpcomingComponent },
+          { 'path': 'ongoing', 'title': 'ongoing-quizzes', component: OngoingComponent },
+          { 'path': 'schedule', 'title': 'schedule-quizzes', component: SecheduleComponent },
+          { 'path': 'Assesment', 'title': 'Assesment-quizzes', component: AssesmentComponent },
         ]
-      }
+      },
+
+      // for teacher leave
+      { 'path': 'leave', 'title': 'leave', component: LeavePageComponent },
+
+      {
+        'path': 'leave', children: [
+          { 'path': 'apply-leave', 'title': 'apply-leave', component: ApplyLeaveComponent },
+          { 'path': 'cancel-leave', 'title': 'cancel-leave', component: CancelLeaveComponent },
+          { 'path': 'holiday-calender', 'title': 'holiday-calender', component: HolidayCalenderComponent },
+          { 'path': 'view-balance', 'title': 'view-balance', component: ViewBalanceComponent },
+          { 'path': 'view-leave-book', 'title': 'view-leave-book', component: ViewLeaveBookComponent },
+          { 'path': 'view-status', 'title': 'view-status', component: ViewStatusComponent },
+        ]
+      },
+
+      // for teacher homework
+      { 'path': 'T-homework', 'title': 'homework', component: THomeworkPageComponent },
+
+      {
+        'path': 'T-homework', children: [
+          { 'path': 'check-homework', 'title': 'homework', component: CheckHomeworkComponent },
+          { 'path': 'give-homework', 'title': 'homework', component: GiveHomeworkComponent },
+        ]
+      },
+
+      //for teacher help
+      { 'path': 'tHelp', 'title': 'Help', component: THelpComponent },
+    ]
+  },
+  {
+    path: 'adminlayout', component: AdminLayoutComponent, children: [
+      // Admin Routes
+
+      //Admin dashboard
+      { 'path': 'ahome', 'title': 'Dashboard', component: ADashboardComponent },
+      { 'path': 'admin-home', 'title': 'Admin_Home', component: AdminHomeComponent },
+
+      //add student
+      { 'path': 'viewstudent', 'title': 'View-Student', component: ViewStudentComponent },
+
+      {
+        'path': 'viewstudent', children: [
+          { 'path': 'addstudent', 'title': 'Add-Student', component: AddStudentComponent },
+
+        ]
+      },
+
+      {
+        path: 'employee/:id',
+        component: AddStudentComponent
+      },
+
+      // ADD Teachers
+      { 'path': 'viewTeacher', 'title': 'View-Teacher', component: ViewTeacherComponent },
+
+      {
+        'path': 'viewTeacher', children: [
+          { 'path': 'addTeacher', 'title': 'Add-Teacher', component: AddNewTeacherComponent },
+        ]
+      },
+
+      {
+        path: 'teacher/:id',
+        component: AddNewTeacherComponent
+      },
+
+      //Student Admission
+      { 'path': 'StuAdmission', 'title': 'Admission', component: StudentAdmissionComponent },
+      { path: 'StuAdmission/:studentID', component: StudentAdmissionComponent },
+      //Important Contacts
+      { 'path': 'view', 'title': 'view-contact', component: ViewContactsComponent },
+      { 'path': 'addContact', 'title': 'Add-contact', component: AddContactsComponent },
+
+      { path: 'addstudentCourse', title: 'StudentCourse', component: AddStudentCourseComponent },
+      { path: 'studenttimetable', title: 'StudentTimeTable', component: AddStudentTimeTableComponent },
+      { path: 'quizsubject', title: 'StudentQuizSubject', component: AddQuizSubjectComponent },
+      { path: 'viewstudentadmission', title: 'StudentAdmissionList', component: ViewStudentAdmissionComponent },
+      { path: 'studentnotification', title: 'StudentNotification', component: StudentNotificationComponent },
+      { path: 'teachernotification', title: 'TeacherNotification', component: TeacherNotificationComponent },
+      { path: 'viewteacherdetails', title: 'ViewTeacherDetails', component: ViewTeacherDetailsComponent }
     ]
   },
 
-  // attendence
-  { 'path': 'T-attendence', 'title': 'Attendence', component: AttendenceComponent },
 
-  // time-table
-  { 'path': 'TTimeTableComponent', 'title': 'TTimeTableComponent', component: TTimeTableComponent },
+  // =============================================================================================
 
-  {
-    'path': 'TTimeTableComponent', children: [{
-      'path': 'T-attendence', component: AttendenceComponent
-    }]
-  },
 
-  // for teacher quizess
 
-  { 'path': 'Tquizzes', 'title': 'quizzes', component: TQuizComponent },
-
-  {
-    'path': 'Tquizzes', children: [
-
-      { 'path': 'upcoming', 'title': 'upcoming-quizzes', component: UpcomingComponent },
-      { 'path': 'ongoing', 'title': 'ongoing-quizzes', component: OngoingComponent },
-      { 'path': 'schedule', 'title': 'schedule-quizzes', component: SecheduleComponent },
-      { 'path': 'Assesment', 'title': 'Assesment-quizzes', component: AssesmentComponent },
-    ]
-  },
-
-  // for teacher leave
-  { 'path': 'leave', 'title': 'leave', component: LeavePageComponent },
-
-  {
-    'path': 'leave', children: [
-      { 'path': 'apply-leave', 'title': 'apply-leave', component: ApplyLeaveComponent },
-      { 'path': 'cancel-leave', 'title': 'cancel-leave', component: CancelLeaveComponent },
-      { 'path': 'holiday-calender', 'title': 'holiday-calender', component: HolidayCalenderComponent },
-      { 'path': 'view-balance', 'title': 'view-balance', component: ViewBalanceComponent },
-      { 'path': 'view-leave-book', 'title': 'view-leave-book', component: ViewLeaveBookComponent },
-      { 'path': 'view-status', 'title': 'view-status', component: ViewStatusComponent },
-    ]
-  },
-
-  // for teacher homework
-  { 'path': 'T-homework', 'title': 'homework', component: THomeworkPageComponent },
-
-  {
-    'path': 'T-homework', children: [
-      { 'path': 'check-homework', 'title': 'homework', component: CheckHomeworkComponent },
-      { 'path': 'give-homework', 'title': 'homework', component: GiveHomeworkComponent },
-    ]
-  },
-
-  //for teacher help
-  { 'path': 'tHelp', 'title': 'Help', component: THelpComponent },
 
 
 
   //============================================================================================
-  // Admin Routes
 
-  //Admin dashboard
-  { 'path': 'ahome', 'title': 'Dashboard', component: ADashboardComponent },
-  { 'path': 'admin-home', 'title': 'Admin_Home', component: AdminHomeComponent },
-
-  //add student
-  { 'path': 'viewstudent', 'title': 'View-Student', component: ViewStudentComponent },
-
-  {
-    'path': 'viewstudent', children: [
-      { 'path': 'addstudent', 'title': 'Add-Student', component: AddStudentComponent },
-
-    ]
-  },
-
-  {
-    path: 'employee/:id',
-    component: AddStudentComponent
-  },
-
-  // ADD Teachers
-  { 'path': 'viewTeacher', 'title': 'View-Teacher', component: ViewTeacherComponent },
-
-  {
-    'path': 'viewTeacher', children: [
-      { 'path': 'addTeacher', 'title': 'Add-Teacher', component: AddNewTeacherComponent },
-    ]
-  },
-
-  {
-    path: 'teacher/:id',
-    component: AddNewTeacherComponent
-  },
-
-  //Student Admission
-  { 'path': 'StuAdmission', 'title': 'Admission', component: StudentAdmissionComponent },
-  { path: 'StuAdmission/:studentID', component: StudentAdmissionComponent },
-  //Important Contacts
-  { 'path': 'view', 'title': 'view-contact', component: ViewContactsComponent },
-  { 'path': 'addContact', 'title': 'Add-contact', component: AddContactsComponent },
-
-  { path: 'addstudentCourse', title: 'StudentCourse', component: AddStudentCourseComponent },
-  { path: 'studenttimetable', title: 'StudentTimeTable', component: AddStudentTimeTableComponent },
-  { path: 'quizsubject', title: 'StudentQuizSubject', component: AddQuizSubjectComponent },
-  { path: 'viewstudentadmission', title: 'StudentAdmissionList', component: ViewStudentAdmissionComponent },
-  {path:'studentnotification',title:'StudentNotification',component:StudentNotificationComponent},
-  {path:'teachernotification',title:'TeacherNotification',component:TeacherNotificationComponent},
-  {path:'viewteacherdetails',title:'ViewTeacherDetails',component:ViewTeacherDetailsComponent}
 ];
 

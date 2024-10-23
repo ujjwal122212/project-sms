@@ -36,7 +36,7 @@ export class ViewStudentAdmissionComponent implements OnInit {
 
 
   openregform() {
-    this.route.navigateByUrl('/StuAdmission');
+    this.route.navigateByUrl('/adminlayout/StuAdmission');
   }
 
   loadClasses() {
@@ -107,7 +107,7 @@ export class ViewStudentAdmissionComponent implements OnInit {
     }
   }
   EditStudent(studentID: number) {
-    this.route.navigateByUrl('/StuAdmission/' + studentID);
+    this.route.navigateByUrl('/adminlayout/StuAdmission/' + studentID);
   }
   ngOnInit(): void {
     this.loadClasses();

@@ -3,13 +3,13 @@ h3 {
 }
 
 :root {
-  --nav_color_student: #FDC300;
+  --nav_color_student: #fdc300;
   --sidebar_color_student: #042954;
   --font_style_student: "Inter";
-  --nav_color_admin: #4394DF;
-  --sidebar_color_admin: #284A6A;
+  --nav_color_admin: #4394df;
+  --sidebar_color_admin: #284a6a;
   --backcolor_admin: #bbc7d2;
-  --icon_color_admin: #FDC300;
+  --icon_color_admin: #fdc300;
 }
 
 * {
@@ -23,19 +23,19 @@ body {
   font-family: var(--font_style_student), sans-serif;
 }
 
-
-
 nav {
   width: 100%;
   height: 51px;
   display: flex;
   background-color: #f1f1f1;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   overflow: hidden;
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 3;
+  z-index: 8;
 }
 
 nav .logo {
@@ -63,7 +63,7 @@ nav .nav-icons {
 }
 
 #nav_icon:hover {
-  color: #FDC300;
+  color: #fdc300;
 }
 
 nav .user-info {
@@ -80,9 +80,11 @@ nav .user-info {
   margin-left: 10px;
   cursor: pointer;
 }
-.user-icon{
+
+.user-icon {
   border-left: 2px solid rgb(207, 197, 197);
 }
+
 .user-text {
   height: 100%;
   font-weight: 700;
@@ -113,7 +115,11 @@ body.dark-mode .menu a {
   border-bottom: 1px solid #444;
 }
 
-.more-options span{
+.more-options {
+  height: 100%;
+}
+
+/* .more-options span{
   width: 40px;
   font-size: 30px;
   font-weight: 700;
@@ -123,51 +129,85 @@ body.dark-mode .menu a {
 .more-options span:hover {
   cursor: pointer;
   color: orange;
+} */
+
+/* .more-options span{
+  height: 100%;
+}
+.more-options span p{
+  font-weight: 700;
+} */
+.three-dot {
+  height: 50px;
+}
+
+#dot {
+  padding-top: 20px;
+  font-size: 30px;
+  font-weight: 700;
+}
+#dot:hover {
+  cursor: pointer;
+  color: orange;
 }
 
 @media (max-width: 768px) {
-
   nav {
-      overflow: hidden;
+    overflow: hidden;
   }
-  nav .user-info{
+
+  nav .user-info {
     flex-grow: 0;
-   width: 100px;
+    width: 100px;
   }
+
   .user-text {
-      display: none;
+    display: none;
   }
 
   .logo img {
-      margin-left: 70px;
+    margin-left: 70px;
   }
 
   .menu.expanded a {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .menu.expanded a span {
-      display: inline;
-  }
-
-}
-
-@media screen and (max-width:479px) {
-  .menu.collapsed+.main-content nav .logo img {
-      margin-left: 70px;
-      transition: width 0.3s, margin-left 0.3s;
+    display: inline;
   }
 }
-.more-options span{
+
+@media screen and (max-width: 479px) {
+  .menu.collapsed + .main-content nav .logo img {
+    margin-left: 70px;
+    transition: width 0.3s, margin-left 0.3s;
+  }
+}
+
+.more-options span {
   font-size: 30px;
   margin-right: 5px;
   cursor: pointer;
   padding-bottom: 10px;
 }
+
 .more-options span:hover {
   color: orange;
 }
 
-
+.main1 {
+  width: 250px;
+  height: 300px;
+  position: fixed;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  font-size: 1rem;
+  top: 60px;
+  right: 10px;
+  padding-top: 1rem;
+  background-color: rgb(95, 90, 90);
+}
