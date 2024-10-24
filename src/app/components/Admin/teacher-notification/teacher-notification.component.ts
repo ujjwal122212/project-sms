@@ -43,9 +43,9 @@ export class TeacherNotificationComponent implements OnInit{
       return;
     }
     const formvalue = this.studentNotificationform.value;
-    this.http.post('https://localhost:7262/api/TeacherNotification/CreateTeacherNotification', formvalue, { responseType: 'text' })
+    this.http.post('https://localhost:7262/api/TeachersNotification/Add TeachersNotification', formvalue, { responseType: 'text' })
       .subscribe((res: any) => {
-        alert(res);
+        alert("Teacher Notification Added Successfully");
         this.getAllNotification();
         this.studentNotificationform.reset();
         this.CloseModel();
@@ -56,7 +56,7 @@ export class TeacherNotificationComponent implements OnInit{
   }
   editStudentNotification(NotificationID: number) {
     this.openform();
-    this.http.get(`https://localhost:7262/api/TeacherNotification/GetTeacherNotification/${NotificationID}`).subscribe((res: any) => {
+    this.http.get(`https://localhost:7262/api/TeachersNotification/row/${NotificationID}`).subscribe((res: any) => {
       console.log(res);
       this.studentNotificationform.patchValue(res);
     })
@@ -67,9 +67,9 @@ export class TeacherNotificationComponent implements OnInit{
       return;
     }
     const formvalue = this.studentNotificationform.value;
-    this.http.put(`https://localhost:7262/api/TeacherNotification/EditTeacherNotification/${formvalue.notificationID}`, formvalue, { responseType: 'text' })
+    this.http.put(`https://localhost:7262/api/TeachersNotification/${formvalue.notificationID}`, formvalue, { responseType: 'text' })
       .subscribe((res: any) => {
-        alert(res);
+        alert("Teacher Notification Updated Successfully");
         this.getAllNotification();
         this.studentNotificationform.reset();
         this.CloseModel();
@@ -88,7 +88,7 @@ export class TeacherNotificationComponent implements OnInit{
     }
   }
   getAllNotification() {
-    this.http.get('https://localhost:7262/api/TeacherNotification/GetTeacherNotification').subscribe((result: any) => {
+    this.http.get('https://localhost:7262/api/TeachersNotification/GetTeachersNotification').subscribe((result: any) => {
       this.studentNotification = result;
       console.log(this.studentNotification);
     })
@@ -96,9 +96,9 @@ export class TeacherNotificationComponent implements OnInit{
   deleteStudentNotification(NotificationID: number) {
     const isconfirm = confirm("Are you sure to want to delete this notificataion ?")
     if (isconfirm) {
-      this.http.delete(`https://localhost:7262/api/TeacherNotification/DeleteTeacherNotification/${NotificationID}`, { responseType: 'text' }).subscribe((result: any) => {
+      this.http.delete(`https://localhost:7262/api/TeachersNotification/${NotificationID}`, { responseType: 'text' }).subscribe((result: any) => {
+        alert("Teacher Notification Deleted Successfully");
         this.getAllNotification();
-        alert(result);
         this.CloseModel();
       })
     }
