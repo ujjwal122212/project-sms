@@ -72,10 +72,12 @@ export class LoginPageComponent implements OnInit {
       .subscribe({
         next: (res: any) => {
           console.log(res);
+          const enrollmentNo=res.id;
           if (res.role === 'Student') {
             alert("Login Successfull");
-            this.loginService.enrollmentNumber = res.id;
+            // this.loginService.enrollmentNumber = res.id;
             this.route.navigateByUrl('/studentlayout/S-home');
+            this.loginService.setEnrollmentNumber(enrollmentNo);
           }
           else if (res.role === 'Teacher') {
             alert("Login Successfull");

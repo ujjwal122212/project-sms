@@ -11,7 +11,7 @@ import { StudentRegistrationService } from '../../../Services/student-registrati
   styleUrl: './time-table.component.css'
 })
 export class TimeTableComponent implements OnInit {
-  enrollmentNo!: number;
+  enrollmentNo!: number|null;
   sectionId!:number;
   timetableService = inject(StudenttimetableService);
   loginService = inject(LoginService);
@@ -36,7 +36,10 @@ export class TimeTableComponent implements OnInit {
   }
   ngOnInit(): void {
     this.enrollmentNo = this.loginService.enrollmentNumber;
-    console.log("Login Enrollment Number:", this.enrollmentNo);
-    this.getStudentByEnrollmentNumber(this.enrollmentNo);
+    
+    if (this.enrollmentNo) {
+      console.log('Login Enrollment Number:', this.enrollmentNo);
+      this.getStudentByEnrollmentNumber(this.enrollmentNo);
+    } 
   }
 }
