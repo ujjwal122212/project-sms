@@ -4,12 +4,13 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { LoginService } from '../../Services/login.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule,CommonModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
@@ -24,23 +25,39 @@ export class LoginPageComponent implements OnInit {
     this.LoginForm = this.fb.group({
       enrollmentNumber: ['', Validators.required],
       password: ['', Validators.required],
-      role: ['', Validators.required]
+      // role: ['']
     })
+    // this.LoginForm.get('password')?.valueChanges.subscribe(password => {
+    //   this.setRoleBasedOnPassword(password);
+    // });
   }
+  
+
+  // setRoleBasedOnPassword(password: string) {
+  //   if (password === this.LoginForm.value.password) {
+  //     this.LoginForm.patchValue({ role: 'Student' });
+  //   } else if (password === this.LoginForm.value.password) {
+  //     this.LoginForm.patchValue({ role: 'Teacher' });
+  //   } else if (password === this.LoginForm.value.password) {
+  //     this.LoginForm.patchValue({ role: 'Admin' });
+  //   } else {
+  //     this.LoginForm.patchValue({ role: '' }); 
+  //   }
+  // }
+
   onSubmit() {
     if (this.LoginForm.invalid) {
       alert("Please fill all the valid Details");
       return;
     }
     const formvalue = this.LoginForm.value;
-
     this.loginService.login(formvalue)
       .pipe(
         catchError((error) => {
           console.error('Error occurred during login:', error);
           let errorMessage = 'An unknown error occurred!';
 
-          if (error.status === 400) {
+          if (error.status == 401) {
             errorMessage = 'Invalid login credentials. Please try again.';
           } else if (error.status === 500) {
             errorMessage = 'Server error. Please try again later.';
@@ -55,16 +72,16 @@ export class LoginPageComponent implements OnInit {
       .subscribe({
         next: (res: any) => {
           console.log(res);
-          if (formvalue.password == 'Student@123') {
+          if (res.role === 'Student') {
             alert("Login Successfull");
             this.loginService.enrollmentNumber = res.id;
             this.route.navigateByUrl('/studentlayout/S-home');
           }
-          else if (formvalue.password == 'Teacher@123') {
+          else if (res.role === 'Teacher') {
             alert("Login Successfull");
             this.route.navigateByUrl('/teacherlayout/T-home');
           }
-          else if (formvalue.password == 'Admin@123') {
+          else if (res.role === 'Admin') {
             alert("Login Successfull");
             this.route.navigateByUrl('/adminlayout/ahome');
           }
