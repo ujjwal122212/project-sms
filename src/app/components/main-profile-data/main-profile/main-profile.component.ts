@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from '../../../Services/login.service';
 
 @Component({
   selector: 'app-main-profile',
@@ -10,7 +11,9 @@ import { Router } from '@angular/router';
 })
 export class MainProfileComponent {
 route=inject(Router);
+loginService = inject(LoginService);
 logout(){
+  this.loginService.logout();
   this.route.navigateByUrl('/Login-page');
 }
 }

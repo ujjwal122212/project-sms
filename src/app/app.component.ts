@@ -16,7 +16,7 @@ import { AddStudentComponent } from "./components/Admin/addStudent/add-student/a
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MenubarComponent, NavbarComponent, RouterLink, TNavbarComponent, TMenubarComponent, MainNavbarComponent, ANavbarComponent, AMenubarComponent, AddStudentComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
