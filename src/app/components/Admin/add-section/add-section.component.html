@@ -1,0 +1,99 @@
+<div class="student-course">
+  <div class="header">
+    <h1>Add Sections</h1>
+    <button (click)="openForm()">Add Section</button>
+  </div>
+</div>
+
+<div class="form-area" id="formModels">
+  @if(Sectionform.value.sectionId==0){
+  <h1>Add Section Of the classes</h1>
+  } @else {
+  <h1>Update Section Of the classes</h1>
+  }
+
+  <form [formGroup]="Sectionform" (ngSubmit)="addSection()">
+    <div class="card-area">
+      <div class="area">
+        <select name="" id="" formControlName="classId">
+          <option value="0" disabled>Select a Class</option>
+          @for(class of classes;track $index){
+          <option [value]="class.classId">{{ class.className }}</option>
+          }
+        </select>
+      </div>
+      <div class="area">
+        <input
+          type="text"
+          placeholder="Enter section Name"
+          formControlName="sectionName"
+          name="sectionName"
+        />
+      </div>
+    </div>
+    <div class="button-area">
+      @if(Sectionform.value.sectionId==0){
+      <button type="submit" class="submit">Save</button>
+      } @else {
+      <button type="submit" class="submit">Update</button>
+      }
+
+      <button type="button" (click)="closeModel()" class="close">Close</button>
+    </div>
+  </form>
+</div>
+
+
+
+<div class="student-course">
+  <div class="selected-area">
+    <div class="area">
+      <select name="" id="" [(ngModel)]="selectedClass">
+        <option value="0" disabled>Select a Class</option>
+        @for(class of classes;track $index){
+        <option [value]="class.classId">{{ class.className }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="area show">
+      <button type="button" (click)="showSection()">Show</button>
+    </div>
+  </div>
+  @if(selectedClass==0){
+  <h1>Please select a class</h1>
+  } @else if(sections.length>0){
+  <div class="section">
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <td>S.N0</td>
+            <td>All Sections</td>
+            <td>Action</td>
+          </tr>
+        </thead>
+        <tbody>
+          @for(table of sections;track $index){
+          <tr>
+            <td>{{ $index + 1 }}</td>
+            <td>{{ table.sectionName }}</td>
+
+            <td class="action-button">
+              <button class="edit" (click)="updateSection(table.sectionId)">
+                Edit
+              </button>
+              <button class="delete" (click)="deleteSection(table.sectionId)">
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+  } @else if(isSectionPresent){
+  <h1>No sections found for this class</h1>
+  }
+</div>

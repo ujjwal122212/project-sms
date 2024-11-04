@@ -67,7 +67,13 @@ import { ViewTeacherDetailsComponent } from './components/Admin/addTeacher/view-
 import { StudentLayoutComponent } from './components/student-layout/student-layout.component';
 import { TeacherLayoutComponent } from './components/teacher-layout/teacher-layout.component';
 import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
+
 // import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
+
+import { AddClassComponent } from './components/Admin/add-class/add-class.component';
+import { AddSectionComponent } from './components/Admin/add-section/add-section.component';
+import { AddSubjectTopicComponent } from './components/Admin/add-subject-topic/add-subject-topic.component';
+
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
 
@@ -401,6 +407,9 @@ export const routes: Routes = [
       //Important Contacts
       { 'path': 'view', 'title': 'view-contact', component: ViewContactsComponent },
       { 'path': 'addContact', 'title': 'Add-contact', component: AddContactsComponent },
+      { path: 'addclass', title: 'AddClass', component: AddClassComponent },
+      {path:'addsection',title:'AddSection',component:AddSectionComponent},
+      {path:'addsubjecttopic',title:'AddSubjectTopic',component:AddSubjectTopicComponent},
 
       { path: 'addstudentCourse', title: 'StudentCourse', component: AddStudentCourseComponent },
       { path: 'studenttimetable', title: 'StudentTimeTable', component: AddStudentTimeTableComponent },
@@ -408,8 +417,13 @@ export const routes: Routes = [
       { path: 'viewstudentadmission', title: 'StudentAdmissionList', component: ViewStudentAdmissionComponent },
       { path: 'studentnotification', title: 'StudentNotification', component: StudentNotificationComponent },
       { path: 'teachernotification', title: 'TeacherNotification', component: TeacherNotificationComponent },
+
      
       // {path:'viewteacher',title:'ViewTeacher',component:RegisterTeacherComponent}
+
+      { path: 'viewteacherdetails', title: 'ViewTeacherDetails', component: ViewTeacherDetailsComponent },
+
+
     ]
   },
 
