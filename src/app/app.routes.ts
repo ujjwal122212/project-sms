@@ -67,6 +67,7 @@ import { ViewTeacherDetailsComponent } from './components/Admin/addTeacher/view-
 import { StudentLayoutComponent } from './components/student-layout/student-layout.component';
 import { TeacherLayoutComponent } from './components/teacher-layout/teacher-layout.component';
 import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
+// import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
 
@@ -384,6 +385,8 @@ export const routes: Routes = [
       {
         'path': 'viewTeacher', children: [
           { 'path': 'addTeacher', 'title': 'Add-Teacher', component: AddNewTeacherComponent },
+          { 'path': 'addTeacher/:enrollmentNumber', 'title': 'Update-Teacher', component: AddNewTeacherComponent },
+          { path: 'viewteacherdetails/:enrollmentNumber', title: 'ViewTeacherDetails', component: ViewTeacherDetailsComponent },
         ]
       },
 
@@ -405,7 +408,8 @@ export const routes: Routes = [
       { path: 'viewstudentadmission', title: 'StudentAdmissionList', component: ViewStudentAdmissionComponent },
       { path: 'studentnotification', title: 'StudentNotification', component: StudentNotificationComponent },
       { path: 'teachernotification', title: 'TeacherNotification', component: TeacherNotificationComponent },
-      { path: 'viewteacherdetails', title: 'ViewTeacherDetails', component: ViewTeacherDetailsComponent }
+     
+      // {path:'viewteacher',title:'ViewTeacher',component:RegisterTeacherComponent}
     ]
   },
 
