@@ -1,50 +1,32 @@
-<div class="container-fluid p-0">
-  <div class="search-bar py-4 text-center">
-      <h1 class="text-white mb-4">Search Teacher by Name or Subject</h1>
-      <div class="d-flex justify-content-center">
-          <form class="form-inline">
-              <input type="text" class="form-control mr-2" placeholder="Search Teacher by Name or Subject">
-              <button class="btn btn-primary" type="submit">Search</button>
-          </form>
-      </div>
-  </div>
 
-  <div class="teacher-list text-center">
-      <h1 class="my-4">LISTED TEACHERS</h1>
-
-      <div class="row">
-
-          <div class="col-lg-4 col-md-6 col-sm-10 mb-4">
-              <div class="card mx-3" style="height: 100%;">
-                  <img src="assets/images/t1.png" alt="Teacher" class="card-img-top teacher-img">
-                  <div class="card-body">
-                      <span class="badge badge-primary mb-2">Chemistry</span>
-                      <h5 class="card-title mt-2">Anuj Kumar</h5>
-                      <p class="card-text">Registered Since 2022-03-05 18:11:37</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-              <div class="card mx-3" style="height: 100%;">
-                  <img src="assets/images/t2.jpg" alt="Teacher" class="card-img-top teacher-img">
-                  <div class="card-body">
-                      <span class="badge badge-info mb-2">Science</span>
-                      <h5 class="card-title mt-2">John Doe</h5>
-                      <p class="card-text">Registered Since 2022-03-12 13:32:21</p>
-                  </div>
-              </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-              <div class="card mx-3" style="height: 100%;">
-                  <img src="assets/images/t3.jpg" alt="Teacher" class="card-img-top teacher-img">
-                  <div class="card-body">
-                      <span class="badge badge-primary mb-2">Chemistry</span>
-                      <h5 class="card-title mt-2">Amit Kumar</h5>
-                      <p class="card-text">Registered Since 2022-03-14 22:31:04</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+<div class="container-fluid p-0 teacher-area">
+    <div class="header">
+        <h1>Teachers List</h1>
+        <button (click)="openForm()">Add New Teacher</button>
+    </div>
+   <div class="search-area">
+    <h1>Search</h1>
+    <input type="search" placeholder="Search Teacher by Name or Subject">
+   </div>
+    <div class="teacher-list text-center">
+        <h1 class="my-4" style="background-color: #FDC300; border-radius: 10px;margin-bottom: 15px;">LISTED TEACHERS</h1>
+        <div class="details">
+            <div class="row">
+                @for (teacher of teachers; track $index) {
+                <div class="card row-area" style="height: 100%;">
+                    <img [src]="'https://localhost:7262/api/TeacherImage/'+teacher.imagePath" alt="Teacher Image">
+                    <div class="card-body">
+                        <span class="badge badge-primary mb-2">{{teacher.teachSubject}}</span>
+                        <h5 class="card-title mt-2">{{teacher.name}}</h5>
+                        <p class="card-text">Registered Since - {{teacher.createdDate}}</p>
+                    </div>
+                    <div class="more-details">
+                        <button type="button" (click)="more_Details(teacher.enrollmentNumber)">More Details</button>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
 </div>
+

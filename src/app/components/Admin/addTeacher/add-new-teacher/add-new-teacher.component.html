@@ -1,104 +1,84 @@
-<div class="main-container">
-
+<div class="form-area" id="formModel">
   @if(isEdit){
-  <h2>UPDATE TEACHER</h2>
+  <h1>Update Teacher Details</h1>
   }
-  @else {<h2>ADD TEACHER</h2>}
-
-  <br>
-  <div class="form-area">
-    <form action="" #form="ngForm" novalidate>
-      <div class="first">
-        <div class="one">
-
-          <label for="">Name</label>
-          <div class="input">
-            <input [(ngModel)]="teacher.name" name="name" #name="ngModel" required pattern="^[a-zA-Z\s]+$"
-              [ngClass]="{ 'is-invalid': name.invalid && name.touched}">
-
-            @if (name.touched && name.errors?.['required']){
-            <span style="color: red;">This is Required*</span>
-            }
-
-            @else if (name.touched && name.errors?.['pattern']) {
-            <span style="color: red;">Enter a Valid Name</span>
-            }
-          </div>
-        </div>
-
-
-        <div class="two">
-          <label for="">Age</label>
-          <div class="input">
-
-            <input [(ngModel)]="teacher.age" name="age" type="number" #age="ngModel"
-              [ngClass]="{ 'is-invalid': age.invalid && age.touched}" minlength="1" maxlength="3" required>
-            @if (age.touched && age.errors?.['required']) {
-            <span style="color: red;">This is Required*</span>
-            }
-
-          </div>
-        </div>
+  @else {
+  <h1>Add Teacher Details</h1>
+  }
+  <form action="" [formGroup]="regForm" (ngSubmit)="onSubmit()">
+    <div class="card-area">
+      <div class="card">
+        <input type="text" placeholder="Enter Teacher Name" formControlName="name" name="name">
       </div>
-
-
-      <div class="third">
-        <div class="one">
-          <label for="">Email</label>
-          <div class="input">
-            <input [(ngModel)]="teacher.email" name="email" #email="ngModel" email
-              [ngClass]="{ 'is-invalid': email.invalid}">
-            @if (email.touched && email.errors?.['email']) {
-            <span style="color: red;">Enter valid Email</span>
-            }
-          </div>
-        </div>
-        <div class="two">
-          <label for="">Mobile</label>
-          <div class="input">
-            <input [(ngModel)]="teacher.mobile" #mobile="ngModel" name="mobile" required
-              [ngClass]="{ 'is-invalid': mobile.invalid && mobile.touched}" minlength="10" maxlength="10"
-              pattern="^[0-9]*$">
-            @if (mobile.touched && mobile.errors?.['required']){
-            <span style="color: red;">This is Required*</span>
-            }
-
-            @else if (mobile.touched && mobile.errors?.['minlength']) {
-            <span style="color: red;">minimum 10 character required</span>
-            }
-            @else if (mobile.touched && mobile.errors?.['pattern']) {
-            <span style="color: red;">Enter a Valid Number</span>
-            }
-
-          </div>
-        </div>
+      <div class="card">
+        <select name="" id="" formControlName="gender">
+          <option value="" selected disabled>Select your Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Others">Others</option>
+        </select>
       </div>
-      <div class="fourth">
-        <div class="one">
-          <label for="">Father's Name</label>
-          <div class="input">
-            <input [(ngModel)]="teacher.fatherName" name="fatherName" #fatherName="ngModel" required
-              pattern="^[a-zA-Z\s]+$" [ngClass]="{ 'is-invalid': fatherName.invalid && fatherName.touched}">
-            @if (fatherName.touched && fatherName.errors?.['required']){
-            <span style="color: red;">This is Required*</span>
-            }
-
-            @else if (fatherName.touched && fatherName.errors?.['pattern']) {
-            <span style="color: red;">Enter a Valid Name</span>
-            }
-          </div>
-        </div>
+      <div class="card">
+        <input type="date" formControlName="dob">
       </div>
-      <div class="button-area">
-        @if(isEdit){
-        <button type="submit" (click)="Save()" [disabled]="form.invalid">Update</button>
-        }
-        @else{
-        <button type="submit" (click)="postStudentData()" [disabled]="form.invalid">Submit</button>
-        }
-        <button type="button" (click)="goto()">Back</button>
+      <div class="card">
+        <input type="file" (change)="onFileSelected($event)" #fileInput accept="image/*">
       </div>
-    </form>
-  </div>
-
+      <div class="card">
+        <input type="email" placeholder="Enter your Email" formControlName="email" name="email">
+      </div>
+      <div class="card">
+        <input type="tel" placeholder="Enter your Contact Number" formControlName="contact" name="number">
+      </div>
+      <div class="card">
+        <select name="" id="" (change)="onStateChange($event)" formControlName="state">
+          <option value="" selected disabled>Select a state</option>
+          @for(state of State;track $index){
+          <option [value]="state.stateId">{{state.stateName}}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <select name="" id="" formControlName="district">
+          <option value="" selected disabled>Select a district</option>
+          @for(district of District;track $index){
+          <option [value]="district.districtId">{{district.districtName}}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <input type="text" placeholder="Enter your pincode" formControlName="pincode" name="pincode">
+      </div>
+      <div class="card">
+        <input type="text" placeholder="Enter your Experiance in Teaching" formControlName="experienceOfTeaching"
+          name="experienceOfTeaching">
+      </div>
+      <div class="card">
+        <input type="text" placeholder="Enter your Qualification" formControlName="qualification" name="qualification">
+      </div>
+      <div class="card">
+        <input type="text" placeholder="Enter your Teaching classes" formControlName="teachClasses" name="teachClasses">
+      </div>
+      <div class="card">
+        <input type="text" placeholder="Enter your Subjects" formControlName="teachSubject" name="teachSubject">
+      </div>
+      <div class="card">
+        <textarea name="streetAddress" id="" placeholder="Enter your Address"
+          formControlName="streetAddress"></textarea>
+      </div>
+      <div class="card">
+        <textarea name="additionalText" id="" placeholder="Additional Details"
+          formControlName="additionalText"></textarea>
+      </div>
+    </div>
+    <div class="button-area">
+      @if(isEdit){
+      <button type="submit" class="submit">Update</button>
+      }
+      @else {
+      <button type="submit" class="submit">Save</button>
+      }
+      <button type="button" class="close" (click)="goto()">Back</button>
+    </div>
+  </form>
 </div>
