@@ -1,28 +1,73 @@
-<nav>
+<!-- <nav>
   <div class="logo">
     <img src="assets/images/logo.png" alt="Logo" />
   </div>
+
   <div class="nav-icons">
     <i class="ri-contrast-2-line" id="nav_icon"></i>
     <i class="ri-notification-4-line" id="nav_icon"></i>
-    <i class="ri-message-3-line" id="nav_icon"></i>
+    <i class="ri-message-3-line" id="nav_icon" (click)="openNotification()"></i>
+    <div *ngIf="nShow" class="nofication">
+      <app-nofication></app-nofication>
+    </div>
   </div>
+
   <div class="user-info">
     <span class="user-icon" routerLinkActive="active" (click)="openProfile()">
       👤
     </span>
-    @if (show) {
-    <div class="main1">
+
+    <div *ngIf="show" class="profile">
       <app-main-profile></app-main-profile>
-       <!-- <app-profile-card></app-profile-card> -->
     </div>
-    }
+
     <div class="user-text">
       <h3>Student</h3>
     </div>
-    <!-- <div class="more-options" routerLink="/pw">
-      <span routerLinkActive="active"><p>...</p></span>
-    </div> -->
+
+    
+
+    <div class="three-dot">
+      <p><i id="dot">...</i></p>
+    </div>
+  </div>
+</nav> -->
+
+<nav>
+  <div class="logo">
+    <img src="assets/images/logo.png" alt="Logo" />
+  </div>
+
+  <div class="nav-icons">
+    <i class="ri-contrast-2-line" id="nav_icon"></i>
+    <i
+      class="ri-notification-4-line"
+      id="nav_icon"
+      (click)="toggleNotification()"
+    ></i>
+    <i class="ri-message-3-line" id="nav_icon"></i>
+
+    <div *ngIf="isNotificationOpen" class="notification">
+    <app-nofication></app-nofication>
+    </div>
+  </div>
+
+  <div class="user-info">
+    <!-- Profile Icon: Toggle Profile, Close Notification if Open -->
+    <span class="user-icon" routerLinkActive="active" (click)="toggleProfile()">
+      👤
+    </span>
+
+    <!-- Profile content is shown when isProfileOpen is true -->
+    <div *ngIf="isProfileOpen" class="profile">
+      <app-main-profile></app-main-profile>
+    </div>
+
+    <div class="user-text">
+      <h3>Student</h3>
+    </div>
+
+    <!-- Three dots (More options) -->
     <div class="three-dot">
       <p><i id="dot">...</i></p>
     </div>
