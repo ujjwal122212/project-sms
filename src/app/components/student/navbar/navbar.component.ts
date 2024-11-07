@@ -2,14 +2,20 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MainProfileComponent } from '../../main-profile-data/main-profile/main-profile.component';
 import { ProfileCardComponent } from '../profile-card/profile-card.component';
+
+import { StudentProfileComponent } from '../student-profile/student-profile.component';
+
 import { CommonModule } from '@angular/common';
 import { NoficationComponent } from "../../nofication/nofication.component";
 import { StudentNotificationComponent } from "../../Admin/student-notification/student-notification.component";
 
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, MainProfileComponent, CommonModule, NoficationComponent, StudentNotificationComponent],
+
+  imports: [RouterLink, RouterLinkActive, MainProfileComponent,StudentProfileComponent],
+
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
