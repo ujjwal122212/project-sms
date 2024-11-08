@@ -1,50 +1,21 @@
-<div class="notifications-container">
-  <div class="header">
-    <h2>Notifications</h2>
-    <span class="mark-read">Mark all as read</span>
-  </div>
-
-  <div class="notification-item new">
-    <span class="notification-icon">📬</span>
-    <div class="notification-content">
-      <div class="notification-title">Join our community 🤗</div>
-      <div class="notification-text">
-        Connect with other users, share tips, and get support.
+  <div class="notifications-container">
+    <div class="header">
+      <h2>Notifications</h2>
+      <span class="mark-read">Mark all as read</span>
+    </div>
+  
+    
+    <div *ngFor="let notification of notificationStudent" class="notification-item">
+      <span class="notification-icon">📬</span>
+      <div class="notification-content">
+        
+        <div class="notification-title">
+          {{ notification.NotificationTopic }}
+        </div>
+        <div class="notification-text">
+          {{ notification.NotificationText }}
+        </div>
       </div>
-      <div class="notification-time">2m</div>
     </div>
   </div>
-
-  <div class="notification-item">
-    <span class="notification-icon">🛠️</span>
-    <div class="notification-content">
-      <div class="notification-title">Need help?</div>
-      <div class="notification-text">
-        Our support team is here for you 24/7. Reach out anytime.
-      </div>
-      <div class="notification-time">1d</div>
-    </div>
-  </div>
-
-  <div class="notification-item">
-    <span class="notification-icon">📄</span>
-    <div class="notification-content">
-      <div class="notification-title">Complete your profile</div>
-      <div class="notification-text">
-        Complete your profile to unlock personalized recommendations.
-      </div>
-      <div class="notification-time">1d</div>
-    </div>
-  </div>
-
-  <div class="notification-item">
-    <span class="notification-icon">🎉</span>
-    <div class="notification-content">
-      <div class="notification-title">Welcome!</div>
-      <div class="notification-text">
-        We're thrilled to have you on board. To help you get started...
-      </div>
-      <div class="notification-time">1d</div>
-    </div>
-  </div>
-</div>
+  
