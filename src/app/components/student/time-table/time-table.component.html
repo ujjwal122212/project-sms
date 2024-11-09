@@ -1,261 +1,68 @@
 <div class="time-table-section">
-    <div class="header">
-        <h1>Time Table</h1>
-        <div class="content">
-            <span><a href="#">Dashboard</a></span>
-            <span>
-                <p> / Time Table</p>
-            </span>
-        </div>
+  <div class="header">
+    <h1>Time Table</h1>
+    <div class="content">
+      <span><a href="#">Dashboard</a></span>
+      <span>
+        <p>/ Time Table</p>
+      </span>
     </div>
-    <div class="border-bottom">
+  </div>
+  <div class="border-bottom"></div>
 
-    </div>
-    <div class="search-section">
-        <div class="card" id="card-1">
-            <p>Acadmic Year : </p>
-            <select>
-                <option value="" selected disabled>please select</option>
-                <option value="">o1</option>
-                <option value="">o2</option>
-                <option value="">o3</option>
-                <option value="">o4</option>
-                <option value="">o5</option>
-            </select>
+  <div class="first-table">
+    <table>
+      <caption>
+        Timetable of 2024-25 for Class xyz
+      </caption>
+      <thead>
+        <tr>
+          @for(header of tableHeader;track $index){
+          <th>{{ header }}</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for(timetable of timeTable;track $index){
+        <tr>
+          <td>{{ $index + 1 }}</td>
+          <td>{{ timetable.timeSlot }}</td>
+          <td style="color: blue">{{ timetable.sunday }}</td>
+          <td>{{ timetable.monday }}</td>
+          <td>{{ timetable.tuesday }}</td>
+          <td>{{ timetable.wednesday }}</td>
+          <td>{{ timetable.thursday }}</td>
+          <td>{{ timetable.friday }}</td>
+          <td>{{ timetable.saturday }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 
-        </div>
-        <div class="card">
-
-            <p>Date : </p>
-            <input type="date">
-
-        </div>
-        <div class="card">
-            <p>Search : </p>
-            <div class="search-area">
-                <input type="search" placeholder="search here..">
-            </div>
-        </div>
-    </div>
-
-    <div class="first-table">
-        <table>
-            <caption>Timetable of 2024-25 for Class xyz</caption>
-            <thead>
-                <tr>
-                    @for(header of tableHeader;track $index){
-                    <th>{{header}}</th>
-                    }
-                </tr>
-            </thead>
-            <tbody>
-                @for(timetable of timeTable;track $index){
-                <tr>
-                    <td>{{$index+1}}</td>
-                    <td>{{timetable.timeSlot}}</td>
-                    <td style="color: blue;">{{timetable.sunday}}</td>
-                    <td>{{timetable.monday}}</td>
-                    <td>{{timetable.tuesday}}</td>
-                    <td>{{timetable.wednesday}}</td>
-                    <td>{{timetable.thursday}}</td>
-                    <td>{{timetable.friday}}</td>
-                    <td>{{timetable.saturday}}</td>
-                </tr>
+  <div class="third-table">
+    <table>
+      <caption>
+        Timetable Details
+      </caption>
+      <thead>
+        <tr>
+            @for(header of tableDetailHeader;track $index){
+                <th>{{ header }}</th>
                 }
-            </tbody>
-        </table>
-    </div>
-    <div class="second-table">
-        <table>
-            <caption>Alternative Arrangement</caption>
-            <thead>
-                <tr>
-                    <th>Day</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Faculty Name</th>
-                    <th>Althernate Faculty Name</th>
-                    <th>Slot</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Monday</td>
-                    <td>11/08/2024</td>
-                    <td>8:20-9:20</td>
-                    <td>Teacher-1</td>
-                    <td>Teacher-2</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Monday</td>
-                    <td>11/08/2024</td>
-                    <td>8:20-9:20</td>
-                    <td>Teacher-1</td>
-                    <td>Teacher-2</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Monday</td>
-                    <td>11/08/2024</td>
-                    <td>8:20-9:20</td>
-                    <td>Teacher-1</td>
-                    <td>Teacher-2</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Monday</td>
-                    <td>11/08/2024</td>
-                    <td>8:20-9:20</td>
-                    <td>Teacher-1</td>
-                    <td>Teacher-2</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Monday</td>
-                    <td>11/08/2024</td>
-                    <td>8:20-9:20</td>
-                    <td>Teacher-1</td>
-                    <td>Teacher-2</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Monday</td>
-                    <td>11/08/2024</td>
-                    <td>8:20-9:20</td>
-                    <td>Teacher-1</td>
-                    <td>Teacher-2</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Tuesday</td>
-                    <td>11/08/2024</td>
-                    <td>8:20-9:20</td>
-                    <td>Teacher-1</td>
-                    <td>Teacher-2</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Tuesday</td>
-                    <td>11/08/2024</td>
-                    <td>8:20-9:20</td>
-                    <td>Teacher-1</td>
-                    <td>Teacher-2</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Tuesday</td>
-                    <td>11/08/2024</td>
-                    <td>8:20-9:20</td>
-                    <td>Teacher-1</td>
-                    <td>Teacher-2</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Tuesday</td>
-                    <td>11/08/2024</td>
-                    <td>8:20-9:20</td>
-                    <td>Teacher-1</td>
-                    <td>Teacher-2</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Tuesday</td>
-                    <td>11/08/2024</td>
-                    <td>8:20-9:20</td>
-                    <td>Teacher-1</td>
-                    <td>Teacher-2</td>
-                    <td>Subject-1</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="third-table">
-        <table>
-            <caption>Timetable Details</caption>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Faculty Name</th>
-                    <th>Slot</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Monday</td>
-                    <td>8:20-920</td>
-                    <td>Teacher-1</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Monday</td>
-                    <td>8:20-920</td>
-                    <td>Teacher-1</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Monday</td>
-                    <td>8:20-920</td>
-                    <td>Teacher-1</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Monday</td>
-                    <td>8:20-920</td>
-                    <td>Teacher-1</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Monday</td>
-                    <td>8:20-920</td>
-                    <td>Teacher-1</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Monday</td>
-                    <td>8:20-920</td>
-                    <td>Teacher-1</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Tuesday</td>
-                    <td>8:20-920</td>
-                    <td>Teacher-1</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Tuesday</td>
-                    <td>8:20-920</td>
-                    <td>Teacher-1</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Tuesday</td>
-                    <td>8:20-920</td>
-                    <td>Teacher-1</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Tuesday</td>
-                    <td>8:20-920</td>
-                    <td>Teacher-1</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Tuesday</td>
-                    <td>8:20-920</td>
-                    <td>Teacher-1</td>
-                    <td>Subject-1</td>
-                </tr>
-                <tr>
-                    <td>Tuesday</td>
-                    <td>8:20-920</td>
-                    <td>Teacher-1</td>
-                    <td>Subject-1</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
+        </tr>
+      </thead>
+      <tbody>
+        @for(data of timeTableDetail;track $index){
+            <tr>
+              <td>{{ data.day }}</td>
+              <td>{{ data.time }}</td>
+              <td>{{ data.teacherName }}</td>
+              <td>{{ data.subject }}</td>
+              
+            </tr>
+            }
+      </tbody>
+    </table>
+  </div>
 </div>
