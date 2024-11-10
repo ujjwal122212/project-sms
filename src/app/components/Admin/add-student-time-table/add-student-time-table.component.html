@@ -1,174 +1,453 @@
 <div class="time-table-area">
-    <div class="header">
-        <h1>Student TimeTable</h1>
-        <button (click)="openform()">Add Student TimeTable</button>
+  <div class="header">
+    <h1>Student TimeTable</h1>
+    <button (click)="openform()">Add Student TimeTable</button>
+  </div>
+  <div class="selected-area">
+    <div class="area">
+      <select
+        name=""
+        id=""
+        [(ngModel)]="selectedClass"
+        (change)="onClassChange($event)"
+      >
+        <option value="0" disabled>Select a Class</option>
+        @for(class of Classes;track $index){
+        <option [value]="class.classId">{{ class.className }}</option>
+        }
+      </select>
     </div>
-    <div class="selected-area">
-        <div class="area">
-            <select name="" id="" [(ngModel)]="selectedClass" (change)="onClassChange($event)">
-                <option value="0" disabled>Select a Class</option>
-                @for(class of Classes;track $index){
-                <option [value]="class.classId">{{class.className}}</option>
-                }
-            </select>
-        </div>
-        <div class="area">
-            <select name="" id="" [(ngModel)]="selectedSectionId" (change)="onSectionChange($event)">
-                <option value="0" disabled>Select a Section</option>
-                @for(section of Sections;track $index){
-                <option [value]="section.sectionId">{{section.sectionName}}</option>
-                }
-            </select>
-        </div>
-        <div class="area show">
-            <button type="button" (click)="showTimeTable()">Show</button>
-        </div>
+    <div class="area">
+      <select
+        name=""
+        id=""
+        [(ngModel)]="selectedSectionId"
+        (change)="onSectionChange($event)"
+      >
+        <option value="0" disabled>Select a Section</option>
+        @for(section of Sections;track $index){
+        <option [value]="section.sectionId">{{ section.sectionName }}</option>
+        }
+      </select>
     </div>
-    <div class="section">
-        <div class="table-container">
-            @if(timetableForm && timeTable.length>0){
-            <table>
-                <thead>
-                    <tr>
-                        @for(heading of dayArray;track $index){
-                        <th>{{heading}}</th>
-                        }
-                    </tr>
-                </thead>
-                <tbody>
-                    @for(table of timeTable;track $index){
-                    <tr>
-                        <td>{{$index+1}}</td>
-                        <td>{{table.timeSlot}}</td>
-                        <td style="color: blue;">{{table.sunday}}</td>
-                        <td>{{table.monday}}</td>
-                        <td>{{table.tuesday}}</td>
-                        <td>{{table.wednesday}}</td>
-                        <td>{{table.thursday}}</td>
-                        <td>{{table.friday}}</td>
-                        <td>{{table.saturday}}</td>
-                        <td class="action-button">
-                            <button class="edit" (click)="updateTimeTable(table.timetbaleId)">Edit</button>
-                            <button class="delete" (click)="deleteTimeTable(table.timetbaleId)">Delete</button>
-                        </td>
-                    </tr>
-                    }
-                </tbody>
-            </table>
-            }
-            @else if (selectedClass==0 || selectedSectionId==0) {
-            <h2 style="text-align: center; padding: 10px; font-weight: bold;">Please select a Class and a Section</h2>
-            }
-            @else if(isSubjectDataEmpty && isCourseFound){
-            <h2 style="text-align: center; padding: 10px; font-weight: bold;">TimeTable Data Not Found</h2>
-            }
-        </div>
+    <div class="area show">
+      <button type="button" (click)="showTimeTable()">Show</button>
     </div>
+  </div>
+  <div class="section">
+    <div class="table-container">
+      @if(timetableForm && timeTable.length>0){
+      <table>
+        <thead>
+          <tr>
+            @for(heading of dayArray;track $index){
+            <th>{{ heading }}</th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for(table of timeTable;track $index){
+          <tr>
+            <td>{{ $index + 1 }}</td>
+            <td>{{ table.timeSlot }}</td>
+            <td style="color: blue">{{ table.sunday }}</td>
+            <td>{{ table.monday }}</td>
+            <td>{{ table.tuesday }}</td>
+            <td>{{ table.wednesday }}</td>
+            <td>{{ table.thursday }}</td>
+            <td>{{ table.friday }}</td>
+            <td>{{ table.saturday }}</td>
+            <td class="action-button">
+              <button class="edit" (click)="updateTimeTable(table.timetbaleId)">
+                Edit
+              </button>
+              <button
+                class="delete"
+                (click)="deleteTimeTable(table.timetbaleId)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+      } @else if (selectedClass==0 || selectedSectionId==0) {
+      <h2 style="text-align: center; padding: 10px; font-weight: bold">
+        Please select a Class and a Section
+      </h2>
+      } @else if(isSubjectDataEmpty && isCourseFound){
+      <h2 style="text-align: center; padding: 10px; font-weight: bold">
+        TimeTable Data Not Found
+      </h2>
+      }
+    </div>
+  </div>
 </div>
 
-
 <div class="form-area" id="formModel">
+  @if(timetableForm.value.timetbaleId==0){
+  <h1>Add Student TimeTable</h1>
+  } @else {
+  <h1>Update Student TimeTable</h1>
+  }
+
+  <form action="" [formGroup]="timetableForm" (ngSubmit)="onSubmit()">
     @if(timetableForm.value.timetbaleId==0){
-    <h1>Add Student TimeTable</h1>
+    <div class="card-area">
+      <div class="card">
+        <select
+          name=""
+          id=""
+          (change)="onClassChange($event)"
+          formControlName="classId"
+        >
+          <option value="" selected disabled>Select a Class</option>
+          @for(class of Classes;track $index){
+          <option [value]="class.classId">{{ class.className }}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <select name="" id="" formControlName="sectionId">
+          <option value="" selected disabled>Select a Section</option>
+          @for(section of Sections;track $index){
+          <option [value]="section.sectionId">{{ section.sectionName }}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <!-- <input type="text" placeholder="Enter a TimeSlot" formControlName="timeSlot" name="timeSlot"> -->
+        <select name="" id="" formControlName="timeSlot">
+          <option value="" selected disabled>Select a timeslot</option>
+          @for(timeslot of timeSlotArray;track $index){
+          <option [value]="timeslot">{{ timeslot }}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter a Subject for Monday"
+          formControlName="monday"
+          name="monday"
+        />
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter a Subject for Tuesday"
+          formControlName="tuesday"
+          name="tuesday"
+        />
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter a Subject for Wednesday"
+          formControlName="wednesday"
+          name="wednesday"
+        />
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter a Subject for Thursday"
+          formControlName="thursday"
+          name="thursday"
+        />
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter a Subject for Friday"
+          formControlName="friday"
+          name="friday"
+        />
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter a Subject for Saterday"
+          formControlName="saturday"
+          name="saturday"
+        />
+      </div>
+    </div>
+    } @else {
+    <div class="card-area">
+      <div class="card">
+        <!-- <input type="text" placeholder="Enter a TimeSlot" formControlName="timeSlot" name="timeSlot"> -->
+        <select name="" id="" formControlName="timeSlot">
+          <option value="" selected disabled>Select a timeslot</option>
+          @for(timeslot of timeSlotArray;track $index){
+          <option [value]="timeslot">{{ timeslot }}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter a Subject for Monday"
+          formControlName="monday"
+          name="monday"
+        />
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter a Subject for Tuesday"
+          formControlName="tuesday"
+          name="tuesday"
+        />
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter a Subject for Wednesday"
+          formControlName="wednesday"
+          name="wednesday"
+        />
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter a Subject for Thursday"
+          formControlName="thursday"
+          name="thursday"
+        />
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter a Subject for Friday"
+          formControlName="friday"
+          name="friday"
+        />
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter a Subject for Saterday"
+          formControlName="saturday"
+          name="saturday"
+        />
+      </div>
+    </div>
     }
-    @else {
-    <h1>Update Student TimeTable</h1>
+    <div class="button-area">
+      @if(timetableForm.value.timetbaleId==0){
+      <button type="submit" class="submit">Save</button>
+      } @else {
+      <button type="submit" class="submit">Update</button>
+      }
+
+      <button type="button" (click)="CloseModel()" class="close">Close</button>
+    </div>
+  </form>
+</div>
+
+<!-- ====================detail============= -->
+<div class="time-table-area">
+  <div class="header">
+    <h1>Student TimeTable Details</h1>
+    <button (click)="openform1()">Add Student TimeTable Details</button>
+  </div>
+  <div class="selected-area">
+    <div class="area">
+      <select
+        name=""
+        id=""
+        [(ngModel)]="selectedClassDetail"
+        (change)="onClassChange1($event)"
+      >
+        <option value="0" disabled>Select a Class</option>
+        @for(class of Classes1;track $index){
+        <option [value]="class.classId">{{ class.className }}</option>
+        }
+      </select>
+    </div>
+    <div class="area">
+      <select
+        name=""
+        id=""
+        [(ngModel)]="selectedSectionIdDetail"
+        (change)="onSectionChange1($event)"
+      >
+        <option value="0" disabled>Select a Section</option>
+        @for(section of Sections1;track $index){
+        <option [value]="section.sectionId">{{ section.sectionName }}</option>
+        }
+      </select>
+    </div>
+    <div class="area show">
+      <button type="button" (click)="showTimeTableDetail()">Show</button>
+    </div>
+  </div>
+  <div class="section">
+    <div class="table-container">
+      @if(timetableDetailForm && timeTableDetail.length>0){
+      <table>
+        <thead>
+          <tr>
+            @for(heading of detailTable;track $index){
+            <th>{{ heading }}</th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for(data of timeTableDetail;track $index){
+          <tr>
+            <td>{{ data.day }}</td>
+            <td>{{ data.time }}</td>
+            <td>{{ data.teacherName }}</td>
+            <td>{{ data.subject }}</td>
+
+            <td class="action-button">
+              <button
+                class="edit"
+                (click)="updateTimeTableDetail(data.timetableDetailsId)"
+              >
+                Edit
+              </button>
+              <button
+                class="delete"
+                (click)="deleteTimeTableDetail(data.timetableDetailsId)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+      } @else if (selectedClassDetail==0 || selectedSectionIdDetail==0) {
+      <h2 style="text-align: center; padding: 10px; font-weight: bold">
+        Please select a Class and a Section
+      </h2>
+      } @else if(isSubjectDataEmptyDetail && isCourseFoundDetail){
+      <h2 style="text-align: center; padding: 10px; font-weight: bold">
+        TimeTable Detail Data Not Found
+      </h2>
+      }
+    </div>
+  </div>
+</div>
+
+<div class="form-area" id="formModel1">
+  @if(timetableDetailForm.value.timetableDetailsId==0){
+  <h1>Add Student TimeTable detail</h1>
+  } @else {
+  <h1>Update Student TimeTable Detail</h1>
+  }
+
+  <form
+    action=""
+    [formGroup]="timetableDetailForm"
+    (ngSubmit)="onSubmitDetail()"
+  >
+    @if(timetableDetailForm.value.timetableDetailsId==0){
+    <div class="card-area">
+      <div class="card">
+        <select
+          name=""
+          id=""
+          (change)="onClassChange1($event)"
+          formControlName="classId"
+        >
+          <option value="" selected disabled>Select a Class</option>
+          @for(class of Classes1;track $index){
+          <option [value]="class.classId">{{ class.className }}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <select name="" id="" formControlName="sectionId">
+          <option value="" selected disabled>Select a Section</option>
+          @for(section of Sections1;track $index){
+          <option [value]="section.sectionId">{{ section.sectionName }}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <select name="" id="" formControlName="time">
+          <option value="" selected disabled>Select a timeslot</option>
+          @for(timeslot of timeSlotArray;track $index){
+          <option [value]="timeslot">{{ timeslot }}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter a Subject name"
+          formControlName="subject"
+          name="subject"
+        />
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter a day"
+          formControlName="day"
+          name="day"
+        />
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter subject teacher name"
+          formControlName="teacherName"
+          name="teacherName"
+        />
+      </div>
+    </div>
+    } @else {
+    <div class="card-area">
+      <div class="card-area">
+        <div class="card">
+          <select name="" id="" formControlName="time">
+            <option value="" selected disabled>Select a timeslot</option>
+            @for(timeslot of timeSlotArray;track $index){
+            <option [value]="timeslot">{{ timeslot }}</option>
+            }
+          </select>
+        </div>
+        <div class="card">
+          <input
+            type="text"
+            placeholder="Enter a Subject name"
+            formControlName="subject"
+            name="subject"
+          />
+        </div>
+        <div class="card">
+          <input
+            type="text"
+            placeholder="Enter a day...."
+            formControlName="day"
+            name="day"
+          />
+        </div>
+        <div class="card">
+          <input
+            type="text"
+            placeholder="Enter subject teacher name...."
+            formControlName="teacherName"
+            name="teacherName"
+          />
+        </div>
+      </div>
+    </div>
     }
+    <div class="button-area">
+      @if(timetableDetailForm.value.timetableDetailsId==0){
+      <button type="submit" class="submit">Save</button>
+      } @else {
+      <button type="submit" class="submit">Update</button>
+      }
 
-    <form action="" [formGroup]="timetableForm" (ngSubmit)="onSubmit()">
-        @if(timetableForm.value.timetbaleId==0){
-        <div class="card-area">
-            <div class="card">
-                <select name="" id="" (change)="onClassChange($event)" formControlName="classId">
-                    <option value="" selected disabled>Select a Class</option>
-                    @for(class of Classes;track $index){
-                    <option [value]="class.classId">{{class.className}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <select name="" id="" formControlName="sectionId">
-                    <option value="" selected disabled>Select a Section</option>
-                    @for(section of Sections;track $index){
-                    <option [value]="section.sectionId">{{section.sectionName}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <!-- <input type="text" placeholder="Enter a TimeSlot" formControlName="timeSlot" name="timeSlot"> -->
-                <select name="" id="" formControlName="timeSlot">
-                    <option value="" selected disabled>Select a timeslot</option>
-                    @for(timeslot of timeSlotArray;track $index){
-                    <option [value]="timeslot">{{timeslot}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter a Subject for Monday" formControlName="monday" name="monday">
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter a Subject for Tuesday" formControlName="tuesday" name="tuesday">
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter a Subject for Wednesday" formControlName="wednesday"
-                    name="wednesday">
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter a Subject for Thursday" formControlName="thursday"
-                    name="thursday">
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter a Subject for Friday" formControlName="friday" name="friday">
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter a Subject for Saterday" formControlName="saturday"
-                    name="saturday">
-            </div>
-        </div>
-        }
-        @else {
-        <div class="card-area">
-            <div class="card">
-                <!-- <input type="text" placeholder="Enter a TimeSlot" formControlName="timeSlot" name="timeSlot"> -->
-                <select name="" id="" formControlName="timeSlot">
-                    <option value="" selected disabled>Select a timeslot</option>
-                    @for(timeslot of timeSlotArray;track $index){
-                    <option [value]="timeslot">{{timeslot}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter a Subject for Monday" formControlName="monday" name="monday">
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter a Subject for Tuesday" formControlName="tuesday" name="tuesday">
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter a Subject for Wednesday" formControlName="wednesday"
-                    name="wednesday">
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter a Subject for Thursday" formControlName="thursday"
-                    name="thursday">
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter a Subject for Friday" formControlName="friday" name="friday">
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter a Subject for Saterday" formControlName="saturday"
-                    name="saturday">
-            </div>
-        </div>
-        }
-        <div class="button-area">
-            @if(timetableForm.value.timetbaleId==0){
-            <button type="submit" class="submit" >Save</button>
-            }
-            @else {
-            <button type="submit" class="submit" >Update</button>
-            }
-
-            <button type="button" (click)="CloseModel()" class="close">Close</button>
-        </div>
-    </form>
+      <button type="button" (click)="CloseModel1()" class="close">Close</button>
+    </div>
+  </form>
 </div>
