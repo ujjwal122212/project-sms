@@ -1,0 +1,20 @@
+<div class="notifications-container">
+  <div class="header">
+    <h2>Notifications</h2>
+    <span class="mark-read">Mark all as read</span>
+  </div>
+
+  
+  <div *ngFor="let notification of notificationStudent" class="notification-item">
+    <span class="notification-icon">📬</span>
+    <div class="notification-content">
+      
+      <div class="notification-title">
+        {{ notification.NotificationTopic }}
+      </div>
+      <div class="notification-text">
+        {{ notification.NotificationText }}
+      </div>
+    </div>
+  </div>
+</div>

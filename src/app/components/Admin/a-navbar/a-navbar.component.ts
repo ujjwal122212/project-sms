@@ -5,12 +5,13 @@ import { ViewStudentComponent } from '../addStudent/view-student/view-student.co
 import { ADashboardComponent } from '../a-dashboard/a-dashboard.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MainProfileComponent } from '../../main-profile-data/main-profile/main-profile.component';
+import { AdminProfileComponent } from '../admin-profile/admin-profile.component';
 
 
 @Component({
   selector: 'app-a-navbar',
   standalone: true,
-  imports: [CommonModule, RouterLink, MainProfileComponent,RouterLinkActive],
+  imports: [CommonModule, RouterLink, AdminProfileComponent,RouterLinkActive],
   templateUrl: './a-navbar.component.html',
   styleUrl: './a-navbar.component.css',
   viewProviders: [AMenubarComponent, ViewStudentComponent]

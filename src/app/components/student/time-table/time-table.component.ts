@@ -53,7 +53,7 @@ export class TimeTableComponent implements OnInit {
   // Time table detail
   timeTableDetail: any[] = [];
   http=inject(HttpClient)
-  tableDetailHeader: string[] = ['Date', 'Time', 'Teacher Name', 'Subject name'];
+  tableDetailHeader: string[] = ['Day', 'Time', 'Teacher Name', 'Subject name'];
   getTimetableDetail(id: number) {
     this.http.get(`https://localhost:7262/TimeTablesDetails/${id}`).subscribe({
       next: (res: any) => {

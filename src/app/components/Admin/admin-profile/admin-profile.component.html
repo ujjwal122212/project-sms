@@ -8,28 +8,28 @@
 
 <!-- <div class="main1"> -->
 <div class="main2">
-  <div class="first" *ngIf="student">
+  <div class="first">
     <ul>
       <li>
         <strong><i class="fa-sharp-duotone fa-solid fa-user"></i></strong
-        ><strong >{{student.studentName}}</strong>
+        ><strong>Mr.x</strong>
       </li>
     </ul>
     <ul>
       <li class="li1">
         <strong><i class="fa-solid fa-graduation-cap"></i></strong>
-        <strong >{{student.class}}</strong>
+        <strong> B.Tech(cse) 2022-2023</strong>
       </li>
       <li class="li2">
         <strong><i class="fa-sharp-duotone fa-solid fa-bookmark"></i></strong>
-        <strong >RollNo :- {{student.enrollmentNumber}}</strong>
+        <strong>222</strong>
       </li>
     </ul>
     <div class="mid"></div>
     <ul>
       <li>
         <strong><i class="fa-solid fa-school"></i></strong>
-        <strong>SMS Public School</strong>
+        <strong>Galgotias University greater Noida</strong>
       </li>
     </ul>
   </div>
@@ -52,9 +52,8 @@
     <ul>
       <a>
         <strong><i class="fa-solid fa-right-from-bracket"></i></strong>
-        <strong (click)="logout()" class="logout">Logout</strong>
+        <strong class="logout" (click)="logout()">Logout</strong>
       </a>
     </ul>
   </div>
 </div>
-<!-- </div> -->

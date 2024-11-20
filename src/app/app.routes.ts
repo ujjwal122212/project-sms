@@ -67,15 +67,14 @@ import { ViewTeacherDetailsComponent } from './components/Admin/addTeacher/view-
 import { StudentLayoutComponent } from './components/student-layout/student-layout.component';
 import { TeacherLayoutComponent } from './components/teacher-layout/teacher-layout.component';
 import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
-
 import { StudentProfileComponent } from './components/student/student-profile/student-profile.component';
-
-// import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
-
+import { Fee1Component } from './components/student/fee1/fee1.component';
+import { Fee2Component } from './components/student/fee2/fee2.component';
+import { Fee3Component } from './components/student/fee3/fee3.component';
 import { AddClassComponent } from './components/Admin/add-class/add-class.component';
 import { AddSectionComponent } from './components/Admin/add-section/add-section.component';
-import { AddSubjectTopicComponent } from './components/Admin/add-subject-topic/add-subject-topic.component';
-
+import { EditProfileComponent } from './components/student/edit-profile/edit-profile.component';
+// import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
 
@@ -155,6 +154,9 @@ export const routes: Routes = [
             ]
           },
           { 'path': 'help', 'title': 'Help', component: StudentHelpComponent },
+          { path: 'fee1', title: 'Fee1', component: Fee1Component },
+          { path: 'fee2', title: 'Fee2', component: Fee2Component },
+          { path: 'fee3', title: 'Fee3', component: Fee3Component }
 
         ]
       },
@@ -229,9 +231,16 @@ export const routes: Routes = [
         ]
       },
       {
-        path:'studentprofile',title:'Profile',component:StudentProfileComponent
+        path: 'studentprofile', title: 'Profile', component: StudentProfileComponent
+      },
+      {
+        path:'studentprofile',children:[
+          {
+            path:'editProfile/:enrollmentNumber',title:'Edit Profile',component:EditProfileComponent
+          }
+        ]
       }
-
+      // { path: 'StuAdmission/:studentID',title:'Update Student', component: StudentAdmissionComponent },
 
 
 
@@ -412,9 +421,6 @@ export const routes: Routes = [
       //Important Contacts
       { 'path': 'view', 'title': 'view-contact', component: ViewContactsComponent },
       { 'path': 'addContact', 'title': 'Add-contact', component: AddContactsComponent },
-      { path: 'addclass', title: 'AddClass', component: AddClassComponent },
-      {path:'addsection',title:'AddSection',component:AddSectionComponent},
-      {path:'addsubjecttopic',title:'AddSubjectTopic',component:AddSubjectTopicComponent},
 
       { path: 'addstudentCourse', title: 'StudentCourse', component: AddStudentCourseComponent },
       { path: 'studenttimetable', title: 'StudentTimeTable', component: AddStudentTimeTableComponent },
@@ -422,13 +428,9 @@ export const routes: Routes = [
       { path: 'viewstudentadmission', title: 'StudentAdmissionList', component: ViewStudentAdmissionComponent },
       { path: 'studentnotification', title: 'StudentNotification', component: StudentNotificationComponent },
       { path: 'teachernotification', title: 'TeacherNotification', component: TeacherNotificationComponent },
-
-     
+      {path:'addclass',title:"Class",component:AddClassComponent},
+      {path:'addsection',title:"Section",component:AddSectionComponent}
       // {path:'viewteacher',title:'ViewTeacher',component:RegisterTeacherComponent}
-
-      { path: 'viewteacherdetails', title: 'ViewTeacherDetails', component: ViewTeacherDetailsComponent },
-
-
     ]
   },
 
@@ -443,4 +445,3 @@ export const routes: Routes = [
   //============================================================================================
 
 ];
-
