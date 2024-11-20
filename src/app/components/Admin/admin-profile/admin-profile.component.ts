@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from '../../../Services/login.service';
 
 @Component({
   selector: 'app-admin-profile',
@@ -8,5 +10,10 @@ import { Component } from '@angular/core';
   styleUrl: './admin-profile.component.css'
 })
 export class AdminProfileComponent {
-
+  route = inject(Router)
+  loginService = inject(LoginService)
+  logout() {
+    this.loginService.logout();
+    this.route.navigateByUrl('/Login-page');
+  }
 }
