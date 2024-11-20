@@ -124,6 +124,7 @@ body.dark-mode thead {
 .first-table,
 .second-table,
 .third-table {
+  margin-top: 40px;
   margin-bottom: 40px;
   width: 100%;
   height: 300px;

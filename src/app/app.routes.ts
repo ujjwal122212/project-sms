@@ -71,6 +71,9 @@ import { StudentProfileComponent } from './components/student/student-profile/st
 import { Fee1Component } from './components/student/fee1/fee1.component';
 import { Fee2Component } from './components/student/fee2/fee2.component';
 import { Fee3Component } from './components/student/fee3/fee3.component';
+import { AddClassComponent } from './components/Admin/add-class/add-class.component';
+import { AddSectionComponent } from './components/Admin/add-section/add-section.component';
+import { EditProfileComponent } from './components/student/edit-profile/edit-profile.component';
 // import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
@@ -229,8 +232,15 @@ export const routes: Routes = [
       },
       {
         path: 'studentprofile', title: 'Profile', component: StudentProfileComponent
+      },
+      {
+        path:'studentprofile',children:[
+          {
+            path:'editProfile/:enrollmentNumber',title:'Edit Profile',component:EditProfileComponent
+          }
+        ]
       }
-
+      // { path: 'StuAdmission/:studentID',title:'Update Student', component: StudentAdmissionComponent },
 
 
 
@@ -418,7 +428,8 @@ export const routes: Routes = [
       { path: 'viewstudentadmission', title: 'StudentAdmissionList', component: ViewStudentAdmissionComponent },
       { path: 'studentnotification', title: 'StudentNotification', component: StudentNotificationComponent },
       { path: 'teachernotification', title: 'TeacherNotification', component: TeacherNotificationComponent },
-
+      {path:'addclass',title:"Class",component:AddClassComponent},
+      {path:'addsection',title:"Section",component:AddSectionComponent}
       // {path:'viewteacher',title:'ViewTeacher',component:RegisterTeacherComponent}
     ]
   },

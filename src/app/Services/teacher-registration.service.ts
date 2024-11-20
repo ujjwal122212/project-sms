@@ -29,4 +29,7 @@ export class TeacherRegistrationService {
   editTeacherByID(enrollmentNumber:number,data:FormData){
     return this.http.put(`${this.apiurl}/api/Teacher/EditRegisterdTeacher/${enrollmentNumber}`, data);
   }
+  getAllTeacherDetailsByEnrollmentNumber(enrollmentNumber:number){
+    return this.http.get(`${this.apiurl}/api/Teacher/GetTeachersByIdAllDetails/${enrollmentNumber}`);
+  }
 }

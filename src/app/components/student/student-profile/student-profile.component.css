@@ -1,0 +1,44 @@
+.student-container{
+    padding: 10px;
+}
+.profile-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+.profile-area img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid #aaa;
+}
+.edit-profile{
+    margin-top: 15px;
+}
+.edit-profile button{
+    padding: 8px 12px;
+    font-weight: bold;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+}
+.details-area {
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    column-gap: 40px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    background-color: aliceblue;
+}
+
+.card {
+    width: 48%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-bottom: 10px;
+}
