@@ -1,1 +1,82 @@
-<p>student-profile works!</p>
+<div class="student-container" *ngIf="student">
+    <div class="profile-area">
+        <img [src]="'https://localhost:7262/api/Image/'+student.imagePath" alt="Student Img">
+        <div class="edit-profile">
+            <button type="button" (click)="EditStudent(student.enrollmentNumber)">Edit Profile</button>
+        </div>
+    </div>
+    <div class="details-area">
+        <div class="card">
+            <p> <strong>Name</strong></p>
+            <p>{{student.studentName}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>EnrollmentNumber</strong></p>
+            <p>{{student.enrollmentNumber}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>Class</strong></p>
+            <p>{{student.class}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>Section</strong></p>
+            <p>{{student.section}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>Father's Name</strong></p>
+            <p>{{student.fathersName}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>Mother's Name</strong></p>
+            <p>{{student.mothersName}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>Gender</strong></p>
+            <p>{{student.gender}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>State</strong></p>
+            <p>{{student.state}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>District</strong></p>
+            <p>{{student.district}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>Email</strong></p>
+            <p>{{student.email}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>D.O.B</strong></p>
+            <p>{{student.dateOfBirth | date:'dd-MM-yyyy'}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>BloodGroup</strong></p>
+            <p>{{student.bloodGroup}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>Family Occupation</strong></p>
+            <p>{{student.fatherOccupation}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>Mother Occupation</strong></p>
+            <p>{{student.motherOccupation}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>Mother Occupation</strong></p>
+            <p>{{student.familyIncome}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>MobileNo</strong></p>
+            <p>{{student.mobile}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>Pincode</strong></p>
+            <p>{{student.pincode}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>Address</strong></p>
+            <p>{{student.address}}</p>
+        </div>
+    </div>
+</div>

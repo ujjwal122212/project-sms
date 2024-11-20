@@ -22,11 +22,12 @@ export class MainProfileComponent implements OnInit {
     this.route.navigateByUrl('/Login-page');
   }
   getStudentByEnrollmentNumber(enrollmentNo: number) {
-    this.regService.getStudentByStudentID(enrollmentNo).subscribe((res:any)=>{
+    this.regService.getStudentDetailByStudentId(enrollmentNo).subscribe((res:any)=>{
      this.student=res;
-    //  console.log(this.student);
+     console.log(this.student);
     })
   }
+ 
   ngOnInit(): void {
     this.enrollmentNo = this.loginService.enrollmentNumber;
     if (this.enrollmentNo) {

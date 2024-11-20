@@ -21,7 +21,7 @@ export class ViewTeacherDetailsComponent implements OnInit {
   async getTeacherDetailsById() {
     this.enrollmentNumber = this.activatedRoute.snapshot.params['enrollmentNumber'];
     if (this.enrollmentNumber) {
-      await this.regService.getTeacherById(this.enrollmentNumber).subscribe(async (res) => {
+      await this.regService.getAllTeacherDetailsByEnrollmentNumber(this.enrollmentNumber).subscribe(async (res) => {
         this.teacher = res;
         console.log(this.teacher);
       })

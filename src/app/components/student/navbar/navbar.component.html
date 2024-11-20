@@ -55,7 +55,9 @@
   <div class="user-info">
     <!-- Profile Icon: Toggle Profile, Close Notification if Open -->
     <span class="user-icon" routerLinkActive="active" (click)="toggleProfile()">
-      👤
+      <div class="student-image" *ngIf="student">
+            <img [src]="'https://localhost:7262/api/Image/'+student.imagePath" alt="Student Img">
+      </div>
     </span>
 
     <!-- Profile content is shown when isProfileOpen is true -->
@@ -64,7 +66,7 @@
     </div>
 
     <div class="user-text">
-      <h3>Student</h3>
+      <h3 *ngIf="student">{{student.studentName}}</h3>
     </div>
 
     <!-- Three dots (More options) -->

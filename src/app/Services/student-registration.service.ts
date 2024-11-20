@@ -37,4 +37,7 @@ export class StudentRegistrationService {
   UpdateStudentByStudentID(studentID:number,data:FormData){
     return this.http.put(`${this.apiurl}/EditRegisterdStudent/${studentID}`, data);
   }
+  getStudentDetailByStudentId(enrollmentNumber:number){
+    return this.http.get(`${this.apiurl}/GetStudentByIdAllDetails/${enrollmentNumber}`);
+  }
 }
