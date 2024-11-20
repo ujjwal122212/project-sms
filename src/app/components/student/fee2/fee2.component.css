@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f3f4f6;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #f1f1f1;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.student-details {
+  display: flex;
+  align-items: center;
+}
+
+.info p, .student-meta p {
+  margin: 5px 0;
+}
+
+.table-title {
+  font-size: 24px;
+  color: #444;
+  margin-bottom: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: 3px solid #f1f1f1;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.fees-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.fees-table thead th {
+  background-color: #007BFF;
+  color: #fff;
+  text-align: left;
+  padding: 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.fees-table tbody td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.fees-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  display: inline-block;
+}
+
+.status.paid {
+  background-color: #4CAF50;
+}
+
+.status.unpaid {
+  background-color: #FF5733;
+}
+
+.pay-btn {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.pay-btn:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .header {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .student-meta {
+      text-align: center;
+      margin-top: 10px;
+  }
+
+  .fees-table thead {
+      display: none;
+  }
+
+  .fees-table tbody td {
+      display: block;
+      width: 100%;
+      text-align: right;
+      border-bottom: 1px solid #ddd;
+  }
+
+  .fees-table tbody td::before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+  }
+}
