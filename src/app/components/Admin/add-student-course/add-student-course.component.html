@@ -1,96 +1,283 @@
 <div class="student-course">
-    <div class="header">
-        <h1>Student Subjects</h1>
-        <button (click)="openform()">Add Student Subjects</button>
+  <div class="header">
+    <h1>Student Subjects</h1>
+    <button (click)="openform()">Add Student Subjects</button>
+  </div>
+  <div class="selected-area">
+    <div class="area">
+      <select
+        name=""
+        id=""
+        [(ngModel)]="selectedClass"
+        (change)="onClassChange($event)"
+      >
+        <option value="0" disabled>Select a Class</option>
+        @for(class of Classes;track $index){
+        <option [value]="class.classId">{{ class.className }}</option>
+        }
+      </select>
     </div>
-    <div class="selected-area">
-        <div class="area">
-            <select name="" id="" [(ngModel)]="selectedClass" (change)="onClassChange($event)">
-                <option value="0" disabled>Select a Class</option>
-                @for(class of Classes;track $index){
-                <option [value]="class.classId">{{class.className}}</option>
-                }
-            </select>
-        </div>
-        <div class="area">
-            <select name="" id="" [(ngModel)]="selectedSectionId" (change)="onSectionChange($event)">
-                <option value="0" disabled>Select a Section</option>
-                @for(section of Sections;track $index){
-                <option [value]="section.sectionId">{{section.sectionName}}</option>
-                }
-            </select>
-        </div>
-        <div class="area show">
-            <button type="button" (click)="showCourse()">Show</button>
-        </div>
+    <div class="area">
+      <select
+        name=""
+        id=""
+        [(ngModel)]="selectedSectionId"
+        (change)="onSectionChange($event)"
+      >
+        <option value="0" disabled>Select a Section</option>
+        @for(section of Sections;track $index){
+        <option [value]="section.sectionId">{{ section.sectionName }}</option>
+        }
+      </select>
     </div>
-    <div class="section">
-        <div class="table-container">
-            @if(courseForm && Subjects.length>0){
-            <table>
-                <thead>
-                    <tr>
-                        @for(head of subjectHeading;track $index){
-                        <th>{{head}}</th>
-                        }
-                    </tr>
-                </thead>
-                <tbody>
-                    @for(subject of Subjects;track $index){
-                    <tr>
-                        <td>{{$index+1}}</td>
-                        <td>{{subject.subjectName}}</td>
-                        <td>{{subject.subjectCode}}</td>
-                        <td class="action-button">
-                            <button class="edit">Edit</button>
-                            <button class="delete">Delete</button>
-                        </td>
-                    </tr>
-                    }
-                </tbody>
-            </table>
-            }
-            @else if (selectedClass==0 || selectedSectionId==0) {
-            <h2 style="text-align: center; padding: 10px; font-weight: bold;">Please select a Class and a Section</h2>
-            }
-            @else if(isSubjectDataEmpty && isCourseFound){
-            <h2 style="text-align: center; padding: 10px; font-weight: bold;">Subject Data Not Found</h2>
-            }
-        </div>
-
+    <div class="area show">
+      <button type="button" (click)="showCourse()">Show</button>
     </div>
+  </div>
+  <div class="section">
+    <div class="table-container">
+      @if(courseForm && Subjects.length>0){
+      <table>
+        <thead>
+          <tr>
+            @for(head of subjectHeading;track $index){
+            <th>{{ head }}</th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for(subject of Subjects;track $index){
+          <tr>
+            <td>{{ $index + 1 }}</td>
+            <td>{{ subject.subjectName }}</td>
+            <td>{{ subject.subjectCode }}</td>
+            <td class="action-button">
+              <button class="edit">Edit</button>
+              <button class="delete">Delete</button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+      } @else if (selectedClass==0 || selectedSectionId==0) {
+      <h2 style="text-align: center; padding: 10px; font-weight: bold">
+        Please select a Class and a Section
+      </h2>
+      } @else if(isSubjectDataEmpty && isCourseFound){
+      <h2 style="text-align: center; padding: 10px; font-weight: bold">
+        Subject Data Not Found
+      </h2>
+      }
+    </div>
+  </div>
 </div>
 
 <div class="form-area" id="formModel">
-    <h1>Add Student Subjects</h1>
-    <form action="" [formGroup]="courseForm" (ngSubmit)="onSubmit()">
-        <div class="card-area">
-            <div class="card">
-                <select name="" id="" (change)="onClassChange($event)" formControlName="classId">
-                    <option value="" selected disabled>Select a Class</option>
-                    @for(class of Classes;track $index){
-                    <option [value]="class.classId">{{class.className}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <select name="" id="" formControlName="sectionId">
-                    <option value="" selected disabled>Select a Section</option>
-                    @for(section of Sections;track $index){
-                    <option [value]="section.sectionId">{{section.sectionName}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter SubjectName" formControlName="subjectName" name="subjectName">
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter SubjectCode" formControlName="subjectCode" name="subjectCode">
-            </div>
+  <h1>Add Student Subjects</h1>
+  <form action="" [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+    <div class="card-area">
+      <div class="card">
+        <select
+          name=""
+          id=""
+          (change)="onClassChange($event)"
+          formControlName="classId"
+        >
+          <option value="" selected disabled>Select a Class</option>
+          @for(class of Classes;track $index){
+          <option [value]="class.classId">{{ class.className }}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <select name="" id="" formControlName="sectionId">
+          <option value="" selected disabled>Select a Section</option>
+          @for(section of Sections;track $index){
+          <option [value]="section.sectionId">{{ section.sectionName }}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter SubjectName"
+          formControlName="subjectName"
+          name="subjectName"
+        />
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter SubjectCode"
+          formControlName="subjectCode"
+          name="subjectCode"
+        />
+      </div>
+    </div>
+    <div class="button-area">
+      <button type="submit" class="submit">Save</button>
+      <button type="button" (click)="CloseModel()" class="close">Close</button>
+    </div>
+  </form>
+</div>
+
+<!-- Add Student subject By class wise -->
+<div class="student-course">
+  <div class="header">
+    <h1>Add Class Subject</h1>
+    <button (click)="openform1()">Add Class Subject</button>
+  </div>
+  <div class="selected-area">
+    <div class="area">
+      <select
+        name=""
+        id=""
+        [(ngModel)]="selectedClassSubject"
+        (change)="onClassChange1($event)"
+      >
+        <option value="0" disabled>Select a Class</option>
+        @for(class of Classes1;track $index){
+        <option [value]="class.classId">{{ class.className }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="area show">
+      <button type="button" (click)="showSubject()">Show</button>
+    </div>
+  </div>
+  <div class="section">
+    <div class="table-container">
+      @if(subjectForm && subjectDetail.length>0){
+      <table>
+        <thead>
+          <tr>
+            @for(heading of detailSubject;track $index){
+            <th>{{ heading }}</th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for(data of subjectDetail;track $index){
+          <tr>
+            <td>{{ $index + 1 }}</td>
+            <td>{{ data.subjectName }}</td>
+            <td>{{ data.subjectCode }}</td>
+            <td>{{ data.subjectType }}</td>
+
+            <td class="action-button">
+              <button class="edit" (click)="updateSubject(data.subjectId)">
+                Edit
+              </button>
+              <button class="delete" (click)="deleteSubject(data.subjectId)">
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+      } @else if (selectedClassSubject==0 ) {
+      <h2 style="text-align: center; padding: 10px; font-weight: bold">
+        Please select a Class ...
+      </h2>
+      } @else if(isSubjectDataEmptyDetail && isCourseFoundDetail){
+      <h2 style="text-align: center; padding: 10px; font-weight: bold">
+        Subject is Not Found
+      </h2>
+      }
+    </div>
+  </div>
+</div>
+
+<div class="form-area" id="formModel1">
+  @if(subjectForm.value.subjectId==0){
+  <h1>Add Class Subject</h1>
+  } @else {
+  <h1>Update Class Subject</h1>
+  }
+
+  <form action="" [formGroup]="subjectForm" (ngSubmit)="onSubmitSubject()">
+    @if(subjectForm.value.subjectId==0){
+    <div class="card-area">
+      <div class="card">
+        <select
+          name=""
+          id=""
+          (change)="onClassChange1($event)"
+          formControlName="classId"
+        >
+          <option value="" selected disabled>Select a Class</option>
+          @for(class of Classes1;track $index){
+          <option [value]="class.classId">{{ class.className }}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter a Subject Type"
+          formControlName="subjectType"
+          name="subjectType"
+        />
+      </div>
+
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter a Subject name"
+          formControlName="subjectName"
+          name="subjectName"
+        />
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter subject code"
+          formControlName="subjectCode"
+          name="subjectCode"
+        />
+      </div>
+    </div>
+    } @else {
+    <div class="card-area">
+      <div class="card-area">
+        <div class="card">
+          <input
+            type="text"
+            placeholder="Enter a Subject Type"
+            formControlName="subjectType"
+            name="subjectType"
+          />
         </div>
-        <div class="button-area">
-            <button type="submit" class="submit">Save</button>
-            <button type="button" (click)="CloseModel()" class="close">Close</button>
+        <div class="card">
+          <input
+            type="text"
+            placeholder="Enter a Subject name"
+            formControlName="subjectName"
+            name="subjectName"
+          />
         </div>
-    </form>
+
+        <div class="card">
+          <input
+            type="text"
+            placeholder="Enter subject code"
+            formControlName="subjectCode"
+            name="subjectCode"
+          />
+        </div>
+      </div>
+    </div>
+    }
+    <div class="button-area">
+      @if(subjectForm.value.subjectId==0){
+      <button type="submit" class="submit">Save</button>
+      } @else {
+      <button type="submit" class="submit">Update</button>
+      }
+
+      <button type="button" (click)="CloseModel1()" class="close">Close</button>
+    </div>
+  </form>
 </div>
