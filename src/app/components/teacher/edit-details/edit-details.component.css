@@ -1,0 +1,72 @@
+.form-area {
+    margin: 10px;
+    background-color: white;
+    overflow-x: hidden;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  
+  .form-area form {
+    padding: 15px 10px 10px 10px;
+  }
+  
+  .form-area h1 {
+    text-align: center;
+    padding: 15px 0;
+    border-radius: 10px 10px 0 0;
+    font-size: 22px;
+    background-color: #FDC300;
+  }
+  
+  .card-area {
+    display: flex;
+    /* column-gap: 50px; */
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 48%;
+    /* background-color: aqua; */
+    margin-bottom: 30px;
+  }
+  
+  select,
+  input ,textarea{
+    border: 2px solid #ddd;
+    width: 100%;
+    border-radius: 5px;
+    padding: 4px 2px;
+  }
+  
+  select:hover {
+    cursor: pointer;
+  }
+  
+  .button-area {
+    /* margin-top: 30px; */
+    display: flex;
+    justify-content: center;
+  }
+  
+  .submit {
+    margin-right: 20px;
+    background-color: #007bff;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .close {
+    background-color: #ef4444;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  button{
+    border-radius: 10px;
+  }

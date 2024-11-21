@@ -150,7 +150,15 @@ body.dark-mode .menu a {
   cursor: pointer;
   color: orange;
 }
-
+.teacher-image{
+  margin-left: 10px;
+}
+.teacher-image img{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid #aaa;
+}
 @media (max-width: 768px) {
   nav {
     overflow: hidden;

@@ -1,0 +1,84 @@
+<div class="form-area" id="formModel">
+    @if(isEdit){
+    <h1>Update Teacher Details</h1>
+    }
+    @else {
+    <h1>Add Teacher Details</h1>
+    }
+    <form action="" [formGroup]="regForm" (ngSubmit)="onSubmit()">
+      <div class="card-area">
+        <div class="card">
+          <input type="text" placeholder="Enter Teacher Name" formControlName="name" name="name">
+        </div>
+        <div class="card">
+          <select name="" id="" formControlName="gender">
+            <option value="" selected disabled>Select your Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+        <div class="card">
+          <input type="date" formControlName="dob">
+        </div>
+        <div class="card">
+          <input type="file" (change)="onFileSelected($event)" #fileInput accept="image/*">
+        </div>
+        <div class="card">
+          <input type="email" placeholder="Enter your Email" formControlName="email" name="email">
+        </div>
+        <div class="card">
+          <input type="tel" placeholder="Enter your Contact Number" formControlName="contact" name="number">
+        </div>
+        <div class="card">
+          <select name="" id="" (change)="onStateChange($event)" formControlName="state">
+            <option value="" selected disabled>Select a state</option>
+            @for(state of State;track $index){
+            <option [value]="state.stateId">{{state.stateName}}</option>
+            }
+          </select>
+        </div>
+        <div class="card">
+          <select name="" id="" formControlName="district">
+            <option value="" selected disabled>Select a district</option>
+            @for(district of District;track $index){
+            <option [value]="district.districtId">{{district.districtName}}</option>
+            }
+          </select>
+        </div>
+        <div class="card">
+          <input type="text" placeholder="Enter your pincode" formControlName="pincode" name="pincode">
+        </div>
+        <div class="card">
+          <input type="text" placeholder="Enter your Experiance in Teaching" formControlName="experienceOfTeaching"
+            name="experienceOfTeaching">
+        </div>
+        <div class="card">
+          <input type="text" placeholder="Enter your Qualification" formControlName="qualification" name="qualification">
+        </div>
+        <div class="card">
+          <input type="text" placeholder="Enter your Teaching classes" formControlName="teachClasses" name="teachClasses">
+        </div>
+        <div class="card">
+          <input type="text" placeholder="Enter your Subjects" formControlName="teachSubject" name="teachSubject">
+        </div>
+        <div class="card">
+          <textarea name="streetAddress" id="" placeholder="Enter your Address"
+            formControlName="streetAddress"></textarea>
+        </div>
+        <div class="card">
+          <textarea name="additionalText" id="" placeholder="Additional Details"
+            formControlName="additionalText"></textarea>
+        </div>
+      </div>
+      <div class="button-area">
+        @if(isEdit){
+        <button type="submit" class="submit">Update</button>
+        }
+        @else {
+        <button type="submit" class="submit">Save</button>
+        }
+        <button type="button" class="close" (click)="goto()">Back</button>
+      </div>
+    </form>
+  </div>

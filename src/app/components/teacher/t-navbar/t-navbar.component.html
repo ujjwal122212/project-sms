@@ -4,11 +4,7 @@
   </div>
   <div class="nav-icons">
     <i class="ri-contrast-2-line" id="nav_icon"></i>
-    <i
-      class="ri-notification-4-line"
-      id="nav_icon"
-      (click)="toggleNotification()"
-    ></i>
+    <i class="ri-notification-4-line" id="nav_icon" (click)="toggleNotification()"></i>
     <i class="ri-message-3-line" id="nav_icon"></i>
     <div *ngIf="isNotificationOpen" class="notification">
       <app-teacher-notification></app-teacher-notification>
@@ -16,7 +12,9 @@
   </div>
   <div class="user-info">
     <span class="user-icon" routerLinkActive="active" (click)="toggleProfile()">
-      👤
+      <div class="teacher-image" *ngIf="teacher">
+        <img [src]="'https://localhost:7262/api/TeacherImage/'+teacher.imagePath" alt="Teacher Image">
+      </div>
     </span>
 
     <!-- Profile content is shown when isProfileOpen is true -->
@@ -25,7 +23,7 @@
     </div>
 
     <div class="user-text">
-      <h3>Teacher</h3>
+      <h3 *ngIf="teacher">{{teacher.name}}</h3>
     </div>
 
     <!-- Three dots (More options) -->
