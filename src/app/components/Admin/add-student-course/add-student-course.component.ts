@@ -236,7 +236,7 @@ export class AddStudentCourseComponent implements OnInit {
     const subjectId = this.subjectForm.value.subjectId;
     this.http
       .put(
-        `https://localhost:7262/api/Subject${subjectId}`,
+        `https://localhost:7262/api/Subject/${subjectId}`,
         formValue
       )
       .subscribe(
