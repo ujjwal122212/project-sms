@@ -74,6 +74,8 @@ import { Fee3Component } from './components/student/fee3/fee3.component';
 import { AddClassComponent } from './components/Admin/add-class/add-class.component';
 import { AddSectionComponent } from './components/Admin/add-section/add-section.component';
 import { EditProfileComponent } from './components/student/edit-profile/edit-profile.component';
+import { ProfileDetailsComponent } from './components/teacher/profile-details/profile-details.component';
+import { EditDetailsComponent } from './components/teacher/edit-details/edit-details.component';
 // import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
@@ -374,6 +376,10 @@ export const routes: Routes = [
 
       //for teacher help
       { 'path': 'tHelp', 'title': 'Help', component: THelpComponent },
+      {path:'profiledetails',title:'ProfileDetails',component:ProfileDetailsComponent},
+      {path:'profiledetails',children:[
+        {path:'editdetails/:enrollmentNumber',title:'EditDetils',component:EditDetailsComponent}
+      ]}
     ]
   },
   {

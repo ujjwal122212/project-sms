@@ -82,6 +82,7 @@ export class LoginPageComponent implements OnInit {
           else if (res.role === 'Teacher') {
             alert("Login Successfull");
             this.route.navigateByUrl('/teacherlayout/T-home');
+            this.loginService.setEnrollmentNumber(enrollmentNo);
           }
           else if (res.role === 'Admin') {
             alert("Login Successfull");
