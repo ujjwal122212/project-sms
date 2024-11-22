@@ -77,6 +77,8 @@ import { EditProfileComponent } from './components/student/edit-profile/edit-pro
 import { ProfileDetailsComponent } from './components/teacher/profile-details/profile-details.component';
 import { EditDetailsComponent } from './components/teacher/edit-details/edit-details.component';
 import { StudentFeesComponent } from './components/Admin/student-fees/student-fees.component';
+import { AdminresgistrationComponent } from './components/Admin/adminresgistration/adminresgistration.component';
+import { AddSubjectTopicComponent } from './components/Admin/add-subject-topic/add-subject-topic.component';
 // import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
@@ -437,7 +439,9 @@ export const routes: Routes = [
       { path: 'teachernotification', title: 'TeacherNotification', component: TeacherNotificationComponent },
       {path:'addclass',title:"Class",component:AddClassComponent},
       {path:'addsection',title:"Section",component:AddSectionComponent},
-      {path:'studentfee',title:'Student Fee',component:StudentFeesComponent}
+      {path:'studentfee',title:'Student Fee',component:StudentFeesComponent},
+      {path:'adminregistration',title:'Admin Registration',component:AdminresgistrationComponent},
+      {path:'subjectTopic',title:'Subject Topic',component:AddSubjectTopicComponent}
       // {path:'viewteacher',title:'ViewTeacher',component:RegisterTeacherComponent}
     ]
   },
