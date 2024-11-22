@@ -79,6 +79,10 @@ import { EditDetailsComponent } from './components/teacher/edit-details/edit-det
 import { StudentFeesComponent } from './components/Admin/student-fees/student-fees.component';
 import { AdminresgistrationComponent } from './components/Admin/adminresgistration/adminresgistration.component';
 import { AddSubjectTopicComponent } from './components/Admin/add-subject-topic/add-subject-topic.component';
+import { AdminDetailsComponent } from './components/Admin/admin-details/admin-details.component';
+import { AddandupdateadminComponent } from './components/Admin/addandupdateadmin/addandupdateadmin.component';
+import { AprofileComponent } from './components/Admin/aprofile/aprofile.component';
+import { UpdateDetailsComponent } from './components/Admin/update-details/update-details.component';
 // import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
@@ -441,7 +445,16 @@ export const routes: Routes = [
       {path:'addsection',title:"Section",component:AddSectionComponent},
       {path:'studentfee',title:'Student Fee',component:StudentFeesComponent},
       {path:'adminregistration',title:'Admin Registration',component:AdminresgistrationComponent},
-      {path:'subjectTopic',title:'Subject Topic',component:AddSubjectTopicComponent}
+      {path:'subjectTopic',title:'Subject Topic',component:AddSubjectTopicComponent},
+      {path:'adminregistration',children:[
+        {path:'admindetail/:enrollmentNumber',title:'Admin Details',component:AdminDetailsComponent},
+        {path:'addadmin',title:'Add Admin',component:AddandupdateadminComponent},
+        {path:'addadmin/:enrollmentNumber',title:'Update Admin',component:AddandupdateadminComponent},
+      ]},
+      {path:'aprofile',title:'Admin Details',component:AprofileComponent},
+      {path:'aprofile',children:[
+        {path:'updateprofile/:enrollmentNumber',title:'Update Details',component:UpdateDetailsComponent}
+      ]}
       // {path:'viewteacher',title:'ViewTeacher',component:RegisterTeacherComponent}
     ]
   },

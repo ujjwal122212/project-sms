@@ -87,6 +87,7 @@ export class LoginPageComponent implements OnInit {
           else if (res.role === 'Admin') {
             alert("Login Successfull");
             this.route.navigateByUrl('/adminlayout/ahome');
+            this.loginService.setEnrollmentNumber(enrollmentNo);
           }
         },
         error: (err) => {

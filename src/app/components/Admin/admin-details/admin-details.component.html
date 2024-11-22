@@ -1,0 +1,50 @@
+<div class="teacher-area">
+    <h1>Admin Details</h1>
+    <div class="button-area" >
+        <button *ngIf="teacher" class="edit" (click)="EditTeacherById(teacher.enrollmentNumber)">Edit</button>
+        <button *ngIf="teacher" class="delete" (click)="deleteTeacherByEnrollmentNumber(teacher.enrollmentNumber)">Delete</button>
+    </div>
+    <div class="profile-area" *ngIf="teacher">
+        <img [src]="'https://localhost:7262/Admin/'+teacher.imagePath" alt="Teacher Image">
+    </div>
+    @if(teacher){
+    <div class="details-area">
+        <div class="card">
+            <p><strong>Name</strong></p>
+            <p>{{teacher.name}}</p>
+        </div>
+        <div class="card">
+            <p> <strong>EnrollmentNumber</strong></p>
+            <p>{{teacher.enrollmentNumber}}</p>
+        </div>
+        <div class="card">
+            <p><strong>Gender</strong></p>
+            <p>{{teacher.gender}}</p>
+        </div>
+        <div class="card">
+            <p><strong>D.O.B</strong></p>
+            <p>{{teacher.dob | date:'dd-MM-yyyy'}}</p>
+        </div>
+        <div class="card">
+            <p><strong>Email</strong></p>
+            <p>{{teacher.email}}</p>
+        </div>
+        <div class="card">
+            <p><strong>Contact</strong></p>
+            <p>{{teacher.contact}}</p>
+        </div>
+        <div class="card">
+            <p><strong>State</strong></p>
+            <p>{{teacher.state}}</p>
+        </div>
+        <div class="card">
+            <p><strong>District</strong></p>
+            <p>{{teacher.district}}</p>
+        </div>
+        <div class="card">
+            <p><strong>Pincode</strong></p>
+            <p>{{teacher.pincode}}</p>
+        </div>
+    </div>
+    }
+</div>
