@@ -76,6 +76,7 @@ import { AddSectionComponent } from './components/Admin/add-section/add-section.
 import { EditProfileComponent } from './components/student/edit-profile/edit-profile.component';
 import { ProfileDetailsComponent } from './components/teacher/profile-details/profile-details.component';
 import { EditDetailsComponent } from './components/teacher/edit-details/edit-details.component';
+import { StudentFeesComponent } from './components/Admin/student-fees/student-fees.component';
 // import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
@@ -435,7 +436,8 @@ export const routes: Routes = [
       { path: 'studentnotification', title: 'StudentNotification', component: StudentNotificationComponent },
       { path: 'teachernotification', title: 'TeacherNotification', component: TeacherNotificationComponent },
       {path:'addclass',title:"Class",component:AddClassComponent},
-      {path:'addsection',title:"Section",component:AddSectionComponent}
+      {path:'addsection',title:"Section",component:AddSectionComponent},
+      {path:'studentfee',title:'Student Fee',component:StudentFeesComponent}
       // {path:'viewteacher',title:'ViewTeacher',component:RegisterTeacherComponent}
     ]
   },
