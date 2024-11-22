@@ -9,7 +9,9 @@
   </div>
   <div class="user-info">
     <span class="user-icon" routerLinkActive="active" (click)="openProfile()">
-      👤
+      <div class="teacher-image" *ngIf="teacher">
+        <img [src]="'https://localhost:7262/Admin/'+teacher.imagePath" alt="Teacher Image">
+      </div>
     </span>
     @if (show) {
       <div class="main1">
@@ -18,7 +20,7 @@
       </div>
       }
     <div class="user-text">
-      <h3>Admin</h3>
+      <h3 *ngIf="teacher">{{teacher.name}}</h3>
     </div>
     <div class="more-options" routerLink="/pw">
       <span routerLinkActive="active">...</span>
