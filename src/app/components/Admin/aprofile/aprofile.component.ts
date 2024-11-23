@@ -22,7 +22,7 @@ export class AprofileComponent implements OnInit{
   activatedRoute = inject(ActivatedRoute);
   enrollmentNumber!: number;
   getAdminById(enrollmentNo: number) {
-    this.regService.getAdminById(enrollmentNo).subscribe((res: any) => {
+    this.regService.getAllAdminDetails(enrollmentNo).subscribe((res: any) => {
       this.teacher = res;
       console.log(res);
     })

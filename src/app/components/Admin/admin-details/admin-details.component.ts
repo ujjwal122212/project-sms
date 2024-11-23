@@ -21,7 +21,7 @@ export class AdminDetailsComponent {
   async getTeacherDetailsById() {
     this.enrollmentNumber = this.activatedRoute.snapshot.params['enrollmentNumber'];
     if (this.enrollmentNumber) {
-      await this.regService.getAdminById(this.enrollmentNumber).subscribe(async (res) => {
+      await this.regService.getAllAdminDetails(this.enrollmentNumber).subscribe(async (res) => {
         this.teacher = res;
         console.log(this.teacher);
       })
