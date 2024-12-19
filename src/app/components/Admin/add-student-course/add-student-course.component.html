@@ -1,4 +1,4 @@
-<div class="student-course">
+<!-- <div class="student-course">
   <div class="header">
     <h1>Student Subjects</h1>
     <button (click)="openform()">Add Student Subjects</button>
@@ -119,12 +119,12 @@
       <button type="button" (click)="CloseModel()" class="close">Close</button>
     </div>
   </form>
-</div>
+</div> -->
 
 <!-- Add Student subject By class wise -->
 <div class="student-course">
   <div class="header">
-    <h1>Add Class Subject</h1>
+    <h1>Class Subject</h1>
     <button (click)="openform1()">Add Class Subject</button>
   </div>
   <div class="selected-area">
@@ -188,7 +188,16 @@
       }
     </div>
   </div>
+
+
+  <div class="header">
+    <h1>Course Topic</h1>
+    <button (click)="openform2()">Add Course Topic</button>
+  </div>
+
 </div>
+
+
 
 <div class="form-area" id="formModel1">
   @if(subjectForm.value.subjectId==0){
@@ -281,3 +290,6 @@
     </div>
   </form>
 </div>
+
+
+

@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 import { StudenttimetableService } from '../../../Services/studenttimetable.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-student-course',
@@ -305,6 +306,15 @@ export class AddStudentCourseComponent implements OnInit {
       formModel.classList.remove('openform1');
     }
   }
+
+
+
+  // Course Topic Code Start here
+  route=inject(Router);
+  openform2(){
+    this.route.navigateByUrl('adminlayout/addstudentCourse/addcourseTopic');
+  }
+
   ngOnInit(): void {
     this.setformstate();
     this.setDetailFormState();
