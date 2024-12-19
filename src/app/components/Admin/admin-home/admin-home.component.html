@@ -4,12 +4,12 @@
     <div class="main-content">
       <div class="top-row">
         <div class="card">
-          <h2>124,684</h2>
+          <h2>{{ student }}</h2>
           <p>Students</p>
         </div>
         <div class="card">
-          <h2>124,684</h2>
-          <p>Students</p>
+          <h2>{{ teacher }}</h2>
+          <p>Teacher</p>
         </div>
         <div class="card">
           <h2>124,684</h2>
@@ -30,12 +30,12 @@
             <!-- Student data -->
             <app-doughtnut-ratio-bg></app-doughtnut-ratio-bg>
           </div>
-          <span>Boy:</span>
-          <span>Boy:</span>
+          <span style="margin-right: 50px; margin-top: 50px; font-weight: 600;">Boy: {{boy}} </span>
+          <span style="margin-right: 50px; margin-top: 50px; font-weight: 600;">Girls: {{girl}} </span>
         </div>
         <div class="att student">
           <div class="header">
-            <h3>Attendance</h3>
+            <h3> Students Attendance</h3>
             <i class="fas fa-chart-bar icon"> </i>
           </div>
           <div class="chart" style="height: auto">
@@ -45,6 +45,33 @@
           </div>
         </div>
       </div>
+<!-- =================teacher=========================== -->
+      <div class="middle-row">
+        <div class="student">
+          <div class="header">
+            <h3>Teachers</h3>
+            <i class="fas fa-users icon"> </i>
+          </div>
+          <div class="chart" style="height: auto">
+            <!-- Teacher data -->
+             <app-doughtnut-ratio-teacher></app-doughtnut-ratio-teacher>
+          </div>
+          <span style="margin-right: 50px; margin-top: 50px; font-weight: 600;">Male : {{male}} </span>
+          <span style="margin-right: 50px; margin-top: 50px; font-weight: 600;">Female: {{female}} </span>
+        </div>
+        <div class="att student">
+          <div class="header">
+            <h3>Teacher Attendance</h3>
+            <i class="fas fa-chart-bar icon"> </i>
+          </div>
+          <div class="chart" style="height: auto">
+            <!-- Addebdance -->
+            <!-- <canvas id="MyChart1">{{ chart1 }}</canvas> -->
+             <app-bar-attendence-teacher></app-bar-attendence-teacher>
+          </div>
+        </div>
+      </div>
+      <!-- ============== -->
 
       <div class="bottom-row">
         <div class="student pipe">
