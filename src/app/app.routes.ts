@@ -84,7 +84,6 @@ import { AddandupdateadminComponent } from './components/Admin/addandupdateadmin
 import { AprofileComponent } from './components/Admin/aprofile/aprofile.component';
 import { UpdateDetailsComponent } from './components/Admin/update-details/update-details.component';
 import path from 'path';
-import { CourseTopicComponent } from './components/Admin/course-topic/course-topic.component';
 // import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
@@ -438,9 +437,6 @@ export const routes: Routes = [
       { 'path': 'addContact', 'title': 'Add-contact', component: AddContactsComponent },
 
       { path: 'addstudentCourse', title: 'StudentCourse', component: AddStudentCourseComponent },
-      {path:'addstudentCourse',children:[
-        {path:"addcourseTopic",title:"Course Topic",component:CourseTopicComponent}
-      ]},
       { path: 'studenttimetable', title: 'StudentTimeTable', component: AddStudentTimeTableComponent },
       { path: 'quizsubject', title: 'StudentQuizSubject', component: AddQuizSubjectComponent },
       { path: 'viewstudentadmission', title: 'StudentAdmissionList', component: ViewStudentAdmissionComponent },

@@ -129,12 +129,7 @@
   </div>
   <div class="selected-area">
     <div class="area">
-      <select
-        name=""
-        id=""
-        [(ngModel)]="selectedClassSubject"
-        (change)="onClassChange1($event)"
-      >
+      <select name="" id="" [(ngModel)]="selectedClassSubject" (change)="onClassChange1($event)">
         <option value="0" disabled>Select a Class</option>
         @for(class of Classes1;track $index){
         <option [value]="class.classId">{{ class.className }}</option>
@@ -194,6 +189,67 @@
     <h1>Course Topic</h1>
     <button (click)="openform2()">Add Course Topic</button>
   </div>
+  <div class="selected-area">
+    <div class="area">
+      <select name="" id="" [(ngModel)]="selectedClassId" (change)="onClassChange3($event)">
+        <option value="0" disabled>Select a Class</option>
+        @for(class of Classes;track $index){
+        <option [value]="class.classId">{{class.className}}</option>
+        }
+      </select>
+    </div>
+    <div class="area">
+      <select name="" id="" [(ngModel)]="selectedSubjectId" (change)="onSubjectChange($event)">
+        <option value="0" disabled>Select a Subject</option>
+        @for(subject of subject;track $index){
+        <option [value]="subject.subjectId">{{subject.subjectName}}</option>
+        }
+      </select>
+    </div>
+    <div class="area show">
+      <button type="button" (click)="showCourseTopic()">Show</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="table-container">
+      @if( courseTopic.length>0){
+      <table>
+        <thead>
+          <tr>
+            <th>S.NO</th>
+            <th>Topic Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(topic of courseTopic;track $index){
+          <tr>
+            <td>{{$index+1}}</td>
+            <td>{{topic.topicName}}</td>
+            <td class="action-button">
+              <button class="edit">
+                Edit
+              </button>
+              <button class="delete" (click)="deleteCourseTopicById(topic.id)">
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+      } @else if (selectedClass==0 || selectedSubjectId==0) {
+      <h2 style="text-align: center; padding: 10px; font-weight: bold">
+        Please select a Class and Subject
+      </h2>
+      } @else if(isSubjectFound && isSubjectDataFound){
+      <h2 style="text-align: center; padding: 10px; font-weight: bold">
+        Course Topic is Not Found
+      </h2>
+      }
+    </div>
+  </div>
 
 </div>
 
@@ -210,12 +266,7 @@
     @if(subjectForm.value.subjectId==0){
     <div class="card-area">
       <div class="card">
-        <select
-          name=""
-          id=""
-          (change)="onClassChange1($event)"
-          formControlName="classId"
-        >
+        <select name="" id="" (change)="onClassChange1($event)" formControlName="classId">
           <option value="" selected disabled>Select a Class</option>
           @for(class of Classes1;track $index){
           <option [value]="class.classId">{{ class.className }}</option>
@@ -223,58 +274,28 @@
         </select>
       </div>
       <div class="card">
-        <input
-          type="text"
-          placeholder="Enter a Subject Type"
-          formControlName="subjectType"
-          name="subjectType"
-        />
+        <input type="text" placeholder="Enter a Subject Type" formControlName="subjectType" name="subjectType" />
       </div>
 
       <div class="card">
-        <input
-          type="text"
-          placeholder="Enter a Subject name"
-          formControlName="subjectName"
-          name="subjectName"
-        />
+        <input type="text" placeholder="Enter a Subject name" formControlName="subjectName" name="subjectName" />
       </div>
       <div class="card">
-        <input
-          type="text"
-          placeholder="Enter subject code"
-          formControlName="subjectCode"
-          name="subjectCode"
-        />
+        <input type="text" placeholder="Enter subject code" formControlName="subjectCode" name="subjectCode" />
       </div>
     </div>
     } @else {
     <div class="card-area">
       <div class="card-area">
         <div class="card">
-          <input
-            type="text"
-            placeholder="Enter a Subject Type"
-            formControlName="subjectType"
-            name="subjectType"
-          />
+          <input type="text" placeholder="Enter a Subject Type" formControlName="subjectType" name="subjectType" />
         </div>
         <div class="card">
-          <input
-            type="text"
-            placeholder="Enter a Subject name"
-            formControlName="subjectName"
-            name="subjectName"
-          />
+          <input type="text" placeholder="Enter a Subject name" formControlName="subjectName" name="subjectName" />
         </div>
 
         <div class="card">
-          <input
-            type="text"
-            placeholder="Enter subject code"
-            formControlName="subjectCode"
-            name="subjectCode"
-          />
+          <input type="text" placeholder="Enter subject code" formControlName="subjectCode" name="subjectCode" />
         </div>
       </div>
     </div>
@@ -293,3 +314,46 @@
 
 
 
+
+<!-- Subject topic form -->
+
+
+<div class="form-area" id="formModel2">
+  <h1>Add Subject Topic</h1>
+  <form action="" [formGroup]="topicsForm" (ngSubmit)="submitTopics()">
+    <div class=".card-array" formArrayName="topics">
+      <div *ngFor="let topic of topics.controls; let i = index" [formGroupName]="i" class="card-area">
+        <div class="card">
+          <select name="" id="" (change)="onClassChange2($event)" formControlName="classId">
+            <option value="" selected disabled>Select a Class</option>
+            @for(class of Classes1;track $index){
+            <option [value]="class.classId">{{ class.className }}</option>
+            }
+          </select>
+        </div>
+        <div class="card">
+          <select name="" id="" formControlName="subjectId">
+            <option value="" selected disabled>Select a Subject</option>
+            @for(course of Course;track $index){
+            <option [value]="course.subjectId">{{ course.subjectName }}</option>
+            }
+          </select>
+        </div>
+        <div class="card">
+          <input name="topicName" formControlName="topicName" type="text" placeholder="Enter topic name" />
+          <button type="button" (click)="removeTopic(i)" class="remove-topic-btn" *ngIf="topics.length > 1"
+            class="close" style="margin-left: 20px;">
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-area">
+      <button type="button" (click)="addTopic()" class="add-topic-btn" style="margin-right: 20px;">Add Another
+        Topic</button>
+      <button type="submit" class="submit">Save</button>
+      <button type="button" (click)="CloseModel2()" class="close">Close</button>
+    </div>
+  </form>
+</div>

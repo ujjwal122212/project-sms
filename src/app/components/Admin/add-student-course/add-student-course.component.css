@@ -151,7 +151,9 @@ td.action-button {
     font-size: 22px;
     background-color: #FDC300;
 }
-
+.card-array{
+    width: 100%;
+}
 .card-area {
     display: flex;
     /* column-gap: 50px; */

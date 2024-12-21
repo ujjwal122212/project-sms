@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { StudentCourseService } from '../../../Services/student-course.service';
 import { response } from 'express';
 import {
+  FormArray,
   FormBuilder,
   FormGroup,
   FormsModule,
@@ -24,7 +25,7 @@ import { Router } from '@angular/router';
 export class AddStudentCourseComponent implements OnInit {
   toastr = inject(ToastrService);
   courseForm: FormGroup = new FormGroup({});
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(private fb: FormBuilder, private http: HttpClient) { }
   studentCourseService = inject(StudentCourseService);
 
   openform() {
@@ -310,9 +311,145 @@ export class AddStudentCourseComponent implements OnInit {
 
 
   // Course Topic Code Start here
-  route=inject(Router);
-  openform2(){
-    this.route.navigateByUrl('adminlayout/addstudentCourse/addcourseTopic');
+
+  route = inject(Router);
+  openform2() {
+    const formModel = document.getElementById('formModel2');
+    if (formModel) {
+      formModel.classList.add('openform1');
+    }
+  }
+
+  CloseModel2() {
+    this.resetForm();
+    const formModel = document.getElementById('formModel2');
+    if (formModel) {
+      formModel.classList.remove('openform1');
+    }
+  }
+
+  // get subject topic code starts here 
+
+  onClassChange2(event: any) {
+    const classId = event.target.value;
+    this.loadSubjectByClassId(classId);
+  }
+  Course: any[] = [];
+  loadSubjectByClassId(ClassId: number) {
+    this.http.get(`https://localhost:7262/api/Subject/${ClassId}`).subscribe((response: any) => {
+      this.Course = response;
+      console.log(this.Course);
+    })
+  }
+
+  selectedClassId = 0;
+  selectedSubjectId = 0;
+  isSubjectFound: boolean = false;
+  isSubjectDataFound = false;
+  onClassChange3(event: any) {
+    this.selectedClass = event.target.value;
+    this.selectedSubjectId = 0;
+    this.subject = [];
+    this.courseTopic = [];
+    this.isSubjectFound = false;
+    this.isSubjectDataFound = false;
+    this.loadSubjectByClassId2(this.selectedClass);
+  }
+  subject: any[] = [];
+  loadSubjectByClassId2(ClassId: number) {
+    this.http.get(`https://localhost:7262/api/Subject/${ClassId}`).subscribe((response: any) => {
+      this.subject = response;
+    })
+  }
+  onSubjectChange(event: any) {
+    this.selectedSubjectId = event.target.value;
+  }
+  courseTopic: any[] = [];
+  loadCourseTopicBySubjectId(subjectId: number) {
+    this.http.get(`https://localhost:7262/GetTopicsBySubjectId/${subjectId}`).subscribe((response: any) => {
+      this.isSubjectDataFound = true;
+      this.courseTopic = response;
+    })
+  }
+
+  showCourseTopic() {
+    this.isSubjectFound = true;
+    this.isSubjectDataFound = false;
+    if (this.selectedClass === 0 || this.selectedSubjectId === 0) {
+      alert("Please select a class and a Section");
+      return;
+    }
+    this.loadCourseTopicBySubjectId(this.selectedSubjectId);
+  }
+
+
+  // Delete Course Topic code Starts here 
+
+  deleteCourseTopicById(id: number) {
+    const isConfirm = confirm("Are you sure to want to delete this record ? ");
+    if (isConfirm) {
+      this.http.delete(`https://localhost:7262/DeleteTopic/${id}`).subscribe((response: any) => {
+        alert("Course Topic Deleted Successfully ");
+        this.selectedClassId=0;
+        this.selectedSubjectId = 0;
+        this.subject=[];
+        this.courseTopic=[];
+      })
+    }
+
+  }
+
+
+  // Add Course Topic code Starts Here
+
+  topicsForm: FormGroup = new FormGroup({});
+
+  topicForm() {
+    this.topicsForm = this.fb.group({
+      topics: this.fb.array([])
+    });
+    this.addTopic();
+  }
+
+  get topics(): FormArray {
+    return this.topicsForm.get('topics') as FormArray;
+  }
+  addTopic() {
+    const topicGroup = this.fb.group({
+      id: [0],
+      classId: [''],
+      topicName: ['', Validators.required],
+      subjectId: ['', [Validators.required, Validators.min(1)]]
+    });
+    this.topics.push(topicGroup);
+  }
+
+  removeTopic(index: number): void {
+    if (this.topics.length > 1) {
+      this.topics.removeAt(index);
+    } else {
+      alert('At least one topic is required.');
+    }
+  }
+
+  submitTopics() {
+    if (this.topicsForm.invalid) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    const formData = this.topicsForm.value;
+
+    this.http.post(`https://localhost:7262/AddMultipleTopics`, formData).subscribe((response: any) => {
+      alert("Subject Topics Added Successfully");
+      this.resetForm();
+      this.CloseModel2();
+    });
+  }
+
+  resetForm(): void {
+    this.topics.clear();
+    this.addTopic();
   }
 
   ngOnInit(): void {
@@ -320,5 +457,6 @@ export class AddStudentCourseComponent implements OnInit {
     this.setDetailFormState();
     this.loadClasses();
     this.loadClasses1();
+    this.topicForm();
   }
 }
