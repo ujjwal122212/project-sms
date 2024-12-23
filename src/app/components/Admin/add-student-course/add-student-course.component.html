@@ -186,8 +186,8 @@
 
 
   <div class="header">
-    <h1>Course Topic</h1>
-    <button (click)="openform2()">Add Course Topic</button>
+    <h1>Subject Topic</h1>
+    <button (click)="openform2()">Add Subject Topics</button>
   </div>
   <div class="selected-area">
     <div class="area">
@@ -228,7 +228,7 @@
             <td>{{$index+1}}</td>
             <td>{{topic.topicName}}</td>
             <td class="action-button">
-              <button class="edit">
+              <button class="edit" (click)=" editCourseTopic(topic.id)">
                 Edit
               </button>
               <button class="delete" (click)="deleteCourseTopicById(topic.id)">
@@ -319,40 +319,56 @@
 
 
 <div class="form-area" id="formModel2">
+  @if(topicsForm.value.id==0){
   <h1>Add Subject Topic</h1>
-  <form action="" [formGroup]="topicsForm" (ngSubmit)="submitTopics()">
-    <div class=".card-array" formArrayName="topics">
-      <div *ngFor="let topic of topics.controls; let i = index" [formGroupName]="i" class="card-area">
-        <div class="card">
-          <select name="" id="" (change)="onClassChange2($event)" formControlName="classId">
-            <option value="" selected disabled>Select a Class</option>
-            @for(class of Classes1;track $index){
-            <option [value]="class.classId">{{ class.className }}</option>
-            }
-          </select>
-        </div>
-        <div class="card">
-          <select name="" id="" formControlName="subjectId">
-            <option value="" selected disabled>Select a Subject</option>
-            @for(course of Course;track $index){
-            <option [value]="course.subjectId">{{ course.subjectName }}</option>
-            }
-          </select>
-        </div>
-        <div class="card">
-          <input name="topicName" formControlName="topicName" type="text" placeholder="Enter topic name" />
-          <button type="button" (click)="removeTopic(i)" class="remove-topic-btn" *ngIf="topics.length > 1"
-            class="close" style="margin-left: 20px;">
-            Remove
-          </button>
+  }
+  @else if(topicsForm.value.id>0){
+  <h1>Update Subject Topic</h1>
+  }
+  <form [formGroup]="topicsForm" (ngSubmit)="submitTopics()">
+    <!-- Class Selector -->
+    <div class="card-area">
+      <div class="card">
+        <!-- <label for="classId">Class:</label> -->
+        <select id="classId" formControlName="classId" (change)="onClassChange2($event)">
+          <option value="" selected disabled>Select a Class</option>
+          <option *ngFor="let class of Classes1" [value]="class.classId">{{ class.className }}</option>
+        </select>
+      </div>
+
+      <!-- Subject Selector -->
+      <div class="card">
+        <!-- <label for="subjectId">Subject:</label> -->
+        <select id="subjectId" formControlName="subjectId">
+          <option value="" selected disabled>Select a Subject</option>
+          <option *ngFor="let course of Course" [value]="course.subjectId">{{ course.subjectName }}</option>
+        </select>
+      </div>
+
+      <!-- Topics Array -->
+      <div class="card-array" formArrayName="topics">
+        <div *ngFor="let topic of topics.controls; let i = index" [formGroupName]="i" class="card-area">
+          <div class="card">
+            <input formControlName="topicNames" type="text" name="topicNames" placeholder="Enter topic name" />
+            <button type="button" (click)="removeTopic(i)" class="close" *ngIf="topics.length > 1"
+              style="margin-left: 20px;">
+              Remove
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- Buttons -->
     <div class="button-area">
+      @if(topicsForm.value.id==0){
       <button type="button" (click)="addTopic()" class="add-topic-btn" style="margin-right: 20px;">Add Another
         Topic</button>
       <button type="submit" class="submit">Save</button>
+      }
+      @else if(topicsForm.value.id>0) {
+        <button type="submit" class="submit">Update</button>
+      }
       <button type="button" (click)="CloseModel2()" class="close">Close</button>
     </div>
   </form>

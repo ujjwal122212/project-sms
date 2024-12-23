@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLinkActive } from '@angular/router';
 import { MainProfileComponent } from '../../main-profile-data/main-profile/main-profile.component';
 import { ProfileCardComponent } from '../profile-card/profile-card.component';
 
@@ -7,7 +7,7 @@ import { StudentProfileComponent } from '../student-profile/student-profile.comp
 
 import { CommonModule } from '@angular/common';
 import { NoficationComponent } from "../../nofication/nofication.component";
-import { StudentNotificationComponent } from "../../Admin/student-notification/student-notification.component";
+// import { StudentNotificationComponent } from "../../Admin/student-notification/student-notification.component";
 import { FormsModule } from '@angular/forms';
 import { StudentRegistrationService } from '../../../Services/student-registration.service';
 import { LoginService } from '../../../Services/login.service';
@@ -16,7 +16,7 @@ import { LoginService } from '../../../Services/login.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink,FormsModule,CommonModule, RouterLinkActive, MainProfileComponent, StudentProfileComponent, NoficationComponent],
+  imports: [FormsModule,CommonModule, RouterLinkActive, MainProfileComponent, NoficationComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit{
   getStudentByEnrollmentNumber(enrollmentNo: number) {
     this.regService.getStudentDetailByStudentId(enrollmentNo).subscribe((res:any)=>{
      this.student=res;
-     console.log(this.student);
+    //  console.log(this.student);
     })
   }
   EditStudent(enrollmentNumber: number) {
@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit{
   ngOnInit(): void {
     this.enrollmentNo = this.loginService.enrollmentNumber;
     if (this.enrollmentNo) {
-      console.log('Login Enrollment Number:', this.enrollmentNo);
+      // console.log('Login Enrollment Number:', this.enrollmentNo);
       this.getStudentByEnrollmentNumber(this.enrollmentNo);
     }
   }

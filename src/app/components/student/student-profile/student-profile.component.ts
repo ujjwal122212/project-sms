@@ -20,7 +20,7 @@ export class StudentProfileComponent implements OnInit{
   getStudentByEnrollmentNumber(enrollmentNo: number) {
     this.regService.getStudentDetailByStudentId(enrollmentNo).subscribe((res:any)=>{
      this.student=res;
-     console.log(this.student);
+    //  console.log(this.student);
     })
   }
   EditStudent(enrollentNumber: number) {

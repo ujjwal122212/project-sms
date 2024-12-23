@@ -1,0 +1,41 @@
+<div class="course-topic">
+    <div class="header">
+        @if(subject){
+            <h1>{{subject.subjectName}} / {{subject.subjectType}}</h1>
+            <div class="content">
+                <span><a href="#">Dashboard / Courses</a></span>
+                <span>
+                    <p>/ CourseContent</p>
+                </span>
+            </div>
+        }
+    </div>
+    <div class="border-bottom"></div>
+    <div class="section">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>S.NO</th>
+                        <th>Subject Topic</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(data of courseTopic;track $index){
+                    <tr>
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ data.topicName }}</td>
+                        <td class="action-button">
+                            <button class="edit">
+                                show
+                            </button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
