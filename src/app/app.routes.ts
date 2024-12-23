@@ -84,6 +84,7 @@ import { AddandupdateadminComponent } from './components/Admin/addandupdateadmin
 import { AprofileComponent } from './components/Admin/aprofile/aprofile.component';
 import { UpdateDetailsComponent } from './components/Admin/update-details/update-details.component';
 import path from 'path';
+import { CourseTopicsComponent } from './components/student/course-topics/course-topics.component';
 // import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
@@ -185,6 +186,11 @@ export const routes: Routes = [
 
       //student courses
       { 'path': 'courses', 'title': 'Courses', component: CoursesComponent },
+      {
+        'path': 'courses', children: [
+          { 'path': 'coursecontent', 'title': 'Course Content', component: CourseTopicsComponent }
+        ]
+      },
 
 
       //student performance
@@ -244,9 +250,9 @@ export const routes: Routes = [
         path: 'studentprofile', title: 'Profile', component: StudentProfileComponent
       },
       {
-        path:'studentprofile',children:[
+        path: 'studentprofile', children: [
           {
-            path:'editProfile/:enrollmentNumber',title:'Edit Profile',component:EditProfileComponent
+            path: 'editProfile/:enrollmentNumber', title: 'Edit Profile', component: EditProfileComponent
           }
         ]
       }
@@ -384,10 +390,12 @@ export const routes: Routes = [
 
       //for teacher help
       { 'path': 'tHelp', 'title': 'Help', component: THelpComponent },
-      {path:'profiledetails',title:'ProfileDetails',component:ProfileDetailsComponent},
-      {path:'profiledetails',children:[
-        {path:'editdetails/:enrollmentNumber',title:'EditDetils',component:EditDetailsComponent}
-      ]}
+      { path: 'profiledetails', title: 'ProfileDetails', component: ProfileDetailsComponent },
+      {
+        path: 'profiledetails', children: [
+          { path: 'editdetails/:enrollmentNumber', title: 'EditDetils', component: EditDetailsComponent }
+        ]
+      }
     ]
   },
   {
@@ -442,20 +450,24 @@ export const routes: Routes = [
       { path: 'viewstudentadmission', title: 'StudentAdmissionList', component: ViewStudentAdmissionComponent },
       { path: 'studentnotification', title: 'StudentNotification', component: StudentNotificationComponent },
       { path: 'teachernotification', title: 'TeacherNotification', component: TeacherNotificationComponent },
-      {path:'addclass',title:"Class",component:AddClassComponent},
-      {path:'addsection',title:"Section",component:AddSectionComponent},
-      {path:'studentfee',title:'Student Fee',component:StudentFeesComponent},
-      {path:'adminregistration',title:'Admin Registration',component:AdminresgistrationComponent},
-      {path:'subjectTopic',title:'Subject Topic',component:AddSubjectTopicComponent},
-      {path:'adminregistration',children:[
-        {path:'admindetail/:enrollmentNumber',title:'Admin Details',component:AdminDetailsComponent},
-        {path:'addadmin',title:'Add Admin',component:AddandupdateadminComponent},
-        {path:'addadmin/:enrollmentNumber',title:'Update Admin',component:AddandupdateadminComponent},
-      ]},
-      {path:'aprofile',title:'Admin Details',component:AprofileComponent},
-      {path:'aprofile',children:[
-        {path:'updateprofile/:enrollmentNumber',title:'Update Details',component:UpdateDetailsComponent}
-      ]}
+      { path: 'addclass', title: "Class", component: AddClassComponent },
+      { path: 'addsection', title: "Section", component: AddSectionComponent },
+      { path: 'studentfee', title: 'Student Fee', component: StudentFeesComponent },
+      { path: 'adminregistration', title: 'Admin Registration', component: AdminresgistrationComponent },
+      { path: 'subjectTopic', title: 'Subject Topic', component: AddSubjectTopicComponent },
+      {
+        path: 'adminregistration', children: [
+          { path: 'admindetail/:enrollmentNumber', title: 'Admin Details', component: AdminDetailsComponent },
+          { path: 'addadmin', title: 'Add Admin', component: AddandupdateadminComponent },
+          { path: 'addadmin/:enrollmentNumber', title: 'Update Admin', component: AddandupdateadminComponent },
+        ]
+      },
+      { path: 'aprofile', title: 'Admin Details', component: AprofileComponent },
+      {
+        path: 'aprofile', children: [
+          { path: 'updateprofile/:enrollmentNumber', title: 'Update Details', component: UpdateDetailsComponent }
+        ]
+      }
       // {path:'viewteacher',title:'ViewTeacher',component:RegisterTeacherComponent}
     ]
   },

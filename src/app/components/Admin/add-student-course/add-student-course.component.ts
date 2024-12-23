@@ -313,6 +313,8 @@ export class AddStudentCourseComponent implements OnInit {
   // Course Topic Code Start here
 
   route = inject(Router);
+  topicsForm: FormGroup = new FormGroup({});
+
   openform2() {
     const formModel = document.getElementById('formModel2');
     if (formModel) {
@@ -321,12 +323,85 @@ export class AddStudentCourseComponent implements OnInit {
   }
 
   CloseModel2() {
-    this.resetForm();
+     this.topicForm();
     const formModel = document.getElementById('formModel2');
     if (formModel) {
       formModel.classList.remove('openform1');
     }
   }
+
+  topicForm() {
+    this.topicsForm = this.fb.group({
+      id: [0],
+      classId: [''],
+      subjectId: ['', Validators.required],
+      topics: this.fb.array([])
+    });
+    this.addTopic();
+  }
+
+  get topics(): FormArray {
+    return this.topicsForm.get('topics') as FormArray;
+  }
+
+  addTopic() {
+    const topicGroup = this.fb.group({
+      topicNames: ['', Validators.required]
+    });
+    this.topics.push(topicGroup);
+  }
+
+  removeTopic(index: number): void {
+    if (this.topics.length > 1) {
+      this.topics.removeAt(index);
+    } else {
+      alert('At least one topic is required.');
+    }
+  }
+  
+
+  // post code mappping starts here
+
+  insertSubjectTopics() {
+    if (this.topicsForm.invalid) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+    const formData = this.topicsForm.value;
+    const topicNames: string[] = [];
+    formData.topics.forEach((topic: any) => {
+      const trimmedNames = topic.topicNames.trim();
+      if (trimmedNames !== '') {
+        topicNames.push(trimmedNames);
+      }
+    });
+    if (topicNames.length === 0) {
+      alert('Please add at least one valid topic name.');
+      return;
+    }
+    const requestBody = {
+      subjectId: formData.subjectId,
+      topicNames: topicNames
+    };
+    this.http.post(`https://localhost:7262/AddMultipleTopic`, requestBody).subscribe({
+      next: (response) => {
+        alert('Subject Topics Added Successfully');
+        this.resetForm();
+        this.CloseModel2();
+      },
+      error: (error) => {
+        alert('Error adding topics: ' + error.message);
+      }
+    });
+  }
+ 
+
+  resetForm(): void {
+    this.topics.clear();
+    this.topicsForm.reset({ subjectId: '', classId: '' });
+    this.addTopic();
+  }
+
 
   // get subject topic code starts here 
 
@@ -376,7 +451,7 @@ export class AddStudentCourseComponent implements OnInit {
     this.isSubjectFound = true;
     this.isSubjectDataFound = false;
     if (this.selectedClass === 0 || this.selectedSubjectId === 0) {
-      alert("Please select a class and a Section");
+      alert("Please select a class and a Subject");
       return;
     }
     this.loadCourseTopicBySubjectId(this.selectedSubjectId);
@@ -390,66 +465,26 @@ export class AddStudentCourseComponent implements OnInit {
     if (isConfirm) {
       this.http.delete(`https://localhost:7262/DeleteTopic/${id}`).subscribe((response: any) => {
         alert("Course Topic Deleted Successfully ");
-        this.selectedClassId=0;
+        this.selectedClassId = 0;
         this.selectedSubjectId = 0;
-        this.subject=[];
-        this.courseTopic=[];
+        this.subject = [];
+        this.courseTopic = [];
       })
     }
 
   }
 
 
-  // Add Course Topic code Starts Here
+  // Edit code starts here
 
-  topicsForm: FormGroup = new FormGroup({});
-
-  topicForm() {
-    this.topicsForm = this.fb.group({
-      topics: this.fb.array([])
-    });
-    this.addTopic();
-  }
-
-  get topics(): FormArray {
-    return this.topicsForm.get('topics') as FormArray;
-  }
-  addTopic() {
-    const topicGroup = this.fb.group({
-      id: [0],
-      classId: [''],
-      topicName: ['', Validators.required],
-      subjectId: ['', [Validators.required, Validators.min(1)]]
-    });
-    this.topics.push(topicGroup);
-  }
-
-  removeTopic(index: number): void {
-    if (this.topics.length > 1) {
-      this.topics.removeAt(index);
-    } else {
-      alert('At least one topic is required.');
-    }
+  editCourseTopic(id: number) {
+    this.openform2();
   }
 
   submitTopics() {
-    if (this.topicsForm.invalid) {
-      alert('Please fill in all required fields.');
-      return;
+    if(this.topicsForm.value.id==0){
+      this.insertSubjectTopics();
     }
-
-    const formData = this.topicsForm.value;
-
-    this.http.post(`https://localhost:7262/AddMultipleTopics`, formData).subscribe((response: any) => {
-      alert("Subject Topics Added Successfully");
-      this.resetForm();
-      this.CloseModel2();
-    });
-  }
-
-  resetForm(): void {
-    this.topics.clear();
-    this.addTopic();
   }
 
   ngOnInit(): void {

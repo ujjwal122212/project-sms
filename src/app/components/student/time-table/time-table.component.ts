@@ -39,14 +39,14 @@ export class TimeTableComponent implements OnInit {
         this.sectionId = result.sectionId;
         this.getTimetableBySectionId(this.sectionId);
         this.getTimetableDetail(this.sectionId)
-        console.log('Here sectionId is', this.sectionId);
-        console.log(this.students);
+        // console.log('Here sectionId is', this.sectionId);
+        // console.log(this.students);
       });
   }
   getTimetableBySectionId(id: number) {
     this.timetableService.getTimeTableBySectionId(id).subscribe((res: any) => {
       this.timeTable = res;
-      console.log(this.timeTable);
+      // console.log(this.timeTable);
     });
   }
 
@@ -58,7 +58,7 @@ export class TimeTableComponent implements OnInit {
     this.http.get(`https://localhost:7262/TimeTablesDetails/${id}`).subscribe({
       next: (res: any) => {
         this.timeTableDetail = res;
-        console.log(this.timeTableDetail);
+        // console.log(this.timeTableDetail);
       },
       error: (err) => {
         console.error('Error fetching timetable details:', err);
@@ -70,7 +70,7 @@ export class TimeTableComponent implements OnInit {
     this.enrollmentNo = this.loginService.enrollmentNumber;
 
     if (this.enrollmentNo) {
-      console.log('Login Enrollment Number:', this.enrollmentNo);
+      // console.log('Login Enrollment Number:', this.enrollmentNo);
       this.getStudentByEnrollmentNumber(this.enrollmentNo);
     }
   }
