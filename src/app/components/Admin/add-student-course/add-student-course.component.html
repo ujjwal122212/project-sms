@@ -319,19 +319,19 @@
 
 
 <div class="form-area" id="formModel2">
-  @if(topicsForm.value.id==0){
+  @if(topicsForm.value.topicsID==0){
   <h1>Add Subject Topic</h1>
   }
-  @else if(topicsForm.value.id>0){
+  @else if(topicsForm.value.topicsID>0){
   <h1>Update Subject Topic</h1>
   }
   <form [formGroup]="topicsForm" (ngSubmit)="submitTopics()">
-    <!-- Class Selector -->
+    @if(topicsForm.value.topicsID==0){
     <div class="card-area">
       <div class="card">
         <!-- <label for="classId">Class:</label> -->
         <select id="classId" formControlName="classId" (change)="onClassChange2($event)">
-          <option value="" selected disabled>Select a Class</option>
+          <option value="0" selected disabled>Select a Class</option>
           <option *ngFor="let class of Classes1" [value]="class.classId">{{ class.className }}</option>
         </select>
       </div>
@@ -340,8 +340,8 @@
       <div class="card">
         <!-- <label for="subjectId">Subject:</label> -->
         <select id="subjectId" formControlName="subjectId">
-          <option value="" selected disabled>Select a Subject</option>
-          <option *ngFor="let course of Course" [value]="course.subjectId">{{ course.subjectName }}</option>
+          <option value="0" selected disabled>Select a Subject</option>
+          <option *ngFor="let course of Course" [value]="+course.subjectId">{{ course.subjectName }}</option>
         </select>
       </div>
 
@@ -358,16 +358,24 @@
         </div>
       </div>
     </div>
+    }
+    @else{
+       <!-- Subject topic Selector -->
+      <div class="card">
+         <input type="text" name="topicName" formControlName="topicName" placeholder="Enter a topicName">
+      </div>
+    }
+
 
     <!-- Buttons -->
     <div class="button-area">
-      @if(topicsForm.value.id==0){
+      @if(topicsForm.value.topicsID==0){
       <button type="button" (click)="addTopic()" class="add-topic-btn" style="margin-right: 20px;">Add Another
         Topic</button>
       <button type="submit" class="submit">Save</button>
       }
-      @else if(topicsForm.value.id>0) {
-        <button type="submit" class="submit">Update</button>
+      @else if(topicsForm.value.topicsID>0) {
+      <button type="submit" class="submit">Update</button>
       }
       <button type="button" (click)="CloseModel2()" class="close">Close</button>
     </div>
