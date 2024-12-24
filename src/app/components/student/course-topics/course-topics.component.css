@@ -103,7 +103,7 @@ td.action-button {
 @media (max-width: 768px) {
   .header {
       flex-direction: column;
-      text-align: center; 
+      text-align: center;
   }
 
   .table-container {
@@ -125,6 +125,9 @@ td.action-button {
 }
 
 @media (max-width: 480px) {
+  .course-topic{
+    margin-left: 50px;
+  }
   .header h1 {
       font-size: 18px;
   }
@@ -140,6 +143,7 @@ td.action-button {
 
   table {
       font-size: 12px;
+
   }
 
   td.action-button {
