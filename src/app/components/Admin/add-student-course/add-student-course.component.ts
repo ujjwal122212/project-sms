@@ -323,7 +323,7 @@ export class AddStudentCourseComponent implements OnInit {
   }
 
   CloseModel2() {
-     this.topicForm();
+    this.topicForm();
     const formModel = document.getElementById('formModel2');
     if (formModel) {
       formModel.classList.remove('openform1');
@@ -332,10 +332,11 @@ export class AddStudentCourseComponent implements OnInit {
 
   topicForm() {
     this.topicsForm = this.fb.group({
-      id: [0],
-      classId: [''],
-      subjectId: ['', Validators.required],
-      topics: this.fb.array([])
+      topicsID: [0],
+      classId: [0],
+      subjectId: [0, Validators.required],
+      topics: this.fb.array([]),
+      topicName: ['']
     });
     this.addTopic();
   }
@@ -358,7 +359,7 @@ export class AddStudentCourseComponent implements OnInit {
       alert('At least one topic is required.');
     }
   }
-  
+
 
   // post code mappping starts here
 
@@ -394,7 +395,7 @@ export class AddStudentCourseComponent implements OnInit {
       }
     });
   }
- 
+
 
   resetForm(): void {
     this.topics.clear();
@@ -477,13 +478,48 @@ export class AddStudentCourseComponent implements OnInit {
 
   // Edit code starts here
 
-  editCourseTopic(id: number) {
+  editCourseTopic(topicsID: number) {
+    this.http.get(`https://localhost:7262/GetByCourseTopicsID/${topicsID}`).subscribe((res: any) => {
+      console.log("API Response Array:", res);
+      if (res.length > 0) {
+        const data = res[0];
+        this.topicsForm.patchValue({
+          topicsID: data.topicsID,
+          subjectId: +data.subjectId,
+          topicName: data.topicName
+        });
+      } else {
+      }
+    });
     this.openform2();
+  }
+  updation() {
+    const formData = {
+      topicsID: this.topicsForm.value.topicsID,
+      topicName: this.topicsForm.value.topicName,
+      subjectId: this.topicsForm.value.subjectId
+    }
+    if (formData.topicName == "") {
+      alert("Please fill a topic name");
+      return;
+    }
+    this.http.put(`https://localhost:7262/UpdateByCourseTopicsId/${formData.topicsID}`, formData).subscribe((res: any) => {
+      alert("Subject Topic Updated Successfully");
+      this.resetForm();
+      this.CloseModel2();
+      this.selectedClassId = 0;
+      this.selectedSubjectId = 0;
+      this.subject = [];
+      this.courseTopic = [];
+    })
   }
 
   submitTopics() {
-    if(this.topicsForm.value.id==0){
+    if (this.topicsForm.value.topicsID == 0) {
       this.insertSubjectTopics();
+    }
+    else {
+      this.updation();
     }
   }
 
