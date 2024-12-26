@@ -85,6 +85,7 @@ import { AprofileComponent } from './components/Admin/aprofile/aprofile.componen
 import { UpdateDetailsComponent } from './components/Admin/update-details/update-details.component';
 import path from 'path';
 import { CourseTopicsComponent } from './components/student/course-topics/course-topics.component';
+import { ClassTeacherAssignmentComponent } from './components/Admin/class-teacher-assignment/class-teacher-assignment.component';
 // import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
@@ -467,6 +468,9 @@ export const routes: Routes = [
         path: 'aprofile', children: [
           { path: 'updateprofile/:enrollmentNumber', title: 'Update Details', component: UpdateDetailsComponent }
         ]
+      },
+      {
+        path:'classTeacherAssignment',component:ClassTeacherAssignmentComponent,title:'Class Teacer Assignment'
       }
       // {path:'viewteacher',title:'ViewTeacher',component:RegisterTeacherComponent}
     ]
