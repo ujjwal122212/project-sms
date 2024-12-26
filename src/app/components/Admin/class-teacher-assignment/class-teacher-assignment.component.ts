@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -16,15 +16,18 @@ import {
   templateUrl: './class-teacher-assignment.component.html',
   styleUrl: './class-teacher-assignment.component.css',
 })
-export class ClassTeacherAssignmentComponent {
+export class ClassTeacherAssignmentComponent implements OnInit {
   Classes: any[] = [];
   Sections: any[] = [];
   Teachers: any[] = [];
-  classTeacherAssignmentForm: FormGroup;
+  classTeacherAssignmentForm: FormGroup=new FormGroup({});
 
   http = inject(HttpClient);
 
   constructor(private fb: FormBuilder) {
+
+  }
+  setformState() {
     this.classTeacherAssignmentForm = this.fb.group({
       classId: ['', Validators.required],
       sectionId: ['', Validators.required],
@@ -34,6 +37,7 @@ export class ClassTeacherAssignmentComponent {
 
   ngOnInit(): void {
     this.loadClass();
+    this.setformState();
   }
 
   loadClass() {
@@ -99,19 +103,26 @@ export class ClassTeacherAssignmentComponent {
     this.http
       .post('https://localhost:7262/AddClassTeacherAssignment', formValue)
       .subscribe(
-        (res) => {
-          alert('Class Teacher Assignment is added successfully');
-          console.log(res);
-          this.classTeacherAssignmentForm.reset();
+        (res: any) => {
+          alert(res.message);
+          // console.log(res);
+          // this.classTeacherAssignmentForm.reset();
+          this.resetForm()
           this.CloseModel();
+
         },
-        (err) => {
-          // console.error('Error adding class teacher assignment', err);
-          // alert('There was an adding the class teacher assignment');
-          alert('Class teacher assignment added successfully.');
+        (error) => {
+          alert(error.error.message);
+          this.resetForm()
           this.CloseModel();
+          // this.classTeacherAssignmentForm.reset();
         }
       );
+  }
+  resetForm() {
+    this.classTeacherAssignmentForm.value.classId = ''
+    this.classTeacherAssignmentForm.value.sectionId = ''
+    this.classTeacherAssignmentForm.value.enrollmentNumber = ''
   }
 
   openform() {
@@ -121,9 +132,11 @@ export class ClassTeacherAssignmentComponent {
     }
   }
   CloseModel() {
+    this.setformState();
     const stuform = document.getElementById('formModel');
     if (stuform != null) {
       stuform.classList.remove('openform');
     }
   }
+   
 }
