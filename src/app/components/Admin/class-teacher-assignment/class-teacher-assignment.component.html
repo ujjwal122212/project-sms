@@ -1,0 +1,61 @@
+<div class="student-course">
+  <div class="header">
+    <h1>Class Teacher</h1>
+    <button (click)="openform()">Add Class Teacher Assigment</button>
+  </div>
+</div>
+
+<!-- Addition of the Class Teacher Assignmeny -->
+<div class="form-area" id="formModel">
+  <h1>Add Class Teacher Assigment</h1>
+
+  <form
+    action=""
+    [formGroup]="classTeacherAssignmentForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="card-area">
+      <div class="card">
+        <select
+          name=""
+          id=""
+          (change)="onClassChange($event)"
+          formControlName="classId"
+        >
+          <option value="" selected disabled>Select a Class</option>
+          @for(class of Classes;track $index){
+          <option [value]="class.classId">{{ class.className }}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <select
+          name=""
+          id=""
+          (change)="onSectionChange($event)"
+          formControlName="sectionId"
+        >
+          <option value="" selected disabled>Select a Section</option>
+          @for (section of Sections; track $index) {
+          <option [value]="section.sectionId">{{ section.sectionName }}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <select name="" id="" formControlName="enrollmentNumber">
+          <option value="" selected disabled>Select a Class Teacher</option>
+          @for (teacher of Teachers; track $index) {
+          <option [value]="teacher.enrollmentNumber">{{ teacher.name }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="button-area">
+      <button type="submit" class="submit">Save</button>
+
+      <button type="button" (click)="CloseModel()" class="close">Close</button>
+    </div>
+  </form>
+</div>
+
