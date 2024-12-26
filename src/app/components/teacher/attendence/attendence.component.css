@@ -1,241 +1,31 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+.attendance-details {
+  background-color: #f9f9f9; /* Light background for the container */
+  padding: 20px; /* Spacing inside the container */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  max-width: 600px; /* Set a max width for the content */
+  margin: 20px auto; /* Center the container on the page */
+  text-align: center; /* Center align text */
+  font-family: Arial, sans-serif; /* Clean font for better readability */
 }
 
-a {
-  text-decoration: none;
-  color: white;
+.attendance-details h1 {
+  margin: 10px 0; /* Spacing between the headings */
+  font-size: 24px; /* Consistent font size */
+  color: #333; /* Dark text for readability */
 }
 
-.grid-container {
-  margin-top: 10px;
-  padding: 10px;
+.attendance-details .class-name {
+  color: #007bff; /* Blue color for class name */
+  font-weight: bold; /* Make class name bold */
 }
 
-.header {
-  width: 100%;
-  height: 75px;
-  border-radius: 7px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  overflow: hidden;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+.attendance-details .section-name {
+  color: #28a745; /* Green color for section name */
+  font-weight: bold; /* Make section name bold */
 }
 
-.header h1 {
-  font-size: 25px;
-  padding: 5px;
-  margin: 5px;
-  padding-top: 5px;
-  margin-top: 0px;
-}
-
-.header a {
-  text-decoration: none;
-  color: #007bff;
-  display: inline;
-  padding: 5px 0 5px 5px;
-  margin-left: 5px;
-}
-
-.header p {
-  display: inline;
-}
-
-.border-bottom {
-  margin-top: 20px;
-  border-bottom: 2px solid #aaa;
-}
-
-.content {
-  padding-bottom: 10px;
-}
-
-.main-container {
-  width: 100%;
-  height: 100%;
-  margin: 30px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  display: flex;
-  flex-direction: column;
-}
-
-.main-container h1 {
-  display: inline-block;
-  font-size: 1.5em;
-  border-bottom: 1.5px solid #ddd;
-}
-
-.filter {
-  margin-bottom: 20px;
-  margin-top: 15px;
-  border-bottom: 1.5px solid #ddd;
-  overflow-x: auto;
-}
-
-.card-section {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.card {
-  width: 30%;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-radius: 10px;
-}
-
-.card p {
-  margin-bottom: 5px;
-  padding-left: 5px;
-}
-
-.card select {
-  width: 100%;
-  padding: 10px 0;
-  font-size: 1rem;
-  border-radius: 10px;
-  height: 50px;
-  border: 1px solid #ddd;
-}
-
-.card input {
-  width: 100%;
-  padding: 10px 0;
-  font-size: 1rem;
-  border-radius: 10px;
-  height: 50px;
-  border: 1px solid #ddd;
-}
-
-input,
-select:hover {
-  cursor: pointer;
-}
-
-.submit-button {
-  padding: 30px 0 5px 0;
-  display: flex;
-  justify-content: center;
-}
-
-button {
-  border-radius: 10px;
-  padding: 10px 30px;
-  background-color: #ccff33;
-  color: #007bff;
-  font-size: 16px;
-  font-size: 1.4rem;
-  border: 2px solid #ddd;
-}
-
-button:hover {
-  cursor: pointer;
-  background-color: #b3e600;
-}
-
-.section {
-  margin-top: 10px;
-}
-
-.section h1 {
-  display: inline-block;
-}
-
-.table-section {
-  margin-top: 20px;
-  max-height: 500px;
-  width: 100%;
-  overflow: auto;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th,
-td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
-}
-
-thead {
-  position: sticky;
-  top: 48.7px;
-  z-index: 1;
-  background: #f1f1f1;
-}
-
-caption {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background-color: #4394DF;
-  padding: 10px;
-  color: white;
-  text-align: center;
-  font-size: 1.2rem;
-}
-
-.check {
-  transform: scale(1.5);
-  border-radius: 10px;
-}
-
-.check:hover {
-  transform: scale(1.8);
-  cursor: pointer;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
-
-
-
-@media screen and (max-width: 768px) {
-  .grid-container {
-    margin-left: 60px;
-  }
-
-  .card {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .submit-button {
-    padding-top: 20px;
-  }
-
-  table {
-    min-width: 780px;
-  }
-}
-
-@media screen and (max-width: 497px) {
-  .grid-container {
-    margin-left: 50px;
-    overflow-x: hidden;
-  }
-  .main-container{
-   padding: 20px 10px;
-  }
-  .main-container h1,
-  .section {
-    font-size: 18px;
-  }
-
-  #submit {
-    font-size: 16px;
-  }
+.attendance-details .teacher-name {
+  color: #dc3545; /* Red color for teacher name */
+  font-style: italic; /* Add an italic style for teacher name */
 }
