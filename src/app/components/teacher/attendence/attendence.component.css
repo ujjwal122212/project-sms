@@ -1,31 +1,42 @@
 .attendance-details {
-  background-color: #f9f9f9; /* Light background for the container */
-  padding: 20px; /* Spacing inside the container */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  max-width: 600px; /* Set a max width for the content */
-  margin: 20px auto; /* Center the container on the page */
-  text-align: center; /* Center align text */
-  font-family: Arial, sans-serif; /* Clean font for better readability */
+  width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow:  rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    
+
 }
 
 .attendance-details h1 {
   margin: 10px 0; /* Spacing between the headings */
-  font-size: 24px; /* Consistent font size */
+  font-size: 20px; /* Consistent font size */
   color: #333; /* Dark text for readability */
 }
 
 .attendance-details .class-name {
-  color: #007bff; /* Blue color for class name */
+  color: #050806; /* Blue color for class name */
   font-weight: bold; /* Make class name bold */
 }
 
 .attendance-details .section-name {
-  color: #28a745; /* Green color for section name */
+  color: #050806; /* Green color for section name */
   font-weight: bold; /* Make section name bold */
 }
 
 .attendance-details .teacher-name {
-  color: #dc3545; /* Red color for teacher name */
+  color: #050806; /* Red color for teacher name */
   font-style: italic; /* Add an italic style for teacher name */
 }
+
+.attendance-details .img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px; /* Same as the card */
+}
+
