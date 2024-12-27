@@ -1,8 +1,21 @@
 @if(attendenceDetails) {
-  <div class="attendance-details">
-    <img src="assets/images/school.jpg" >
-    <h1 class="class-name">{{attendenceDetails.ClassName}}</h1>
-    <h1 class="section-name">{{attendenceDetails.SectionName}}</h1>
-    <h1 class="teacher-name">{{attendenceDetails.TeacherName}}</h1>
+  <div class="attendance-card" (click)="goto(attendenceDetails.SectionId)">
+    <div class="card-header">
+      <img src="assets/images/school.jpg" alt="School Image" class="school-image" />
+    </div>
+    <div class="card-content">
+      <div class="detail-row">
+        <strong>Class:</strong>
+        <span class="class-name">{{attendenceDetails.ClassName}}</span>
+      </div>
+      <div class="detail-row">
+        <strong>Section:</strong>
+        <span class="section-name">{{attendenceDetails.SectionName}}</span>
+      </div>
+      <div class="detail-row">
+        <strong>Teacher:</strong>
+        <span class="teacher-name">{{attendenceDetails.TeacherName}}</span>
+      </div>
+    </div>
   </div>
 }

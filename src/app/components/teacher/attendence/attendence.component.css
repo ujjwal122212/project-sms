@@ -1,42 +1,70 @@
-.attendance-details {
+/* Card Container */
+.attendance-card {
   width: 300px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow:  rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    overflow: hidden;
-    text-align: center;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    
-
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 10px 0 0 10px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* For animation */
 }
 
-.attendance-details h1 {
-  margin: 10px 0; /* Spacing between the headings */
-  font-size: 20px; /* Consistent font size */
-  color: #333; /* Dark text for readability */
+/* Hover Effect */
+.attendance-card:hover {
+  transform: scale(1.05); /* Slight zoom-in effect */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+  cursor: pointer;
 }
 
-.attendance-details .class-name {
-  color: #050806; /* Blue color for class name */
-  font-weight: bold; /* Make class name bold */
+/* Header with Image */
+.card-header {
+  background-color: #007BFF;
+  padding: 10px;
 }
 
-.attendance-details .section-name {
-  color: #050806; /* Green color for section name */
-  font-weight: bold; /* Make section name bold */
-}
-
-.attendance-details .teacher-name {
-  color: #050806; /* Red color for teacher name */
-  font-style: italic; /* Add an italic style for teacher name */
-}
-
-.attendance-details .img {
+.school-image {
   width: 100%;
   height: auto;
-  border-radius: 10px; /* Same as the card */
+  border-bottom: 2px solid #0056b3;
 }
 
+/* Card Content */
+.card-content {
+  padding: 20px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Row Details Styling */
+.detail-row strong {
+  color: #007BFF;
+}
+
+.class-name,
+.section-name,
+.teacher-name {
+  font-weight: bold;
+  color: #444;
+}
+
+/* Add subtle hover animations to the text for smooth effect */
+.class-name,
+.section-name,
+.teacher-name {
+  transition: color 0.3s ease; /* Smooth color change */
+}
+
+.detail-row:hover .class-name,
+.detail-row:hover .section-name,
+.detail-row:hover .teacher-name {
+  color: #0056b3; /* Darker shade on hover */
+}

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LoginService } from '../../../Services/login.service';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -13,20 +13,24 @@ import { CommonModule } from '@angular/common';
 })
 export class AttendenceComponent implements OnInit {
   enrollmentNo!: number | null
+  route = inject(Router)
   loginService = inject(LoginService);
   http = inject(HttpClient)
-  attendenceDetails:any
+  attendenceDetails: any
   getAttendenceDetail(enrollmentNumber: number) {
     this.http.get(`https://localhost:7262/GetAttendenceDetails/${enrollmentNumber}`).subscribe((res: any) => {
-      this.attendenceDetails=res[0];
-      console.log(this.attendenceDetails);
+      this.attendenceDetails = res[0];
     })
+  }
+  goto(SectionId: number) {
+    this.route.navigate(['teacherlayout/T-attendence/studentattendence'], {
+      queryParams: { SectionId: SectionId },
+    }
+    )
   }
   ngOnInit(): void {
     this.enrollmentNo = this.loginService.enrollmentNumber;
     if (this.enrollmentNo) {
-      console.log('Login Enrollment Number:', this.enrollmentNo);
-      // this.getTeacherById(this.enrollmentNo);
       this.getAttendenceDetail(this.enrollmentNo);
     }
   }
