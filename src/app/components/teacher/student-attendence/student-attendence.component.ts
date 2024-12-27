@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -7,19 +7,20 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-student-attendence',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './student-attendence.component.html',
   styleUrls: ['./student-attendence.component.css']
 })
 export class StudentAttendenceComponent implements OnInit {
   SectionId!: number;
-  attendenceForm: FormGroup; 
+  attendenceForm: FormGroup;
   students: any[] = [];
+  attendanceDate: string = new Date().toISOString().split('T')[0];
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     // Initialize the form
     this.attendenceForm = this.fb.group({
-      attendenceRecords: this.fb.array([]) 
+      attendenceRecords: this.fb.array([])
     });
   }
 
@@ -29,12 +30,12 @@ export class StudentAttendenceComponent implements OnInit {
 
   addAttendenceRecord(student: any) {
     const attendenceRecord = this.fb.group({
-      attendanceId:[0],
+      attendanceId: [0],
       studentName: [student.studentName],
       enrollmentNumber: [student.enrollmentNumber, Validators.required],
       sectionId: [this.SectionId, Validators.required],
-      attendanceDate: [new Date().toISOString().split('T')[0], Validators.required],
-      isPresent: [true, Validators.required] 
+      attendanceDate: [this.attendanceDate, Validators.required],
+      isPresent: [true, Validators.required]
     });
     this.attendenceRecords.push(attendenceRecord);
   }
@@ -50,35 +51,38 @@ export class StudentAttendenceComponent implements OnInit {
       }
     );
   }
+
   populateFormWithStudents(students: any[]) {
     students.forEach((student) => {
       this.addAttendenceRecord(student);
     });
   }
+
   submitAttendance() {
     if (this.attendenceForm.valid) {
-      const payload = this.attendenceForm.value.attendenceRecords.map((record: any) => ({
-        attendanceId: record.attendanceId,
-        enrollmentNumber: record.enrollmentNumber,
-        sectionId: record.sectionId,
-        attendanceDate: record.attendanceDate,
-        isPresent: record.isPresent
-      }));
-
-      this.http.post('https://localhost:7262/TakeAttendance', payload).subscribe(
-        (response:any) => {
-          alert('Attendance submitted successfully!');
+      const payload = {
+        SectionId: this.SectionId,
+        AttendanceDate: this.attendanceDate,
+        AttendanceRecords: this.attendenceForm.value.attendenceRecords.map((record: any) => ({
+          attendanceId: record.attendanceId,
+          enrollmentNumber: record.enrollmentNumber,
+          sectionId: record.sectionId,
+          attendanceDate: record.attendanceDate,
+          isPresent: record.isPresent
+        }))
+      };
+      this.http.post('https://localhost:7262/TakeAttendanceByDate', payload).subscribe(
+        (response: any) => {
+          alert(response.message);
         },
-        (error) => {
-          alert('Failed to submit attendance. Please try again.');
+        (error: HttpErrorResponse) => {
+         alert(error.error.message);
         }
       );
-    } else {
-      alert('Please fill out all required fields.');
     }
   }
 
-  route=inject(ActivatedRoute)
+  route = inject(ActivatedRoute);
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.SectionId = +params['SectionId'];
