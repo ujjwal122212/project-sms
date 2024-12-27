@@ -86,6 +86,7 @@ import { UpdateDetailsComponent } from './components/Admin/update-details/update
 import path from 'path';
 import { CourseTopicsComponent } from './components/student/course-topics/course-topics.component';
 import { ClassTeacherAssignmentComponent } from './components/Admin/class-teacher-assignment/class-teacher-assignment.component';
+import { StudentAttendenceComponent } from './components/teacher/student-attendence/student-attendence.component';
 // import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
@@ -341,7 +342,10 @@ export const routes: Routes = [
 
       // attendence
       { 'path': 'T-attendence', 'title': 'Attendence', component: AttendenceComponent },
-
+      {'path':'T-attendence',children:[
+        {'path':'studentattendence',title:'Student Attendence',component:StudentAttendenceComponent},
+      ]},
+      
       // time-table
       { 'path': 'TTimeTableComponent', 'title': 'TTimeTableComponent', component: TTimeTableComponent },
 
