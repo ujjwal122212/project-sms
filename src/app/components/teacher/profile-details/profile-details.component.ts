@@ -22,7 +22,7 @@ export class ProfileDetailsComponent implements OnInit {
   getTeacherById(enrollmentNo: number) {
     this.regService.getAllTeacherDetailsByEnrollmentNumber(enrollmentNo).subscribe((res: any) => {
       this.teacher = res;
-      console.log(res);
+      // console.log(res);
     })
   }
   editDetails(enrollmentNumber:number){
@@ -31,7 +31,7 @@ export class ProfileDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.enrollmentNo = this.loginService.enrollmentNumber;
     if (this.enrollmentNo) {
-      console.log('Login Enrollment Number:', this.enrollmentNo);
+      // console.log('Login Enrollment Number:', this.enrollmentNo);
       this.getTeacherById(this.enrollmentNo);
     }
   }

@@ -21,7 +21,7 @@ export class EditDetailsComponent implements OnInit {
   loadState() {
     this.regService.getStates().subscribe((res: any) => {
       this.State = res;
-      console.log(this.State);
+      // console.log(this.State);
     })
   }
   onStateChange(event: any) {
@@ -33,7 +33,7 @@ export class EditDetailsComponent implements OnInit {
   loadDistrictByStateId(stateId: number) {
     this.regService.getDistrictByStateId(stateId).subscribe((res: any) => {
       this.District = res;
-      console.log(this.District);
+      // console.log(this.District);
     })
   }
   setRegForm() {
@@ -114,7 +114,7 @@ export class EditDetailsComponent implements OnInit {
     if (this.enrollmentNumber) {
       this.isEdit = true;
       this.regService.getTeacherById(this.enrollmentNumber).subscribe(async (result: any) => {
-        console.log("Result here", result);
+        // console.log("Result here", result);
         this.regForm.patchValue(result);
         if (result.dob) {
           const dateObj = new Date(result.dob);
@@ -132,7 +132,7 @@ export class EditDetailsComponent implements OnInit {
         }, 500);
         const responseImage = result.imagePath;
         await this.patchImagePathToForm(responseImage);
-        console.log("Form Value now", this.regForm.value);
+        // console.log("Form Value now", this.regForm.value);
       })
     }
     this.regForm.get('name')?.disable();
