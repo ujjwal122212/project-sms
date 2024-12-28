@@ -24,13 +24,13 @@ export class TeacherProfileComponent implements OnInit {
   getTeacherById(enrollmentNo:number){
    this.regService.getTeacherById(enrollmentNo).subscribe((res:any)=>{
     this.teacher=res;
-    console.log(res);
+    // console.log(res);
    })
   }
   ngOnInit(): void {
     this.enrollmentNo = this.loginService.enrollmentNumber;
     if (this.enrollmentNo) {
-      console.log('Login Enrollment Number:', this.enrollmentNo);
+      // console.log('Login Enrollment Number:', this.enrollmentNo);
       this.getTeacherById(this.enrollmentNo);
     }
   }

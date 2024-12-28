@@ -1,6 +1,7 @@
 <div class="attendance-container">
     <h2>Student Attendance for Section {{ SectionId }}</h2>
     <form [formGroup]="attendenceForm" (ngSubmit)="submitAttendance()">
+        <input type="date" formControlName="attendanceDate">
         <div formArrayName="attendenceRecords">
             <div *ngFor="let record of attendenceRecords.controls; let i = index" [formGroupName]="i"
                 class="attendance-record">

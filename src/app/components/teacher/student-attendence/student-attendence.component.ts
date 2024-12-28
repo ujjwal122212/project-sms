@@ -18,8 +18,8 @@ export class StudentAttendenceComponent implements OnInit {
   attendanceDate: string = new Date().toISOString().split('T')[0];
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
-    // Initialize the form
     this.attendenceForm = this.fb.group({
+      attendanceDate: [this.attendanceDate, Validators.required],
       attendenceRecords: this.fb.array([])
     });
   }
@@ -34,7 +34,7 @@ export class StudentAttendenceComponent implements OnInit {
       studentName: [student.studentName],
       enrollmentNumber: [student.enrollmentNumber, Validators.required],
       sectionId: [this.SectionId, Validators.required],
-      attendanceDate: [this.attendanceDate, Validators.required],
+      // attendanceDate: [Date, Validators.required],
       isPresent: [true, Validators.required]
     });
     this.attendenceRecords.push(attendenceRecord);
@@ -62,21 +62,26 @@ export class StudentAttendenceComponent implements OnInit {
     if (this.attendenceForm.valid) {
       const payload = {
         SectionId: this.SectionId,
-        AttendanceDate: this.attendanceDate,
-        AttendanceRecords: this.attendenceForm.value.attendenceRecords.map((record: any) => ({
-          attendanceId: record.attendanceId,
-          enrollmentNumber: record.enrollmentNumber,
-          sectionId: record.sectionId,
-          attendanceDate: record.attendanceDate,
-          isPresent: record.isPresent
-        }))
+        AttendanceDate: this.attendenceForm.get('attendanceDate')?.value,
+        // AttendanceRecords: this.attendenceForm.value.attendenceRecords.map((record: any) => ({
+        //   attendanceId: record.attendanceId,
+        //   enrollmentNumber: record.enrollmentNumber,
+        //   sectionId: record.sectionId,
+        //   attendanceDate: record.attendanceDate,
+        //   isPresent: record.isPresent
+        // }))
+        AttendanceRecords: this.attendenceRecords.value
       };
       this.http.post('https://localhost:7262/TakeAttendanceByDate', payload).subscribe(
         (response: any) => {
           alert(response.message);
+          this.attendenceForm.reset();
+          this.attendenceRecords.clear();
+          this.attendenceForm.patchValue({ attendanceDate: this.attendanceDate });
+          this.loadStudentsBySectionId(this.SectionId)
         },
         (error: HttpErrorResponse) => {
-         alert(error.error.message);
+          alert(error.error.message);
         }
       );
     }
