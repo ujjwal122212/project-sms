@@ -63,28 +63,53 @@ export class StudentAttendenceComponent implements OnInit {
       const payload = {
         SectionId: this.SectionId,
         AttendanceDate: this.attendenceForm.get('attendanceDate')?.value,
-        // AttendanceRecords: this.attendenceForm.value.attendenceRecords.map((record: any) => ({
-        //   attendanceId: record.attendanceId,
-        //   enrollmentNumber: record.enrollmentNumber,
-        //   sectionId: record.sectionId,
-        //   attendanceDate: record.attendanceDate,
-        //   isPresent: record.isPresent
-        // }))
         AttendanceRecords: this.attendenceRecords.value
       };
       this.http.post('https://localhost:7262/TakeAttendanceByDate', payload).subscribe(
         (response: any) => {
           alert(response.message);
-          this.attendenceForm.reset();
-          this.attendenceRecords.clear();
-          this.attendenceForm.patchValue({ attendanceDate: this.attendanceDate });
-          this.loadStudentsBySectionId(this.SectionId)
+          this.resetForm();
         },
         (error: HttpErrorResponse) => {
-          alert(error.error.message);
+          if (error.status === 409 && error.error?.existingAttendance) {
+            alert(error.error.message);
+            this.patchExistingAttendance(error.error.existingAttendance);
+          } else {
+            console.error('Error submitting attendance:', error);
+            alert('An unexpected error occurred.');
+          }
         }
       );
     }
+  }
+
+
+
+  patchExistingAttendance(existingAttendance: any[]) {
+    this.attendenceRecords.clear(); 
+
+    existingAttendance.forEach((record) => {
+      const student = this.students.find(
+        (s) => s.enrollmentNumber === record.enrollmentNumber
+      );
+      const attendanceRecord = this.fb.group({
+        attendanceId: [record.attendanceId],
+        studentName: [student?.studentName || 'Unknown'],
+        enrollmentNumber: [record.enrollmentNumber, Validators.required],
+        sectionId: [record.sectionId, Validators.required],
+        isPresent: [record.isPresent ?? true, Validators.required]
+      });
+
+      this.attendenceRecords.push(attendanceRecord);
+    });
+  }
+
+
+  resetForm() {
+    this.attendenceForm.reset();
+    this.attendenceRecords.clear();
+    this.attendenceForm.patchValue({ attendanceDate: this.attendanceDate });
+    this.loadStudentsBySectionId(this.SectionId)
   }
 
   route = inject(ActivatedRoute);
