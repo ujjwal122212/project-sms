@@ -17,13 +17,14 @@ export class StudentAttendenceComponent implements OnInit {
 
   toastr = inject(ToastrService);
   SectionId!: number;
-  selectedAttendanceDate: string = '';
+  
   showDateInput: boolean = false;
   isEditMode: boolean = false;
   isDateVisible: boolean = true
   attendenceForm: FormGroup;
   students: any[] = [];
   attendanceDate: string = new Date().toISOString().split('T')[0];
+  selectedAttendanceDate: string = this.attendanceDate;
 
 
   // form status for attendance that will send to api for post amopping
@@ -51,16 +52,21 @@ export class StudentAttendenceComponent implements OnInit {
       enrollmentNumber: [student.enrollmentNumber, Validators.required],
       sectionId: [this.SectionId, Validators.required],
       attendanceDate: [this.attendanceDate, Validators.required],
-      isPresent: [true, Validators.required]
+      isPresent: [true, Validators.required],
+      imagepath:[student.imagePath]
     });
     this.AttendenceRecords.push(attendenceRecord);
   }
 
   // loading student data from database( get mapping)
 
+  studentDetail:any
+
   loadStudentsBySectionId(sectionId: number) {
     this.http.get(`https://localhost:7262/GetStudentsBySectionID/${sectionId}`).subscribe(
       (res: any) => {
+        this.studentDetail=res[0];
+        // console.log(this.studentDetail)
         this.students = res;
         this.populateFormWithStudents(res);
       },
@@ -128,7 +134,7 @@ export class StudentAttendenceComponent implements OnInit {
     this.isEditMode = true;
     existingAttendance.forEach((record) => {
       const student = this.students.find(
-        (s) => s.enrollmentNumber === record.enrollmentNumber
+        (s) => s.enrollmentNumber === record.enrollmentNumber,
       );
       const attendanceRecord = this.fb.group({
         attendanceId: [record.attendanceId],
@@ -136,7 +142,8 @@ export class StudentAttendenceComponent implements OnInit {
         enrollmentNumber: [record.enrollmentNumber, Validators.required],
         sectionId: [record.sectionId, Validators.required],
         attendanceDate: [record.attendanceDate],
-        isPresent: [record.isPresent ?? true, Validators.required]
+        isPresent: [record.isPresent ?? true, Validators.required],
+        imagepath:[student?.imagePath || 'Student Image']
       });
 
       this.AttendenceRecords.push(attendanceRecord);

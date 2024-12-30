@@ -1,5 +1,7 @@
 <div class="attendance-container">
-    <h2>Student Attendance for Section {{ SectionId }}</h2>
+    @if(studentDetail){
+    <h2>Student Attendance for Section {{ studentDetail.section }}</h2>
+    }
 
     <div style="display: flex; flex-direction: column; width: 100%; margin-bottom: 20px; align-items: flex-start;">
 
@@ -33,7 +35,10 @@
             <div *ngFor="let record of AttendenceRecords.controls; let i = index" [formGroupName]="i"
                 class="attendance-record">
                 <div class="attendance-item">
-                    <i class="fa fa-user-circle"></i>
+                    <!-- <i class="fa fa-user-circle"></i> -->
+                    <img *ngIf="record.value.imagepath"
+                        [src]="'https://localhost:7262/api/Image/' + record.value.imagepath" alt="Student Image"
+                        style="max-width: 50px; max-height: 50px; border-radius: 50%;" />
                     <input type="text" id="studentName-{{ i }}" formControlName="studentName" readonly />
                 </div>
                 <div class="attendance-item">
