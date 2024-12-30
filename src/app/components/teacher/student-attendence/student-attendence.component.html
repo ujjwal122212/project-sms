@@ -1,22 +1,26 @@
 <div class="attendance-container">
     <h2>Student Attendance for Section {{ SectionId }}</h2>
     <form [formGroup]="attendenceForm" (ngSubmit)="submitAttendance()">
+
         <input type="date" formControlName="attendanceDate">
         <div formArrayName="attendenceRecords">
             <div *ngFor="let record of attendenceRecords.controls; let i = index" [formGroupName]="i"
                 class="attendance-record">
                 <div class="attendance-item">
-                    <label for="studentName-{{ i }}" style="display: none;">Student Name:</label>
-                    <input type="text" id="studentName-{{ i }}" formControlName="studentName" readonly />
-                </div>
+                  <i class="fa fa-user-circle"></i>
+                  <input type="text" id="studentName-{{ i }}" formControlName="studentName" readonly />
+              </div>
                 <div class="attendance-item">
                     <label for="isPresent-{{ i }}">Present:</label>
                     <input type="checkbox" id="isPresent-{{ i }}" formControlName="isPresent" />
                 </div>
 
+
                 <input type="hidden" formControlName="enrollmentNumber" />
             </div>
+
         </div>
+
 
         <button type="submit" [disabled]="!attendenceForm.valid">Submit Attendance</button>
     </form>
