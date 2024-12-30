@@ -28,7 +28,7 @@ export class ClassTeacherAssignmentComponent implements OnInit {
   classTeacherAssignmentForm: FormGroup = new FormGroup({});
   http = inject(HttpClient);
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   setformState() {
     this.classTeacherAssignmentForm = this.fb.group({
@@ -164,13 +164,14 @@ export class ClassTeacherAssignmentComponent implements OnInit {
   }
 
   editClassTeacherAssignment(asignID: number) {
-    this.openform(); // Open the form modal
-
     this.http
       .get(`https://localhost:7262/ClassTeacherAssignment/GetById/${asignID}`)
       .subscribe(
         (res: any) => {
           if (res) {
+            console.log(res);
+            this.onClassChange({target:{value:res.classId}});
+            this.onSectionChange({target:{value:res.sectionId}});
             this.classTeacherAssignmentForm.patchValue({
               classId: res.classId,
               sectionId: res.sectionId,
@@ -185,6 +186,7 @@ export class ClassTeacherAssignmentComponent implements OnInit {
           alert('Error fetching assignment data.');
         }
       );
+    this.openform(); // Open the form modal
   }
 
   updateClassTeacherAssignment() {
