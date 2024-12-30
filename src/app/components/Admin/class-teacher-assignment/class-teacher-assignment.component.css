@@ -189,3 +189,19 @@ select:hover {
   font-weight: bold;
   font-size: 20px;
 }
+.pagination {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination button {
+  background: #ddd;
+  margin: 0 5px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+.pagination button {
+  padding: 10px 10px;
+}
