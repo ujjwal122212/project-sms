@@ -1,61 +1,115 @@
 <div class="student-course">
   <div class="header">
     <h1>Class Teacher</h1>
-    <button (click)="openform()">Add Class Teacher Assigment</button>
+    <button (click)="openform()">Add Class Teacher Assignment</button>
+  </div>
+
+  <div class="selected-area"></div>
+  <div class="search-area">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="filterTeachers()"
+      placeholder="Search by Teacher Name"
+    />
+  </div>
+  <div class="section">
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Sr.no</th>
+            <th>Class</th>
+            <th>Section</th>
+            <th>Teacher Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let table of filteredData; let index = index">
+            <td>{{ index + 1 }}</td>
+            <td>{{ table.ClassName }}</td>
+            <td>{{ table.SectionName }}</td>
+            <td>{{ table.Name }}</td>
+            <td class="action-button">
+              <button
+                class="edit"
+                (click)="editClassTeacherAssignment(table.AssignmentID)"
+              >
+                Edit
+              </button>
+              <button
+                class="delete"
+                (click)="deleteClassTeacherAssignment(table.AssignmentID)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pagination">
+        <button (click)="previousPage()" [disabled]="currentPage === 1">
+          Previous
+        </button>
+        <span>Page {{ currentPage }}</span>
+        <button
+          (click)="nextPage()"
+          [disabled]="currentPage * pageSize >= filteredData.length"
+        >
+          Next
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- Addition of the Class Teacher Assignmeny -->
 <div class="form-area" id="formModel">
-  <h1>Add Class Teacher Assigment</h1>
+  @if(classTeacherAssignmentForm.value.assignmentID == 0){
+  <h1>Add Class Teacher Assignment</h1>
+  }@else {
+  <h1>Update Class Teacher Assignment</h1>
+  }
 
-  <form
-    action=""
-    [formGroup]="classTeacherAssignmentForm"
-    (ngSubmit)="onSubmit()"
-  >
+  <form [formGroup]="classTeacherAssignmentForm" (ngSubmit)="onSubmit()">
     <div class="card-area">
       <div class="card">
-        <select
-          name=""
-          id=""
-          (change)="onClassChange($event)"
-          formControlName="classId"
-        >
+        <select (change)="onClassChange($event)" formControlName="classId">
           <option value="" selected disabled>Select a Class</option>
-          @for(class of Classes;track $index){
-          <option [value]="class.classId">{{ class.className }}</option>
-          }
+          <option *ngFor="let class of Classes" [value]="class.classId">
+            {{ class.className }}
+          </option>
         </select>
       </div>
       <div class="card">
-        <select
-          name=""
-          id=""
-          (change)="onSectionChange($event)"
-          formControlName="sectionId"
-        >
+        <select (change)="onSectionChange($event)" formControlName="sectionId">
           <option value="" selected disabled>Select a Section</option>
-          @for (section of Sections; track $index) {
-          <option [value]="section.sectionId">{{ section.sectionName }}</option>
-          }
+          <option *ngFor="let section of Sections" [value]="section.sectionId">
+            {{ section.sectionName }}
+          </option>
         </select>
       </div>
       <div class="card">
-        <select name="" id="" formControlName="enrollmentNumber">
+        <select formControlName="enrollmentNumber">
           <option value="" selected disabled>Select a Class Teacher</option>
-          @for (teacher of Teachers; track $index) {
-          <option [value]="teacher.enrollmentNumber">{{ teacher.name }}</option>
-          }
+          <option
+            *ngFor="let teacher of Teachers"
+            [value]="teacher.enrollmentNumber"
+          >
+            {{ teacher.name }}
+          </option>
         </select>
       </div>
     </div>
-
     <div class="button-area">
+      @if(classTeacherAssignmentForm.value.assignmentID == 0){
       <button type="submit" class="submit">Save</button>
+      }@else {
+      <button type="submit" class="submit">Update</button>
+      }
 
       <button type="button" (click)="CloseModel()" class="close">Close</button>
     </div>
   </form>
 </div>
-

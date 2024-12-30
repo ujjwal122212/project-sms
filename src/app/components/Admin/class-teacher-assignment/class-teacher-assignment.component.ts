@@ -20,45 +20,52 @@ export class ClassTeacherAssignmentComponent implements OnInit {
   Classes: any[] = [];
   Sections: any[] = [];
   Teachers: any[] = [];
-  classTeacherAssignmentForm: FormGroup=new FormGroup({});
-
+  Data: any[] = [];
+  filteredData: any[] = [];
+  searchTerm: string = '';
+  currentPage: number = 1;
+  pageSize: number = 10;
+  classTeacherAssignmentForm: FormGroup = new FormGroup({});
   http = inject(HttpClient);
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder) {}
 
-  }
   setformState() {
     this.classTeacherAssignmentForm = this.fb.group({
       classId: ['', Validators.required],
       sectionId: ['', Validators.required],
       enrollmentNumber: ['', Validators.required],
+      assignmentID: [0],
     });
   }
 
   ngOnInit(): void {
     this.loadClass();
+    this.showClassTeacherAssignment();
     this.setformState();
   }
 
   loadClass() {
     this.http.get('https://localhost:7262/Classes').subscribe((res: any) => {
       this.Classes = res;
-      console.log(this.Classes);
     });
   }
+
+  selectedClass: number = 0;
   onClassChange(event: any) {
-    const selectedClass = event.target.value;
-    this.loadSectionByClassId(selectedClass);
+    this.selectedClass = event.target.value;
+    this.loadSectionByClassId(this.selectedClass);
   }
 
   loadSectionByClassId(classId: number) {
     this.http.get(`https://localhost:7262/${classId}`).subscribe((res: any) => {
       this.Sections = res;
-      console.log(this.Sections);
     });
   }
+
+  selectedSection: number = 0;
   onSectionChange(event: any) {
-    const selectedSection = event.target.value;
+    this.selectedSection = event.target.value;
     this.loadTeacher();
   }
 
@@ -66,20 +73,44 @@ export class ClassTeacherAssignmentComponent implements OnInit {
     this.http.get('https://localhost:7262/api/Teacher/GetTeachers').subscribe(
       (res: any) => {
         this.Teachers = res;
-        console.log(this.Teachers);
       },
       (err) => {
-        console.error('Error loading teachers', err);
+        alert('Error loading teachers');
       }
     );
   }
 
-  onSubmit() {
-    if (this.classTeacherAssignmentForm.invalid) {
-      alert('Please fill in all required fields');
-      return;
+  getAllClassTeacher() {
+    this.http
+      .get('https://localhost:7262/ClassTeacherAssignment/GetALLClassTeachers')
+      .subscribe(
+        (res: any) => {
+          this.Data = res;
+          this.filteredData = res;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+
+  // Fill
+  filterTeachers() {
+    if (this.searchTerm.trim() === '') {
+      this.filteredData = this.Data;
+    } else {
+      this.filteredData = this.Data.filter((item) =>
+        item.Name?.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
     }
-    this.insertClassTeacherAssignment();
+  }
+
+  onSubmit() {
+    if (this.classTeacherAssignmentForm.value.assignmentID == 0) {
+      this.insertClassTeacherAssignment();
+    } else if (this.classTeacherAssignmentForm.value.assignmentID > 0) {
+      this.updateClassTeacherAssignment();
+    }
   }
 
   insertClassTeacherAssignment() {
@@ -87,42 +118,115 @@ export class ClassTeacherAssignmentComponent implements OnInit {
       alert('Please fill valid details');
       return;
     }
-
     const { classId, sectionId, enrollmentNumber } =
       this.classTeacherAssignmentForm.value;
-
-    console.log('Request Payload:', { classId, sectionId, enrollmentNumber });
 
     if (!enrollmentNumber) {
       alert('Please select a teacher');
       return;
     }
-
     const formValue = { classId, sectionId, teacherId: enrollmentNumber };
-
     this.http
-      .post('https://localhost:7262/AddClassTeacherAssignment', formValue)
+      .post('https://localhost:7262/ClassTeacherAssignment/Add', formValue)
       .subscribe(
         (res: any) => {
           alert(res.message);
-          // console.log(res);
-          // this.classTeacherAssignmentForm.reset();
-          this.resetForm()
+          this.resetForm();
           this.CloseModel();
-
+          this.getAllClassTeacher();
         },
         (error) => {
           alert(error.error.message);
-          this.resetForm()
+          this.resetForm();
           this.CloseModel();
-          // this.classTeacherAssignmentForm.reset();
         }
       );
   }
+
+  deleteClassTeacherAssignment(asignID: number) {
+    if (confirm('Are you sure you want to delete this assignment?')) {
+      this.http
+        .delete(
+          `https://localhost:7262/ClassTeacherAssignment/Delete/${asignID}`
+        )
+        .subscribe(
+          (res: any) => {
+            alert('Assignment deleted successfully');
+            this.selectedClass = 0;
+            this.selectedSection = 0;
+            this.getAllClassTeacher();
+          },
+          (error) => {
+            console.error('Error deleting assignment', error);
+          }
+        );
+    }
+  }
+
+  editClassTeacherAssignment(asignID: number) {
+    this.openform(); // Open the form modal
+
+    this.http
+      .get(`https://localhost:7262/ClassTeacherAssignment/GetById/${asignID}`)
+      .subscribe(
+        (res: any) => {
+          if (res) {
+            this.classTeacherAssignmentForm.patchValue({
+              classId: res.classId,
+              sectionId: res.sectionId,
+              enrollmentNumber: res.teacherId,
+              assignmentID: res.assignmentID,
+            });
+          } else {
+            alert('Assignment not found.');
+          }
+        },
+        (error) => {
+          alert('Error fetching assignment data.');
+        }
+      );
+  }
+
+  updateClassTeacherAssignment() {
+    if (this.classTeacherAssignmentForm.invalid) {
+      alert('Please fill all the valid details');
+      return;
+    }
+
+    const AssignmentID = this.classTeacherAssignmentForm.value.assignmentID;
+    const formData = {
+      classId: this.classTeacherAssignmentForm.value.classId,
+      sectionId: this.classTeacherAssignmentForm.value.sectionId,
+      teacherId: this.classTeacherAssignmentForm.value.enrollmentNumber,
+    };
+
+    this.http
+      .put(
+        `https://localhost:7262/ClassTeacherAssignment/Update/${AssignmentID}`,
+        formData
+      )
+      .subscribe(
+        (res: any) => {
+          alert('Class Teacher Assignment updated successfully');
+          this.selectedClass = 0;
+          this.selectedSection = 0;
+
+          this.resetForm();
+          this.CloseModel();
+          this.getAllClassTeacher();
+        },
+        (error) => {
+          alert('Error updating assignment');
+        }
+      );
+  }
+
+  showClassTeacherAssignment() {
+    this.getAllClassTeacher();
+  }
+
   resetForm() {
-    this.classTeacherAssignmentForm.value.classId = ''
-    this.classTeacherAssignmentForm.value.sectionId = ''
-    this.classTeacherAssignmentForm.value.enrollmentNumber = ''
+    this.classTeacherAssignmentForm.reset();
   }
 
   openform() {
@@ -131,6 +235,7 @@ export class ClassTeacherAssignmentComponent implements OnInit {
       stuform.classList.add('openform');
     }
   }
+
   CloseModel() {
     this.setformState();
     const stuform = document.getElementById('formModel');
@@ -138,5 +243,22 @@ export class ClassTeacherAssignmentComponent implements OnInit {
       stuform.classList.remove('openform');
     }
   }
-   
+
+  // Pagination logic
+  get paginatedClasses() {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    return this.filteredData.slice(startIndex, startIndex + this.pageSize);
+  }
+
+  nextPage() {
+    if (this.currentPage * this.pageSize < this.filteredData.length) {
+      this.currentPage++;
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
 }
