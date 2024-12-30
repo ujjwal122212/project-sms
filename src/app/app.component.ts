@@ -12,13 +12,26 @@ import { MainNavbarComponent } from './components/Main-Page/main-navbar/main-nav
 import { ANavbarComponent } from './components/Admin/a-navbar/a-navbar.component';
 import { AMenubarComponent } from './components/Admin/a-menubar/a-menubar.component';
 import { AddStudentComponent } from "./components/Admin/addStudent/add-student/add-student.component";
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  animations: [
+    trigger('flyInOut', [
+      state('in', style({ transform: 'translateX(0)' })),
+      transition(':enter', [
+        style({ transform: 'translateX(-100%)' }),
+        animate('300ms ease-in'),
+      ]),
+      transition(':leave', [
+        animate('300ms ease-out', style({ transform: 'translateX(100%)' })),
+      ]),
+    ]),
+  ]
 })
 export class AppComponent {
   title = 'I-Portal';

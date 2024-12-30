@@ -40,7 +40,7 @@ export class AddClassComponent {
 
   insertClass() {
     if (this.classForm.invalid) {
-      alert('Please fill all the valid details');
+     this.toastr.error("Please enter all valid details!");
 
       return;
     }
@@ -50,7 +50,8 @@ export class AddClassComponent {
 
     this.http.post('https://localhost:7262/Add Classes', formValue).subscribe(
       () => {
-        alert('Class added successfully');
+        this.toastr.success("Class added successfully");
+
         this.loadClasses();
         this.classForm.reset();
         this.closeModel();

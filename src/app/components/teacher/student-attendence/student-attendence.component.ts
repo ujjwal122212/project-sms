@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { error } from 'node:console';
 
 @Component({
@@ -14,6 +15,7 @@ import { error } from 'node:console';
 })
 export class StudentAttendenceComponent implements OnInit {
 
+  toastr = inject(ToastrService);
   SectionId!: number;
   selectedAttendanceDate: string = '';
   showDateInput: boolean = false;
@@ -87,6 +89,7 @@ export class StudentAttendenceComponent implements OnInit {
       };
       this.http.post('https://localhost:7262/TakeAttendanceByDate', payload).subscribe(
         (response: any) => {
+
           alert(response.message);
           this.resetForm();
         },
@@ -103,9 +106,9 @@ export class StudentAttendenceComponent implements OnInit {
       );
     }
   }
- 
+
   // submitting the form
-   
+
   submitAttendance() {
     if (this.isEditMode == false) {
       this.insertStudentAttendance();
@@ -161,8 +164,8 @@ export class StudentAttendenceComponent implements OnInit {
     this.showDateInput = false;
     this.isDateVisible = true;
   }
-  
-  
+
+
   // patching the value of student attence from database to form
 
   getAttendanceBySectionIdAndDate(SectionId: number, attendanceDate: string) {
