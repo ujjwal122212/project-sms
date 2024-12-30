@@ -1,15 +1,41 @@
 <div class="attendance-container">
     <h2>Student Attendance for Section {{ SectionId }}</h2>
-    <form [formGroup]="attendenceForm" (ngSubmit)="submitAttendance()">
 
-        <input type="date" formControlName="attendanceDate">
-        <div formArrayName="attendenceRecords">
-            <div *ngFor="let record of attendenceRecords.controls; let i = index" [formGroupName]="i"
+    <div style="display: flex; flex-direction: column; width: 100%; margin-bottom: 20px; align-items: flex-start;">
+
+        <button type="button" style="background: yellowgreen; color: black; margin-bottom: 10px; align-self: flex-end;"
+            (click)="EditButton()">
+            Edit Attendance
+        </button>
+
+
+        <div *ngIf="showDateInput" style="display: flex; justify-content: space-between; width: 100%; ">
+            <div style="width: 50%; height: 50px;">
+                <input type="date" [(ngModel)]="selectedAttendanceDate" class="date-input"
+                    style="margin-bottom: 10px; width: 100%; height: 100%; border-radius: 10px;" />
+            </div>
+
+            <div style="width: 50%; display: flex; justify-content: space-around;">
+                <button type="button" style="background: blue; color: white;"
+                    (click)="getAttendanceBySectionIdAndDate(SectionId, selectedAttendanceDate)">
+                    Submit
+                </button>
+                <button type="button" (click)="closeEdieButton()" style="background: red; color: white;">Close</button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <form [formGroup]="attendenceForm" (ngSubmit)="submitAttendance()">
+        <input type="date" formControlName="attendanceDate" *ngIf="isDateVisible">
+        <div formArrayName="AttendenceRecords">
+            <div *ngFor="let record of AttendenceRecords.controls; let i = index" [formGroupName]="i"
                 class="attendance-record">
                 <div class="attendance-item">
-                  <i class="fa fa-user-circle"></i>
-                  <input type="text" id="studentName-{{ i }}" formControlName="studentName" readonly />
-              </div>
+                    <i class="fa fa-user-circle"></i>
+                    <input type="text" id="studentName-{{ i }}" formControlName="studentName" readonly />
+                </div>
                 <div class="attendance-item">
                     <label for="isPresent-{{ i }}">Present:</label>
                     <input type="checkbox" id="isPresent-{{ i }}" formControlName="isPresent" />
@@ -21,7 +47,12 @@
 
         </div>
 
-
+        @if(isEditMode){
+        <button type="submit" [disabled]="!attendenceForm.valid">Update Attendance</button>
+        }
+        @else {
         <button type="submit" [disabled]="!attendenceForm.valid">Submit Attendance</button>
+        }
+
     </form>
 </div>
