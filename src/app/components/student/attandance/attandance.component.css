@@ -1,112 +1,89 @@
-.header-container {
-  max-width: 1200px;
+/* General container styling */
+.container {
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f2f2f2;
-  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
 }
 
-h2 {
+/* Title */
+h1 {
+  font-size: 25px;
+  font-weight: bold;
   text-align: center;
   margin-bottom: 20px;
+  color: #444;
 }
 
-.attendance-form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.form-group {
-  flex: 1 1 200px;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.form-group input,
-.form-group select {
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.btn {
-  margin-top: 22px;
-  width: fit-content;
-  height: fit-content;
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: 500px;
-}
-
-.btn:hover {
-  background-color: #0056b3;
-}
-
-@media (max-width: 768px) {
-  .attendance-form {
-      flex-direction: column;
-  }
-}
-
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-h1 {
-  text-align: center;
-}
-
-.attendance-record {
-  overflow-x: auto;
-}
-
-.attendance-record table {
+/* Table styling */
+.attendance-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
-}
-
-.attendance-record th,
-.attendance-record td {
+  margin-top: 20px;
+  background-color: #fff;
   border: 1px solid #ddd;
-  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-table th,
+.attendance-table td {
+  padding: 12px 15px;
   text-align: center;
 }
 
-.attendance-record th {
-  background-color: #f2f2f2;
+.attendance-table thead {
+  background-color: #f4f4f4;
+  border-bottom: 2px solid #ddd;
 }
 
-p {
+.attendance-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.attendance-table th {
+  font-weight: bold;
+  color: #333;
+}
+
+.attendance-table td {
+  color: #555;
+}
+
+/* Badge styling */
+.badge {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.badge.present {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.badge.absent {
+  background-color: #f44336;
+  color: #fff;
+}
+
+/* Loading and error messages */
+.loading {
   text-align: center;
-  background-color: #e0f7fa;
-  padding: 10px;
-  margin: 0;
-  font-style: italic;
+  font-size: 18px;
+  color: #777;
 }
 
-@media (max-width: 768px) {
-  .attendance-record table {
-      display: block;
-      overflow-x: auto;
-      white-space: nowrap;
-  }
+.error {
+  text-align: center;
+  font-size: 18px;
+  color: #f44336;
+}
 
-  .attendance-record th, .attendance-record td {
-      display: inline-block;
-  }
+.no-data {
+  text-align: center;
+  font-size: 18px;
+  color: #777;
 }
