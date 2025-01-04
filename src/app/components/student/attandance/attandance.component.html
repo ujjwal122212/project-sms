@@ -8,6 +8,7 @@
     <thead>
       <tr>
         <th>S.No</th>
+        <th>Day</th>
         <th>Date</th>
         <th>Status</th>
       </tr>
@@ -16,6 +17,7 @@
       @for(record of attendanceRecords;track $index){
       <tr>
         <td>{{ $index + 1 }}</td>
+        <td>{{ record.attendanceDate | date: 'EEEE' }}</td>
         <td>{{ record.attendanceDate | date : "longDate" }}</td>
         <td>
           <span

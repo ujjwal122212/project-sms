@@ -87,14 +87,15 @@ export class AddClassComponent {
 
   editClass() {
     if (this.classForm.invalid) {
-      alert('Please fill all the valid details');
+      this.toastr.error("Please enter all valid details!");
       return;
     }
     const formValue = this.classForm.value;
     this.http
       .put(`https://localhost:7262/UpdateClass/${formValue.classId}`, formValue)
       .subscribe(() => {
-        alert('Class updated successfully');
+
+        this.toastr.success("Class updated successfully");
         this.loadClasses();
         this.classForm.reset();
         this.closeModel();
