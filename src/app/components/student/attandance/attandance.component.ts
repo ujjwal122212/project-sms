@@ -94,6 +94,19 @@ export class AttandanceComponent implements OnInit {
     },
   };
 
+  itemsPerPage: number = 7;
+  currentPage: number = 1;
+
+  get pagedAttendanceRecords() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.attendanceRecords.slice(startIndex, endIndex);
+  }
+
+  changePage(page: number) {
+    this.currentPage = page;
+  }
+
   ngOnInit(): void {
     this.enrollmentNo = this.loginService.enrollmentNumber;
 

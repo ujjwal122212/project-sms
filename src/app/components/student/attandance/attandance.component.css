@@ -99,9 +99,32 @@ h1 {
   margin-top: 20px;
 }
 .chart {
+  height: 350px;
   background-color: #e5e7eb;
   border-radius: 10px;
   padding: 20px;
   padding-bottom: 20px;
   margin-bottom: 20px;
+}
+
+/* Pagination */
+
+.pagination {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination button {
+  background: #ddd;
+  margin: 0 5px;
+  font-size: 14px;
+  opacity: 0.9;
+  border-radius: 10px;
+  font-weight: 400;
+  color: black;
+}
+.pagination button {
+  padding: 10px 10px;
 }
