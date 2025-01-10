@@ -178,6 +178,8 @@ export class EditProfileComponent implements OnInit {
         this.regForm.get('mothersName')?.disable();
         this.regForm.get('studentName')?.disable();
         this.regForm.get('dateOfBirth')?.disable();
+        this.regForm.get('gender')?.disable();
+        this.regForm.get('bloodGroup')?.disable();
       })
     }
   }
