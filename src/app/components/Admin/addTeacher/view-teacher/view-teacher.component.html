@@ -1,32 +1,124 @@
-
 <div class="container-fluid p-0 teacher-area">
-    <div class="header">
-        <h1>Teachers List</h1>
-        <button (click)="openForm()">Add New Teacher</button>
-    </div>
-   <div class="search-area">
+  <div class="header">
+    <h1>Teachers List</h1>
+    <button (click)="openForm()">Add New Teacher</button>
+  </div>
+
+  <div class="search-area">
     <h1>Search</h1>
-    <input type="search" placeholder="Search Teacher by Name or Subject">
-   </div>
-    <div class="teacher-list text-center">
-        <h1 class="my-4" style="background-color: #FDC300; border-radius: 10px;margin-bottom: 15px;">LISTED TEACHERS</h1>
-        <div class="details">
-            <div class="row">
-                @for (teacher of teachers; track $index) {
-                <div class="card row-area" style="height: 100%;">
-                    <img [src]="'https://localhost:7262/api/TeacherImage/'+teacher.imagePath" alt="Teacher Image">
-                    <div class="card-body">
-                        <span class="badge badge-primary mb-2">{{teacher.teachSubject}}</span>
-                        <h5 class="card-title mt-2">{{teacher.name}}</h5>
-                        <p class="card-text">Registered Since - {{teacher.createdDate}}</p>
-                    </div>
-                    <div class="more-details">
-                        <button type="button" (click)="more_Details(teacher.enrollmentNumber)">More Details</button>
-                    </div>
-                </div>
-                }
-            </div>
+    <input
+      type="search"
+      [(ngModel)]="searchTerm"
+      placeholder="Search Teacher by Name or enrollmentNumber"
+    />
+  </div>
+
+  <div class="teacher-list text-center">
+    <h1
+      class="my-4"
+      style="
+        background-color: #fdc300;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      "
+    >
+      LISTED TEACHERS
+    </h1>
+    <div class="details">
+      <div class="row">
+        <div
+          *ngFor="
+            let teacher of filteredUserList;
+            trackBy: trackByEnrollmentNumber
+          "
+          class="card row-area"
+          style="height: 100%"
+        >
+          <!-- <div class="card row-area" style="height: 100%"> -->
+
+          <img
+            [src]="
+              'https://localhost:7262/api/TeacherImage/' + teacher.imagePath
+            "
+            alt="Teacher Image"
+          />
+          <div class="card-body">
+            <span class="badge badge-primary mb-2">{{
+              teacher.teachSubject
+            }}</span>
+            <h5 class="card-title mt-2">{{ teacher.name }}</h5>
+            <p class="card-text">
+              Registered Since - {{ teacher.createdDate }}
+            </p>
+          </div>
+          <div class="more-details">
+            <button
+              type="button"
+              (click)="more_Details(teacher.enrollmentNumber)"
+            >
+              More Details
+            </button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
+<!-- <div class="container-fluid p-0 teacher-area">
+  <div class="header">
+    <h1>Teachers List</h1>
+    <button (click)="openForm()">Add New Teacher</button>
+  </div>
+  <div class="search-area">
+    <h1>Search</h1>
+    <input
+      type="search"
+      [(ngModel)]="searchTerm"
+      placeholder="Search Teacher by Name or enrollmentNumber"
+    />
+  </div>
+  <div class="teacher-list text-center">
+    <h1
+      class="my-4"
+      style="
+        background-color: #fdc300;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      "
+    >
+      LISTED TEACHERS
+    </h1>
+    <div class="details">
+      <div class="row">
+        @for (teacher of teachers; track $index) {
+        <div class="card row-area" style="height: 100%">
+          <img
+            [src]="
+              'https://localhost:7262/api/TeacherImage/' + teacher.imagePath
+            "
+            alt="Teacher Image"
+          />
+          <div class="card-body">
+            <span class="badge badge-primary mb-2">{{
+              teacher.teachSubject
+            }}</span>
+            <h5 class="card-title mt-2">{{ teacher.name }}</h5>
+            <p class="card-text">
+              Registered Since - {{ teacher.createdDate }}
+            </p>
+          </div>
+          <div class="more-details">
+            <button
+              type="button"
+              (click)="more_Details(teacher.enrollmentNumber)"
+            >
+              More Details
+            </button>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div> -->
