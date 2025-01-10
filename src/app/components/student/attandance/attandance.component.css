@@ -1,10 +1,20 @@
 /* General container styling */
 .container {
-  max-width: 800px;
-  margin: 0 auto;
+  width: 100%;
   padding: 20px;
   font-family: Arial, sans-serif;
   color: #333;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.left {
+  width: 70%;
+}
+
+.right {
+  width: 30%;
 }
 
 /* Title */
@@ -87,19 +97,22 @@ h1 {
   font-size: 18px;
   color: #777;
 }
+
 /* Graph of the */
 .student {
   background-color: #ffffff;
   border-radius: 15px;
-  box-shadow: 0 10px 20px 0 #6b8ece77,
+  /* box-shadow: 0 10px 20px 0 #6b8ece77,
     inset 0px -7px 12px 1px rgb(107, 143, 179);
-  transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out; */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   flex: 1;
-  margin-top: 20px;
+  margin-top: 55px;
 }
+
 .chart {
-  height: 350px;
+  height: 330px;
   background-color: #e5e7eb;
   border-radius: 10px;
   padding: 20px;
@@ -125,6 +138,7 @@ h1 {
   font-weight: 400;
   color: black;
 }
+
 .pagination button {
   padding: 10px 10px;
 }
