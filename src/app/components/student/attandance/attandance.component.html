@@ -1,85 +1,60 @@
 <div class="container">
-  <h1>Student Attendance</h1>
+  <div class="left">
+    <h1>Student Attendance</h1>
+    <div *ngIf="isLoading" class="loading">Loading attendance records...</div>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    <table *ngIf="attendanceRecords.length > 0" class="attendance-table">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Day</th>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of pagedAttendanceRecords; let i = index">
+          <td>{{ i + 1 + (currentPage - 1) * itemsPerPage }}</td> <!-- Adjust the S.No -->
+          <td>{{ record.attendanceDate | date: 'EEEE' }}</td>
+          <td>{{ record.attendanceDate | date: 'longDate' }}</td>
+          <td>
+            <span class="badge" [class.present]="record.isPresent" [class.absent]="!record.isPresent">
+              {{ record.isPresent ? 'Present' : 'Absent' }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-  <div *ngIf="isLoading" class="loading">Loading attendance records...</div>
-  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-<!-- 
-  <table *ngIf="attendanceRecords.length > 0" class="attendance-table">
-    <thead>
-      <tr>
-        <th>S.No</th>
-        <th>Day</th>
-        <th>Date</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for(record of attendanceRecords;track $index){
-      <tr>
-        <td>{{ $index + 1 }}</td>
-        <td>{{ record.attendanceDate | date: 'EEEE' }}</td>
-        <td>{{ record.attendanceDate | date : "longDate" }}</td>
-        <td>
-          <span
-            class="badge"
-            [class.present]="record.isPresent"
-            [class.absent]="!record.isPresent"
-          >
-            {{ record.isPresent ? "Present" : "Absent" }}
-          </span>
-        </td>
-      </tr>
-      }
-    </tbody>
-  </table> -->
+    <!-- Pagination controls -->
+    <div class="pagination">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
 
-  <table *ngIf="attendanceRecords.length > 0" class="attendance-table">
-    <thead>
-      <tr>
-        <th>S.No</th>
-        <th>Date</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let record of pagedAttendanceRecords; let i = index">
-        <td>{{ i + 1 + (currentPage - 1) * itemsPerPage }}</td> <!-- Adjust the S.No -->
-        <td>{{ record.attendanceDate | date: 'longDate' }}</td>
-        <td>
-          <span class="badge"
-            [class.present]="record.isPresent"
-            [class.absent]="!record.isPresent">
-            {{ record.isPresent ? 'Present' : 'Absent' }}
-          </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  
-  <!-- Pagination controls -->
-  <div class="pagination">
-    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
-    
-    <span>Page {{ currentPage }}</span>
-    
-    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage * itemsPerPage >= attendanceRecords.length">Next</button>
+      <span>Page {{ currentPage }}</span>
+
+      <button (click)="changePage(currentPage + 1)"
+        [disabled]="currentPage * itemsPerPage >= attendanceRecords.length">Next</button>
+    </div>
+
+    <div *ngIf="!isLoading && attendanceRecords.length === 0" class="no-data">
+      No attendance records found.
+    </div>
   </div>
+  <div class="right">
 
-  <div *ngIf="!isLoading && attendanceRecords.length === 0" class="no-data">
-    No attendance records found.
-  </div>
-  <div class="student">
-    <div class="chart">
-      <canvas id="PresentAbsent">{{ chart2 }}</canvas>
-      <span style="margin-top: 50px; font-weight: 600">
-        Total percentage: {{ present }}/
-      </span>
-      <span style="margin-top: 50px; font-weight: 600">
-        {{ present + absent }}
-      </span>
-      <span style="margin-top: 50px; font-weight: 600"
-        >= {{ (present / (present + absent)) * 100 }} %
-      </span>
+
+    <div class="student">
+      <div class="chart">
+        <canvas id="PresentAbsent">{{ chart2 }}</canvas>
+        <span style="margin-top: 50px; font-weight: 600">
+          Total percentage: {{ present }}/
+        </span>
+        <span style="margin-top: 50px; font-weight: 600">
+          {{ present + absent }}
+        </span>
+        <span style="margin-top: 50px; font-weight: 600">= {{ (present / (present + absent)) * 100 }} %
+        </span>
+      </div>
     </div>
   </div>
 </div>
