@@ -443,6 +443,7 @@ export class AddStudentTimeTableComponent implements OnInit {
   }
 
   insertTimetableDetail() {
+    
     if (this.timetableDetailForm.invalid) {
       alert('Please fill all the valid details');
       return;
@@ -490,6 +491,7 @@ export class AddStudentTimeTableComponent implements OnInit {
   }
 
   CloseModel1() {
+    this.loadAllTeachers();
     this.selectedClassDetail = 0;
     this.isDetailEdit=false;
     this.setDetailFormState();
