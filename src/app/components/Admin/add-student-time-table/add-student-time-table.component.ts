@@ -100,6 +100,7 @@ export class AddStudentTimeTableComponent implements OnInit {
   }
   CloseModel() {
     this.selectedClass = 0;
+    this.isEdit=false;
     this.setformstate();
     const stuform = document.getElementById('formModel');
     if (stuform != null) {
@@ -461,6 +462,7 @@ export class AddStudentTimeTableComponent implements OnInit {
           this.timeTableDetail = [];
           this.allTeacherrs = []
           this.CloseModel1();
+          
         },
         (error) => {
           console.error(error);
@@ -489,6 +491,7 @@ export class AddStudentTimeTableComponent implements OnInit {
 
   CloseModel1() {
     this.selectedClassDetail = 0;
+    this.isDetailEdit=false;
     this.setDetailFormState();
     const formModel = document.getElementById('formModel1');
     if (formModel) {
