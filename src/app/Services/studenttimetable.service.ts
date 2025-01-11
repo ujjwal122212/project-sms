@@ -20,7 +20,7 @@ export class StudenttimetableService {
   }
 
   addTimeTable(data:any){
-    return this.http.post(`${this.apiurl}/api/StudentTimeTable/Add TimeTable`,data);
+    return this.http.post(`${this.apiurl}/api/StudentTimeTable/AddTimeTable`,data);
   }
   deleteTimeTable(id:number){
     return this.http.delete(`${this.apiurl}/api/StudentTimeTable/${id}`);
@@ -28,18 +28,7 @@ export class StudenttimetableService {
   getTimeTableById(id:number){
     return this.http.get(`${this.apiurl}/api/StudentTimeTable/row/${id}`);
   }
-  updateTimetable(timetableData: any) {
-    const data = {
-      timetbaleId: timetableData.timetbaleId,
-      timeSlot: timetableData.timeSlot,
-      sunday: 'Leave',
-      monday: timetableData.monday,
-      tuesday: timetableData.tuesday,
-      wednesday: timetableData.wednesday,
-      thursday: timetableData.thursday,
-      friday: timetableData.friday,
-      saturday: timetableData.saturday
-    };
-    return this.http.put(`${this.apiurl}/api/StudentTimeTable/${timetableData.timetbaleId}`, data);
+  updateTimetable(data:any,timetableId:number) {
+    return this.http.put(`${this.apiurl}/api/StudentTimeTable/${timetableId}`, data);
   }
 }
