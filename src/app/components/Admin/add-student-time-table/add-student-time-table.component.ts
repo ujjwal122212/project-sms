@@ -23,6 +23,7 @@ export class AddStudentTimeTableComponent implements OnInit {
   timetableservice = inject(StudenttimetableService);
   timetableForm: FormGroup = new FormGroup({});
   isEdit: boolean = false;
+  isDetailEdit: boolean = false;
   dayArray: string[] = [
     'S.NO',
     'TimeSlot',
@@ -87,7 +88,7 @@ export class AddStudentTimeTableComponent implements OnInit {
     if (this.timeTableEntries.length > 1) {
       this.timeTableEntries.removeAt(index);
     } else {
-      alert('At least one topic is required.');
+      alert('At least one Time Table is required.');
     }
   }
 
@@ -98,7 +99,7 @@ export class AddStudentTimeTableComponent implements OnInit {
     }
   }
   CloseModel() {
-    this.selectedClass=0;
+    this.selectedClass = 0;
     this.setformstate();
     const stuform = document.getElementById('formModel');
     if (stuform != null) {
@@ -272,13 +273,43 @@ export class AddStudentTimeTableComponent implements OnInit {
   setDetailFormState() {
     this.timetableDetailForm = this.fb.group({
       timetableDetailsId: [0],
+      timeTableDetailsList: this.fb.array([]),
+      classId: ['', Validators.required],
+      sectionId: ['', Validators.required],
+      day: [''],
+      time: [''],
+      teacherId: [''],
+      subject: ['']
+    });
+    this.addTimeTableDetailsList();
+  }
+  get timeTableDetailsList(): FormArray {
+    return this.timetableDetailForm.get('timeTableDetailsList') as FormArray;
+  }
+  dayList: String[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  addTimeTableDetailsList() {
+    const entries = this.fb.group({
+      timetableDetailsId: [0],
       day: ['', Validators.required],
       time: ['', Validators.required],
-      sectionId: [''],
-      teacherName: ['', Validators.required],
-      subject: ['', Validators.required],
-      classId: [''],
+      teacherId: ['', Validators.required],
+      subject: ['', Validators.required]
     });
+    this.timeTableDetailsList.push(entries);
+  }
+  removeTimeTableDetailList(index: number) {
+    if (this.timeTableDetailsList.length > 1) {
+      this.timeTableDetailsList.removeAt(index);
+    } else {
+      alert('At least one time table detail is required.');
+    }
+  }
+
+  allTeacherrs: any[] = []
+  loadAllTeachers() {
+    this.http.get(`https://localhost:7262/api/Teacher/GetTeachers`).subscribe((res: any) => {
+      this.allTeacherrs = res;
+    })
   }
 
   loadClasses1() {
@@ -352,6 +383,8 @@ export class AddStudentTimeTableComponent implements OnInit {
   }
 
   updateTimeTableDetail(id: number) {
+    this.loadAllTeachers();
+    this.isDetailEdit = true
     console.log(id);
     this.http
       .get(`https://localhost:7262/RowTimeTablesDetails/${id}`)
@@ -361,27 +394,24 @@ export class AddStudentTimeTableComponent implements OnInit {
           {
             timetableDetailsId: res.timetableDetailsId,
             time: res.time,
-            teacherName: res.teacherName,
+            teacherId: res.teacherId,
             day: res.day,
             subject: res.subject,
+            sectionId: res.sectionId
           }
-          // res
         );
         this.openform1();
       });
   }
 
   updateDetail() {
-    if (this.timetableDetailForm.invalid) {
-      alert('Please fill valid details');
-      return;
-    }
     const formValue = {
       timetableDetailsId: this.timetableDetailForm.value.timetableDetailsId,
       time: this.timetableDetailForm.value.time,
-      teacherName: this.timetableDetailForm.value.teacherName,
+      teacherId: this.timetableDetailForm.value.teacherId,
       day: this.timetableDetailForm.value.day,
-      subject: this.timetableDetailForm.value.subject
+      subject: this.timetableDetailForm.value.subject,
+      sectionId: this.timetableDetailForm.value.sectionId
     }
     const timetableDetailsId = this.timetableDetailForm.value.timetableDetailsId;
     this.http
@@ -396,6 +426,10 @@ export class AddStudentTimeTableComponent implements OnInit {
             timetableDetailsId: 0,
           });
           this.selectedClassDetail = 0;
+          this.selectedSectionIdDetail = 0;
+          this.Sections1 = [];
+          this.timeTableDetail = [];
+          this.allTeacherrs = []
           this.CloseModel1();
         },
         (error) => {
@@ -414,13 +448,18 @@ export class AddStudentTimeTableComponent implements OnInit {
     }
     const formValue = this.timetableDetailForm.value;
     this.http
-      .post('https://localhost:7262/Add TimeTable Details', formValue)
+      .post('https://localhost:7262/AddTimeTableDetails', formValue)
       .subscribe(
         (data: any) => {
           alert('Timetable Added Successfully');
           this.timetableDetailForm.reset({
             timetableDetailsId: 0,
           });
+          this.selectedClassDetail = 0;
+          this.selectedSectionIdDetail = 0;
+          this.Sections1 = [];
+          this.timeTableDetail = [];
+          this.allTeacherrs = []
           this.CloseModel1();
         },
         (error) => {
@@ -434,7 +473,7 @@ export class AddStudentTimeTableComponent implements OnInit {
 
   onSubmitDetail() {
     const timetableDetailsId = this.timetableDetailForm.value.timetableDetailsId;
-    if (timetableDetailsId === 0) {
+    if (this.isDetailEdit == false) {
       this.insertTimetableDetail();
     } else {
       this.updateDetail();
@@ -449,6 +488,7 @@ export class AddStudentTimeTableComponent implements OnInit {
   }
 
   CloseModel1() {
+    this.selectedClassDetail = 0;
     this.setDetailFormState();
     const formModel = document.getElementById('formModel1');
     if (formModel) {
@@ -460,5 +500,6 @@ export class AddStudentTimeTableComponent implements OnInit {
     this.setDetailFormState();
     this.loadClasses();
     this.loadClasses1();
+    this.loadAllTeachers();
   }
 }

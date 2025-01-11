@@ -214,3 +214,8 @@ select:hover {
     font-weight: bold;
     font-size: 20px;
 }
+.removebutton{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
