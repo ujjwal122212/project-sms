@@ -27,8 +27,8 @@ export class AttandanceComponent implements OnInit {
           // Sorting the attendence by date in ascending order
           this.attendanceRecords = res.sort((a: any, b: any) => {
             return (
-              new Date(a.attendanceDate).getTime() -
-              new Date(b.attendanceDate).getTime()
+              new Date(b.attendanceDate).getTime() -
+              new Date(a.attendanceDate).getTime()
             );
           });
           this.isLoading = false;
