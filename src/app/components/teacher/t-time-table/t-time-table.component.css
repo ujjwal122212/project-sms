@@ -57,182 +57,47 @@ a {
   padding-bottom: 10px;
 }
 
-.main-container {
-  width: 100%;
-  height: 100%;
-  margin: 30px auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
+.timetable-container {
+  max-width: 800px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  text-align: center;
 }
 
-.main-container h1 {
-  display: inline-block;
-  font-size: 1.5em;
-  border-bottom: 1.5px solid #ddd;
-}
-
-.filter {
+.title {
+  font-size: 24px;
+  color: #4CAF50;
   margin-bottom: 20px;
-  margin-top: 15px;
-  border-bottom: 1.5px solid #ddd;
-  overflow-x: auto;
 }
 
-.card-section {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.card {
-  width: 30%;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-radius: 10px;
-}
-
-.card p {
-  margin-bottom: 5px;
-}
-
-.card select {
-  width: 100%;
-  padding: 10px 0;
-  font-size: 1rem;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-}
-
-select:hover {
-  cursor: pointer;
-}
-
-.submit-button {
-  padding: 30px 0 5px 0;
-  display: flex;
-  justify-content: center;
-}
-#submit{
-  border-radius: 10px;
-  padding: 10px 30px;
-  background-color: #ccff33;
-  color: #007bff;
-  font-size: 16px;
-  font-size: 1.3rem;
-  border: 2px solid #ddd;
-}
-#submit:hover{
-  cursor: pointer;
-  background-color: #b3e600;
-}
-
-.section {
-  margin-top: 10px;
-}
-
-.section h1 {
-  display: inline-block;
-}
-
-.table-section {
-  margin-top: 20px;
-  max-height: 500px;
-  width: 100%;
-  overflow: auto;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-table {
+.timetable {
   width: 100%;
   border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-th,
-td {
+.timetable th,
+.timetable td {
+  padding: 12px 15px;
+  text-align: center;
   border: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
 }
 
-thead {
-  position: sticky;
-  top: 48.7px;
-  z-index: 1;
-  background: #f1f1f1;
-}
-
-caption {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background-color: #4394DF;
-  padding: 10px;
+.timetable th {
+  background-color: #4CAF50;
   color: white;
-  text-align: center;
-  font-size: 1.2rem;
+  font-weight: bold;
 }
 
-li:nth-child(1){
-  font-weight: 700;
-}
-li:nth-child(2){
-  color: #007bff;
+.timetable tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
-
-.data .sub-data ul .attendance {
-  background-color: #9977cb;
-  border: none;
-  padding: 5px 10px;
+.timetable tr:hover {
+  background-color: #f1f1f1;
   cursor: pointer;
-  font-size: 16px;
-  color: white;
-  border-radius: 20px;
-  margin-top: 5px;
 }
 
-.data .sub-data ul .attendance:hover {
-  color: white;
-  background-color: rgb(195, 195, 188);
-  transition: all 0.1s;
-}
-
-@media screen and (max-width: 768px) {
-  .grid-container {
-    margin-left: 60px;
-  }
-
-  .card {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .submit-button {
-    padding-top: 20px;
-  }
-  table{
-    min-width: 780px;
-  }
-}
-
-@media screen and (max-width: 497px) {
-  .grid-container {
-    margin-left: 50px;
-    overflow-x: hidden;
-  }
-  .main-container{
-    padding: 5px;
-  }
-  .main-container h1,
-  .section {
-    font-size: 18px;
-  }
-
-  #submit {
-    font-size: 16px;
-  }
+.timetable td {
+  color: #555;
 }
