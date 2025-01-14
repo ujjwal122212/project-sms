@@ -30,7 +30,7 @@ export class TimeTableComponent implements OnInit {
     'Friday',
     'Saturday',
   ];
-  constructor() {}
+  constructor() { }
   getStudentByEnrollmentNumber(enrollmentNo: number) {
     this.regService
       .getStudentByStudentID(enrollmentNo)
@@ -52,7 +52,7 @@ export class TimeTableComponent implements OnInit {
 
   // Time table detail
   timeTableDetail: any[] = [];
-  http=inject(HttpClient)
+  http = inject(HttpClient)
   tableDetailHeader: string[] = ['Day', 'Time', 'Teacher Name', 'Subject name'];
   getTimetableDetail(id: number) {
     this.http.get(`https://localhost:7262/TimeTablesDetails/${id}`).subscribe({
@@ -65,13 +65,17 @@ export class TimeTableComponent implements OnInit {
       }
     });
   }
-  
-  ngOnInit(): void {
-    this.enrollmentNo = this.loginService.enrollmentNumber;
 
-    if (this.enrollmentNo) {
-      // console.log('Login Enrollment Number:', this.enrollmentNo);
-      this.getStudentByEnrollmentNumber(this.enrollmentNo);
+  ngOnInit(): void {
+    const enrollmentNumber = localStorage.getItem("Id");
+    const value = enrollmentNumber ? parseInt(enrollmentNumber, 10) : null;
+    if (value) {
+      this.getStudentByEnrollmentNumber(value);
     }
+    this.loginService.$refreshTokenReceived.subscribe((res: any) => {
+      if (value) {
+        this.getStudentByEnrollmentNumber(value);
+      }
+    })
   }
 }
