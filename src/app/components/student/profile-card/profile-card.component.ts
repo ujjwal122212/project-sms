@@ -10,8 +10,9 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './profile-card.component.css'
 })
 export class ProfileCardComponent {
-  route=inject(Router)
-  logout(){
-  this.route.navigateByUrl('/Login-page');
+  route = inject(Router)
+  logout() {
+    this.route.navigateByUrl('/Login-page');
+    localStorage.clear();
   }
 }

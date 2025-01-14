@@ -41,6 +41,7 @@ export class LoginService {
   logout() {
     if (this.isBrowser()) {
       localStorage.removeItem('enrollmentNumber');
+      localStorage.clear();
     }
     this.enrollmentNumberSubject.next(null);
   }
