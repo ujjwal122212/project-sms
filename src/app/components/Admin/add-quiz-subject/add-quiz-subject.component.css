@@ -191,3 +191,67 @@ select:hover {
     font-weight: bold;
     font-size: 20px;
 }
+@media (max-width: 768px) {
+    .selected-area {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .selected-area .area {
+        width: 90%;
+        margin-bottom: 10px;
+    }
+
+    .card-area {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    .form-area h1 {
+        font-size: 20px;
+    }
+}
+
+
+@media (max-width: 576px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header button {
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .selected-area .area {
+        width: 100%;
+    }
+
+    .form-area {
+        left: 10px;
+        right: 10px;
+    }
+
+    .button-area {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button-area .submit,
+    .button-area .close {
+        margin-bottom: 10px;
+    }
+}
