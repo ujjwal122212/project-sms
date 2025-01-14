@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,9 @@ export class LoginService {
         this.enrollmentNumberSubject.next(Number(storedEnrollmentNumber));
       }
     }
-
+    this.$refreshToken.subscribe((res:any)=>{
+      this.getRefreshToken();
+    })
   }
   private isBrowser(): boolean {
     return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
@@ -45,4 +47,21 @@ export class LoginService {
     }
     this.enrollmentNumberSubject.next(null);
   }
+
+
+   // refresh token code 
+   public $refreshToken=new Subject<boolean>;
+   public $refreshTokenReceived=new Subject<boolean>;
+   getRefreshToken(){
+    const data={
+      "enrollmentNumber":localStorage.getItem("Id"),
+      "refreshToken":localStorage.getItem("refreshToken")
+    }
+    this.http.post(`https://localhost:7262/refresh`,data).subscribe((res:any)=>{
+      console.log(res)
+      localStorage.setItem("jwtToken",res.accessToken);
+      localStorage.setItem("refreshToken",res.refreshToken);
+      this.$refreshTokenReceived.next(true);
+    })
+   }
 }

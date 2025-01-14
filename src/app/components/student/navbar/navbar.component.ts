@@ -16,58 +16,58 @@ import { LoginService } from '../../../Services/login.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [FormsModule,CommonModule, RouterLinkActive, MainProfileComponent, NoficationComponent],
+  imports: [FormsModule, CommonModule, RouterLinkActive, MainProfileComponent, NoficationComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit {
 
-   isProfileOpen = false;
-   isNotificationOpen = false;
-   route = inject(Router);
+  isProfileOpen = false;
+  isNotificationOpen = false;
+  route = inject(Router);
   loginService = inject(LoginService);
   regService = inject(StudentRegistrationService);
   enrollmentNo!: number | null
-  student:any;
+  student: any;
   getStudentByEnrollmentNumber(enrollmentNo: number) {
-    this.regService.getStudentDetailByStudentId(enrollmentNo).subscribe((res:any)=>{
-     this.student=res;
-    //  console.log(this.student);
+    this.regService.getStudentDetailByStudentId(enrollmentNo).subscribe((res: any) => {
+      this.student = res;
+      //  console.log(this.student);
     })
   }
   EditStudent(enrollmentNumber: number) {
     this.route.navigateByUrl('');
   }
   ngOnInit(): void {
-    this.enrollmentNo = this.loginService.enrollmentNumber;
-    if (this.enrollmentNo) {
-      // console.log('Login Enrollment Number:', this.enrollmentNo);
-      this.getStudentByEnrollmentNumber(this.enrollmentNo);
+    const enrollmentNumber = localStorage.getItem("Id");
+    const value = enrollmentNumber ? parseInt(enrollmentNumber, 10) : null;
+    if (value) {
+      this.getStudentByEnrollmentNumber(value);
     }
   }
 
-   toggleProfile() {
+  toggleProfile() {
 
-     if (this.isNotificationOpen) {
-       this.isNotificationOpen = false;
-     }
+    if (this.isNotificationOpen) {
+      this.isNotificationOpen = false;
+    }
 
-     this.isProfileOpen = !this.isProfileOpen;
-   }
+    this.isProfileOpen = !this.isProfileOpen;
+  }
 
 
-   toggleNotification() {
+  toggleNotification() {
 
-     if (this.isProfileOpen) {
-       this.isProfileOpen = false;
-     }
+    if (this.isProfileOpen) {
+      this.isProfileOpen = false;
+    }
 
-     this.isNotificationOpen = !this.isNotificationOpen;
-   }
+    this.isNotificationOpen = !this.isNotificationOpen;
+  }
 
-   openNotification() {
-     console.log('Notification opened');
-   }
-   
-   
+  openNotification() {
+    console.log('Notification opened');
+  }
+
+
 }

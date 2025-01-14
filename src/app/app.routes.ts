@@ -412,6 +412,9 @@ export const routes: Routes = [
 
       //Admin dashboard
       { 'path': 'ahome', 'title': 'Dashboard', component: ADashboardComponent,canActivate:[authGuard],data:{roles:['Admin']} },
+      {path:'ahome',children:[
+        { path: 'addclass', title: "Class", component: AddClassComponent ,canActivate:[authGuard],data:{roles:['Admin']}},
+      ]},
       { 'path': 'admin-home', 'title': 'Admin_Home', component: AdminHomeComponent,canActivate:[authGuard],data:{roles:['Admin']} },
 
       //add student
