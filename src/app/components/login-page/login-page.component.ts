@@ -57,6 +57,8 @@ export class LoginPageComponent implements OnInit {
         next: (res: any) => {
           console.log(res);
           const enrollmentNo=res.id;
+          localStorage.setItem("jwtToken",res.token);
+          localStorage.setItem("role",res.role);
           if (res.role === 'Student') {
             alert("Login Successfull");
             this.route.navigateByUrl('/studentlayout/S-home');
