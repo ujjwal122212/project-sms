@@ -44,24 +44,24 @@ export class AddNewTeacherComponent implements OnInit {
   setRegForm() {
     this.regForm = this.fb.group({
       enrollmentNumber: [0],
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       imagePath: [null],
       gender: ['', Validators.required],
       dob: ['', Validators.required],
-      email: ['', Validators.required],
-      contact: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      contact: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       state: ['', Validators.required],
       district: ['', Validators.required],
-      pincode: ['', Validators.required],
-      streetAddress: ['', Validators.required],
+      pincode: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]],
+      streetAddress: ['', [Validators.required, Validators.minLength(10)]],
       qualification: ['', Validators.required],
       teachClasses: ['', Validators.required],
       teachSubject: ['', Validators.required],
-      experienceOfTeaching: ['', Validators.required],
-      additionalText: ['', Validators.required],
+      experienceOfTeaching: ['', [Validators.required, Validators.min(1)]],
+      additionalText: ['', Validators.maxLength(250)],
       password: ['Teacher@123'],
       createdDate: [Date]
-    })
+    });
   }
   imagePreview: string | ArrayBuffer | null = null;
   onFileSelected(event: any) {

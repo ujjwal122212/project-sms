@@ -10,6 +10,35 @@
   margin-bottom: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+.card {
+  margin-bottom: 20px;
+}
+
+.card input,
+.card select,
+.card textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.card.small {
+  margin-top: 5px;
+}
+
+.card.error input,
+.card.error select,
+.card.error textarea {
+  border-color: red;
+}
+
+.card.error small {
+  color: red;
+  display: block;
+  margin-top: 5px;
+}
+
 
 .form-area form {
   padding: 15px 10px 10px 10px;
