@@ -14,6 +14,7 @@ import { TeacherRegistrationService } from '../../../../Services/teacher-registr
   styleUrl: './add-new-teacher.component.css'
 })
 export class AddNewTeacherComponent implements OnInit {
+  toastr = inject(ToastrService);
   router = inject(Router);
   regService = inject(TeacherRegistrationService)
   State: any[] = [];
@@ -81,7 +82,7 @@ export class AddNewTeacherComponent implements OnInit {
   @ViewChild('fileInput') fileInput!: ElementRef;
   insertTeacherDetails() {
     if (this.regForm.invalid) {
-      alert("Please fill all the valid details");
+      this.toastr.warning("Please fill all the valid details");
       return;
     }
     else {
@@ -102,7 +103,7 @@ export class AddNewTeacherComponent implements OnInit {
       formdata.append('pincode', this.regForm.get('pincode')?.value);
       formdata.append('ImagePath', this.regForm.get('imagePath')?.value);
       this.regService.addTeacherDetails(formdata).subscribe((res: any) => {
-        alert('Teacher Details added Successfullly');
+        this.toastr.success('Teacher Details added Successfullly');
         this.router.navigateByUrl('/adminlayout/viewTeacher');
         this.regForm.reset();
       })
@@ -171,7 +172,7 @@ export class AddNewTeacherComponent implements OnInit {
   }
   EditTeacher() {
     if (this.regForm.invalid) {
-      alert("Please fill all the valid details");
+      this.toastr.warning("Please fill all the valid details");
       return;
     }
     else {
@@ -193,7 +194,7 @@ export class AddNewTeacherComponent implements OnInit {
       formdata.append('pincode', this.regForm.get('pincode')?.value);
       formdata.append('ImagePath', this.regForm.get('imagePath')?.value);
       this.regService.editTeacherByID(enrollmentNumber, formdata).subscribe((res: any) => {
-        alert('Teacher Details Updated Successfullly');
+        this.toastr.success('Teacher Details Updated Successfullly');
         this.router.navigateByUrl('/adminlayout/viewTeacher');
         this.regForm.reset();
       })

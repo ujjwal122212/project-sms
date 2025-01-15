@@ -8,6 +8,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-class-teacher-assignment',
@@ -17,6 +18,7 @@ import {
   styleUrl: './class-teacher-assignment.component.css',
 })
 export class ClassTeacherAssignmentComponent implements OnInit {
+  toastr = inject(ToastrService);
   Classes: any[] = [];
   Sections: any[] = [];
   Teachers: any[] = [];
@@ -75,7 +77,7 @@ export class ClassTeacherAssignmentComponent implements OnInit {
         this.Teachers = res;
       },
       (err) => {
-        alert('Error loading teachers');
+        this.toastr.warning('Error loading teachers');
       }
     );
   }
@@ -115,14 +117,14 @@ export class ClassTeacherAssignmentComponent implements OnInit {
 
   insertClassTeacherAssignment() {
     if (this.classTeacherAssignmentForm.invalid) {
-      alert('Please fill valid details');
+      this.toastr.warning('Please fill valid details');
       return;
     }
     const { classId, sectionId, enrollmentNumber } =
       this.classTeacherAssignmentForm.value;
 
     if (!enrollmentNumber) {
-      alert('Please select a teacher');
+      this.toastr.warning('Please select a teacher');
       return;
     }
     const formValue = { classId, sectionId, teacherId: enrollmentNumber };
@@ -130,13 +132,13 @@ export class ClassTeacherAssignmentComponent implements OnInit {
       .post('https://localhost:7262/ClassTeacherAssignment/Add', formValue)
       .subscribe(
         (res: any) => {
-          alert(res.message);
+          this.toastr.warning(res.message);
           this.resetForm();
           this.CloseModel();
           this.getAllClassTeacher();
         },
         (error) => {
-          alert(error.error.message);
+          this.toastr.warning(error.error.message);
           this.resetForm();
           this.CloseModel();
         }
@@ -151,7 +153,7 @@ export class ClassTeacherAssignmentComponent implements OnInit {
         )
         .subscribe(
           (res: any) => {
-            alert('Assignment deleted successfully');
+            this.toastr.error('Assignment deleted successfully');
             this.selectedClass = 0;
             this.selectedSection = 0;
             this.getAllClassTeacher();
@@ -179,11 +181,11 @@ export class ClassTeacherAssignmentComponent implements OnInit {
               assignmentID: res.assignmentID,
             });
           } else {
-            alert('Assignment not found.');
+            this.toastr.warning('Assignment not found.');
           }
         },
         (error) => {
-          alert('Error fetching assignment data.');
+          this.toastr.warning('Error fetching assignment data.');
         }
       );
     this.openform(); // Open the form modal
@@ -191,7 +193,7 @@ export class ClassTeacherAssignmentComponent implements OnInit {
 
   updateClassTeacherAssignment() {
     if (this.classTeacherAssignmentForm.invalid) {
-      alert('Please fill all the valid details');
+      this.toastr.warning('Please fill all the valid details');
       return;
     }
 
@@ -209,7 +211,7 @@ export class ClassTeacherAssignmentComponent implements OnInit {
       )
       .subscribe(
         (res: any) => {
-          alert('Class Teacher Assignment updated successfully');
+          this.toastr.success('Class Teacher Assignment updated successfully');
           this.selectedClass = 0;
           this.selectedSection = 0;
 
@@ -218,7 +220,7 @@ export class ClassTeacherAssignmentComponent implements OnInit {
           this.getAllClassTeacher();
         },
         (error) => {
-          alert('Error updating assignment');
+          this.toastr.warning('Error updating assignment');
         }
       );
   }

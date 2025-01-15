@@ -11,6 +11,7 @@ import {
 import { StudenttimetableService } from '../../../Services/studenttimetable.service';
 import { HttpClient } from '@angular/common/http';
 import { error } from 'node:console';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-student-time-table',
@@ -20,6 +21,7 @@ import { error } from 'node:console';
   styleUrl: './add-student-time-table.component.css',
 })
 export class AddStudentTimeTableComponent implements OnInit {
+  toastr = inject(ToastrService);
   timetableservice = inject(StudenttimetableService);
   timetableForm: FormGroup = new FormGroup({});
   isEdit: boolean = false;
@@ -88,7 +90,7 @@ export class AddStudentTimeTableComponent implements OnInit {
     if (this.timeTableEntries.length > 1) {
       this.timeTableEntries.removeAt(index);
     } else {
-      alert('At least one Time Table is required.');
+      this.toastr.warning('At least one Time Table is required.');
     }
   }
 
@@ -161,18 +163,18 @@ export class AddStudentTimeTableComponent implements OnInit {
     if (this.selectedSectionId) {
       this.loadTimeTableBySectionId(this.selectedSectionId);
     } else {
-      alert('Please select a Class and a section');
+      this.toastr.warning('Please select a Class and a section');
     }
   }
   insertTimetable() {
     if (this.timetableForm.invalid) {
-      alert('Please fill in all the valid details');
+      this.toastr.warning('Please fill in all the valid details');
       return;
     }
     const formValue = this.timetableForm.value;
     this.timetableservice.addTimeTable(formValue).subscribe({
       next: (data: any) => {
-        alert('TimeTable added successfully');
+        this.toastr.success('TimeTable added successfully');
         this.timetableForm.reset();
         this.setformstate();
         this.CloseModel();
@@ -183,7 +185,7 @@ export class AddStudentTimeTableComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error adding timetable:', err);
-        alert('Failed to add TimeTable. Please try again.');
+        this.toastr.warning('Failed to add TimeTable. Please try again.');
       },
     });
   }
@@ -224,7 +226,7 @@ export class AddStudentTimeTableComponent implements OnInit {
     }
     this.timetableservice.updateTimetable(updateRequirement, updateRequirement.timetbaleId).subscribe({
       next: (data: any) => {
-        alert('TimeTable updated successfully');
+        this.toastr.success('TimeTable updated successfully');
         this.timetableForm.reset();
         this.setformstate();
         this.CloseModel();
@@ -235,7 +237,7 @@ export class AddStudentTimeTableComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error updating timetable:', err);
-        alert('Failed to update TimeTable. Please try again.');
+        this.toastr.warning('Failed to update TimeTable. Please try again.');
       },
     });
   }
@@ -257,7 +259,7 @@ export class AddStudentTimeTableComponent implements OnInit {
     );
     if (isConfirm) {
       this.timetableservice.deleteTimeTable(id).subscribe((res: any) => {
-        alert('TimeTable Deleted Successfully');
+        this.toastr.error('TimeTable Deleted Successfully');
         // this.loadTimeTableBySectionId(1);
         this.selectedClass = 0;
         this.selectedSectionId = 0;
@@ -304,7 +306,7 @@ export class AddStudentTimeTableComponent implements OnInit {
     if (this.timeTableDetailsList.length > 1) {
       this.timeTableDetailsList.removeAt(index);
     } else {
-      alert('At least one time table detail is required.');
+      this.toastr.warning('At least one time table detail is required.');
     }
   }
 
@@ -363,7 +365,7 @@ export class AddStudentTimeTableComponent implements OnInit {
     if (this.selectedSectionIdDetail) {
       this.loadTimeTableBySectionIdDetail(this.selectedSectionIdDetail);
     } else {
-      alert('Please select a Class and a section');
+      this.toastr.warning('Please select a Class and a section');
     }
   }
 
@@ -375,7 +377,7 @@ export class AddStudentTimeTableComponent implements OnInit {
       this.http
         .delete(`https://localhost:7262/DeleteTimeTableDetails/${id}`)
         .subscribe(() => {
-          alert('Timetable details Deleted Successfully');
+          this.toastr.error('Timetable details Deleted Successfully');
           this.selectedClassDetail = 0;
           this.selectedSectionIdDetail = 0;
           this.Sections1 = [];
@@ -424,7 +426,7 @@ export class AddStudentTimeTableComponent implements OnInit {
       )
       .subscribe(
         (response) => {
-          alert('Timetable detail updated successfully!');
+          this.toastr.success('Timetable detail updated successfully!');
           this.timetableDetailForm.reset({
             timetableDetailsId: 0,
           });
@@ -437,7 +439,7 @@ export class AddStudentTimeTableComponent implements OnInit {
         },
         (error) => {
           console.error(error);
-          alert(
+          this.toastr.warning(
             'An error occurred while updating the timetable detail. Please try again.'
           );
         }
@@ -447,7 +449,7 @@ export class AddStudentTimeTableComponent implements OnInit {
   insertTimetableDetail() {
     
     if (this.timetableDetailForm.invalid) {
-      alert('Please fill all the valid details');
+      this.toastr.warning('Please fill all the valid details');
       return;
     }
     const formValue = this.timetableDetailForm.value;
@@ -455,7 +457,7 @@ export class AddStudentTimeTableComponent implements OnInit {
       .post('https://localhost:7262/AddTimeTableDetails', formValue)
       .subscribe(
         (data: any) => {
-          alert('Timetable Added Successfully');
+          this.toastr.success('Timetable Added Successfully');
           this.timetableDetailForm.reset({
             timetableDetailsId: 0,
           });
@@ -469,7 +471,7 @@ export class AddStudentTimeTableComponent implements OnInit {
         },
         (error) => {
           console.error(error);
-          alert(
+          this.toastr.warning(
             'An error occurred while adding the timetable detail. Please try again.'
           );
         }

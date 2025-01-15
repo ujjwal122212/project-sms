@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-subject-topic',
@@ -11,6 +12,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
   styleUrl: './add-subject-topic.component.css'
 })
 export class AddSubjectTopicComponent implements OnInit {
+   toastr = inject(ToastrService);
   Classes: any[] = [];
   Sections: any[] = [];
   Subjects: any[] = [];
@@ -72,7 +74,7 @@ export class AddSubjectTopicComponent implements OnInit {
     if (this.selectedSubject) {
       this.loadTopic(this.selectedSubject);
     } else {
-      alert('Please select a valid Class and Section.');
+      this.toastr.warning('Please select a valid Class and Section.');
     }
   }
 
@@ -95,7 +97,7 @@ export class AddSubjectTopicComponent implements OnInit {
 
   insertTopic() {
     if (this.subjectTopicForm.invalid) {
-      alert('Please fill valid detail');
+      this.toastr.warning('Please fill valid detail');
       return;
     } else {
       const formValue = this.subjectTopicForm.value;
@@ -105,7 +107,7 @@ export class AddSubjectTopicComponent implements OnInit {
           formValue
         )
         .subscribe((res: any) => {
-          alert('Subject topic added successfully');
+          this.toastr.success('Subject topic added successfully');
           this.subjectTopicForm.reset();
           this.CloseModel();
         });
@@ -129,7 +131,7 @@ export class AddSubjectTopicComponent implements OnInit {
 
   EditTopic() {
     if (this.subjectTopicForm.invalid) {
-      alert('Please fill all the valid details');
+      this.toastr.warning('Please fill all the valid details');
       return;
     }
     const formData = {
@@ -138,7 +140,7 @@ export class AddSubjectTopicComponent implements OnInit {
       topicName: this.subjectTopicForm.value.topicName,
     };
     this.http.put(`https://localhost:7262/api/CourseTopics/${formData.topicsID}`,formData).subscribe((res:any)=>{
-      alert("Course Topics updated successfully");
+      this.toastr.success("Course Topics updated successfully");
       this.subjectTopicForm.reset();
       this.CloseModel();
       this.selectedClass=0;
@@ -155,7 +157,7 @@ export class AddSubjectTopicComponent implements OnInit {
           `https://localhost:7262/api/CourseTopics/DeleteCourseTopicByID${id}`
         )
         .subscribe((res: any) => {
-          alert('Topic deleted successfully');
+          this.toastr.error('Topic deleted successfully');
           this.selectedClass = 0;
           this.selectedSection = 0;
           this.selectedSubject = 0;

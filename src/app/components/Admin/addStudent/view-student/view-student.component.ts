@@ -67,7 +67,7 @@ deleteEmployee(id: number) {
         },
         error => {
           console.error('Error:', error);
-          alert('Failed to delete student.');
+          this.toastr.error('Failed to delete student.');
         }
       );
   }
