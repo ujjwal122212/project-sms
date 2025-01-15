@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TeacherQuizService } from '../../../../Services/teacher-quiz.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { TeacherQuizService } from '../../../../Services/teacher-quiz.service';
   styleUrl: './sechedule.component.css'
 })
 export class SecheduleComponent implements OnInit {
+  toastr = inject(ToastrService);
   quizform: FormGroup = new FormGroup({});
   quizTitleForm: FormGroup = new FormGroup({});
   questionForm: FormGroup = new FormGroup({});
@@ -90,13 +92,13 @@ export class SecheduleComponent implements OnInit {
   }
   insertQuizSubjects() {
     if (this.quizform.invalid) {
-      alert("Please fill Valid Details");
+      this.toastr.warning("Please fill Valid Details");
       return;
     }
     else {
       const formvalue = this.quizform.value;
       this.quizService.AddQuizSubjects(formvalue).subscribe((res: any) => {
-        alert("Quiz Subjects Added Successfully");
+        this.toastr.success("Quiz Subjects Added Successfully");
         this.quizform.reset();
         this.Sections = [];
         this.CloseModel();
@@ -145,12 +147,12 @@ export class SecheduleComponent implements OnInit {
   }
   insertQuizTitleAndDescription() {
     if (this.quizTitleForm.invalid) {
-      alert("Please fill all valid details");
+      this.toastr.warning("Please fill all valid details");
       return;
     }
     const formvalue = this.quizTitleForm.value;
     this.quizService.AddQuizTitleAndDescription(formvalue).subscribe((res: any) => {
-      alert("Quiz Title and Description Added Successfully");
+      this.toastr.success("Quiz Title and Description Added Successfully");
       this.quizTitleForm.reset();
       this.closeQuizTitleForm();
     })
@@ -200,12 +202,12 @@ export class SecheduleComponent implements OnInit {
   }
   insertquestions(){
     if(this.questionForm.invalid){
-      alert("please fill all valid details");
+      this.toastr.warning("Please fill all valid details");
       return;
     }
     const formvalue=this.questionForm.value;
     this.quizService.AddQuestions(formvalue).subscribe((res:any)=>{
-      alert("Question added Successfully");
+      this.toastr.success("Question added Successfully");
       this.questionForm.reset();
       this.closequestionform();
     })
@@ -256,12 +258,12 @@ export class SecheduleComponent implements OnInit {
   }
   insertquestionoption(){
     if(this.questionOptionsForm.invalid){
-      alert("please fill all valid details");
+      this.toastr.warning("please fill all valid details");
       return;
     }
     const formvalue=this.questionOptionsForm.value;
     this.quizService.addquestionoption(formvalue).subscribe((res:any)=>{
-      alert("Question Option added Successfully");
+      this.toastr.success("Question Option added Successfully");
       this.questionOptionsForm.reset();
       this.closequestionoptionform();
     })

@@ -106,7 +106,7 @@ export class StudentAttendenceComponent implements OnInit {
             this.isEditMode = false
           } else {
             console.error('Error submitting attendance:', error);
-            alert('An unexpected error occurred.');
+            this.toastr.error('An unexpected error occurred.');
           }
         }
       );
