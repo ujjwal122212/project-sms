@@ -57,7 +57,7 @@ export class AddClassComponent {
         this.closeModel();
       },
       (error) => {
-        alert('Failed to add class. Please try again.');
+        this.toastr.warning('Failed to add class. Please try again.');
       }
     );
   }
@@ -107,11 +107,11 @@ export class AddClassComponent {
     if (isConfirm) {
       this.http.delete(`https://localhost:7262/DeleteClass/${id}`).subscribe(
         () => {
-          alert('Class deleted successfully');
+          this.toastr.error('Class deleted successfully');
           this.loadClasses();
         },
         (error) => {
-          alert('Failed to delete the class. Please try again.');
+          this.toastr.warning('Failed to delete the class. Please try again.');
         }
       );
     }

@@ -101,7 +101,7 @@ export class AddStudentCourseComponent implements OnInit {
     if (this.selectedSectionId) {
       this.loadSubjectBySectionId(this.selectedSectionId);
     } else {
-      alert('Please select a Class and a section');
+      this.toastr.warning('Please select a Class and a section');
     }
   }
   setformstate() {
@@ -115,14 +115,15 @@ export class AddStudentCourseComponent implements OnInit {
   }
   insertSubjects() {
     if (this.courseForm.invalid) {
-      alert('Please fill all the valid details');
+      this.toastr.warning('Please fill all the valid details');
       return;
     }
     const formValue = this.courseForm.value;
     this.studentCourseService
       .addSubjects(formValue)
       .subscribe((result: any) => {
-        alert('Course Added Successfully');
+        this.toastr.success('Course Added Successfully');
+        
         // this.toastr.success('Student Added Succesfully');
         // this.loadSubjectBySectionId(formValue.sectionId);
         this.courseForm.reset();
@@ -189,7 +190,7 @@ export class AddStudentCourseComponent implements OnInit {
     if (this.selectedClassSubject) {
       this.loadSubjectDetail(this.selectedClassSubject);
     } else {
-      alert('Please select a Class and a section');
+      this.toastr.warning('Please select a Class and a section');
     }
   }
 
@@ -199,7 +200,7 @@ export class AddStudentCourseComponent implements OnInit {
       this.http
         .delete(`https://localhost:7262/api/Subject/${id}`)
         .subscribe(() => {
-          alert('Subject is Deleted Successfully');
+          this.toastr.error('Subject is Deleted Successfully');
           this.selectedClassSubject = 0;
           // this.Sections1 = [];
           this.subjectDetail = [];
@@ -226,7 +227,7 @@ export class AddStudentCourseComponent implements OnInit {
 
   updateDetailSubject() {
     if (this.subjectForm.invalid) {
-      alert('Please fill valid details');
+      this.toastr.warning('Please fill valid details');
       return;
     }
     const formValue = {
@@ -243,7 +244,7 @@ export class AddStudentCourseComponent implements OnInit {
       )
       .subscribe(
         (response) => {
-          alert('Subject updated successfully!');
+          this.toastr.success('Subject updated successfully!');
           this.subjectForm.reset({
             subjectId: 0,
           });
@@ -252,7 +253,7 @@ export class AddStudentCourseComponent implements OnInit {
         },
         (error) => {
           console.error(error);
-          alert(
+          this.toastr.warning(
             'An error occurred while updating the subject. Please try again.'
           );
         }
@@ -261,7 +262,7 @@ export class AddStudentCourseComponent implements OnInit {
 
   insertSubject() {
     if (this.subjectForm.invalid) {
-      alert('Please fill all the valid details');
+      this.toastr.warning('Please fill all the valid details');
       return;
     }
     const formValue = this.subjectForm.value;
@@ -269,7 +270,7 @@ export class AddStudentCourseComponent implements OnInit {
       .post('https://localhost:7262/api/Subject/Add Subjects', formValue)
       .subscribe(
         (data: any) => {
-          alert('Subject Added Successfully');
+          this.toastr.success('Subject Added Successfully');
           this.subjectForm.reset({
             subjectId: 0,
           });
@@ -277,7 +278,7 @@ export class AddStudentCourseComponent implements OnInit {
         },
         (error) => {
           console.error(error);
-          alert(
+          this.toastr.warning(
             'An error occurred while adding the Subject. Please try again.'
           );
         }
@@ -356,7 +357,7 @@ export class AddStudentCourseComponent implements OnInit {
     if (this.topics.length > 1) {
       this.topics.removeAt(index);
     } else {
-      alert('At least one topic is required.');
+      this.toastr.warning('At least one topic is required.');
     }
   }
 
@@ -365,7 +366,7 @@ export class AddStudentCourseComponent implements OnInit {
 
   insertSubjectTopics() {
     if (this.topicsForm.invalid) {
-      alert('Please fill in all required fields.');
+      this.toastr.warning('Please fill in all required fields.');
       return;
     }
     const formData = this.topicsForm.value;
@@ -377,7 +378,7 @@ export class AddStudentCourseComponent implements OnInit {
       }
     });
     if (topicNames.length === 0) {
-      alert('Please add at least one valid topic name.');
+      this.toastr.warning('Please add at least one valid topic name.');
       return;
     }
     const requestBody = {
@@ -386,12 +387,12 @@ export class AddStudentCourseComponent implements OnInit {
     };
     this.http.post(`https://localhost:7262/AddMultipleTopic`, requestBody).subscribe({
       next: (response) => {
-        alert('Subject Topics Added Successfully');
+        this.toastr.success('Subject Topics Added Successfully');
         this.resetForm();
         this.CloseModel2();
       },
       error: (error) => {
-        alert('Error adding topics: ' + error.message);
+        this.toastr.error('Error adding topics: ' + error.message);
       }
     });
   }
@@ -452,7 +453,7 @@ export class AddStudentCourseComponent implements OnInit {
     this.isSubjectFound = true;
     this.isSubjectDataFound = false;
     if (this.selectedClass === 0 || this.selectedSubjectId === 0) {
-      alert("Please select a class and a Subject");
+      this.toastr.warning("Please select a class and a Subject");
       return;
     }
     this.loadCourseTopicBySubjectId(this.selectedSubjectId);
@@ -465,7 +466,7 @@ export class AddStudentCourseComponent implements OnInit {
     const isConfirm = confirm("Are you sure to want to delete this record ? ");
     if (isConfirm) {
       this.http.delete(`https://localhost:7262/DeleteTopic/${id}`).subscribe((response: any) => {
-        alert("Course Topic Deleted Successfully ");
+        this.toastr.error("Course Topic Deleted Successfully ");
         this.selectedClassId = 0;
         this.selectedSubjectId = 0;
         this.subject = [];
@@ -500,11 +501,11 @@ export class AddStudentCourseComponent implements OnInit {
       subjectId: this.topicsForm.value.subjectId
     }
     if (formData.topicName == "") {
-      alert("Please fill a topic name");
+      this.toastr.warning("Please fill a topic name");
       return;
     }
     this.http.put(`https://localhost:7262/UpdateByCourseTopicsId/${formData.topicsID}`, formData).subscribe((res: any) => {
-      alert("Subject Topic Updated Successfully");
+      this.toastr.success("Subject Topic Updated Successfully");
       this.resetForm();
       this.CloseModel2();
       this.selectedClassId = 0;
