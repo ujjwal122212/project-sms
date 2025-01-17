@@ -5,6 +5,7 @@ import { Router} from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { LoginService } from '../../Services/login.service';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -15,6 +16,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './login-page.component.css'
 })
 export class LoginPageComponent implements OnInit {
+  toastr = inject(ToastrService);
   LoginForm: FormGroup = new FormGroup({});
   loginService = inject(LoginService);
   constructor(private fb: FormBuilder) { }
@@ -31,7 +33,7 @@ export class LoginPageComponent implements OnInit {
   
   onSubmit() {
     if (this.LoginForm.invalid) {
-      alert("Please fill all the valid Details");
+      this.toastr.warning("Please fill all the valid Details");
       return;
     }
     const formvalue = this.LoginForm.value;
@@ -62,17 +64,17 @@ export class LoginPageComponent implements OnInit {
           localStorage.setItem("role",res.role);
           localStorage.setItem("refreshToken",res.refreshToken)
           if (res.role === 'Student') {
-            alert("Login Successfull");
+            this.toastr.success("Login Successfull");
             this.route.navigateByUrl('/studentlayout/S-home');
             this.loginService.setEnrollmentNumber(enrollmentNo);
           }
           else if (res.role === 'Teacher') {
-            alert("Login Successfull");
+            this.toastr.success("Login Successfull");
             this.route.navigateByUrl('/teacherlayout/T-home');
             this.loginService.setEnrollmentNumber(enrollmentNo);
           }
           else if (res.role === 'Admin') {
-            alert("Login Successfull");
+            this.toastr.success("Login Successfull");
             this.route.navigateByUrl('/adminlayout/ahome');
             this.loginService.setEnrollmentNumber(enrollmentNo);
           }

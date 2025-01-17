@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TeacherQuizService } from '../../../Services/teacher-quiz.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-quiz-subject',
@@ -11,6 +12,7 @@ import { TeacherQuizService } from '../../../Services/teacher-quiz.service';
   styleUrl: './add-quiz-subject.component.css'
 })
 export class AddQuizSubjectComponent implements OnInit {
+  toastr = inject(ToastrService);
   quizform: FormGroup = new FormGroup({});
   constructor(private fb: FormBuilder) { }
 
@@ -91,18 +93,19 @@ export class AddQuizSubjectComponent implements OnInit {
     if (this.selectedSectionId) {
       this.loadSubjectBySectionId(this.selectedSectionId);
     } else {
-      alert("Please select a Class and a section");
+      this.toastr.warning("Please select a Class and a section");
+      
     }
   }
   insertQuizSubjects() {
     if (this.quizform.invalid) {
-      alert("Please fill Valid Details");
+      this.toastr.warning("Please fill Valid Details");
       return;
     }
     else {
       const formvalue = this.quizform.value;
       this.quizService.AddQuizSubjects(formvalue).subscribe((res: any) => {
-        alert("Quiz Subjects Added Successfully");
+        this.toastr.success("Quiz Subjects Added Successfully");
         this.quizform.reset();
         this.CloseModel();
         this.selectedClass = 0;
@@ -119,7 +122,7 @@ export class AddQuizSubjectComponent implements OnInit {
     const isConfirm = confirm("Are you sure to want to delete this record ?");
     if (isConfirm) {
       this.quizService.deleteQuizSubject(subjectId).subscribe((res: any) => {
-        alert("Quiz Subject Data Deleted Successfully");
+        this.toastr.error("Quiz Subject Data Deleted Successfully");
         this.selectedClass = 0;
         this.selectedSectionId = 0;
         this.Sections = [];

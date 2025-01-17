@@ -1,83 +1,80 @@
 <div class="form-area" id="formModel">
-  @if(isEdit){
-  <h1>Update Teacher Details</h1>
-  }
-  @else {
-  <h1>Add Teacher Details</h1>
-  }
-  <form action="" [formGroup]="regForm" (ngSubmit)="onSubmit()">
+  <h1>{{ isEdit ? 'Update Teacher Details' : 'Add Teacher Details' }}</h1>
+  <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
     <div class="card-area">
-      <div class="card">
+      <div class="card" [ngClass]="{'error': regForm.get('name')?.invalid && regForm.get('name')?.touched}">
         <input type="text" placeholder="Enter Teacher Name" formControlName="name" name="name">
+        <small *ngIf="regForm.get('name')?.invalid && regForm.get('name')?.touched">Name is required.</small>
       </div>
-      <div class="card">
-        <select name="" id="" formControlName="gender">
+      <div class="card" [ngClass]="{'error': regForm.get('gender')?.invalid && regForm.get('gender')?.touched}">
+        <select name="gender" id="gender" formControlName="gender">
           <option value="" selected disabled>Select your Gender</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Others">Others</option>
         </select>
+        <small *ngIf="regForm.get('gender')?.invalid && regForm.get('gender')?.touched">Gender is required.</small>
       </div>
-      <div class="card">
+      <div class="card" [ngClass]="{'error': regForm.get('dob')?.invalid && regForm.get('dob')?.touched}">
         <input type="date" formControlName="dob">
+        <small *ngIf="regForm.get('dob')?.invalid && regForm.get('dob')?.touched">Date of Birth is required.</small>
       </div>
       <div class="card">
         <input type="file" (change)="onFileSelected($event)" #fileInput accept="image/*">
       </div>
-      <div class="card">
+      <div class="card" [ngClass]="{'error': regForm.get('email')?.invalid && regForm.get('email')?.touched}">
         <input type="email" placeholder="Enter your Email" formControlName="email" name="email">
+        <small *ngIf="regForm.get('email')?.invalid && regForm.get('email')?.touched">A valid email is required.</small>
       </div>
-      <div class="card">
+      <div class="card" [ngClass]="{'error': regForm.get('contact')?.invalid && regForm.get('contact')?.touched}">
         <input type="tel" placeholder="Enter your Contact Number" formControlName="contact" name="number">
+        <small *ngIf="regForm.get('contact')?.invalid && regForm.get('contact')?.touched">Contact number is required.</small>
       </div>
-      <div class="card">
-        <select name="" id="" (change)="onStateChange($event)" formControlName="state">
+      <div class="card" [ngClass]="{'error': regForm.get('state')?.invalid && regForm.get('state')?.touched}">
+        <select name="state" id="state" (change)="onStateChange($event)" formControlName="state">
           <option value="" selected disabled>Select a state</option>
-          @for(state of State;track $index){
-          <option [value]="state.stateId">{{state.stateName}}</option>
-          }
+          <option *ngFor="let state of State" [value]="state.stateId">{{ state.stateName }}</option>
         </select>
+        <small *ngIf="regForm.get('state')?.invalid && regForm.get('state')?.touched">State is required.</small>
       </div>
-      <div class="card">
-        <select name="" id="" formControlName="district">
+      <div class="card" [ngClass]="{'error': regForm.get('district')?.invalid && regForm.get('district')?.touched}">
+        <select name="district" id="district" formControlName="district">
           <option value="" selected disabled>Select a district</option>
-          @for(district of District;track $index){
-          <option [value]="district.districtId">{{district.districtName}}</option>
-          }
+          <option *ngFor="let district of District" [value]="district.districtId">{{ district.districtName }}</option>
         </select>
+        <small *ngIf="regForm.get('district')?.invalid && regForm.get('district')?.touched">District is required.</small>
       </div>
-      <div class="card">
-        <input type="text" placeholder="Enter your pincode" formControlName="pincode" name="pincode">
+      <div class="card" [ngClass]="{'error': regForm.get('pincode')?.invalid && regForm.get('pincode')?.touched}">
+        <input type="text" placeholder="Enter your Pincode" formControlName="pincode" name="pincode">
+        <small *ngIf="regForm.get('pincode')?.invalid && regForm.get('pincode')?.touched">Pincode is required.</small>
       </div>
-      <div class="card">
-        <input type="text" placeholder="Enter your Experiance in Teaching" formControlName="experienceOfTeaching"
-          name="experienceOfTeaching">
+      <div class="card" [ngClass]="{'error': regForm.get('experienceOfTeaching')?.invalid && regForm.get('experienceOfTeaching')?.touched}">
+        <input type="text" placeholder="Enter your Experience in Teaching" formControlName="experienceOfTeaching" name="experienceOfTeaching">
+        <small *ngIf="regForm.get('experienceOfTeaching')?.invalid && regForm.get('experienceOfTeaching')?.touched">Teaching experience is required.</small>
       </div>
-      <div class="card">
+      <div class="card" [ngClass]="{'error': regForm.get('qualification')?.invalid && regForm.get('qualification')?.touched}">
         <input type="text" placeholder="Enter your Qualification" formControlName="qualification" name="qualification">
+        <small *ngIf="regForm.get('qualification')?.invalid && regForm.get('qualification')?.touched">Qualification is required.</small>
       </div>
-      <div class="card">
-        <input type="text" placeholder="Enter your Teaching classes" formControlName="teachClasses" name="teachClasses">
+      <div class="card" [ngClass]="{'error': regForm.get('teachClasses')?.invalid && regForm.get('teachClasses')?.touched}">
+        <input type="text" placeholder="Enter your Teaching Classes" formControlName="teachClasses" name="teachClasses">
+        <small *ngIf="regForm.get('teachClasses')?.invalid && regForm.get('teachClasses')?.touched">Teaching classes are required.</small>
       </div>
-      <div class="card">
+      <div class="card" [ngClass]="{'error': regForm.get('teachSubject')?.invalid && regForm.get('teachSubject')?.touched}">
         <input type="text" placeholder="Enter your Subjects" formControlName="teachSubject" name="teachSubject">
+        <small *ngIf="regForm.get('teachSubject')?.invalid && regForm.get('teachSubject')?.touched">Subjects are required.</small>
       </div>
-      <div class="card">
-        <textarea name="streetAddress" id="" placeholder="Enter your Address"
-          formControlName="streetAddress"></textarea>
+      <div class="card" [ngClass]="{'error': regForm.get('streetAddress')?.invalid && regForm.get('streetAddress')?.touched}">
+        <textarea name="streetAddress" id="streetAddress" placeholder="Enter your Address" formControlName="streetAddress"></textarea>
+        <small *ngIf="regForm.get('streetAddress')?.invalid && regForm.get('streetAddress')?.touched">Address is required.</small>
       </div>
-      <div class="card">
-        <textarea name="additionalText" id="" placeholder="Additional Details"
-          formControlName="additionalText"></textarea>
+      <div class="card" [ngClass]="{'error': regForm.get('additionalText')?.invalid && regForm.get('additionalText')?.touched}">
+        <textarea name="additionalText" id="additionalText" placeholder="Additional Details" formControlName="additionalText"></textarea>
+        <small *ngIf="regForm.get('additionalText')?.invalid && regForm.get('additionalText')?.touched">Additional details are required.</small>
       </div>
     </div>
     <div class="button-area">
-      @if(isEdit){
-      <button type="submit" class="submit">Update</button>
-      }
-      @else {
-      <button type="submit" class="submit">Save</button>
-      }
+      <button type="submit" class="submit">{{ isEdit ? 'Update' : 'Save' }}</button>
       <button type="button" class="close" (click)="goto()">Back</button>
     </div>
   </form>

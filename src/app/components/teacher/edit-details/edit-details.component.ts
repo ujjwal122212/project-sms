@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TeacherRegistrationService } from '../../../Services/teacher-registration.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-details',
@@ -12,6 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './edit-details.component.css'
 })
 export class EditDetailsComponent implements OnInit {
+  toastr = inject(ToastrService);
   router = inject(Router);
   regService = inject(TeacherRegistrationService)
   State: any[] = [];
@@ -145,7 +147,7 @@ export class EditDetailsComponent implements OnInit {
   }
   EditTeacher() {
     if (this.regForm.invalid) {
-      alert("Please fill all the valid details");
+      this.toastr.warning("Please fill all the valid details");
       return;
     }
     else {
@@ -167,7 +169,7 @@ export class EditDetailsComponent implements OnInit {
       formdata.append('pincode', this.regForm.get('pincode')?.value);
       formdata.append('ImagePath', this.regForm.get('imagePath')?.value);
       this.regService.editTeacherByID(enrollmentNumber, formdata).subscribe((res: any) => {
-        alert('Teacher Details Updated Successfullly');
+        this.toastr.success('Teacher Details Updated Successfullly');
         this.router.navigateByUrl('/teacherlayout/profiledetails');
         this.regForm.reset();
       })

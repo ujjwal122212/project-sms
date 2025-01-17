@@ -14,6 +14,7 @@ import { TeacherRegistrationService } from '../../../../Services/teacher-registr
   styleUrl: './add-new-teacher.component.css'
 })
 export class AddNewTeacherComponent implements OnInit {
+  toastr = inject(ToastrService);
   router = inject(Router);
   regService = inject(TeacherRegistrationService)
   State: any[] = [];
@@ -44,24 +45,24 @@ export class AddNewTeacherComponent implements OnInit {
   setRegForm() {
     this.regForm = this.fb.group({
       enrollmentNumber: [0],
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       imagePath: [null],
       gender: ['', Validators.required],
       dob: ['', Validators.required],
-      email: ['', Validators.required],
-      contact: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      contact: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       state: ['', Validators.required],
       district: ['', Validators.required],
-      pincode: ['', Validators.required],
-      streetAddress: ['', Validators.required],
+      pincode: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]],
+      streetAddress: ['', [Validators.required, Validators.minLength(10)]],
       qualification: ['', Validators.required],
       teachClasses: ['', Validators.required],
       teachSubject: ['', Validators.required],
-      experienceOfTeaching: ['', Validators.required],
-      additionalText: ['', Validators.required],
+      experienceOfTeaching: ['', [Validators.required, Validators.min(1)]],
+      additionalText: ['', Validators.maxLength(250)],
       password: ['Teacher@123'],
       createdDate: [Date]
-    })
+    });
   }
   imagePreview: string | ArrayBuffer | null = null;
   onFileSelected(event: any) {
@@ -81,7 +82,7 @@ export class AddNewTeacherComponent implements OnInit {
   @ViewChild('fileInput') fileInput!: ElementRef;
   insertTeacherDetails() {
     if (this.regForm.invalid) {
-      alert("Please fill all the valid details");
+      this.toastr.warning("Please fill all the valid details");
       return;
     }
     else {
@@ -102,7 +103,7 @@ export class AddNewTeacherComponent implements OnInit {
       formdata.append('pincode', this.regForm.get('pincode')?.value);
       formdata.append('ImagePath', this.regForm.get('imagePath')?.value);
       this.regService.addTeacherDetails(formdata).subscribe((res: any) => {
-        alert('Teacher Details added Successfullly');
+        this.toastr.success('Teacher Details added Successfullly');
         this.router.navigateByUrl('/adminlayout/viewTeacher');
         this.regForm.reset();
       })
@@ -171,7 +172,7 @@ export class AddNewTeacherComponent implements OnInit {
   }
   EditTeacher() {
     if (this.regForm.invalid) {
-      alert("Please fill all the valid details");
+      this.toastr.warning("Please fill all the valid details");
       return;
     }
     else {
@@ -193,7 +194,7 @@ export class AddNewTeacherComponent implements OnInit {
       formdata.append('pincode', this.regForm.get('pincode')?.value);
       formdata.append('ImagePath', this.regForm.get('imagePath')?.value);
       this.regService.editTeacherByID(enrollmentNumber, formdata).subscribe((res: any) => {
-        alert('Teacher Details Updated Successfullly');
+        this.toastr.success('Teacher Details Updated Successfullly');
         this.router.navigateByUrl('/adminlayout/viewTeacher');
         this.regForm.reset();
       })

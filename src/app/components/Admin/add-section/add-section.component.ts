@@ -20,6 +20,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AddSectionComponent {
   toastr = inject(ToastrService);
+
   sectionForm: FormGroup = new FormGroup({});
   studentCourseService = inject(StudentCourseService);
   classes: any[] = [];
@@ -50,14 +51,16 @@ export class AddSectionComponent {
 
   insertSections() {
     if (this.Sectionform.invalid) {
-      alert('Please fill all the valid details');
+      // alert('Please fill all the valid details');
+      this.toastr.warning('Please fill all the valid details');
       return;
     }
     const formValue = this.Sectionform.value;
     this.http
       .post('https://localhost:7262/Add Sections', formValue)
       .subscribe(() => {
-        alert('Section added successfully');
+        this.toastr.success('Section added successfully');
+        
         this.Sectionform.reset();
         this.closeModel();
       });
@@ -73,14 +76,15 @@ export class AddSectionComponent {
 
   EditSection() {
     if (this.Sectionform.invalid) {
-      alert('Please fill all the valid details');
+      this.toastr.warning('Please fill all the valid details');
       return;
     }
     const formValue = this.Sectionform.value;
     this.http
       .put(`https://localhost:7262/${formValue.sectionId}`, formValue)
       .subscribe(() => {
-        alert('Section updated successfully');
+        this.toastr.success('Section updated successfully');
+        
         this.Sectionform.reset();
         this.closeModel();
       });
@@ -107,7 +111,7 @@ export class AddSectionComponent {
     if (this.selectedClass) {
       this.loadSectionsByClassId(this.selectedClass);
     } else {
-      alert('Please select a Class and a section');
+      this.toastr.warning('Please select a Class and a section');
     }
   }
 
@@ -116,12 +120,12 @@ export class AddSectionComponent {
     if (isConfirm) {
       this.http.delete(`https://localhost:7262/${id}`).subscribe(
         (res: any) => {
-          alert('Section Deleted Successfully');
+          this.toastr.error('Section deleted successfully')
           this.selectedClass = 0;
         },
         (error) => {
           console.error('Error deleting section:', error);
-          alert('Failed to delete the section. Please try again.');
+          this.toastr.warning('Failed to delete the section. Please try again.');
         }
       );
     }

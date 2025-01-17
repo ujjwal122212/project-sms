@@ -14,6 +14,7 @@ import { TeacherRegistrationService } from '../../../../Services/teacher-registr
   styleUrl: './view-teacher.component.css',
 })
 export class ViewTeacherComponent implements OnInit {
+  
   router = inject(Router);
   regService = inject(TeacherRegistrationService);
   teachers: any[] = [];

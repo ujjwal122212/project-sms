@@ -79,7 +79,7 @@ export class StudentHelpComponent {
           },
           error => {
             console.error('Error:', error);
-            alert('Failed to delete.');
+            this.toastr.error('Failed to delete.');
           }
         );
     }

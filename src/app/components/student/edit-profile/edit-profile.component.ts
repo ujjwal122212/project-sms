@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { StudentRegistrationService } from '../../../Services/student-registration.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-profile',
@@ -12,6 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './edit-profile.component.css'
 })
 export class EditProfileComponent implements OnInit {
+  toastr = inject(ToastrService);
   regForm: FormGroup = new FormGroup({});
   constructor(private fb: FormBuilder) { }
   regService = inject(StudentRegistrationService);
@@ -185,7 +187,7 @@ export class EditProfileComponent implements OnInit {
   }
   updateStudent() {
     if (this.regForm.invalid) {
-      alert("Please fill all the valid details");
+      this.toastr.warning("Please fill all the valid details");
       return;
     }
     else {
@@ -210,7 +212,7 @@ export class EditProfileComponent implements OnInit {
       formdata.append('class', this.regForm.get('class')?.value);
       formdata.append('sectionId', this.regForm.get('sectionId')?.value);
       this.regService.UpdateStudentByStudentID(enrollmentNumber, formdata).subscribe((res: any) => {
-        alert("Student Data Updated Successfully");
+        this.toastr.success("Student Data Updated Successfully");
         this.regForm.reset();
         this.fileInput.nativeElement.value = '';
         this.CloseModel();

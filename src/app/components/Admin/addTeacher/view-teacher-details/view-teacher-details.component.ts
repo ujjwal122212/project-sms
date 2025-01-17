@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { TeacherRegistrationService } from '../../../../Services/teacher-registration.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-view-teacher-details',
@@ -11,6 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './view-teacher-details.component.css'
 })
 export class ViewTeacherDetailsComponent implements OnInit {
+  toastr = inject(ToastrService);
   regService = inject(TeacherRegistrationService);
   constructor(private route:Router){
 
@@ -32,7 +34,7 @@ export class ViewTeacherDetailsComponent implements OnInit {
     const isConfirm=confirm("Are You sure to want to delete this teacher ?");
     if(isConfirm){
       this.regService.deleteacherById(enrollmentNumber).subscribe((res:any)=>{
-        alert("Teacher Deleted Successfully");
+        this.toastr.error("Teacher Deleted Successfully");
         this.route.navigateByUrl('/adminlayout/viewTeacher');
       })
     }
