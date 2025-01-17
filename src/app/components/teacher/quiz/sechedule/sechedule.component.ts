@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TeacherQuizService } from '../../../../Services/teacher-quiz.service';
-import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -15,18 +14,19 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './sechedule.component.css'
 })
 export class SecheduleComponent implements OnInit {
-  toastr = inject(ToastrService);
   quizform: FormGroup = new FormGroup({});
   quizTitleForm: FormGroup = new FormGroup({});
   questionForm: FormGroup = new FormGroup({});
   questionOptionsForm: FormGroup = new FormGroup({});
+  showTitle: boolean = false;
+  isavailable: boolean = false;
   constructor(private fb: FormBuilder) { }
 
   quizService = inject(TeacherQuizService);
   Classes: any[] = [];
   Sections: any[] = [];
   QuizSubject: any[] = [];
-  titleHeading:string[]=['S.No','QuizTitle','QuizDescription','Action'];
+  titleHeading: string[] = ['S.No', 'QuizTitle', 'QuizDescription', 'Action'];
   openform() {
     const stuform = document.getElementById('formModel');
     if (stuform != null) {
@@ -45,7 +45,7 @@ export class SecheduleComponent implements OnInit {
   loadClass() {
     this.quizService.getClasses().subscribe((res: any) => {
       this.Classes = res;
-      console.log(this.Classes);
+      // console.log(this.Classes);
     })
   }
   selectedClassId: number = 0;
@@ -59,24 +59,22 @@ export class SecheduleComponent implements OnInit {
     this.questionForm.patchValue({
       sectionId: 0,
       subjectId: 0,
-      quizID:0
+      quizID: 0
     })
     this.questionOptionsForm.patchValue({
       sectionId: 0,
       subjectId: 0,
-      quizID:0,
-      questionID:0
+      quizID: 0,
+      questionID: 0
     })
     this.Sections = [];
     this.QuizSubject = [];
-    this.quizArray=[];
-    this.questions=[];
     this.loadSectionByClassId(this.selectedClassId);
   }
   loadSectionByClassId(classId: number) {
     this.quizService.getSectionByClassId(classId).subscribe((res: any) => {
       this.Sections = res;
-      console.log(this.Sections);
+      // console.log(this.Sections);
     })
   }
 
@@ -90,15 +88,18 @@ export class SecheduleComponent implements OnInit {
       subjectCode: ['', Validators.required]
     })
   }
+
+  // adding quiz title and description by subject id
+
   insertQuizSubjects() {
     if (this.quizform.invalid) {
-      this.toastr.warning("Please fill Valid Details");
+      alert("Please fill Valid Details");
       return;
     }
     else {
       const formvalue = this.quizform.value;
       this.quizService.AddQuizSubjects(formvalue).subscribe((res: any) => {
-        this.toastr.success("Quiz Subjects Added Successfully");
+        alert("Quiz Subjects Added Successfully");
         this.quizform.reset();
         this.Sections = [];
         this.CloseModel();
@@ -115,9 +116,13 @@ export class SecheduleComponent implements OnInit {
     }
   }
   closeQuizTitleForm() {
+    this.selectedClassId = 0;
+    this.selectedSectionId = 0;
+    this.selectedSubjectId = 0;
     this.setQuizTitleAndDesState();
     this.Sections = [];
     this.QuizSubject = [];
+    this.quizTitle = [];
     const stuform = document.getElementById('quizTitleForm');
     if (stuform != null) {
       stuform.classList.remove('openform');
@@ -127,7 +132,7 @@ export class SecheduleComponent implements OnInit {
 
   setQuizTitleAndDesState() {
     this.quizTitleForm = this.fb.group({
-      quizId: [0],
+      quizID: [0],
       classId: [0],
       sectionId: [0],
       subjectId: [0],
@@ -147,136 +152,95 @@ export class SecheduleComponent implements OnInit {
   }
   insertQuizTitleAndDescription() {
     if (this.quizTitleForm.invalid) {
-      this.toastr.warning("Please fill all valid details");
+      alert("Please fill all valid details");
       return;
     }
     const formvalue = this.quizTitleForm.value;
     this.quizService.AddQuizTitleAndDescription(formvalue).subscribe((res: any) => {
-      this.toastr.success("Quiz Title and Description Added Successfully");
+      alert("Quiz Title and Description Added Successfully");
       this.quizTitleForm.reset();
       this.closeQuizTitleForm();
     })
   }
   onSubmit1() {
-    this.insertQuizTitleAndDescription();
-  }
-
-  openquestionform() {
-    const stuform = document.getElementById('questionForm');
-    if (stuform != null) {
-      stuform.classList.add('openform');
+    if (this.quizTitleForm.value.quizID == 0) {
+      this.insertQuizTitleAndDescription();
     }
-  }
-  closequestionform() {
-    this.setquestionformstate();
-    const stuform = document.getElementById('questionForm');
-    this.Sections = [];
-    this.QuizSubject = [];
-    this.quizArray=[];
-    if (stuform != null) {
-      stuform.classList.remove('openform');
+    else{
+      this.editQuizTitleAndDescription();
     }
-  }
-  setquestionformstate() {
-    this.questionForm = this.fb.group({
-      questionID: [0],
-      classId: [0],
-      sectionId: [0],
-      subjectId: [0],
-      quizID: [0],
-      questionText:['',Validators.required]
-    })
 
   }
-  selectSubjectId:number=0;
-  onSubjectchange(event:any){
-  this.selectSubjectId=event.target.value;
-  this.loadQuizTitleBySubjectId(this.selectSubjectId);
+
+  // getting quiz title and description by subject id
+
+  selectedSubjectId: number = 0;
+  onSubjectChange(event: any) {
+    this.selectedSubjectId = event.target.value;
+
   }
-  quizArray: any[] = [];
+  quizTitle: any[] = [];
   loadQuizTitleBySubjectId(subjectId: number) {
+    this.showTitle = true
     this.quizService.getquiztitlebysubjectid(subjectId).subscribe((res: any) => {
-      this.quizArray = res;
-      console.log(this.quizArray);
+      this.isavailable=true;
+      this.quizTitle = res;
+      // console.log(res);
     })
   }
-  insertquestions(){
-    if(this.questionForm.invalid){
-      this.toastr.warning("Please fill all valid details");
+  selectClassSectionAndSubject: boolean = true;
+  showQuizTitleAndDescription() {
+    this.selectClassSectionAndSubject = false;
+    this.loadQuizTitleBySubjectId(this.selectedSubjectId);
+  }
+
+
+  // getQuizTitleAndDescriptionByQuizID
+
+  getQuizTitleAndDescription(quizID: number) {
+    this.quizService.getQuizTitleAndDescription(quizID).subscribe((res: any) => {
+      this.quizTitleForm.patchValue({
+        quizID: res.quizID,
+        classId: res.classId,
+        sectionId: res.sectionId,
+        subjectId: res.subjectId,
+        quizTitle: res.quizTitle,
+        quizDescription: res.quizDescription
+      })
+      this.openQuizTitleForm();
+    })
+  }
+
+  // edit quiz title and description
+
+  editQuizTitleAndDescription() {
+    if (this.quizTitleForm.invalid) {
+      alert("Please fill all valid details");
       return;
     }
-    const formvalue=this.questionForm.value;
-    this.quizService.AddQuestions(formvalue).subscribe((res:any)=>{
-      this.toastr.success("Question added Successfully");
-      this.questionForm.reset();
-      this.closequestionform();
+    const formvalue = this.quizTitleForm.value;
+    this.quizService.EditQuizTitleAndDescription(formvalue.quizID, formvalue).subscribe((res: any) => {
+      alert("Quiz Title and Description Updated Successfully");
+      this.quizTitleForm.reset();
+      this.closeQuizTitleForm();
     })
   }
-  onSubmit2() {
-   this.insertquestions();
-  }
-  openquestionoptionform(){
-    const stuform = document.getElementById('questionoptionForm');
-    if (stuform != null) {
-      stuform.classList.add('openform');
+
+
+  // delete quiz title and description
+  deleteQuizTitleAndDescription(quizID: number) {
+    const isDelete = confirm("Are you sure you want to delete this Quiz?");
+    if (isDelete) {
+      this.quizService.deleteQuizTitleAndDescription(quizID).subscribe((res: any) => {
+        alert("Quiz Deleted Successfully");
+        this.closeQuizTitleForm();
+      })
     }
   }
-  closequestionoptionform(){
-    this.setquestionoptionformstate();
-    this.Sections = [];
-    this.QuizSubject = [];
-    this.quizArray=[];
-    this.questions=[];
-    const stuform = document.getElementById('questionoptionForm');
-    if (stuform != null) {
-      stuform.classList.remove('openform');
-    }
-  }
-  setquestionoptionformstate(){
-    this.questionOptionsForm=this.fb.group({
-      optionID: [0],
-      classId: [0],
-      sectionId: [0],
-      subjectId: [0],
-      quizID: [0],
-      questionID:[0],
-      optionText:['',Validators.required],
-      isCorrect:['',Validators.required]
-    })
-  }
-  onQuizChange(event:any){
-    this.selectedQuizId=event.target.value;
-    this.loadQuestionsByQuizID(this.selectedQuizId);
-  }
-  questions:any[]=[];
-  selectedQuizId:number=0;
-  loadQuestionsByQuizID(quizID:number){
-    this.quizService.getquestionbyquizid(quizID).subscribe((res:any)=>{
-      this.questions=res;
-      console.log(this.questions);
-    })
-  }
-  insertquestionoption(){
-    if(this.questionOptionsForm.invalid){
-      this.toastr.warning("please fill all valid details");
-      return;
-    }
-    const formvalue=this.questionOptionsForm.value;
-    this.quizService.addquestionoption(formvalue).subscribe((res:any)=>{
-      this.toastr.success("Question Option added Successfully");
-      this.questionOptionsForm.reset();
-      this.closequestionoptionform();
-    })
-  }
-  onSubmit3(){
-    this.insertquestionoption();
-  }
+
   ngOnInit(): void {
     this.setquizformState();
     this.setQuizTitleAndDesState();
-    this.setquestionformstate();
-    this.setquestionoptionformstate();
     this.loadClass();
-    this.loadQuizTitleBySubjectId(1);
   }
 }

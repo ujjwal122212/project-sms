@@ -222,3 +222,24 @@ select:hover {
     font-weight: bold;
     font-size: 20px;
 }
+
+.selected-area {
+    width: 100%;
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    /* background-color: pink; */
+    padding: 0 20px;
+}
+
+.selected-area .area {
+    width: 30%;
+}
+.show{
+    display: flex;
+    justify-content: center;
+}
+.area button{
+    background-color: #007bff;
+    padding: 2px 10px;
+}

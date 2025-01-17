@@ -1,258 +1,247 @@
 <div class="Quiz-area">
-    <div class="header">
-        <h1>Quizzes</h1>
-        <div class="content">
-            <span><a href="#">Dashboard</a></span>
-            <span><a href="#">/ Quizzes</a></span>
-            <span>
-                <p> / Schedule Quiz</p>
-            </span>
-        </div>
+  <div class="header">
+    <h1>Quizzes</h1>
+    <div class="content">
+      <span><a href="#">Dashboard</a></span>
+      <span><a href="#">/ Quizzes</a></span>
+      <span>
+        <p>/ Schedule Quiz</p>
+      </span>
     </div>
-    <div class="border-bottom">
-
+  </div>
+  <div class="border-bottom"></div>
+  <div class="headerAdd">
+    <h1>Quiz Title</h1>
+    <button (click)="openQuizTitleForm()">Add Quiz Title And Des</button>
+  </div>
+  <div class="selected-area">
+    <div class="area">
+      <select
+        name=""
+        id=""
+        [(ngModel)]="selectedClassId"
+        (change)="onClassChange($event)"
+      >
+        <option value="0" disabled>Select a Class</option>
+        @for(class of Classes;track $index){
+        <option [value]="class.classId">{{ class.className }}</option>
+        }
+      </select>
     </div>
-    <!-- <div class="headerAdd">
-        <h1>Quiz Subjects</h1>
-        <button (click)="openform()">Add Quiz Subjects</button>
-    </div> -->
-    <div class="headerAdd">
-        <h1>Quiz Title</h1>
-        <button (click)="openQuizTitleForm()">Add Quiz Title And Des</button>
+    <div class="area">
+      <select
+        name=""
+        id=""
+        [(ngModel)]="selectedSectionId"
+        (change)="onSectionChange($event)"
+      >
+        <option value="0" disabled>Select a Section</option>
+        @for(section of Sections;track $index){
+        <option [value]="section.sectionId">{{ section.sectionName }}</option>
+        }
+      </select>
     </div>
-
-    <div class="section">
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        @for(heading of titleHeading;track $index){
-                        <th>{{heading}}</th>
-                        }
-                    </tr>
-                </thead>
-                <tbody>
-                    @for(quiz of quizArray;track $index){
-                    <tr>
-                        <td>{{$index+1}}</td>
-                        <td>{{quiz.quizTitle}}</td>
-                        <td>{{quiz.quizDescription}}</td>
-                        <td class="action-button">
-                            <button class="edit">Edit</button>
-                            <button class="delete">Delete</button>
-                        </td>
-                    </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+    <div class="area">
+      <select
+        name=""
+        id=""
+        [(ngModel)]="selectedSubjectId"
+        (change)="onSubjectChange($event)"
+      >
+        <option value="0" selected disabled>Select a Subject</option>
+        @for(subject of QuizSubject;track $index){
+        <option [value]="subject.subjectId">{{ subject.subjectName }}</option>
+        }
+      </select>
     </div>
-    <div class="headerAdd">
-        <h1>Quiz Questions</h1>
-        <button (click)=" openquestionform()">Add Questions</button>
+    <div class="area show">
+      <button type="button" (click)="showQuizTitleAndDescription()">
+        show
+      </button>
     </div>
-    
-    <div class="section">
-        <div class="table-container">
-
-
-        </div>
+  </div>
+  <div class="section">
+    <div class="table-container">
+      @if(quizTitle.length>0){
+      <table>
+        <thead>
+          <tr>
+            @for(heading of titleHeading;track $index){
+            <th>{{ heading }}</th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for(quiz of quizTitle;track $index){
+          <tr>
+            <td>{{ $index + 1 }}</td>
+            <td>{{ quiz.quizTitle }}</td>
+            <td>{{ quiz.quizDescription }}</td>
+            <td class="action-button">
+              <button
+                class="edit"
+                (click)="getQuizTitleAndDescription(quiz.quizID)"
+              >
+                Edit
+              </button>
+              <button class="delete" (click)="deleteQuizTitleAndDescription(quiz.quizID)">Delete</button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+      } @else if(selectedClassId==0 || selectedSectionId==0 ||
+      selectedSubjectId==0){
+      <h1 style="font-weight: bold; padding: 10px; text-align: center">
+        Please select a class Section and Subject
+      </h1>
+      } @else if(showTitle && isavailable){
+      <h1 style="font-weight: bold; padding: 10px; text-align: center">
+        No Quiz Title and Description Found
+      </h1>
+      }
     </div>
-    <div class="headerAdd">
-        <h1>Qeustion Options</h1>
-        <button (click)=" openquestionoptionform()">Add Question Options</button>
-    </div>
+  </div>
 </div>
 <div class="form-area" id="formModel">
-    <h1>Add Student Subjects</h1>
-    <form action="" [formGroup]="quizform" (ngSubmit)="onSubmit()">
-        <div class="card-area">
-            <div class="card">
-                <select name="" id="" (change)="onClassChange($event)" formControlName="classId">
-                    <option value="0" selected disabled>Select a Class</option>
-                    @for(class of Classes;track $index){
-                    <option [value]="class.classId">{{class.className}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <select name="" id="" formControlName="sectionId">
-                    <option value="0" selected disabled>Select a Section</option>
-                    @for(section of Sections;track $index){
-                    <option [value]="section.sectionId">{{section.sectionName}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter SubjectName" formControlName="subjectName" name="subjectName">
-            </div>
-            <div class="card">
-                <input type="text" placeholder="Enter SubjectCode" formControlName="subjectCode" name="subjectCode">
-            </div>
-        </div>
-        <div class="button-area">
-            <button type="submit" class="submit">Save</button>
-            <button type="button" (click)="CloseModel()" class="close">Close</button>
-        </div>
-    </form>
+  <h1>Add Student Subjects</h1>
+  <form action="" [formGroup]="quizform" (ngSubmit)="onSubmit()">
+    <div class="card-area">
+      <div class="card">
+        <select
+          name=""
+          id=""
+          (change)="onClassChange($event)"
+          formControlName="classId"
+        >
+          <option value="0" selected disabled>Select a Class</option>
+          @for(class of Classes;track $index){
+          <option [value]="class.classId">{{ class.className }}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <select name="" id="" formControlName="sectionId">
+          <option value="0" selected disabled>Select a Section</option>
+          @for(section of Sections;track $index){
+          <option [value]="section.sectionId">{{ section.sectionName }}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter SubjectName"
+          formControlName="subjectName"
+          name="subjectName"
+        />
+      </div>
+      <div class="card">
+        <input
+          type="text"
+          placeholder="Enter SubjectCode"
+          formControlName="subjectCode"
+          name="subjectCode"
+        />
+      </div>
+    </div>
+    <div class="button-area">
+      <button type="submit" class="submit">Save</button>
+      <button type="button" (click)="CloseModel()" class="close">Close</button>
+    </div>
+  </form>
 </div>
 
 <div class="form-area" id="quizTitleForm">
-    <h1>Add Quiz Title and Description</h1>
-    <form action="" [formGroup]="quizTitleForm" (ngSubmit)="onSubmit1()">
-        <div class="card-area">
-            <div class="card">
-                <select name="" id="" (change)="onClassChange($event)" formControlName="classId">
-                    <option value="0" selected disabled>Select a Class</option>
-                    @for(class of Classes;track $index){
-                    <option [value]="class.classId">{{class.className}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <select name="" id="" formControlName="sectionId" (change)="onSectionChange($event)">
-                    <option value="0" selected disabled>Select a Section</option>
-                    @for(section of Sections;track $index){
-                    <option [value]="section.sectionId">{{section.sectionName}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <!-- <input type="text" placeholder="Enter SubjectName" formControlName="subjectName" name="subjectName"> -->
-                <select name="" id="" formControlName="subjectId">
-                    <option value="0" selected disabled>Select a Subject</option>
-                    @for(subject of QuizSubject;track $index){
-                    <option [value]="subject.subjectId">{{subject.subjectName}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <textarea name="" id="" formControlName="quizTitle" placeholder="Enter a quiz title"></textarea>
-            </div>
-            <div class="card">
-                <textarea name="" id="" formControlName="quizDescription"
-                    placeholder="Enter a quiz description"></textarea>
-            </div>
-        </div>
-        <div class="button-area">
-            <button type="submit" class="submit">Save</button>
-            <button type="button" (click)="closeQuizTitleForm()" class="close">Close</button>
-        </div>
-    </form>
-</div>
-
-<div class="form-area" id="questionForm">
-    <h1>Add Questions</h1>
-    <form action="" [formGroup]="questionForm" (ngSubmit)="onSubmit2()">
-        <div class="card-area">
-            <div class="card">
-                <select name="" id="" (change)="onClassChange($event)" formControlName="classId">
-                    <option value="0" selected disabled>Select a Class</option>
-                    @for(class of Classes;track $index){
-                    <option [value]="class.classId">{{class.className}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <select name="" id="" formControlName="sectionId" (change)="onSectionChange($event)">
-                    <option value="0" selected disabled>Select a Section</option>
-                    @for(section of Sections;track $index){
-                    <option [value]="section.sectionId">{{section.sectionName}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <!-- <input type="text" placeholder="Enter SubjectName" formControlName="subjectName" name="subjectName"> -->
-                <select name="" id="" formControlName="subjectId" (change)="onSubjectchange($event)">
-                    <option value="0" selected disabled>Select a Subject</option>
-                    @for(subject of QuizSubject;track $index){
-                    <option [value]="subject.subjectId">{{subject.subjectName}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <!-- <input type="text" placeholder="Enter SubjectName" formControlName="subjectName" name="subjectName"> -->
-                <select name="" id="" formControlName="quizID">
-                    <option value="0" selected disabled>Select a quiz Title</option>
-                    @for(quiz of quizArray;track $index){
-                    <option [value]="quiz.quizID">{{quiz.quizTitle}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <textarea name="" id="" formControlName="questionText" placeholder="Enter a quiz question"></textarea>
-            </div>
-        </div>
-        <div class="button-area">
-            <button type="submit" class="submit">Save</button>
-            <button type="button" (click)="closequestionform()" class="close">Close</button>
-        </div>
-    </form>
-</div>
-
-<div class="form-area" id="questionoptionForm">
-    <h1>Add Question Option</h1>
-    <form action="" [formGroup]="questionOptionsForm" (ngSubmit)="onSubmit3()">
-        <div class="card-area">
-            <div class="card">
-                <select name="" id="" (change)="onClassChange($event)" formControlName="classId">
-                    <option value="0" selected disabled>Select a Class</option>
-                    @for(class of Classes;track $index){
-                    <option [value]="class.classId">{{class.className}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <select name="" id="" formControlName="sectionId" (change)="onSectionChange($event)">
-                    <option value="0" selected disabled>Select a Section</option>
-                    @for(section of Sections;track $index){
-                    <option [value]="section.sectionId">{{section.sectionName}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <!-- <input type="text" placeholder="Enter SubjectName" formControlName="subjectName" name="subjectName"> -->
-                <select name="" id="" formControlName="subjectId" (change)="onSubjectchange($event)">
-                    <option value="0" selected disabled>Select a Subject</option>
-                    @for(subject of QuizSubject;track $index){
-                    <option [value]="subject.subjectId">{{subject.subjectName}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <!-- <input type="text" placeholder="Enter SubjectName" formControlName="subjectName" name="subjectName"> -->
-                <select name="" id="" formControlName="quizID" (change)="onQuizChange($event)">
-                    <option value="0" selected disabled>Select a quiz Title</option>
-                    @for(quiz of quizArray;track $index){
-                    <option [value]="quiz.quizID">{{quiz.quizTitle}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <!-- <input type="text" placeholder="Enter SubjectName" formControlName="subjectName" name="subjectName"> -->
-                <select name="" id="" formControlName="questionID">
-                    <option value="0" selected disabled>Select a Question</option>
-                    @for(question of questions;track $index){
-                    <option [value]="question.questionID">{{question.questionText}}</option>
-                    }
-                </select>
-            </div>
-            <div class="card">
-                <textarea name="" id="" formControlName="optionText" placeholder="Enter a question option"></textarea>
-            </div>
-            <div class="card">
-                <select name="" id="" formControlName="isCorrect">
-                    <option value="" selected disabled>is selected Option Correct?</option>
-                    <option value="true">true</option>
-                    <option value="false">false</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="button-area">
-            <button type="submit" class="submit">Save</button>
-            <button type="button" (click)="closequestionoptionform()" class="close">Close</button>
-        </div>
-    </form>
-
+  @if(quizTitleForm.value.quizID==0){
+  <h1>Add Quiz Title and Description</h1>
+  } @else {
+  <h1>Edit Quiz Title and Description</h1>
+  }
+  <form action="" [formGroup]="quizTitleForm" (ngSubmit)="onSubmit1()">
+    @if(quizTitleForm.value.quizID==0){
+    <div class="card-area">
+      <div class="card">
+        <select
+          name=""
+          id=""
+          (change)="onClassChange($event)"
+          formControlName="classId"
+        >
+          <option value="0" selected disabled>Select a Class</option>
+          @for(class of Classes;track $index){
+          <option [value]="class.classId">{{ class.className }}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <select
+          name=""
+          id=""
+          formControlName="sectionId"
+          (change)="onSectionChange($event)"
+        >
+          <option value="0" selected disabled>Select a Section</option>
+          @for(section of Sections;track $index){
+          <option [value]="section.sectionId">{{ section.sectionName }}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <!-- <input type="text" placeholder="Enter SubjectName" formControlName="subjectName" name="subjectName"> -->
+        <select name="" id="" formControlName="subjectId">
+          <option value="0" selected disabled>Select a Subject</option>
+          @for(subject of QuizSubject;track $index){
+          <option [value]="subject.subjectId">{{ subject.subjectName }}</option>
+          }
+        </select>
+      </div>
+      <div class="card">
+        <textarea
+          name=""
+          id=""
+          formControlName="quizTitle"
+          placeholder="Enter a quiz title"
+        ></textarea>
+      </div>
+      <div class="card">
+        <textarea
+          name=""
+          id=""
+          formControlName="quizDescription"
+          placeholder="Enter a quiz description"
+        ></textarea>
+      </div>
+    </div>
+    } @else {
+    <div class="card-area">
+      <div class="card">
+        <textarea
+          name=""
+          id=""
+          formControlName="quizTitle"
+          placeholder="Enter a quiz title"
+        ></textarea>
+      </div>
+      <div class="card">
+        <textarea
+          name=""
+          id=""
+          formControlName="quizDescription"
+          placeholder="Enter a quiz description"
+        ></textarea>
+      </div>
+    </div>
+    }
+    <div class="button-area">
+      @if(quizTitleForm.value.quizID==0){
+      <button type="submit" class="submit">Save</button>
+      } @else {
+      <button type="submit" class="submit">Update</button>
+      }
+      <button type="button" (click)="closeQuizTitleForm()" class="close">
+        Close
+      </button>
+    </div>
+  </form>
 </div>

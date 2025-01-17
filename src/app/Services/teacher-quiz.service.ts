@@ -30,6 +30,15 @@ export class TeacherQuizService {
   getquiztitlebysubjectid(subjectId:number){
     return this.http.get(`${this.apiurl}/api/Quiz/${subjectId}`);
   }
+  getQuizTitleAndDescription(quizID:number){
+    return this.http.get(`${this.apiurl}/api/Quiz/row/${quizID}`);
+  }
+  EditQuizTitleAndDescription(quizId:number,data:any){
+    return this.http.put(`${this.apiurl}/api/Quiz/${quizId}`,data);
+  }
+  deleteQuizTitleAndDescription(quizId:number){
+    return this.http.delete(`${this.apiurl}/api/Quiz/${quizId}`);
+  }
   AddQuestions(data:any){
     return this.http.post(`${this.apiurl}/api/Question/Add Question`,data);
   }
