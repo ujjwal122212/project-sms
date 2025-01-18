@@ -371,3 +371,6 @@ select:hover {
     cursor: pointer;
     margin-bottom: 10px;
 }
+.removequestionbutton button:hover {
+    background-color: #b02a37;
+}

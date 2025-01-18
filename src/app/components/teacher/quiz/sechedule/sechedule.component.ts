@@ -294,21 +294,28 @@ export class SecheduleComponent implements OnInit {
   }
 
   // Adding a new option group to a specific question
+
   addOptions(questionIndex: number) {
     const options = this.fb.group({
       optionId: [0],
       optionText: ['', Validators.required],
       isCorrect: [false]
     });
-    this.getOptions(questionIndex).push(options);
+    if (this.getOptions(questionIndex).length < 4) {
+      this.getOptions(questionIndex).push(options);
+    } else {
+      alert('You can only add up to 4 options.');
+    }
   }
 
   // Remove an option group by index for a specific question
+
   removeOption(questionIndex: number, optionIndex: number) {
     const options = this.getOptions(questionIndex);
     if (options.length > 1) {
       options.removeAt(optionIndex);
-    } else {
+    }
+    else {
       alert('At least one option is required.');
     }
   }
@@ -349,6 +356,7 @@ export class SecheduleComponent implements OnInit {
       questionForm.classList.add('openform');
     }
   }
+  
   closeQuestionForm() {
     this.selectedClassId = 0;
     this.selectedSectionId = 0;
