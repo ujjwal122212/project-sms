@@ -58,33 +58,45 @@ a {
 }
 
 .timetable-container {
-  max-width: 800px;
-  margin: 20px auto;
-  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #f8f9fa, #e3e4e6);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  margin: 20px;
 }
 
-.title {
-  font-size: 24px;
-  color: #4CAF50;
-  margin-bottom: 20px;
+.timetable-container .title {
+  margin: 20px 0;
+  font-size: 22px;
+  color: #333;
+  font-weight: bold;
 }
 
 .timetable {
   width: 100%;
   border-collapse: collapse;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 20px;
 }
 
 .timetable th,
 .timetable td {
-  padding: 12px 15px;
-  text-align: center;
   border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+td span {
+  margin-right: 10px;
 }
 
 .timetable th {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   font-weight: bold;
 }
@@ -95,9 +107,34 @@ a {
 
 .timetable tr:hover {
   background-color: #f1f1f1;
-  cursor: pointer;
 }
 
 .timetable td {
+  font-size: 14px;
   color: #555;
 }
+
+.timetable td br {
+  margin-bottom: 5px;
+}
+
+/* Styling for empty cells */
+.timetable .empty-cell {
+  background-color: #f8f8f8;
+  color: #aaa;
+  font-style: italic;
+  border: 1px dashed #ccc;
+}
+.timetable td span {
+  font-weight: bold;
+  color: #555;
+  /* display: block; */
+  margin-bottom: 4px;
+}
+
+.empty-cell span {
+  color: #999;
+  font-style: italic;
+}
+
+
