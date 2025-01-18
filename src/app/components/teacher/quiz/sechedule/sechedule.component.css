@@ -385,16 +385,16 @@ select:hover {
     background: linear-gradient(to bottom, #f8f9fa, #e3e4e6);
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .quiz-container h1 {
+}
+
+.quiz-container h1 {
     text-align: center;
     color: #333;
     font-size: 1.8rem;
     margin-bottom: 20px;
-  }
-  
-  .question-card {
+}
+
+.question-card {
     background: #ffffff;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -402,26 +402,26 @@ select:hover {
     padding: 15px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .question-card:hover {
+}
+
+.question-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-  }
-  
-  .question-card h3 {
+}
+
+.question-card h3 {
     font-size: 1.2rem;
     color: #444;
     margin-bottom: 15px;
-  }
-  
-  ul {
+}
+
+ul {
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-  
-  .option-item {
+}
+
+.option-item {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -432,37 +432,37 @@ select:hover {
     margin-bottom: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
-  }
-  
-  .option-item:hover {
+}
+
+.option-item:hover {
     background: #eceff1;
     border-color: #bbb;
     transform: scale(1.02);
-  }
-  
-  .option-item input[type="radio"] {
-    margin-right: 10px; 
-    accent-color: #4caf50; 
+}
+
+.option-item input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #4caf50;
     width: 18px;
     height: 18px;
     cursor: pointer;
-  }
-  
-  .option-item label {
+}
+
+.option-item label {
     color: #333;
     font-size: 1rem;
     cursor: pointer;
-  }
+}
 
 
-  .pagination {
+.pagination {
     display: flex;
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
-  }
-  
-  .pagination-button {
+}
+
+.pagination-button {
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -471,15 +471,25 @@ select:hover {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
-  }
-  
-  .pagination-button:disabled {
+}
+
+.pagination-button:disabled {
     background-color: #6c757d;
     cursor: not-allowed;
-  }
-  
-  .pagination-button:not(:disabled):hover {
+}
+
+.pagination-button:not(:disabled):hover {
     background-color: #0056b3;
-  }
-  
-  
+}
+
+.quiz-question-option {
+    display: flex;
+    justify-content: right;
+}
+
+.quiz-question-option .close {
+    background-color: #dc3545;
+}
+.quiz-question-option .edit {
+    background-color: #4caf50;
+}
