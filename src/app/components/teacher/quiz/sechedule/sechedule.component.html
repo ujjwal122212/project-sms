@@ -84,16 +84,21 @@
               >
                 Edit
               </button>
-              <button class="delete" (click)="deleteQuizTitleAndDescription(quiz.quizID)">Delete</button>
+              <button
+                class="delete"
+                (click)="deleteQuizTitleAndDescription(quiz.quizID)"
+              >
+                Delete
+              </button>
             </td>
           </tr>
           }
         </tbody>
       </table>
       } @else if(selectedClassId==0 || selectedSectionId==0 ||
-      selectedSubjectId==0){
+      selectedSubjectId==0 || quizTitle.length==0){
       <h1 style="font-weight: bold; padding: 10px; text-align: center">
-        Please select a class Section and Subject
+        Please select a Class Section and Subject
       </h1>
       } @else if(showTitle && isavailable){
       <h1 style="font-weight: bold; padding: 10px; text-align: center">
@@ -101,6 +106,11 @@
       </h1>
       }
     </div>
+  </div>
+
+  <div class="headerAdd">
+    <h1>Quiz Question</h1>
+    <button (click)="openQuestionForm()">Add Quiz Questions</button>
   </div>
 </div>
 <div class="form-area" id="formModel">
@@ -240,6 +250,121 @@
       <button type="submit" class="submit">Update</button>
       }
       <button type="button" (click)="closeQuizTitleForm()" class="close">
+        Close
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="form-area" id="questionForm">
+  <h1>Add Quiz Question and Options</h1>
+  <form [formGroup]="questionForm" (ngSubmit)="onQuestionFormSubmit()">
+    <div class="card-area">
+      <!-- Class Selection -->
+      <div class="card">
+        <select formControlName="classId" (change)="onClassChange($event)">
+          <option value="0" selected disabled>Select a Class</option>
+          <option *ngFor="let class of Classes" [value]="class.classId">
+            {{ class.className }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Section Selection -->
+      <div class="card">
+        <select formControlName="sectionId" (change)="onSectionChange($event)">
+          <option value="0" selected disabled>Select a Section</option>
+          <option *ngFor="let section of Sections" [value]="section.sectionId">
+            {{ section.sectionName }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Subject Selection -->
+      <div class="card">
+        <select formControlName="subjectId" (change)="onSubjectChange1($event)">
+          <option value="0" selected disabled>Select a Subject</option>
+          <option
+            *ngFor="let subject of QuizSubject"
+            [value]="subject.subjectId"
+          >
+            {{ subject.subjectName }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Quiz Title Selection -->
+      <div class="card">
+        <select formControlName="quizId">
+          <option value="0" selected disabled>Select a Quiz Title</option>
+          <option *ngFor="let quiz of quiZes" [value]="quiz.quizID">
+            {{ quiz.quizTitle }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Questions and Options -->
+    <div
+      formArrayName="questions"
+      *ngFor="let question of questions.controls; let i = index"
+      class="question-area"
+    >
+      <div [formGroupName]="i" class="question-card">
+        <h3>Question {{ i + 1 }}</h3>
+        <input
+          type="text"
+          formControlName="questionText"
+          placeholder="Enter Question"
+        />
+        <div class="question-button removequestionbutton"  *ngIf="questions.length > 1"> 
+          <button
+            type="button"
+            (click)="removeQuestion(i)"
+            *ngIf="questions.length > 1"
+          >
+            Remove Question
+          </button>
+        </div>
+        <!-- Options -->
+        <div class="question-option">
+          <div
+            formArrayName="options"
+            *ngFor="let option of getOptions(i).controls; let j = index"
+            class="option-card"
+          >
+            <div [formGroupName]="j" class="option">
+              <input
+                type="text"
+                formControlName="optionText"
+                placeholder="Enter an Option"
+              />
+              <input
+                type="radio"
+                [name]="'correctOption' + i"
+                [value]="j"
+                (change)="markCorrectOption(i, j)"
+              />
+              Correct
+              <button type="button" (click)="removeOption(i, j)">
+                Remove Option
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="question-button">
+          <button type="button" (click)="addOptions(i)">Add Option</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Buttons -->
+    <div class="button-area">
+      <button type="button" (click)="addQuestion()" style="margin-right: 20px">
+        Add Question
+      </button>
+      <button type="submit" class="submit">Save</button>
+      <button type="button" (click)="closeQuestionForm()" class="close">
         Close
       </button>
     </div>
