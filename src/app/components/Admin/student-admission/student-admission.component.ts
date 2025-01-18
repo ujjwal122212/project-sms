@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { StudentRegistrationService } from '../../../Services/student-registration.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-student-admission',
@@ -12,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './student-admission.component.css'
 })
 export class StudentAdmissionComponent implements OnInit {
+   toastr = inject(ToastrService);
   regForm: FormGroup = new FormGroup({});
   constructor(private fb: FormBuilder) { }
   regService = inject(StudentRegistrationService);
@@ -124,7 +126,7 @@ export class StudentAdmissionComponent implements OnInit {
   @ViewChild('fileInput') fileInput!: ElementRef;
   insertStudent() {
     if (this.regForm.invalid) {
-      alert("Please fill all the valid details");
+      this.toastr.warning("Please fill all the valid details");
       return;
     }
     else {
@@ -148,7 +150,7 @@ export class StudentAdmissionComponent implements OnInit {
       formdata.append('class', this.regForm.get('class')?.value);
       formdata.append('sectionId', this.regForm.get('sectionId')?.value);
       this.regService.addStudent(formdata).subscribe((res: any) => {
-        alert("Student Data Added Successfully");
+        this.toastr.success("Student Data Added Successfully");
         this.route.navigateByUrl('/viewstudentadmission');
         this.regForm.reset();
         this.fileInput.nativeElement.value = '';
@@ -229,7 +231,7 @@ export class StudentAdmissionComponent implements OnInit {
   }
   updateStudent() {
     if (this.regForm.invalid) {
-      alert("Please fill all the valid details");
+      this.toastr.warning("Please fill all the valid details");
       return;
     }
     else {
@@ -254,7 +256,7 @@ export class StudentAdmissionComponent implements OnInit {
       formdata.append('class', this.regForm.get('class')?.value);
       formdata.append('sectionId', this.regForm.get('sectionId')?.value);
       this.regService.UpdateStudentByStudentID(enrollmentNumber, formdata).subscribe((res: any) => {
-        alert("Student Data Updated Successfully");
+        this.toastr.success("Student Data Updated Successfully");
         this.route.navigateByUrl('/viewstudentadmission');
         this.regForm.reset();
         this.fileInput.nativeElement.value = '';

@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { AdminRegistrationService } from '../../../Services/admin-registration.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-details',
@@ -11,6 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './admin-details.component.css'
 })
 export class AdminDetailsComponent {
+  toastr = inject(ToastrService);
   regService = inject(AdminRegistrationService);
   constructor(private route: Router) {
 
@@ -32,7 +34,7 @@ export class AdminDetailsComponent {
     const isConfirm = confirm("Are You sure to want to delete this teacher ?");
     if (isConfirm) {
       this.regService.deleteAdmin(enrollmentNumber).subscribe((res: any) => {
-        alert("Admin Deleted Successfully");
+        this.toastr.error("Admin Deleted Successfully");
         this.route.navigateByUrl('/adminlayout/adminregistration');
       })
     }

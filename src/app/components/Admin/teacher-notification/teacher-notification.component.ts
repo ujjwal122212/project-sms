@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-teacher-notification',
@@ -10,7 +11,9 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
   templateUrl: './teacher-notification.component.html',
   styleUrl: './teacher-notification.component.css'
 })
+  
 export class TeacherNotificationComponent implements OnInit{
+   toastr = inject(ToastrService);
   http = inject(HttpClient);
   studentNotificationform: FormGroup = new FormGroup({});
   studentNotification: any[] = []
@@ -39,19 +42,19 @@ export class TeacherNotificationComponent implements OnInit{
   }
   insertStudentNotification() {
     if (this.studentNotificationform.invalid) {
-      alert("Please fill all the valid details");
+      this.toastr.warning("Please fill all the valid details");
       return;
     }
     const formvalue = this.studentNotificationform.value;
     this.http.post('https://localhost:7262/api/TeachersNotification/Add TeachersNotification', formvalue, { responseType: 'text' })
       .subscribe((res: any) => {
-        alert("Teacher Notification Added Successfully");
+        this.toastr.success("Teacher Notification Added Successfully");
         this.getAllNotification();
         this.studentNotificationform.reset();
         this.CloseModel();
       }, error => {
         console.error("Error:", error);
-        alert("Failed to add Student Notification");
+        this.toastr.warning("Failed to add Student Notification");
       });
   }
   editStudentNotification(NotificationID: number) {
@@ -63,19 +66,19 @@ export class TeacherNotificationComponent implements OnInit{
   }
   updation() {
     if (this.studentNotificationform.invalid) {
-      alert("Please fill all the valid details");
+      this.toastr.warning("Please fill all the valid details");
       return;
     }
     const formvalue = this.studentNotificationform.value;
     this.http.put(`https://localhost:7262/api/TeachersNotification/${formvalue.notificationID}`, formvalue, { responseType: 'text' })
       .subscribe((res: any) => {
-        alert("Teacher Notification Updated Successfully");
+        this.toastr.success("Teacher Notification Updated Successfully");
         this.getAllNotification();
         this.studentNotificationform.reset();
         this.CloseModel();
       }, error => {
         console.error("Error:", error);
-        alert("Failed to update Student Notification");
+        this.toastr.error("Failed to update Student Notification");
       });
   }
 

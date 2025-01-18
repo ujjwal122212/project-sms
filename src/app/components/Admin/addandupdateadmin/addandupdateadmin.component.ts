@@ -3,6 +3,7 @@ import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core'
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminRegistrationService } from '../../../Services/admin-registration.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-addandupdateadmin',
@@ -12,6 +13,7 @@ import { AdminRegistrationService } from '../../../Services/admin-registration.s
   styleUrl: './addandupdateadmin.component.css'
 })
 export class AddandupdateadminComponent implements OnInit {
+   toastr = inject(ToastrService);
   router = inject(Router);
   regService = inject(AdminRegistrationService)
   State: any[] = [];
@@ -73,7 +75,7 @@ export class AddandupdateadminComponent implements OnInit {
   @ViewChild('fileInput') fileInput!: ElementRef;
   insertTeacherDetails() {
     if (this.regForm.invalid) {
-      alert("Please fill all the valid details");
+      this.toastr.warning("Please fill all the valid details");
       return;
     }
     else {
@@ -88,7 +90,7 @@ export class AddandupdateadminComponent implements OnInit {
       formdata.append('pincode', this.regForm.get('pincode')?.value);
       formdata.append('ImagePath', this.regForm.get('imagePath')?.value);
       this.regService.addAdminDetails(formdata).subscribe((res: any) => {
-        alert('Admin Details added Successfullly');
+        this.toastr.success('Admin Details added Successfullly');
         this.router.navigateByUrl('/adminlayout/adminregistration');
         this.regForm.reset();
       })
@@ -157,7 +159,7 @@ export class AddandupdateadminComponent implements OnInit {
   }
   EditTeacher() {
     if (this.regForm.invalid) {
-      alert("Please fill all the valid details");
+      this.toastr.warning("Please fill all the valid details");
       return;
     }
     else {
@@ -173,7 +175,7 @@ export class AddandupdateadminComponent implements OnInit {
       formdata.append('pincode', this.regForm.get('pincode')?.value);
       formdata.append('ImagePath', this.regForm.get('imagePath')?.value);
       this.regService.updateAdmin(enrollmentNumber, formdata).subscribe((res: any) => {
-        alert('Admin Details Updated Successfullly');
+        this.toastr.success('Admin Details Updated Successfullly');
         this.router.navigateByUrl('/adminlayout/adminregistration');
         this.regForm.reset();
       })

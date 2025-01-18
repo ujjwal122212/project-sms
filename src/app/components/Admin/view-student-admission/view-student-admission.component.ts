@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, concatMap, map, Observable, of, tap } from 'rxjs';
 import { admission } from '../../../Interfaces/Admission';
 import { response } from 'express';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-view-student-admission',
@@ -15,7 +16,9 @@ import { response } from 'express';
   templateUrl: './view-student-admission.component.html',
   styleUrl: './view-student-admission.component.css'
 })
+  
 export class ViewStudentAdmissionComponent implements OnInit {
+  toastr = inject(ToastrService);
   route = inject(Router);
   reService = inject(StudentRegistrationService);
 
@@ -88,7 +91,7 @@ export class ViewStudentAdmissionComponent implements OnInit {
     this.isSubjectDataEmpty = false;
     if (this.selectedClass === 0 || this.selectedSectionId === 0) {
       this.isClassOrSectionNotSelected = true;
-      alert("Please select a class and a Section");
+      this.toastr.warning("Please select a class and a Section");
       return;
     }
     this.loadStudentDetailsBySectionId(this.selectedSectionId);
@@ -98,7 +101,7 @@ export class ViewStudentAdmissionComponent implements OnInit {
     const isConfirm = confirm("Are you sure to want to delete this record ? ");
     if (isConfirm) {
       this.reService.deleteStudentByStudentId(studentID).subscribe((res: any) => {
-        alert("Student data deleted successfully");
+        this.toastr.error("Student data deleted successfully");
         this.selectedClass = 0;
         this.selectedSectionId = 0;
         this.Sections = [];
