@@ -329,7 +329,8 @@ select:hover {
     width: calc(25% - 10px);
     min-width: 120px;
 }
-.option{
+
+.option {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -362,7 +363,8 @@ select:hover {
 .option-card button:hover {
     background-color: #b02a37;
 }
-.removequestionbutton button{
+
+.removequestionbutton button {
     background-color: #dc3545;
     color: white;
     border: none;
@@ -371,6 +373,84 @@ select:hover {
     cursor: pointer;
     margin-bottom: 10px;
 }
+
 .removequestionbutton button:hover {
     background-color: #b02a37;
 }
+
+.quiz-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: linear-gradient(to bottom, #f8f9fa, #e3e4e6);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .quiz-container h1 {
+    text-align: center;
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .question-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .question-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .question-card h3 {
+    font-size: 1.2rem;
+    color: #444;
+    margin-bottom: 15px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .option-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .option-item:hover {
+    background: #eceff1;
+    border-color: #bbb;
+    transform: scale(1.02);
+  }
+  
+  .option-item input[type="radio"] {
+    margin-right: 10px; 
+    accent-color: #4caf50; 
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+  
+  .option-item label {
+    color: #333;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  

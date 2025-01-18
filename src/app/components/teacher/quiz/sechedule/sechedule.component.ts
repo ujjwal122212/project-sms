@@ -4,7 +4,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TeacherQuizService } from '../../../../Services/teacher-quiz.service';
 
-
 @Component({
   selector: 'app-sechedule',
   standalone: true,
@@ -20,7 +19,7 @@ export class SecheduleComponent implements OnInit {
   questionOptionsForm: FormGroup = new FormGroup({});
   showTitle: boolean = false;
   isavailable: boolean = false;
-  isQuestionForm: boolean = false;
+  isQuiznotAvailable: boolean = true;
   constructor(private fb: FormBuilder) { }
 
   quizService = inject(TeacherQuizService);
@@ -350,13 +349,80 @@ export class SecheduleComponent implements OnInit {
   }
 
 
+  // geeting all the question and options
+
+
+  Classes1: any[] = [];
+  loadClasses1() {
+    this.quizService.getClasses().subscribe((res: any) => {
+      this.Classes1 = res;
+    })
+  }
+
+  selectedClassId1: number = 0;
+  onClassChange1(event: any) {
+    this.selectedClassId1 = event.target.value;
+    this.loadSectionByClassId1(this.selectedClassId1);
+  }
+  Sections2: any[] = [];
+  loadSectionByClassId1(classId: number) {
+    this.quizService.getSectionByClassId(classId).subscribe((res: any) => {
+      this.Sections2 = res;
+    })
+  }
+  selectedSectionId1: number = 0;
+  onSectionChange1(event: any) {
+    this.selectedSectionId1 = event.target.value;
+    this.loadSubjectBySectionId1(this.selectedSectionId1);
+  }
+  Subject1: any[] = [];
+  loadSubjectBySectionId1(sectionId: number) {
+    this.quizService.getQuizSubjectBySectionId(sectionId).subscribe((res: any) => {
+      this.Subject1 = res;
+    })
+  }
+  selectedSubjectId1: number = 0;
+
+  onSubjectChange2(event: any) {
+    this.selectedSubjectId1 = event.target.value;
+    this.loadQuizBySubjectId1(this.selectedSubjectId1);
+  }
+  selectedQuizId: number = 0;
+  onQuizChange(event: any) {
+    this.selectedQuizId = event.target.value;
+  }
+  QuizDetails: any[] = [];
+  loadQuizBySubjectId1(subjectId: number) {
+    this.quizService.getquiztitlebysubjectid(subjectId).subscribe((res: any) => {
+      this.QuizDetails = res;
+      console.log(res);
+    })
+  }
+
+  QuesTionAndOptions: any[] = [];
+  loadQuestionAndOptions(quizID: number) {
+    this.quizService.getquestionbyquizid(quizID).subscribe((res: any) => {
+      this.QuesTionAndOptions = res;
+      // console.log(res);
+    })
+  }
+  showQuizQuestionAndOptions() {
+    this.isQuiznotAvailable=false;
+    if(this.selectedClassId1==0 || this.selectedSectionId1==0 || this.selectedSubjectId1==0 || this.selectedQuizId==0){
+      alert("Please select all the fields");
+      return;
+    }
+    this.loadQuestionAndOptions(this.selectedQuizId);
+  }
+
+
   openQuestionForm() {
     const questionForm = document.getElementById('questionForm');
     if (questionForm != null) {
       questionForm.classList.add('openform');
     }
   }
-  
+
   closeQuestionForm() {
     this.selectedClassId = 0;
     this.selectedSectionId = 0;
@@ -375,5 +441,6 @@ export class SecheduleComponent implements OnInit {
     this.setQuizTitleAndDesState();
     this.loadClass();
     this.setQuestionFormState();
+    this.loadClasses1();
   }
 }

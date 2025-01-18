@@ -112,6 +112,97 @@
     <h1>Quiz Question</h1>
     <button (click)="openQuestionForm()">Add Quiz Questions</button>
   </div>
+  <div class="selected-area">
+    <div class="area">
+      <select
+        name=""
+        id=""
+        [(ngModel)]="selectedClassId1"
+        (change)="onClassChange1($event)"
+      >
+        <option value="0" disabled>Select a Class</option>
+        @for(class of Classes1;track $index){
+        <option [value]="class.classId">{{ class.className }}</option>
+        }
+      </select>
+    </div>
+    <div class="area">
+      <select
+        name=""
+        id=""
+        [(ngModel)]="selectedSectionId1"
+        (change)="onSectionChange1($event)"
+      >
+        <option value="0" disabled>Select a Section</option>
+        @for(section of Sections2;track $index){
+        <option [value]="section.sectionId">{{ section.sectionName }}</option>
+        }
+      </select>
+    </div>
+    <div class="area">
+      <select
+        name=""
+        id=""
+        [(ngModel)]="selectedSubjectId1"
+        (change)="onSubjectChange2($event)"
+      >
+        <option value="0" selected disabled>Select a Subject</option>
+        @for(subject of Subject1;track $index){
+        <option [value]="subject.subjectId">{{ subject.subjectName }}</option>
+        }
+      </select>
+    </div>
+    <div class="area">
+      <select
+        name=""
+        id=""
+        [(ngModel)]="selectedQuizId"
+        (change)="onQuizChange($event)"
+      >
+        <option value="0" selected disabled>Select a Quiz Title</option>
+        <option *ngFor="let quiz of QuizDetails" [value]="quiz.quizID">
+          {{ quiz.quizTitle }}
+        </option>
+      </select>
+    </div>
+    <div class="area show">
+      <button type="button" (click)="showQuizQuestionAndOptions()">show</button>
+    </div>
+  </div>
+  <div class="section">
+    <div class="quiz-container" *ngIf="QuesTionAndOptions.length > 0">
+      <h1>Student Quiz</h1>
+      <div *ngFor="let question of QuesTionAndOptions" class="question-card">
+        <h3>{{ question.questionText }}</h3>
+        <ul>
+          <li
+            *ngFor="let option of question.options"
+            class="option-item"
+            type="a"
+          >
+            <input
+              type="radio"
+              [id]="'option-' + option.optionId"
+              [name]="'question-' + question.questionId"
+            />
+            <label [for]="'option-' + option.optionId">{{
+              option.optionText
+            }}</label>
+          </li>
+        </ul>
+      </div>
+    </div>
+    @if(selectedClassId1==0 || selectedSectionId1==0 || selectedSubjectId1==0 ||
+    selectedQuizId==0 ){
+    <h1 style="font-weight: bold; padding: 10px; text-align: center">
+      Please select a Class Section Subject and Quiz Title
+    </h1>
+    } @else if(QuesTionAndOptions.length==0 && !isQuiznotAvailable){
+    <h1 style="font-weight: bold; padding: 10px; text-align: center">
+      No Quiz Questions Found
+    </h1>
+    }
+  </div>
 </div>
 <div class="form-area" id="formModel">
   <h1>Add Student Subjects</h1>
@@ -317,7 +408,10 @@
           formControlName="questionText"
           placeholder="Enter Question"
         />
-        <div class="question-button removequestionbutton"  *ngIf="questions.length > 1"> 
+        <div
+          class="question-button removequestionbutton"
+          *ngIf="questions.length > 1"
+        >
           <button
             type="button"
             (click)="removeQuestion(i)"
