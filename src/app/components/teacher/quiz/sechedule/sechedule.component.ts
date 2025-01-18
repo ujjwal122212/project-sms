@@ -395,20 +395,77 @@ export class SecheduleComponent implements OnInit {
   loadQuizBySubjectId1(subjectId: number) {
     this.quizService.getquiztitlebysubjectid(subjectId).subscribe((res: any) => {
       this.QuizDetails = res;
-      console.log(res);
-    })
-  }
-
-  QuesTionAndOptions: any[] = [];
-  loadQuestionAndOptions(quizID: number) {
-    this.quizService.getquestionbyquizid(quizID).subscribe((res: any) => {
-      this.QuesTionAndOptions = res;
       // console.log(res);
     })
   }
+
+  // QuesTionAndOptions: any[] = [];
+  // loadQuestionAndOptions(quizID: number) {
+  //   this.quizService.getquestionbyquizid(quizID).subscribe((res: any) => {
+  //     this.QuesTionAndOptions = res;
+  //   })
+  // }
+
+  // itemsPerPage: number = 1;
+  // currentPage: number = 1;
+
+  // get pagedAttendanceRecords() {
+  //   const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+  //   const endIndex = startIndex + this.itemsPerPage;
+  //   return this.QuesTionAndOptions.slice(startIndex, endIndex);
+  // }
+
+  // changePage(page: number) {
+  //   this.currentPage = page;
+  // }
+
+
+
+  QuesTionAndOptions: any[] = [];
+  itemsPerPage: number = 1;
+  currentPage: number = 1;
+
+  paginatedQuestions: any[] = [];
+
+ 
+
+  loadQuestionAndOptions(quizID: number) {
+    this.quizService.getquestionbyquizid(quizID).subscribe((res: any) => {
+      this.QuesTionAndOptions = res;
+      // console.log(this.QuesTionAndOptions);
+      this.paginateQuestions();
+    });
+  }
+
+  // Function to paginate the questions
+  paginateQuestions() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedQuestions = this.QuesTionAndOptions.slice(startIndex, endIndex);
+  }
+
+  // Function to handle page changes
+  changePage(direction: string) {
+    const totalPages = Math.ceil(this.QuesTionAndOptions.length / this.itemsPerPage);
+
+    if (direction === 'next' && this.currentPage < totalPages) {
+      this.currentPage++;
+    } else if (direction === 'previous' && this.currentPage > 1) {
+      this.currentPage--;
+    }
+    this.paginateQuestions();
+  }
+
+  // Getter for paginated questions
+  get pagedQuestions() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.QuesTionAndOptions.slice(startIndex, endIndex);
+  }
+
   showQuizQuestionAndOptions() {
-    this.isQuiznotAvailable=false;
-    if(this.selectedClassId1==0 || this.selectedSectionId1==0 || this.selectedSubjectId1==0 || this.selectedQuizId==0){
+    this.isQuiznotAvailable = false;
+    if (this.selectedClassId1 == 0 || this.selectedSectionId1 == 0 || this.selectedSubjectId1 == 0 || this.selectedQuizId == 0) {
       alert("Please select all the fields");
       return;
     }

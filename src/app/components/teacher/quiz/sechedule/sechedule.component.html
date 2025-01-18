@@ -172,7 +172,7 @@
   <div class="section">
     <div class="quiz-container" *ngIf="QuesTionAndOptions.length > 0">
       <h1>Student Quiz</h1>
-      <div *ngFor="let question of QuesTionAndOptions" class="question-card">
+      <div *ngFor="let question of pagedQuestions" class="question-card">
         <h3>{{ question.questionText }}</h3>
         <ul>
           <li
@@ -190,6 +190,23 @@
             }}</label>
           </li>
         </ul>
+        <div class="pagination">
+          <button 
+            (click)="changePage('previous')" 
+            [disabled]="currentPage === 1"
+            class="pagination-button"
+          >
+            Previous
+          </button>
+          <button 
+            (click)="changePage('next')" 
+            [disabled]="currentPage * itemsPerPage >= QuesTionAndOptions.length"
+            class="pagination-button"
+          >
+            Next
+          </button>
+        </div>
+        
       </div>
     </div>
     @if(selectedClassId1==0 || selectedSectionId1==0 || selectedSubjectId1==0 ||
