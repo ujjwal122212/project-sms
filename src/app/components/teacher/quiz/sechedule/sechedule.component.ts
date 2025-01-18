@@ -427,7 +427,7 @@ export class SecheduleComponent implements OnInit {
 
   paginatedQuestions: any[] = [];
 
- 
+
 
   loadQuestionAndOptions(quizID: number) {
     this.quizService.getquestionbyquizid(quizID).subscribe((res: any) => {
@@ -491,6 +491,14 @@ export class SecheduleComponent implements OnInit {
     if (questionForm != null) {
       questionForm.classList.remove('openform');
     }
+  }
+
+
+  editQuestion(questionId: number) {
+    alert("Edit Question");
+  }
+  deleteQuestion(questionId: number) {
+    alert("Delete Question");
   }
 
   ngOnInit(): void {
