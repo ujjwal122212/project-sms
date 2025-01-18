@@ -40,7 +40,7 @@ export class TeacherQuizService {
     return this.http.delete(`${this.apiurl}/api/Quiz/${quizId}`);
   }
   AddQuestions(data:any){
-    return this.http.post(`${this.apiurl}/api/Question/Add Question`,data);
+    return this.http.post(`${this.apiurl}/AddQuestionsWithOptions`,data);
   }
   getquestionbyquizid(quizID:number){
     return this.http.get(`${this.apiurl}/api/Question/${quizID}`);
