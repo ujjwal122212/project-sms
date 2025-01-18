@@ -1,11 +1,10 @@
-<!-- <div class="main-content"> -->
 <div class="grid-container">
   <div class="header">
     <h1>Time Table</h1>
     <div class="content">
       <span><a href="#">Dashboard</a></span>
       <span>
-        <p>/ Time table</p>
+        <p>/ Time Table</p>
       </span>
     </div>
   </div>
@@ -15,24 +14,72 @@
     <table class="timetable">
       <thead>
         <tr>
-          <th>Day</th>
-          <th>Time</th>
-          <th>Subject</th>
-          <th>Class Name</th>
-          <th>Section</th>
+          <th *ngFor="let head of heading">{{ head }}</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of teacherTimeTable">
-          <td>{{ item.Day }}</td>
-          <td>{{ item.Time }}</td>
-          <td>{{ item.Subject }}</td>
-          <td>{{ item.ClassName }}</td>
-          <td>{{ item.SectionName }}</td>
+          <td>
+            {{ item.TimeSlot }}
+          </td>
+          <td *ngIf="item.Subjects.Monday">
+            <span>Subject:</span> {{ item.Subjects.Monday.Subject }}<br />
+            <span>Class:</span> {{ item.Subjects.Monday.ClassName }}<br />
+            <span>Section:</span> {{ item.Subjects.Monday.SectionName }}
+          </td>
+          <td *ngIf="!item.Subjects.Monday" class="empty-cell">
+            <span>N/A</span>
+          </td>
+          <td *ngIf="item.Subjects.Tuesday">
+            <span>Subject:</span> {{ item.Subjects.Tuesday.Subject }}<br />
+            <span>Class:</span> {{ item.Subjects.Tuesday.ClassName }}<br />
+            <span>Section:</span> {{ item.Subjects.Tuesday.SectionName }}
+          </td>
+          <td *ngIf="!item.Subjects.Tuesday" class="empty-cell">
+            <span>N/A</span>
+          </td>
+          <td *ngIf="item.Subjects.Wednesday">
+            <span>Subject:</span> {{ item.Subjects.Wednesday.Subject }}<br />
+            <span>Class:</span> {{ item.Subjects.Wednesday.ClassName }}<br />
+            <span>Section:</span> {{ item.Subjects.Wednesday.SectionName }}
+          </td>
+          <td *ngIf="!item.Subjects.Wednesday" class="empty-cell">
+            <span>N/A</span>
+          </td>
+          <td *ngIf="item.Subjects.Thursday">
+            <span>Subject:</span> {{ item.Subjects.Thursday.Subject }}<br />
+            <span>Class:</span> {{ item.Subjects.Thursday.ClassName }}<br />
+            <span>Section:</span> {{ item.Subjects.Thursday.SectionName }}
+          </td>
+          <td *ngIf="!item.Subjects.Thursday" class="empty-cell">
+            <span>N/A</span>
+          </td>
+          <td *ngIf="item.Subjects.Friday">
+            <span>Subject:</span> {{ item.Subjects.Friday.Subject }}<br />
+            <span>Class:</span> {{ item.Subjects.Friday.ClassName }}<br />
+            <span>Section:</span> {{ item.Subjects.Friday.SectionName }}
+          </td>
+          <td *ngIf="!item.Subjects.Friday" class="empty-cell">
+            <span>N/A</span>
+          </td>
+          <td *ngIf="item.Subjects.Saturday">
+            <span>Subject:</span> {{ item.Subjects.Saturday.Subject }}<br />
+            <span>Class:</span> {{ item.Subjects.Saturday.ClassName }}<br />
+            <span>Section:</span> {{ item.Subjects.Saturday.SectionName }}
+          </td>
+          <td *ngIf="!item.Subjects.Saturday" class="empty-cell">
+            <span>N/A</span>
+          </td>
+          <td *ngIf="item.Subjects.Sunday">
+            <span>Subject:</span> {{ item.Subjects.Sunday.Subject }}<br />
+            <span>Class:</span> {{ item.Subjects.Sunday.ClassName }}<br />
+            <span>Section:</span> {{ item.Subjects.Sunday.SectionName }}
+          </td>
+          <td *ngIf="!item.Subjects.Sunday" class="empty-cell">
+            <span>N/A</span>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
-
 </div>
-<!-- </div> -->
