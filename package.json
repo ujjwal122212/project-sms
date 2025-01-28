@@ -24,6 +24,7 @@
     "alertifyjs": "^1.14.0",
     "chart.js": "^4.4.4",
     "express": "^4.18.2",
+    "ngx-pagination": "^6.0.3",
     "ngx-toastr": "^19.0.0",
     "process": "^0.11.10",
     "rxjs": "~7.8.0",
