@@ -89,6 +89,7 @@ import { ClassTeacherAssignmentComponent } from './components/Admin/class-teache
 import { StudentAttendenceComponent } from './components/teacher/student-attendence/student-attendence.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { authGuard } from './components/Authentication/auth.guard';
+import { QuizQuestionsComponent } from './components/student/quiz-questions/quiz-questions.component';
 // import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
@@ -337,8 +338,17 @@ export const routes: Routes = [
             canActivate: [authGuard],
             data: { roles: ['Student'] },
           },
+          {
+            path: 'quiz2', children: [
+              {
+                path: 'questions', component: QuizQuestionsComponent, title: 'Quiz Question', canActivate: [authGuard],
+                data: { roles: ['Student'] },
+              }
+            ]
+          },
         ],
       },
+
 
       //student courses
       {
