@@ -4,13 +4,13 @@
     <div class="content">
       <a href="#">Dashboard</a>/<a href="#">Quizzes</a> /
       <span
-        ><p>{{subjectCode}}</p>
+        ><p>{{ subjectCode }}</p>
         <p>/ Questions</p></span
       >
     </div>
   </div>
   <div class="border-bottom"></div>
-  <div *ngIf="isloading" class="loading-container">
+  <div *ngIf="isloading " class="loading-container">
     <div class="spinner"></div>
     <p>Loading questions...</p>
   </div>
@@ -49,5 +49,8 @@
     <div class="submit-container" *ngIf="currentPage === totalPages">
       <button class="submit-btn" (click)="submitQuiz()">Submit</button>
     </div>
+  </div>
+  <div *ngIf="isEmpty" class="error">
+    <h1>No data is available</h1>
   </div>
 </div>

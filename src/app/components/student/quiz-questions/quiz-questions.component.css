@@ -167,4 +167,16 @@
   .submit-btn:hover {
     background: #0056b3;
   }
+  .error {
+    color: #ff0000; /* Red text */
+    background-color: #ffe6e6; /* Light red background */
+    padding: 15px;
+    border: 1px solid #ff0000;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 20px 0;
+  }
+  
   

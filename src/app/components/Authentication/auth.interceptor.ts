@@ -18,7 +18,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     : req;
   return next(clonedReq).pipe(
     catchError((error: HttpErrorResponse) => {
-      if (error) {
+      if (error.status === 401) {
         const isRefresh = confirm("Your Session is Expired. Do you want to Continue?");
         if (isRefresh) {
           loginService.$refreshToken.next(true);
