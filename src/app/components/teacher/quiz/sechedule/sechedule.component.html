@@ -172,12 +172,12 @@
   <div class="section">
     <div class="quiz-container" *ngIf="QuesTionAndOptions.length > 0">
       <h1>Student Quiz</h1>
-      <div *ngFor="let question of pagedQuestions" class="question-card">
+      <div *ngFor="let question of pagedQuestions;let i=index" class="question-card">
         <div class="button-area quiz-question-option">
           <button class="edit" (click)="editQuestion(question.questionId)">Edit</button>
           <button class="close" (click)="deleteQuestion(question.questionId)">Delete</button>
         </div>
-        <h3>{{ question.questionText }}</h3>
+        <h3>{{(currentPage-1)*itemsPerPage+i+1}} . {{ question.questionText }}</h3>
         <ul>
           <li
             *ngFor="let option of question.options"
