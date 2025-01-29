@@ -2,62 +2,69 @@
   <div class="header">
     <h1>Quizzes</h1>
     <div class="content">
-      <a href="#">Dashboard</a>/<a href="#">Quizzes</a> /
+      <a href="#">Dashboard</a> / <a href="#">Quizzes</a> /
       <span>
         <p>{{ subjectCode }}</p>
         <p>/ Questions</p>
       </span>
     </div>
   </div>
-  
+
   <div class="border-bottom"></div>
 
-
+  <!-- Loading Spinner -->
   <div *ngIf="isloading" class="loading-container">
     <div class="spinner"></div>
     <p>Loading questions...</p>
   </div>
 
- 
+  <!-- Quiz Container -->
   <div class="quiz-container" *ngIf="quizDetails?.quizTitle">
     <h2 class="quiz-title">{{ quizDetails.quizTitle }}</h2>
     <p class="quiz-description">{{ quizDetails.quizDescription }}</p>
 
-    
-    <div
-      class="question-card"
-      *ngFor="let question of quizDetails.questions 
-        | paginate : { itemsPerPage: itemsPerPage, currentPage: currentPage }; let i = index"
-    >
-      <h3 class="question-text">
-        {{ (currentPage - 1) * itemsPerPage + i + 1 }} . {{ question.questionText }}
-      </h3>
-      <ul class="options">
-        <li class="option" *ngFor="let option of question.options">
-          <label>
-            <input
-              type="radio"
-              [name]="'question_' + question.questionId"
-              [value]="option.optionText"
-            />
-            {{ option.optionText }}
-          </label>
-        </li>
-      </ul>
-    </div>
+    <!-- Quiz Questions Form -->
+    <form [formGroup]="quizForm" (ngSubmit)="submitQuiz()">
+      <div
+        class="question-card"
+        *ngFor="let question of quizDetails.questions | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }; let i = index"
+      >
+        <h3 class="question-text">
+          {{ (currentPage - 1) * itemsPerPage + i + 1 }}. {{ question.questionText }}
+        </h3>
+        
+        <!-- Answers Form Array -->
+        <ul class="options" formArrayName="answers">
+          <div [formGroupName]="i">
+            <li class="option" *ngFor="let option of question.options">
+              <label>
+                <input
+                  type="radio"
+                  [name]="'question-' + question.questionId"
+                  [value]="option.optionId"
+                  (change)="onOptionSelect(question.questionId, option.optionId)"
+                  [checked]="quizForm.get('answers')?.value[i]?.selectedOptionID === option.optionId"
+                />
+                {{ option.optionText }}
+              </label>
+            </li>
+          </div>
+        </ul>
+      </div>
 
+      <!-- Pagination Controls -->
+      <div class="pagination-container">
+        <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+      </div>
 
-    <div class="pagination-container">
-      <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
-    </div>
-
-   
-    <div class="submit-container" *ngIf="currentPage === totalPages">
-      <button class="submit-btn" (click)="submitQuiz()">Submit</button>
-    </div>
+      <!-- Submit Button -->
+      <div class="submit-container" *ngIf="currentPage === totalPages">
+        <button class="submit-btn" type="submit" [disabled]="quizForm.invalid">Submit</button>
+      </div>
+    </form>
   </div>
 
-
+  <!-- Empty State -->
   <div *ngIf="isEmpty" class="error">
     <h1>No data is available</h1>
   </div>
