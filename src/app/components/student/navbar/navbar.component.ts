@@ -21,7 +21,7 @@ import { LoginService } from '../../../Services/login.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent implements OnInit {
-
+  imagePath!: String;
   isProfileOpen = false;
   isNotificationOpen = false;
   route = inject(Router);
@@ -32,7 +32,8 @@ export class NavbarComponent implements OnInit {
   getStudentByEnrollmentNumber(enrollmentNo: number) {
     this.regService.getStudentDetailByStudentId(enrollmentNo).subscribe((res: any) => {
       this.student = res;
-      //  console.log(this.student);
+      const studentImagePath = res.imagePath;
+      this.imagePath=studentImagePath.split("Student_images/")[1];
     })
   }
   EditStudent(enrollmentNumber: number) {
