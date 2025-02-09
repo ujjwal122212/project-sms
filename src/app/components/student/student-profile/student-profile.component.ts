@@ -11,16 +11,19 @@ import { CommonModule } from '@angular/common';
   templateUrl: './student-profile.component.html',
   styleUrl: './student-profile.component.css'
 })
-export class StudentProfileComponent implements OnInit{
+export class StudentProfileComponent implements OnInit {
+  imagePath!: String
   route = inject(Router);
   loginService = inject(LoginService);
   regService = inject(StudentRegistrationService);
   enrollmentNo!: number | null
-  student:any;
+  student: any;
   getStudentByEnrollmentNumber(enrollmentNo: number) {
-    this.regService.getStudentDetailByStudentId(enrollmentNo).subscribe((res:any)=>{
-     this.student=res;
-    //  console.log(this.student);
+    this.regService.getStudentDetailByStudentId(enrollmentNo).subscribe((res: any) => {
+      this.student = res;
+      const studentImagePath = res.imagePath;
+      this.imagePath = studentImagePath.split("Student_images/")[1];
+      //  console.log(this.student);
     })
   }
   EditStudent(enrollentNumber: number) {
