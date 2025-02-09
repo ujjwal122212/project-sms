@@ -1,0 +1,95 @@
+.parentinfo {
+    margin: 60px 10px 0 60px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.form-area{
+    background-color: white;
+    overflow-x: hidden;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.form-area h1 {
+    text-align: center;
+    padding: 15px 0;
+    border-radius: 10px 10px 0 0;
+    font-size: 22px;
+    background-color: #FDC300;
+}
+/* Container Styling */
+form {
+    max-width: 100%;
+    margin: 20px 10px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Label Styling */
+label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+/* Input Fields Styling */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus {
+    border: 1px solid #007BFF;
+    outline: none;
+}
+
+/* File Input Custom Styling */
+input[type="file"] {
+    padding: 5px;
+    border: none;
+    background-color: #ffffff;
+}
+
+/* Submit Button Styling */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Disable button when form is invalid */
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    form {
+        width: 90%;
+    }
+}
