@@ -13,3 +13,4 @@ import { TNavbarComponent } from '../teacher/t-navbar/t-navbar.component';
 export class TeacherLayoutComponent {
 
 }
+
