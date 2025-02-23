@@ -296,6 +296,19 @@
   margin: 5px 0 0;
 }
 
+@media (max-width: 768px) {
+  .side-bar {
+    width: 60px; /* Reduce width */
+    overflow: hidden;
+  }
+
+  .main-content {
+    margin-left: 70px; /* Ensure content moves right */
+    width: calc(100% - 70px);
+  }
+}
+
+
 /* Adjust for tablets */
 @media (max-width: 1024px) {
   .container {
@@ -369,6 +382,7 @@
     width: 100%;
   }
 }
+
 
 /* Adjust for very small screens */
 @media (max-width: 480px) {

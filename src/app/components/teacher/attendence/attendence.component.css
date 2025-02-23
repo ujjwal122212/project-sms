@@ -68,3 +68,38 @@
 .detail-row:hover .teacher-name {
   color: #0056b3; /* Darker shade on hover */
 }
+
+ @media (max-width: 576px) {
+  .attendance-card {
+    width: 90%; 
+    margin: 10px auto;
+  }
+
+  .detail-row {
+    flex-direction: column; 
+    text-align: left;
+  }
+
+  .card-content {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .attendance-card {
+    width: 80%; 
+    margin: 10px auto;
+  }
+}
+
+@media (max-width: 992px) {
+  .attendance-card {
+    width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .attendance-card {
+    width: 300px;
+  }
+} 

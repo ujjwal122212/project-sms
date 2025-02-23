@@ -72,3 +72,50 @@ ul {
   background-color: rgb(192, 186, 186);
   cursor: pointer;
 }
+
+
+@media screen and (max-width: 768px) {
+  .main2 {
+    width: 100%;
+  }
+  .first,
+  .second,
+  .third {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+  }
+  ul {
+    margin-left: 1rem;
+  }
+  i {
+    font-size: 1rem;
+    margin-left: -1rem;
+  }
+}
+
+/* Small Screens (Mobile Phones) */
+@media screen and (max-width: 480px) {
+  .main2 {
+    width: 100%;
+    padding: 0.5rem;
+  }
+  .first,
+  .second,
+  .third {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding: 0.8rem;
+  }
+  ul {
+    margin-left: 0.5rem;
+  }
+  i {
+    font-size: 0.9rem;
+    margin-left: -0.5rem;
+  }
+  .second ul:hover {
+    background-color: rgb(165, 165, 165);
+  }
+}
