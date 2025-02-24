@@ -2,15 +2,9 @@
     <div class="form-container">
         <p class="title">Login</p>
         <form class="form" [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
-            <input type="text" class="input" placeholder="EnrollmentNo" formControlName="enrollmentNumber"
+            <input type="text" class="input" placeholder="EnrollmentNo or Email" formControlName="identifier"
                 name="studentID" />
             <input type="password" class="input" placeholder="Password" formControlName="password" name="password" />
-            <!-- <select name="" id="" formControlName="role">
-                <option value="" selected disabled>Select Your Role</option>
-                <option value="Student">Student</option>
-                <option value="Teacher">Teacher</option>
-                <option value="Admin">Admin</option>       
-            </select> -->
             <p class="page-link">
                 <span class="page-link-label">Forgot Password?</span>
             </p>

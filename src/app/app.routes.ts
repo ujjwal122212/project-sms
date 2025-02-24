@@ -1033,9 +1033,9 @@ export const routes: Routes = [
         path: 'ahome',
         children: [
           {
-            path: 'viewstudent',
+            path: 'viewstudentadmission',
             title: 'View-Student',
-            component: ViewStudentComponent,
+            component: ViewStudentAdmissionComponent,
             canActivate: [authGuard],
             data: { roles: ['Admin'] },
           },
