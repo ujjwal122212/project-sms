@@ -1,0 +1,80 @@
+
+
+<div class="reg-area">
+  <div class="header">
+    <h1>Student Admission</h1>
+    <button (click)="openregform()">Add Student</button>
+  </div>
+
+  <div class="selected-area">
+    <div class="search-area">
+      <button class="delete" (click)="GOTO()">
+        Admission 
+      </button>
+    </div>
+    <div class="search-area">
+      <h1>Search</h1>
+      <input
+        type="search"
+        [(ngModel)]="searchTerm"
+        placeholder="Search Student Name or Enrollment Number"
+      />
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="table-container">
+      @if(filteredUserList.length > 0) {
+        <table>
+          <thead>
+            <tr>
+              @for(head of StudentHeading; track $index) {
+                <th>{{ head }}</th>
+              }
+            </tr>
+          </thead>
+          <tbody>
+            @for(student of filteredUserList; track $index) {
+              <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ student.enrollmentNumber }}</td>
+                <!-- <td>
+                  <img
+                    [src]="'https://localhost:7262/api/Image/' + student.imagePath"
+                    alt="Student Photo"
+                    width="60"
+                    height="60"
+                  />
+                </td> -->
+                <td>{{ student.studentName }}</td>
+                <td>{{ student.dateOfBirth | date: "dd-MM-yyyy" }}</td>
+                <td>{{ student.gender }}</td>
+                <td>{{ student.bloodGroup }}</td>
+                <td>{{ student.fathersName }}</td>
+                <td>{{ student.mothersName }}</td>
+                <td>{{ student.mobile }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.state }}</td>
+                <td>{{ student.district }}</td>
+                <td>{{ student.pincode }}</td>
+                <td>{{ student.address }}</td>
+                <td>{{ student.class }}</td>
+                <!-- <td>{{ student.section }}</td> -->
+                <td class="action-button">
+                  <button class="edit" (click)="FeesStudent(student.enrollmentNumber)">
+                    Fees Pay
+                  </button>
+                  <button class="delete" (click)="admissionDetail(student.enrollmentNumber)">
+                    Admission 
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      } @else {
+        <p style="text-align:center; padding: 20px;">No students found.</p>
+      }
+    </div>
+  </div>
+</div>
