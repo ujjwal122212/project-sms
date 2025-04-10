@@ -91,6 +91,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { authGuard } from './components/Authentication/auth.guard';
 import { QuizQuestionsComponent } from './components/student/quiz-questions/quiz-questions.component';
 import { ParentInfoComponent } from './components/Admin/parent-info/parent-info.component';
+import { ViewAllStudentComponent } from './components/Admin/addStudent/view-all-student/view-all-student.component';
 // import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
@@ -340,16 +341,19 @@ export const routes: Routes = [
             data: { roles: ['Student'] },
           },
           {
-            path: 'quiz2', children: [
+            path: 'quiz2',
+            children: [
               {
-                path: 'questions', component: QuizQuestionsComponent, title: 'Quiz Question', canActivate: [authGuard],
+                path: 'questions',
+                component: QuizQuestionsComponent,
+                title: 'Quiz Question',
+                canActivate: [authGuard],
                 data: { roles: ['Student'] },
-              }
-            ]
+              },
+            ],
           },
         ],
       },
-
 
       //student courses
       {
@@ -1033,6 +1037,13 @@ export const routes: Routes = [
         path: 'ahome',
         children: [
           {
+            path: 'viewAllStudent',
+            title: 'View-All-Student',
+            component: ViewAllStudentComponent,
+            canActivate: [authGuard],
+            data: { roles: ['Admin'] },
+          },
+          {
             path: 'viewstudentadmission',
             title: 'View-Student',
             component: ViewStudentAdmissionComponent,
@@ -1232,6 +1243,7 @@ export const routes: Routes = [
         data: { roles: ['Admin'] },
       },
       //Important Contacts
+
       {
         path: 'view',
         title: 'view-contact',
@@ -1269,12 +1281,21 @@ export const routes: Routes = [
         data: { roles: ['Admin'] },
       },
       {
+        path: 'viewAllStudent',
+        title: 'View-All-Student',
+        component: ViewAllStudentComponent,
+        canActivate: [authGuard],
+        data: { roles: ['Admin'] },
+      },
+
+      {
         path: 'viewstudentadmission',
         title: 'StudentAdmissionList',
         component: ViewStudentAdmissionComponent,
         canActivate: [authGuard],
         data: { roles: ['Admin'] },
       },
+
       {
         path: 'studentnotification',
         title: 'StudentNotification',
@@ -1324,6 +1345,7 @@ export const routes: Routes = [
         canActivate: [authGuard],
         data: { roles: ['Admin'] },
       },
+
       {
         path: 'adminregistration',
         canActivate: [authGuard],
@@ -1381,9 +1403,12 @@ export const routes: Routes = [
         data: { roles: ['Admin'] },
       },
       {
-        path: 'parentInfo', title: 'Parent Info', component: ParentInfoComponent, canActivate: [authGuard],
+        path: 'parentInfo',
+        title: 'Parent Info',
+        component: ParentInfoComponent,
+        canActivate: [authGuard],
         data: { roles: ['Admin'] },
-      }
+      },
       // {path:'viewteacher',title:'ViewTeacher',component:RegisterTeacherComponent}
     ],
   },

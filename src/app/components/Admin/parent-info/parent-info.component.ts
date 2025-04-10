@@ -1,5 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { StudentAdmissionService } from '../../../Services/student-admission.service';
 import { StudentRegistrationService } from '../../../Services/student-registration.service';
 import { Router } from '@angular/router';
@@ -10,10 +15,10 @@ import { ToastrService } from 'ngx-toastr';
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './parent-info.component.html',
-  styleUrl: './parent-info.component.css'
+  styleUrl: './parent-info.component.css',
 })
 export class ParentInfoComponent implements OnInit {
- toastr = inject(ToastrService);
+  toastr = inject(ToastrService);
   parentForm!: FormGroup;
   fb = inject(FormBuilder);
   studentInfo = inject(StudentAdmissionService);
@@ -22,7 +27,7 @@ export class ParentInfoComponent implements OnInit {
   studentData: any = {};
 
   ngOnInit(): void {
-    this.studentInfo.studentData$.subscribe(data => {
+    this.studentInfo.studentData$.subscribe((data) => {
       if (data) {
         this.studentData = data;
         console.log(this.studentData);
@@ -40,10 +45,10 @@ export class ParentInfoComponent implements OnInit {
       familyIncome: ['', Validators.required],
       fathersDOB: ['', Validators.required],
       mothersDOB: ['', Validators.required],
-      fathersImg: [null,Validators.required], 
-      fathersDocumentImg: [null,Validators.required], 
-      mothersImg: [null,Validators.required],
-      mothersDocumentImg: [null,Validators.required] 
+      fathersImg: [null, Validators.required],
+      fathersDocumentImg: [null, Validators.required],
+      mothersImg: [null, Validators.required],
+      mothersDocumentImg: [null, Validators.required],
     });
   }
 
@@ -51,7 +56,7 @@ export class ParentInfoComponent implements OnInit {
     const file = event.target.files[0];
     if (file) {
       this.parentForm.patchValue({
-        [controlName]: file
+        [controlName]: file,
       });
       this.parentForm.get(controlName)?.updateValueAndValidity();
     }
@@ -59,14 +64,17 @@ export class ParentInfoComponent implements OnInit {
 
   onSubmit() {
     if (this.parentForm.invalid) {
-      this.toastr.error('Please fill in all required fields', 'Validation Error');
+      this.toastr.error(
+        'Please fill in all required fields',
+        'Validation Error'
+      );
       return;
     }
 
     const formData = new FormData();
 
     // Appending student form data
-    Object.keys(this.studentData).forEach(key => {
+    Object.keys(this.studentData).forEach((key) => {
       if (this.studentData[key] instanceof File) {
         formData.append(key, this.studentData[key]);
       } else {
@@ -75,7 +83,7 @@ export class ParentInfoComponent implements OnInit {
     });
 
     // Appending parent form data
-    Object.keys(this.parentForm.value).forEach(key => {
+    Object.keys(this.parentForm.value).forEach((key) => {
       if (this.parentForm.value[key] instanceof File) {
         formData.append(key, this.parentForm.value[key]);
       } else {
@@ -86,11 +94,11 @@ export class ParentInfoComponent implements OnInit {
     this.registerStudent.addStudent(formData).subscribe({
       next: () => {
         this.toastr.success('Student registered successfully', 'Success');
-        this.route.navigate(['/adminlayout/viewstudentadmission']);
+        this.route.navigate(['/adminlayout/viewAllStudent']);
       },
       error: () => {
         this.toastr.error('Error occurred while registering student', 'Error');
-      }
+      },
     });
   }
 }
