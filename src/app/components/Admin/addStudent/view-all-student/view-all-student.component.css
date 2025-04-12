@@ -32,9 +32,7 @@ button {
 .selected-area {
   width: 100%;
   display: flex;
-  /* gap: 30px; */
   justify-content: space-between;
-  /* background-color: pink; */
   padding: 0 20px;
 }
 
@@ -60,7 +58,6 @@ button {
 }
 
 .table-container {
-
   width: 100%;
   overflow-x: auto;
   border-radius: 10px;
@@ -69,7 +66,6 @@ button {
 table {
   width: 100%;
   padding: 0 10px;
-
   border-collapse: collapse;
 }
 
@@ -92,7 +88,6 @@ button.edit {
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
-  /* cursor: pointer; */
   margin-right: 5px;
 }
 
@@ -149,6 +144,7 @@ td img {
   color: white;
 }
 
+/* Responsive Styles */
 @media (max-width: 768px) {
   .header,
   .search-area {
@@ -156,19 +152,24 @@ td img {
     align-items: center;
     gap: 10px;
   }
+
   .header h1,
   .header button {
     margin: 0;
   }
+
   .card {
     margin-bottom: 20px;
   }
+
   .form-control {
     width: 100%;
   }
+
   .row-area {
     flex: 1 1 48%;
   }
+
   .my-4 {
     font-size: 20px;
   }
@@ -178,11 +179,82 @@ td img {
   .search-bar h2 {
     font-size: 20px;
   }
+
   .row-area {
     flex: 1 1 100%;
   }
+
   .search-area {
     padding: 20px;
     justify-content: center;
+  }
+}
+
+/* Card Section for Horizontal Wrapping */
+.card-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: flex-start;
+}
+
+.student-card {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  flex: 1 1 calc(33.33% - 40px); /* Max 3 per row */
+  min-width: 280px;
+  max-width: 350px;
+  box-sizing: border-box;
+}
+
+.card-header h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.card-body p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.card-actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-actions button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.card-actions .edit {
+  background-color: #4caf50;
+  color: white;
+}
+
+.card-actions .delete {
+  background-color: #2196f3;
+  color: white;
+}
+
+/* Responsive card adjustments */
+@media (max-width: 992px) {
+  .student-card {
+    flex: 1 1 calc(50% - 40px); /* 2 per row on tablet */
+  }
+}
+
+@media (max-width: 576px) {
+  .student-card {
+    flex: 1 1 100%; /* 1 per row on mobile */
   }
 }
