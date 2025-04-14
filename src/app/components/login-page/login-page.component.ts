@@ -93,4 +93,16 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
     this.setFormState();
   }
+
+
+  focusedFields: { [key: string]: boolean } = {};
+
+setFocus(field: string, isFocused: boolean) {
+  this.focusedFields[field] = isFocused;
+}
+
+isFieldFocused(field: string): boolean {
+  return !!this.focusedFields[field];
+}
+
 }
