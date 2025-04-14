@@ -1,45 +1,73 @@
-<div class="reg-area">
-
-  <div class="header">
-    <h1>Student Admission</h1>
-    <button (click)="openregform()">Add Student</button>
-  </div>
-
-  <div class="selected-area">
-    <div class="search-area">
-      <button class="delete" (click)="GOTO()">Admission</button>
+<div class="card-container">
+  <div class="card">
+    <div class="profile-image">
+      <img src="https://via.placeholder.com/100" alt="Profile Picture" />
+    </div>
+    <div class="box">
+      <h2>1. Ranjan Kumar</h2>
+      <p><span class="label">Enrollment:</span> 1002</p>
+      <p><span class="label">DOB:</span> 03-04-2025</p>
+      <p><span class="label">Mobile:</span> 06287154992</p>
     </div>
 
-    <div class="search-area">
-      <h1>Search</h1>
-      <input
-        type="search"
-        [(ngModel)]="searchTerm"
-        placeholder="Search Student Name or Enrollment Number"
-      />
+    <div class="button-group">
+      <button class="btn green">Fees Pay</button>
+      <button class="btn blue">Admission</button>
     </div>
+    <button class="btn orange">View Details</button>
   </div>
 
-  <div class="card-section">
-    <div *ngIf="filteredUserList.length > 0; else noData">
-      <div class="student-card" *ngFor="let student of filteredUserList; let i = index">
-        <div class="card-header">
-          <h3>{{ i + 1 }}. {{ student.studentName }}</h3>
-        </div>
-        <div class="card-body">
-          <p><strong>Enrollment:</strong> {{ student.enrollmentNumber }}</p>
-          <p><strong>DOB:</strong> {{ student.dateOfBirth | date: 'dd-MM-yyyy' }}</p>
-          <p><strong>Mobile:</strong> {{ student.mobile }}</p>
-        </div>
-        <div class="card-actions">
-          <button class="edit" (click)="FeesStudent(student.enrollmentNumber)">Fees Pay</button>
-          <button class="delete" (click)="admissionDetail(student.enrollmentNumber)">Admission</button>
-        </div>
-      </div>
+  <div class="card">
+    <div class="profile-image">
+      <img src="https://via.placeholder.com/100" alt="Profile Picture" />
     </div>
-    <ng-template #noData>
-      <p style="text-align:center; padding: 20px;">No students found.</p>
-    </ng-template>
+    <div class="box">
+      <h2>2. Ranjan Kumar</h2>
+      <p><span class="label">Enrollment:</span> 1002</p>
+      <p><span class="label">DOB:</span> 03-04-2025</p>
+      <p><span class="label">Mobile:</span> 06287154992</p>
+    </div>
+
+    <div class="button-group">
+      <button class="btn green">Fees Pay</button>
+      <button class="btn blue">Admission</button>
+    </div>
+    <button class="btn orange">View Details</button>
   </div>
 
+  <div class="card">
+    <div class="profile-image">
+      <img src="https://via.placeholder.com/100" alt="Profile Picture" />
+    </div>
+    <div class="box">
+      <h2>2. Ranjan Kumar</h2>
+      <p><span class="label">Enrollment:</span> 1002</p>
+      <p><span class="label">DOB:</span> 03-04-2025</p>
+      <p><span class="label">Mobile:</span> 06287154992</p>
+    </div>
+
+    <div class="button-group">
+      <button class="btn green">Fees Pay</button>
+      <button class="btn blue">Admission</button>
+    </div>
+    <button class="btn orange">View Details</button>
+  </div>
+
+  <div class="card">
+    <div class="profile-image">
+      <img src="https://via.placeholder.com/100" alt="Profile Picture" />
+    </div>
+    <div class="box">
+      <h2>2. Ranjan Kumar</h2>
+      <p><span class="label">Enrollment:</span> 1002</p>
+      <p><span class="label">DOB:</span> 03-04-2025</p>
+      <p><span class="label">Mobile:</span> 06287154992</p>
+    </div>
+
+    <div class="button-group">
+      <button class="btn green">Fees Pay</button>
+      <button class="btn blue">Admission</button>
+    </div>
+    <button class="btn orange">View Details</button>
+  </div>
 </div>
