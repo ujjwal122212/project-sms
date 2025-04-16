@@ -17,79 +17,45 @@ import { HttpClient } from '@angular/common/http';
 export class ViewAllStudentComponent implements OnInit {
   toastr = inject(ToastrService);
   route = inject(Router);
-  constructor(private http: HttpClient) {}
-
-  Students: any[] = [];
-  isSubjectDataEmpty = false;
-  isCourseFound = false;
-  isClassOrSectionNotSelected = false;
-
-  searchTerm: string = '';
-
-  StudentHeading: string[] = [
-    'S.NO',
-    'Enrollment No',
-    // 'Student Photo',
-    'StudentName',
-    'D.O.B',
-    'Gender',
-    'BloodGroup',
-    'Fathers Name',
-    'Mothers Name',
-    'MobileNo',
-    'EmailId',
-    'State',
-    'District',
-    'PinCode',
-    'Address',
-    'Class',
-    // 'Section',
-    'Action',
-  ];
-
-  openregform() {
-    this.route.navigateByUrl('/adminlayout/StuAdmission');
+  constructor(private http: HttpClient) {
+    this.getAllStudent();
   }
+  studentList:any[]= [];
+  
+getAllStudent(){
+  this.http.get("https://localhost:7262/GetAllStudents").subscribe((result:any)=>{
+    this.studentList = result;
+    console.table(this.studentList);
+  })
+}
+ 
 
-  getAllStudents() {
-    this.http.get<any[]>('https://localhost:7262/GetAllStudents').subscribe(
-      (response) => {
-        this.Students = response.sort(
-          (a, b) => b.enrollmentNumber - a.enrollmentNumber
-        );
-      },
-      (error) => {
-        console.error('Error fetching students');
-      }
-    );
-  }
+  
 
-  FeesStudent(enrollmentNumber: number) {
-    console.log(enrollmentNumber);
-  }
-  admissionDetail(enrollmentNumber: number) {
-    console.log(enrollmentNumber);
-  }
-  get filteredUserList() {
-    const lowerCaseSearchTerm = this.searchTerm.toLowerCase();
-    return this.Students.filter(
-      (student) =>
-        student.enrollmentNumber
-          .toString()
-          .toLowerCase()
-          .includes(lowerCaseSearchTerm) ||
-        student.studentName.toLowerCase().includes(lowerCaseSearchTerm)
-    );
-  }
+downloadAdmissionReceipt(enrollmentNumber: number) {
+  const url = `https://localhost:7262/api/AdmissionFee/GenerateAdmissionFeeReceipt/1001/${enrollmentNumber}`;
+  
+  this.http.get(url, { responseType: 'blob' }).subscribe(
+    (blob: Blob) => {
+      const a = document.createElement('a');
+      const objectUrl = URL.createObjectURL(blob);
+      a.href = objectUrl;
+      a.download = `AdmissionFeeReceipt_${enrollmentNumber}.pdf`;
+      a.click();
+      URL.revokeObjectURL(objectUrl);
+    },
+    error => {
+      this.toastr.error('Failed to download the receipt.', 'Error');
+    }
+  );
+}
 
-  trackByEnrollmentNumber(index: number, student: any): number {
-    return student.enrollmentNumber;
-  }
-  GOTO() {
-    this.route.navigateByUrl('/adminlayout/viewstudentadmission');
-  }
+
+ 
+
+  
 
   ngOnInit(): void {
-    this.getAllStudents();
+    
   }
 }

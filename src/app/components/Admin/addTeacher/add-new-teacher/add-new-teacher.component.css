@@ -1,105 +1,159 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #f4f6f8;
+  padding: 20px;
+}
+
+/* Container Wrapper */
 .form-area {
   position: absolute;
   top: 60px;
   left: 60px;
   right: 10px;
-  /* background-color: #f8fafc; */
   background-color: white;
   overflow-x: hidden;
   border-radius: 10px;
   margin-bottom: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-.card {
-  margin-bottom: 20px;
+  padding: 30px;
+  max-width: 1300px;
 }
 
+/* Title Header */
+.form-area h1 {
+  text-align: center;
+  padding: 15px 0;
+  font-size: 24px;
+  background-color: #FDC300;
+  color: #333;
+  border-radius: 10px 10px 0 0;
+  margin: -30px -30px 30px -30px;
+}
+
+/* Grid Style */
+.card-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Each Form Field */
+.card {
+  flex: 1 1 48%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+/* Inputs, Selects, Textareas */
 .card input,
 .card select,
 .card textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+  background-color: #fff;
 }
 
-.card.small {
-  margin-top: 5px;
+.card input:focus,
+.card select:focus,
+.card textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  outline: none;
 }
 
+/* Error Styling */
 .card.error input,
 .card.error select,
 .card.error textarea {
-  border-color: red;
+  border-color: #ef4444;
 }
 
 .card.error small {
   color: red;
+  font-size: 0.8rem;
+  margin-top: 4px;
   display: block;
-  margin-top: 5px;
 }
 
-
-.form-area form {
-  padding: 15px 10px 10px 10px;
+/* Select Arrow Fix */
+.card select {
+  appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg fill="%23000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 10px center;
+  background-size: 16px;
+  padding-right: 30px;
 }
 
-.form-area h1 {
-  text-align: center;
-  padding: 15px 0;
-  border-radius: 10px 10px 0 0;
-  font-size: 22px;
-  background-color: #FDC300;
-}
-
-.card-area {
-  display: flex;
-  /* column-gap: 50px; */
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 48%;
-  /* background-color: aqua; */
-  margin-bottom: 30px;
-}
-
-select,
-input ,textarea{
-  border: 2px solid #ddd;
-  width: 100%;
-  border-radius: 5px;
-  padding: 4px 2px;
-}
-
-select:hover {
-  cursor: pointer;
-}
-
+/* Button Area */
 .button-area {
-  /* margin-top: 30px; */
+  margin-top: 30px;
   display: flex;
   justify-content: center;
+  gap: 20px;
 }
 
-.submit {
-  margin-right: 20px;
-  background-color: #007bff;
-  padding: 5px 10px;
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.close {
-  background-color: #ef4444;
-  padding: 5px 10px;
-  font-weight: bold;
-  font-size: 20px;
-}
-button{
+/* Buttons */
+button {
   border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button.submit {
+  background-color: #007bff;
+}
+
+button.submit:hover {
+  background-color: #0056b3;
+}
+
+button.close {
+  background-color: #ef4444;
+}
+
+button.close:hover {
+  background-color: #dc2626;
+}
+
+/* File Input Consistency */
+input[type="file"] {
+  padding: 8px 0;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  .card {
+    flex: 1 1 100%;
+  }
+
+  .form-area {
+    left: 20px;
+    right: 20px;
+    padding: 20px;
+  }
+
+  .form-area h1 {
+    font-size: 20px;
+  }
+
+  button {
+    font-size: 16px;
+  }
 }

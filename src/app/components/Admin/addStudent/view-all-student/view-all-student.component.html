@@ -1,72 +1,19 @@
 <div class="card-container">
-  <div class="card">
+  <div class="card" *ngFor="let student of studentList; let i = index">
     <div class="profile-image">
       <img src="https://via.placeholder.com/100" alt="Profile Picture" />
     </div>
     <div class="box">
-      <h2>1. Ranjan Kumar</h2>
-      <p><span class="label">Enrollment:</span> 1002</p>
-      <p><span class="label">DOB:</span> 03-04-2025</p>
-      <p><span class="label">Mobile:</span> 06287154992</p>
+      <h2>{{ i + 1 }}. {{ student.studentName }}</h2>
+      <p><span class="label">Enrollment:</span> {{ student.enrollmentNumber }}</p>
+      <p><span class="label">DOB:</span> {{ student.dateOfBirth | date: 'dd-MM-yyyy' }}</p>
+      <p><span class="label">Mobile:</span> {{ student.mobile }}</p>
     </div>
 
     <div class="button-group">
       <button class="btn green">Fees Pay</button>
-      <button class="btn blue">Admission</button>
-    </div>
-    <button class="btn orange">View Details</button>
-  </div>
+      <button class="btn blue" (click)="downloadAdmissionReceipt(student.enrollmentNumber)">Admission</button>
 
-  <div class="card">
-    <div class="profile-image">
-      <img src="https://via.placeholder.com/100" alt="Profile Picture" />
-    </div>
-    <div class="box">
-      <h2>2. Ranjan Kumar</h2>
-      <p><span class="label">Enrollment:</span> 1002</p>
-      <p><span class="label">DOB:</span> 03-04-2025</p>
-      <p><span class="label">Mobile:</span> 06287154992</p>
-    </div>
-
-    <div class="button-group">
-      <button class="btn green">Fees Pay</button>
-      <button class="btn blue">Admission</button>
-    </div>
-    <button class="btn orange">View Details</button>
-  </div>
-
-  <div class="card">
-    <div class="profile-image">
-      <img src="https://via.placeholder.com/100" alt="Profile Picture" />
-    </div>
-    <div class="box">
-      <h2>2. Ranjan Kumar</h2>
-      <p><span class="label">Enrollment:</span> 1002</p>
-      <p><span class="label">DOB:</span> 03-04-2025</p>
-      <p><span class="label">Mobile:</span> 06287154992</p>
-    </div>
-
-    <div class="button-group">
-      <button class="btn green">Fees Pay</button>
-      <button class="btn blue">Admission</button>
-    </div>
-    <button class="btn orange">View Details</button>
-  </div>
-
-  <div class="card">
-    <div class="profile-image">
-      <img src="https://via.placeholder.com/100" alt="Profile Picture" />
-    </div>
-    <div class="box">
-      <h2>2. Ranjan Kumar</h2>
-      <p><span class="label">Enrollment:</span> 1002</p>
-      <p><span class="label">DOB:</span> 03-04-2025</p>
-      <p><span class="label">Mobile:</span> 06287154992</p>
-    </div>
-
-    <div class="button-group">
-      <button class="btn green">Fees Pay</button>
-      <button class="btn blue">Admission</button>
     </div>
     <button class="btn orange">View Details</button>
   </div>
