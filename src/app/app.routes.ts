@@ -92,6 +92,7 @@ import { authGuard } from './components/Authentication/auth.guard';
 import { QuizQuestionsComponent } from './components/student/quiz-questions/quiz-questions.component';
 import { ParentInfoComponent } from './components/Admin/parent-info/parent-info.component';
 import { ViewAllStudentComponent } from './components/Admin/addStudent/view-all-student/view-all-student.component';
+import { CreateFeeStructureComponent } from './components/Admin/fee/create-fee-structure/create-fee-structure.component';
 // import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
@@ -1409,6 +1410,20 @@ export const routes: Routes = [
         canActivate: [authGuard],
         data: { roles: ['Admin'] },
       },
+
+      {
+        path: 'CreateFeeStructure',
+        title: 'Student Fee',
+        component: CreateFeeStructureComponent,
+        canActivate: [authGuard],
+        data: { roles: ['Admin'] },
+      },
+
+
+
+
+
+
       // {path:'viewteacher',title:'ViewTeacher',component:RegisterTeacherComponent}
     ],
   },
