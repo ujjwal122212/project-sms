@@ -27,7 +27,7 @@ export class StudentAttendenceComponent implements OnInit {
   selectedAttendanceDate: string = this.attendanceDate;
 
 
-  // form status for attendance that will send to api for post amopping
+  // form status for attendance that will send to api for post mapping
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.attendenceForm = this.fb.group({

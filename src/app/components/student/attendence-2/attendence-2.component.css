@@ -1,0 +1,125 @@
+.form-container {
+    padding: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Adds shadow to form box */
+    border: 1px solid #ccc; /* Optional border */
+    border-radius: 8px;
+    background-color: #fff; /* Optional: to make the form stand out */
+    max-width: 90vw; /* Optional: limit width */
+    margin: auto;     
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+input {
+    padding: 1rem;
+    font-size: 1rem;
+    min-width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* inner shadow */
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
+}
+
+button {
+    padding: 0.6rem 1.2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    height: fit-content;
+    margin-top: 1.5rem;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* Table styling */
+.attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-table th,
+.attendance-table td {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.attendance-table thead {
+    background-color: #f4f4f4;
+    border-bottom: 2px solid #ddd;
+}
+
+.attendance-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.attendance-table th {
+    font-weight: bold;
+    color: #333;
+}
+
+.attendance-table td {
+    color: #555;
+}
+
+/* Badge styling */
+.badge {
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.badge.present {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.badge.absent {
+    background-color: #f44336;
+    color: #fff;
+}
+
+h3 {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #444;
+}
