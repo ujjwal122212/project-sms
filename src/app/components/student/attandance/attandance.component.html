@@ -14,12 +14,17 @@
       </thead>
       <tbody>
         <tr *ngFor="let record of pagedAttendanceRecords; let i = index">
-          <td>{{ i + 1 + (currentPage - 1) * itemsPerPage }}</td> <!-- Adjust the S.No -->
-          <td>{{ record.attendanceDate | date: 'EEEE' }}</td>
-          <td>{{ record.attendanceDate | date: 'longDate' }}</td>
+          <td>{{ i + 1 + (currentPage - 1) * itemsPerPage }}</td>
+          <!-- Adjust the S.No -->
+          <td>{{ record.attendanceDate | date : "EEEE" }}</td>
+          <td>{{ record.attendanceDate | date : "longDate" }}</td>
           <td>
-            <span class="badge" [class.present]="record.isPresent" [class.absent]="!record.isPresent">
-              {{ record.isPresent ? 'Present' : 'Absent' }}
+            <span
+              class="badge"
+              [class.present]="record.isPresent"
+              [class.absent]="!record.isPresent"
+            >
+              {{ record.isPresent ? "Present" : "Absent" }}
             </span>
           </td>
         </tr>
@@ -28,12 +33,21 @@
 
     <!-- Pagination controls -->
     <div class="pagination">
-      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+      <button
+        (click)="changePage(currentPage - 1)"
+        [disabled]="currentPage === 1"
+      >
+        Previous
+      </button>
 
       <span>Page {{ currentPage }}</span>
 
-      <button (click)="changePage(currentPage + 1)"
-        [disabled]="currentPage * itemsPerPage >= attendanceRecords.length">Next</button>
+      <button
+        (click)="changePage(currentPage + 1)"
+        [disabled]="currentPage * itemsPerPage >= attendanceRecords.length"
+      >
+        Next
+      </button>
     </div>
 
     <div *ngIf="!isLoading && attendanceRecords.length === 0" class="no-data">
@@ -41,8 +55,6 @@
     </div>
   </div>
   <div class="right">
-
-
     <div class="student">
       <div class="chart">
         <canvas id="PresentAbsent">{{ chart2 }}</canvas>
@@ -52,9 +64,14 @@
         <span style="margin-top: 50px; font-weight: 600">
           {{ present + absent }}
         </span>
-        <span style="margin-top: 50px; font-weight: 600">= {{ (present / (present + absent)) * 100 }} %
+        <span style="margin-top: 50px; font-weight: 600"
+          >= {{ (present / (present + absent)) * 100 }} %
         </span>
       </div>
     </div>
   </div>
+</div>
+
+<div class="container" style="display: block;">
+  <app-attendence-2></app-attendence-2>
 </div>

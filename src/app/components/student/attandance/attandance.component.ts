@@ -3,11 +3,12 @@ import { LoginService } from '../../../Services/login.service';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Chart } from 'chart.js';
+import { Attendence2Component } from '../attendence-2/attendence-2.component';
 
 @Component({
   selector: 'app-attandance',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,Attendence2Component],
   templateUrl: './attandance.component.html',
   styleUrls: ['./attandance.component.css'],
 })

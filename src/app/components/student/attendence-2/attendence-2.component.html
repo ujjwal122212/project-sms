@@ -1,0 +1,53 @@
+<div class="form-container">
+  <form
+    [formGroup]="attendenceformOfStudent"
+    (ngSubmit)="onSubmit()"
+    class="form-row"
+  >
+    <!-- From Date -->
+    <div class="form-group">
+      <label for="fromDate">From Date</label>
+      <input type="date" id="fromDate" formControlName="fromDate" />
+    </div>
+
+    <!-- To Date -->
+    <div class="form-group">
+      <label for="toDate">To Date</label>
+      <input type="date" id="toDate" formControlName="toDate" />
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group button-group">
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+<!-- ✅ Attendance Record Table -->
+<div *ngIf="attendenceRecord.length > 0" class="table-container">
+    <h3>Attendance Record</h3>
+    <table class="attendance-table">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of attendenceRecord">
+          <td>{{ record.attendanceDate | date : "EEEE" }}</td>
+          <td>{{ record.attendanceDate | date : "longDate" }}</td>
+          <td>
+            <span
+              class="badge"
+              [class.present]="record.isPresent"
+              [class.absent]="!record.isPresent"
+            >
+              {{ record.isPresent ? "Present" : "Absent" }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
