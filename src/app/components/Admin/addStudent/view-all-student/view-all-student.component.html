@@ -12,7 +12,16 @@
 
     <div class="button-group">
       <button class="btn green">Fees Pay</button>
-      <button class="btn blue" (click)="downloadAdmissionReceipt(student.enrollmentNumber)">Admission</button>
+      <div class="dropdown">
+        <button class="btn blue dropdown-toggle" type="button">
+          Receipt
+        </button>
+        <div class="dropdown-menu show-on-hover">
+          <button class="dropdown-item" >Admission</button>
+          <button class="dropdown-item" (click)="downloadAdmissionReceipt(student.enrollmentNumber)">Fee</button>
+        </div>
+      </div>
+      
 
     </div>
     <button class="btn orange">View Details</button>

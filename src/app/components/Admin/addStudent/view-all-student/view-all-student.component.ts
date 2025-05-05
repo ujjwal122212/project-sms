@@ -33,7 +33,7 @@ getAllStudent(){
   
 
 downloadAdmissionReceipt(enrollmentNumber: number) {
-  const url = `https://localhost:7262/api/AdmissionFee/GenerateAdmissionFeeReceipt/1001/${enrollmentNumber}`;
+  const url = `https://localhost:7262/GetAdmissionReceiptPdf/${enrollmentNumber}`;
   
   this.http.get(url, { responseType: 'blob' }).subscribe(
     (blob: Blob) => {

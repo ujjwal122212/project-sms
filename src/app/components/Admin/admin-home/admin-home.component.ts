@@ -63,7 +63,7 @@ export class AdminHomeComponent implements OnInit {
       .get<any[]>('https://localhost:7262/GetTotalMaleandFemaleinStudents')
       .subscribe((response) => {
         this.boy = 0;
-        this.girl = 0;
+        this.girl = 0; 
         response.forEach((entry) => {
           if (entry.Gender === 'Male') {
             this.boy += entry.TotalStudents;
