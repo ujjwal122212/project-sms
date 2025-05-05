@@ -17,8 +17,9 @@
           Receipt
         </button>
         <div class="dropdown-menu show-on-hover">
-          <button class="dropdown-item" >Admission</button>
-          <button class="dropdown-item" (click)="downloadAdmissionReceipt(student.enrollmentNumber)">Fee</button>
+          <button class="dropdown-item" (click)="downloadAdmissionReceipt(student.enrollmentNumber)">Admission</button>
+          <button class="dropdown-item" (click)="downloadAdmissionFeeReceipt(student.enrollmentNumber)">Fee</button>
+          
         </div>
       </div>
       

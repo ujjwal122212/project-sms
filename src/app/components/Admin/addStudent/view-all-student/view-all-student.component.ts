@@ -50,7 +50,23 @@ downloadAdmissionReceipt(enrollmentNumber: number) {
   );
 }
 
-
+downloadAdmissionFeeReceipt(enrollmentNumber: number) {
+  const url = `https://localhost:7262/api/AdmissionFee/GenerateAdmissionFeeReceipt/${enrollmentNumber}`;
+  
+  this.http.get(url, { responseType: 'blob' }).subscribe(
+    (blob: Blob) => {
+      const a = document.createElement('a');
+      const objectUrl = URL.createObjectURL(blob);
+      a.href = objectUrl;
+      a.download = `AdmissionFeeReceipt_${enrollmentNumber}.pdf`;
+      a.click();
+      URL.revokeObjectURL(objectUrl);
+    },
+    error => {
+      this.toastr.error('Failed to download the receipt.', 'Error');
+    }
+  );
+}
  
 
   
