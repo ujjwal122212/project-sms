@@ -92,6 +92,7 @@ import { authGuard } from './components/Authentication/auth.guard';
 import { QuizQuestionsComponent } from './components/student/quiz-questions/quiz-questions.component';
 import { ParentInfoComponent } from './components/Admin/parent-info/parent-info.component';
 import { ViewAllStudentComponent } from './components/Admin/addStudent/view-all-student/view-all-student.component';
+import { StudentAttendenceSummeryComponent } from './components/Admin/student-attendence-summery/student-attendence-summery.component';
 // import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
 
@@ -1410,6 +1411,10 @@ export const routes: Routes = [
         data: { roles: ['Admin'] },
       },
       // {path:'viewteacher',title:'ViewTeacher',component:RegisterTeacherComponent}
+      {
+        path: 'attendenceSummery', title: 'Attendence Summery', component: StudentAttendenceSummeryComponent,
+        canActivate: [authGuard], data: { roles: ['Admin'] }
+      }
     ],
   },
 

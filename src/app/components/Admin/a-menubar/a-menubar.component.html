@@ -1,67 +1,149 @@
 <div class="item menu" [ngClass]="width">
-  <div class="name"><span *ngIf="is_text_display_none">I Portal</span>
+  <div class="name">
+    <span *ngIf="is_text_display_none">I Portal</span>
     @if(width){
     <i class="ri-close-large-line" (click)="menu_expanded()"></i>
-    }
-    @else{
+    } @else{
     <i class="ri-menu-line end" (click)="menu_collapsed()"></i>
     }
   </div>
   <div class="tags">
-    <a routerLink="/adminlayout/ahome" routerLinkActive="active" (click)="collapse()"><i class="ri-home-3-line" id="icon"></i>
-      <span *ngIf="is_text_display_none">Home</span> <i class="ri-arrow-right-s-line"></i>
+    <a
+      routerLink="/adminlayout/ahome"
+      routerLinkActive="active"
+      (click)="collapse()"
+      ><i class="ri-home-3-line" id="icon"></i>
+      <span *ngIf="is_text_display_none">Home</span>
+      <i class="ri-arrow-right-s-line"></i>
     </a>
-    <a routerLink="/adminlayout/admin-home" routerLinkActive="active" (click)="collapse()"><i class="ri-dashboard-2-line" id="icon"></i>
-      <span *ngIf="is_text_display_none">Dashboard</span> <i class="ri-arrow-right-s-line"></i>
+    <a
+      routerLink="/adminlayout/admin-home"
+      routerLinkActive="active"
+      (click)="collapse()"
+      ><i class="ri-dashboard-2-line" id="icon"></i>
+      <span *ngIf="is_text_display_none">Dashboard</span>
+      <i class="ri-arrow-right-s-line"></i>
     </a>
-    <a routerLink="/adminlayout/viewAllStudent" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-building-columns"
-        id="icon"></i>
-      <span *ngIf="is_text_display_none">Student</span> <i class="ri-arrow-right-s-line"></i>
-    </a>
-
-    <a routerLink="/adminlayout/viewTeacher" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-chalkboard-user"
-        id="icon"></i>
-      <span *ngIf="is_text_display_none">Teacher</span> <i class="ri-arrow-right-s-line"></i>
-    </a>
-    <a routerLink="/adminlayout/addclass" routerLinkActive="active" (click)="collapse()"><i class="fa-regular fa-address-book" id="icon"></i>
-      <span *ngIf="is_text_display_none">Add Class</span> <i class="ri-arrow-right-s-line"></i>
-    </a>
-    <a routerLink="/adminlayout/addsection" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-person" id="icon"></i>
-      <span *ngIf="is_text_display_none">Add Section</span> <i class="ri-arrow-right-s-line"></i>
-    </a>
-    <a routerLink="/adminlayout/viewstudentadmission" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-book"
-        id="icon"></i>
-      <span *ngIf="is_text_display_none">Student Admission</span> <i class="ri-arrow-right-s-line"></i>
-    </a>
-    <a routerLink="/adminlayout/addstudentCourse" routerLinkActive="active" (click)="collapse()"><i
-        class="fa-solid fa-book-open-reader" id="icon"></i>
-      <span *ngIf="is_text_display_none">Student Subjects</span> <i class="ri-arrow-right-s-line"></i>
-    </a>
-    <a routerLink="/adminlayout/quizsubject" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-book-atlas" id="icon"></i>
-      <span *ngIf="is_text_display_none"> Quiz Subject</span> <i class="ri-arrow-right-s-line"></i>
-    </a>
-    <a routerLink="/adminlayout/studenttimetable" routerLinkActive="active" (click)="collapse()"><i class="fa-regular fa-calendar-days" id="icon"></i>
-      <span *ngIf="is_text_display_none">Student TimeTable</span> <i class="ri-arrow-right-s-line"></i>
-    </a>
-    <a routerLink="/adminlayout/studentnotification" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-square-check" id="icon"></i>
-      <span *ngIf="is_text_display_none">Student Notification</span> <i class="ri-arrow-right-s-line"></i>
-    </a>
-    <a routerLink="/adminlayout/teachernotification" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-clipboard-list" id="icon"></i>
-      <span *ngIf="is_text_display_none">Teacher Notification</span> <i class="ri-arrow-right-s-line"></i>
-    </a>
-    <a routerLink="/adminlayout/subjectTopic" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-van-shuttle" id="icon"></i>
-      <span *ngIf="is_text_display_none">Subject Topic</span> <i class="ri-arrow-right-s-line"></i>
-    </a>
-    <a routerLink="/adminlayout/studentfee" routerLinkActive="active" (click)="collapse()"><i class="fa-regular fa-building" id="icon"></i>
-      <span *ngIf="is_text_display_none">Student Fees</span> <i class="ri-arrow-right-s-line"></i>
-    </a>
-    <a routerLink="/adminlayout/adminregistration" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-newspaper" id="icon"></i>
-      <span *ngIf="is_text_display_none">Admin Registration</span> <i class="ri-arrow-right-s-line"></i>
-    </a>
-    <a routerLink="/adminlayout/classTeacherAssignment" routerLinkActive="active" (click)="collapse()"><i class="fa-solid fa-newspaper" id="icon"></i>
-      <span *ngIf="is_text_display_none">Class Teacer Assignment</span> <i class="ri-arrow-right-s-line"></i>
+    <a
+      routerLink="/adminlayout/viewAllStudent"
+      routerLinkActive="active"
+      (click)="collapse()"
+      ><i class="fa-solid fa-building-columns" id="icon"></i>
+      <span *ngIf="is_text_display_none">Student</span>
+      <i class="ri-arrow-right-s-line"></i>
     </a>
 
+    <a
+      routerLink="/adminlayout/viewTeacher"
+      routerLinkActive="active"
+      (click)="collapse()"
+      ><i class="fa-solid fa-chalkboard-user" id="icon"></i>
+      <span *ngIf="is_text_display_none">Teacher</span>
+      <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a
+      routerLink="/adminlayout/addclass"
+      routerLinkActive="active"
+      (click)="collapse()"
+      ><i class="fa-regular fa-address-book" id="icon"></i>
+      <span *ngIf="is_text_display_none">Add Class</span>
+      <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a
+      routerLink="/adminlayout/addsection"
+      routerLinkActive="active"
+      (click)="collapse()"
+      ><i class="fa-solid fa-person" id="icon"></i>
+      <span *ngIf="is_text_display_none">Add Section</span>
+      <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a
+      routerLink="/adminlayout/viewstudentadmission"
+      routerLinkActive="active"
+      (click)="collapse()"
+      ><i class="fa-solid fa-book" id="icon"></i>
+      <span *ngIf="is_text_display_none">Student Admission</span>
+      <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a
+      routerLink="/adminlayout/addstudentCourse"
+      routerLinkActive="active"
+      (click)="collapse()"
+      ><i class="fa-solid fa-book-open-reader" id="icon"></i>
+      <span *ngIf="is_text_display_none">Student Subjects</span>
+      <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a
+      routerLink="/adminlayout/quizsubject"
+      routerLinkActive="active"
+      (click)="collapse()"
+      ><i class="fa-solid fa-book-atlas" id="icon"></i>
+      <span *ngIf="is_text_display_none"> Quiz Subject</span>
+      <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a
+      routerLink="/adminlayout/studenttimetable"
+      routerLinkActive="active"
+      (click)="collapse()"
+      ><i class="fa-regular fa-calendar-days" id="icon"></i>
+      <span *ngIf="is_text_display_none">Student TimeTable</span>
+      <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a
+      routerLink="/adminlayout/studentnotification"
+      routerLinkActive="active"
+      (click)="collapse()"
+      ><i class="fa-solid fa-square-check" id="icon"></i>
+      <span *ngIf="is_text_display_none">Student Notification</span>
+      <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a
+      routerLink="/adminlayout/teachernotification"
+      routerLinkActive="active"
+      (click)="collapse()"
+      ><i class="fa-solid fa-clipboard-list" id="icon"></i>
+      <span *ngIf="is_text_display_none">Teacher Notification</span>
+      <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a
+      routerLink="/adminlayout/subjectTopic"
+      routerLinkActive="active"
+      (click)="collapse()"
+      ><i class="fa-solid fa-van-shuttle" id="icon"></i>
+      <span *ngIf="is_text_display_none">Subject Topic</span>
+      <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a
+      routerLink="/adminlayout/studentfee"
+      routerLinkActive="active"
+      (click)="collapse()"
+      ><i class="fa-regular fa-building" id="icon"></i>
+      <span *ngIf="is_text_display_none">Student Fees</span>
+      <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a
+      routerLink="/adminlayout/adminregistration"
+      routerLinkActive="active"
+      (click)="collapse()"
+      ><i class="fa-solid fa-newspaper" id="icon"></i>
+      <span *ngIf="is_text_display_none">Admin Registration</span>
+      <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a
+      routerLink="/adminlayout/classTeacherAssignment"
+      routerLinkActive="active"
+      (click)="collapse()"
+      ><i class="fa-solid fa-newspaper" id="icon"></i>
+      <span *ngIf="is_text_display_none">Class Teacer Assignment</span>
+      <i class="ri-arrow-right-s-line"></i>
+    </a>
+    <a
+      routerLink="/adminlayout/attendenceSummery"
+      routerLinkActive="active"
+      (click)="collapse()"
+      ><i class="fa-solid fa-newspaper" id="icon"></i>
+      <span *ngIf="is_text_display_none">Attendence Summery</span>
+      <i class="ri-arrow-right-s-line"></i>
+    </a>
   </div>
-
 </div>

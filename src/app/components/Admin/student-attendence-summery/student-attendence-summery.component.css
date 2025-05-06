@@ -1,0 +1,134 @@
+.container {
+    padding: 70px 10px 0 60px;
+    /* padding-top: 10px; */
+    display: flex;
+    flex-direction: column;
+
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    background-color: #ddd;
+    padding: 10px 5px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+
+.selected-area {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .area select,
+  .area input[type="date"] {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    min-width: 400px;
+    background-color: white;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s;
+  }
+  
+  .area select:focus,
+  .area input[type="date"]:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .area button {
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .area button:hover {
+    background-color: #0056b3;
+  }
+  
+
+/* Table styling */
+
+.table-container {
+    margin-top: 20px;
+}
+
+.attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-table th,
+.attendance-table td {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.attendance-table thead {
+    background-color: #f4f4f4;
+    border-bottom: 2px solid #ddd;
+}
+
+.attendance-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.attendance-table th {
+    font-weight: bold;
+    color: #333;
+}
+
+.attendance-table td {
+    color: #555;
+}
+
+/* Badge styling */
+.badge {
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.badge.present {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.badge.absent {
+    background-color: #f44336;
+    color: #fff;
+}
+
+h3 {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #444;
+}
