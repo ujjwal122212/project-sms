@@ -5,38 +5,39 @@
 }
 
 .search-area {
+  /* padding: 25px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
   background-color: #f8f9fa;
   border-radius: 15px;
-  margin: 30px 0;
-  padding: 20px 30px;
+  margin-bottom: 30px;
+  margin-top: 30px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding-top: 10px;
 }
 
 .search-area h1 {
   margin: 0;
   color: #2c3e50;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 .search-box {
   position: relative;
   flex: 1;
   max-width: 500px;
-  margin-left: 20px;
 }
 
 .search-input {
   width: 100%;
-  padding: 12px 45px 12px 20px;
+  padding: 15px 45px 15px 25px;
   border: 2px solid #e0e0e0;
-  border-radius: 25px;
-  font-size: 15px;
+  border-radius: 30px;
+  font-size: 16px;
   transition: all 0.3s ease;
   background-color: white;
 }
@@ -49,7 +50,7 @@
 
 .search-icon {
   position: absolute;
-  right: 15px;
+  right: 20px;
   top: 50%;
   transform: translateY(-50%);
   color: #7f8c8d;
@@ -57,17 +58,16 @@
   pointer-events: none;
 }
 
-/* Card Container - Main Grid Layout */
 .card-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
   padding: 10px;
 }
 
 .card {
   background: white;
-  padding: 20px;
+  padding: 25px;
   border-radius: 15px;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -121,7 +121,6 @@
   color: #7f8c8d;
 }
 
-/* Button Styles */
 .button-group {
   display: flex;
   gap: 10px;
@@ -169,7 +168,6 @@
   background-color: #d35400;
 }
 
-/* Dropdown Styles */
 .dropdown {
   position: relative;
   flex: 1;
@@ -226,7 +224,6 @@
   background-color: #f8f9fa;
 }
 
-/* Pagination Controls */
 .pagination-controls {
   display: flex;
   justify-content: center;
@@ -268,7 +265,6 @@
   background-color: #f8f9fa;
 }
 
-/* No Results Message */
 .no-results {
   text-align: center;
   padding: 50px 20px;
@@ -285,34 +281,20 @@
 }
 
 /* Responsive Design */
-@media (max-width: 1200px) {
-  .card-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 992px) {
-  .card-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 768px) {
   .search-area {
     flex-direction: column;
     align-items: stretch;
-    padding: 15px;
-    gap: 15px;
+    padding: 20px;
   }
 
   .search-box {
     max-width: 100%;
-    margin-left: 0;
   }
 
-  .search-area h1 {
-    text-align: center;
-    font-size: 20px;
+  .card-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
   }
 
   .button-group {
@@ -335,7 +317,7 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 480px) {
   .container {
     padding: 10px;
   }
@@ -361,12 +343,7 @@
     padding: 10px 15px;
     font-size: 14px;
   }
-
-  .card-container {
-    grid-template-columns: 1fr;
-  }
 }
-
 .teacher-area {
   margin: 70px 10px 0 60px;
 }

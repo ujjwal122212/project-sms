@@ -24,44 +24,127 @@
     >
       LISTED TEACHERS
     </h1>
-    <div class="details">
-      <div class="row">
-        <div
-          *ngFor="
-            let teacher of filteredUserList;
-            trackBy: trackByEnrollmentNumber
-          "
-          class="card row-area"
-          style="height: 100%"
-        >
-          <!-- <div class="card row-area" style="height: 100%"> -->
 
-          <img
-            [src]="
-              'https://localhost:7262/api/TeacherImage/' + teacher.imagePath
-            "
-            alt="Teacher Image"
-          />
-          <div class="card-body">
-            <span class="badge badge-primary mb-2">{{
-              teacher.teachSubject
-            }}</span>
-            <h5 class="card-title mt-2">{{ teacher.name }}</h5>
-            <p class="card-text">
-              Registered Since - {{ teacher.createdDate }}
-            </p>
-          </div>
-          <div class="more-details">
-            <button
-              type="button"
-              (click)="more_Details(teacher.enrollmentNumber)"
+    <!-- No Teachers Message -->
+    <ng-container *ngIf="teachers.length === 0; else hasTeachers">
+      <div class="empty-state">
+        <i class="fas fa-users-slash"></i>
+        <h3>No Teachers Found</h3>
+        <p>There are no teachers registered in the system yet.</p>
+        <button class="add-teacher-btn" (click)="openForm()">
+          <i class="fas fa-plus"></i> Add New Teacher
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-template #hasTeachers>
+      <!-- Search Results Empty Message -->
+      <ng-container *ngIf="searchTerm && teachers.length > 0 && filteredUserList.length === 0; else showTeachers">
+        <div class="empty-state">
+          <i class="fas fa-search"></i>
+          <h3>No Matching Results</h3>
+          <p>No teachers found matching "{{ searchTerm }}"</p>
+          <button class="clear-search-btn" (click)="searchTerm = ''">
+            <i class="fas fa-times"></i> Clear Search
+          </button>
+        </div>
+      </ng-container>
+
+      <!-- Teachers List -->
+      <ng-template #showTeachers>
+        <div class="details">
+          <div class="row">
+            <div
+              *ngFor="
+                let teacher of filteredUserList;
+                trackBy: trackByEnrollmentNumber
+              "
+              class="card row-area"
+              style="height: 100%"
             >
-              More Details
+              <img
+                [src]="
+                  'https://localhost:7262/api/TeacherImage/' + teacher.imagePath
+                "
+                alt="Teacher Image"
+              />
+              <div class="card-body">
+                <span class="badge badge-primary mb-2">{{
+                  teacher.teachSubject
+                }}</span>
+                <h5 class="card-title mt-2">{{ teacher.name }}</h5>
+                <p class="card-text">
+                  Registered Since - {{ teacher.createdDate }}
+                </p>
+              </div>
+              <div class="more-details">
+                <button
+                  type="button"
+                  (click)="more_Details(teacher.enrollmentNumber)"
+                >
+                  More Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container" *ngIf="totalPages > 1">
+          <div class="pagination">
+            <!-- First Page -->
+            <button 
+              class="page-btn" 
+              [class.disabled]="currentPage === 1"
+              (click)="onPageChange(1)"
+              [disabled]="currentPage === 1"
+            >
+              <i class="fas fa-angle-double-left"></i>
+            </button>
+
+            <!-- Previous Page -->
+            <button 
+              class="page-btn" 
+              [class.disabled]="currentPage === 1"
+              (click)="onPageChange(currentPage - 1)"
+              [disabled]="currentPage === 1"
+            >
+              <i class="fas fa-angle-left"></i>
+            </button>
+
+            <!-- Page Numbers -->
+            <button 
+              *ngFor="let page of getPageNumbers()"
+              class="page-btn"
+              [class.active]="page === currentPage"
+              (click)="onPageChange(page)"
+            >
+              {{ page }}
+            </button>
+
+            <!-- Next Page -->
+            <button 
+              class="page-btn" 
+              [class.disabled]="currentPage === totalPages"
+              (click)="onPageChange(currentPage + 1)"
+              [disabled]="currentPage === totalPages"
+            >
+              <i class="fas fa-angle-right"></i>
+            </button>
+
+            <!-- Last Page -->
+            <button 
+              class="page-btn" 
+              [class.disabled]="currentPage === totalPages"
+              (click)="onPageChange(totalPages)"
+              [disabled]="currentPage === totalPages"
+            >
+              <i class="fas fa-angle-double-right"></i>
             </button>
           </div>
         </div>
-      </div>
-    </div>
+      </ng-template>
+    </ng-template>
   </div>
 </div>
 

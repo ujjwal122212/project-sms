@@ -7,7 +7,6 @@ import { CommonModule } from '@angular/common';
 import { catchError, concatMap, map, Observable, of, tap } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
-
 @Component({
   selector: 'app-view-all-student',
   standalone: true,
@@ -18,15 +17,13 @@ import { HttpClient } from '@angular/common/http';
 export class ViewAllStudentComponent implements OnInit {
   toastr = inject(ToastrService);
   route = inject(Router);
-  private apiUrl = 'https://localhost:7262';
-
   constructor(private http: HttpClient) {
     this.getAllStudent();
   }
   studentList: any[] = [];
   filteredStudents: any[] = [];
   searchTerm: string = '';
-
+  
 
   currentPage: number = 1;
   itemsPerPage: number = 5;
@@ -112,54 +109,52 @@ export class ViewAllStudentComponent implements OnInit {
     }
   }
 
-  downloadAdmissionReceipt(enrollmentNumber: number) {
-    const url = `https://localhost:7262/GetAdmissionReceiptPdf/${enrollmentNumber}`;
-
-    this.http.get(url, { responseType: 'blob' }).subscribe(
-      (blob: Blob) => {
-        const a = document.createElement('a');
-        const objectUrl = URL.createObjectURL(blob);
-        a.href = objectUrl;
-        a.download = `AdmissionFeeReceipt_${enrollmentNumber}.pdf`;
-        a.click();
-        URL.revokeObjectURL(objectUrl);
-      },
+downloadAdmissionReceipt(enrollmentNumber: number) {
+  const url = `https://localhost:7262/GetAdmissionReceiptPdf/${enrollmentNumber}`;
+  
+  this.http.get(url, { responseType: 'blob' }).subscribe(
+    (blob: Blob) => {
+      const a = document.createElement('a');
+      const objectUrl = URL.createObjectURL(blob);
+      a.href = objectUrl;
+      a.download = `AdmissionFeeReceipt_${enrollmentNumber}.pdf`;
+      a.click();
+      URL.revokeObjectURL(objectUrl);
+    },
       (error) => {
-        this.toastr.error('Failed to download the receipt.', 'Error');
-      }
-    );
-  }
+      this.toastr.error('Failed to download the receipt.', 'Error');
+    }
+  );
+}
 
-  downloadAdmissionFeeReceipt(enrollmentNumber: number) {
-    const url = `https://localhost:7262/api/AdmissionFee/GenerateAdmissionFeeReceipt/${enrollmentNumber}`;
-
-    this.http.get(url, { responseType: 'blob' }).subscribe(
-      (blob: Blob) => {
-        const a = document.createElement('a');
-        const objectUrl = URL.createObjectURL(blob);
-        a.href = objectUrl;
-        a.download = `AdmissionFeeReceipt_${enrollmentNumber}.pdf`;
-        a.click();
-        URL.revokeObjectURL(objectUrl);
-      },
+downloadAdmissionFeeReceipt(enrollmentNumber: number) {
+  const url = `https://localhost:7262/api/AdmissionFee/GenerateAdmissionFeeReceipt/${enrollmentNumber}`;
+  
+  this.http.get(url, { responseType: 'blob' }).subscribe(
+    (blob: Blob) => {
+      const a = document.createElement('a');
+      const objectUrl = URL.createObjectURL(blob);
+      a.href = objectUrl;
+      a.download = `AdmissionFeeReceipt_${enrollmentNumber}.pdf`;
+      a.click();
+      URL.revokeObjectURL(objectUrl);
+    },
       (error) => {
-        this.toastr.error('Failed to download the receipt.', 'Error');
-      }
-    );
-  }
-
-  getImageUrl(imagePath: string | null | undefined): string {
+      this.toastr.error('Failed to download the receipt.', 'Error');
+    }
+  );
+}
+ 
+  getImageUrl(imagePath: string): string {
     if (!imagePath) {
+      console.log('No image path provided');
       return 'assets/images/default-profile.png';
     }
-    
-    // Remove any leading slashes and clean the path
+
     const cleanPath = imagePath.replace(/^\/+/, '');
-    
-    // Construct the full URL using the API base URL
-    const imageUrl = `${this.apiUrl}/${cleanPath}`;
-    console.log('Generated image URL:', imageUrl);
-    return imageUrl;
+    const fullUrl = `https://localhost:7262/${cleanPath}`;
+    console.log('Generated image URL:', fullUrl);
+    return fullUrl;
   }
 
   ngOnInit(): void {}
