@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { catchError, concatMap, map, Observable, of, tap } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-view-all-student',
   standalone: true,
@@ -17,19 +18,21 @@ import { HttpClient } from '@angular/common/http';
 export class ViewAllStudentComponent implements OnInit {
   toastr = inject(ToastrService);
   route = inject(Router);
+  private apiUrl = 'https://localhost:7262';
+
   constructor(private http: HttpClient) {
     this.getAllStudent();
   }
   studentList: any[] = [];
   filteredStudents: any[] = [];
   searchTerm: string = '';
-  
-  // Pagination properties
+
+
   currentPage: number = 1;
-  itemsPerPage: number = 4;
+  itemsPerPage: number = 5;
   totalItems: number = 0;
   totalPages: number = 0;
-  
+
   get paginatedStudents() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
@@ -37,46 +40,51 @@ export class ViewAllStudentComponent implements OnInit {
   }
 
   getAllStudent() {
-    this.http.get("https://localhost:7262/GetAllStudents").subscribe({
+    this.http.get('https://localhost:7262/GetAllStudents').subscribe({
       next: (result: any) => {
-        // Sort students by enrollment number in descending order
-        this.studentList = result.sort((a: any, b: any) => b.enrollmentNumber - a.enrollmentNumber);
+       
+        this.studentList = result.sort(
+          (a: any, b: any) => b.enrollmentNumber - a.enrollmentNumber
+        );
         this.filteredStudents = [...this.studentList];
         this.updatePagination();
-        
-        // Debug logging for image paths
+
         console.log('Student data:', this.studentList);
         this.studentList.forEach((student, index) => {
           console.log(`Student ${index + 1} image path:`, student.imagePath);
-          console.log(`Full image URL:`, 'https://localhost:7262/' + student.imagePath);
+          console.log(
+            `Full image URL:`,
+            'https://localhost:7262/' + student.imagePath
+          );
         });
       },
       error: (error) => {
         console.error('Error fetching students:', error);
         this.toastr.error('Failed to fetch students', 'Error');
-      }
+      },
     });
   }
 
   handleImageError(event: any) {
     console.log('Image loading error:', event);
     console.log('Failed image URL:', event.target.src);
-    // Set a default image if the original fails to load
+    
     event.target.src = 'assets/images/default-profile.png';
   }
 
-  // Search functionality
+ 
   onSearch() {
     if (!this.searchTerm.trim()) {
       this.filteredStudents = [...this.studentList];
     } else {
       const searchLower = this.searchTerm.toLowerCase().trim();
-      this.filteredStudents = this.studentList.filter(student => 
-        student.studentName.toLowerCase().includes(searchLower) ||
-        student.enrollmentNumber.toString().includes(searchLower)
+      this.filteredStudents = this.studentList.filter(
+        (student) =>
+          student.studentName.toLowerCase().includes(searchLower) ||
+          student.enrollmentNumber.toString().includes(searchLower)
       );
     }
-    this.currentPage = 1; // Reset to first page when searching
+    this.currentPage = 1; 
     this.updatePagination();
   }
 
@@ -85,7 +93,7 @@ export class ViewAllStudentComponent implements OnInit {
     this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
   }
 
-  // Pagination methods
+  
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
@@ -106,7 +114,7 @@ export class ViewAllStudentComponent implements OnInit {
 
   downloadAdmissionReceipt(enrollmentNumber: number) {
     const url = `https://localhost:7262/GetAdmissionReceiptPdf/${enrollmentNumber}`;
-    
+
     this.http.get(url, { responseType: 'blob' }).subscribe(
       (blob: Blob) => {
         const a = document.createElement('a');
@@ -116,7 +124,7 @@ export class ViewAllStudentComponent implements OnInit {
         a.click();
         URL.revokeObjectURL(objectUrl);
       },
-      error => {
+      (error) => {
         this.toastr.error('Failed to download the receipt.', 'Error');
       }
     );
@@ -124,7 +132,7 @@ export class ViewAllStudentComponent implements OnInit {
 
   downloadAdmissionFeeReceipt(enrollmentNumber: number) {
     const url = `https://localhost:7262/api/AdmissionFee/GenerateAdmissionFeeReceipt/${enrollmentNumber}`;
-    
+
     this.http.get(url, { responseType: 'blob' }).subscribe(
       (blob: Blob) => {
         const a = document.createElement('a');
@@ -134,26 +142,25 @@ export class ViewAllStudentComponent implements OnInit {
         a.click();
         URL.revokeObjectURL(objectUrl);
       },
-      error => {
+      (error) => {
         this.toastr.error('Failed to download the receipt.', 'Error');
       }
     );
   }
 
-  getImageUrl(imagePath: string): string {
+  getImageUrl(imagePath: string | null | undefined): string {
     if (!imagePath) {
-      console.log('No image path provided');
       return 'assets/images/default-profile.png';
     }
     
-    // Remove any leading slashes
+    // Remove any leading slashes and clean the path
     const cleanPath = imagePath.replace(/^\/+/, '');
-    const fullUrl = `https://localhost:7262/${cleanPath}`;
-    console.log('Generated image URL:', fullUrl);
-    return fullUrl;
+    
+    // Construct the full URL using the API base URL
+    const imageUrl = `${this.apiUrl}/${cleanPath}`;
+    console.log('Generated image URL:', imageUrl);
+    return imageUrl;
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 }

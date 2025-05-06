@@ -1,66 +1,84 @@
-<div class="container">
+<div class="container-fluid p-0 teacher-area">
   <div class="search-area">
-    <h1>Student List</h1>
-    <div class="search-box">
-      <input
-        type="search"
-        [(ngModel)]="searchTerm"
-        (ngModelChange)="onSearch()"
-        placeholder="Search by name or enrollment number"
-        class="search-input"
-      />
-      <span class="search-icon">🔍</span>
-    </div>
+    <h1>Search</h1>
+
+    <input
+      type="search"
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="onSearch()"
+      placeholder="Search by name or enrollment number"
+      class="search-input"
+    />
   </div>
 
-  <div class="card-container">
-    <div class="card" *ngFor="let student of paginatedStudents; let i = index">
-      <div class="profile-image">
-        <img 
-          [src]="getImageUrl(student.imagePath)"
-          [alt]="student.studentName"
-          (error)="handleImageError($event)"
-          class="student-image"
-        />
-      </div>
-      <div class="box">
-        <h2>{{ i + 1 }}. {{ student.studentName }}</h2>
-        <p>
-          <span class="label">Enrollment:</span> {{ student.enrollmentNumber }}
-        </p>
-        <p>
-          <span class="label">DOB:</span>
-          {{ student.dateOfBirth | date : "dd-MM-yyyy" }}
-        </p>
-        <p><span class="label">Mobile:</span> {{ student.mobile }}</p>
-      </div>
-
-      <div class="button-group">
-        <button class="btn green">Fees Pay</button>
-        <div class="dropdown">
-          <button class="btn blue dropdown-toggle" type="button">
-            Receipt
-          </button>
-          <div class="dropdown-menu show-on-hover">
-            <button
-              class="dropdown-item"
-              (click)="downloadAdmissionReceipt(student.enrollmentNumber)"
-            >
-              Admission
-            </button>
-            <button
-              class="dropdown-item"
-              (click)="downloadAdmissionFeeReceipt(student.enrollmentNumber)"
-            >
-              Fee
-            </button>
+  <div class="teacher-list text-center">
+    <h1
+      class="my-4"
+      style="
+        background-color: #fdc300;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      "
+    >
+      LISTED Students
+    </h1>
+    <div class="details">
+      <div class="row">
+        <div
+          class="card"
+          *ngFor="let student of paginatedStudents; let i = index"
+        >
+          <div class="profile-image">
+            <img
+              [src]="getImageUrl(student.imagePath)"
+              [alt]="student.studentName"
+              class="student-image"
+              (error)="handleImageError($event)"
+              onerror="this.src='assets/images/default-profile.png'"
+            />
           </div>
+          <div class="box">
+            <h2>{{ i + 1 }}. {{ student.studentName }}</h2>
+            <p>
+              <span class="label">Enrollment:</span>
+              {{ student.enrollmentNumber }}
+            </p>
+            <p>
+              <span class="label">DOB:</span>
+              {{ student.dateOfBirth | date : "dd-MM-yyyy" }}
+            </p>
+            <p><span class="label">Mobile:</span> {{ student.mobile }}</p>
+          </div>
+
+          <div class="button-group">
+            <button class="btn green">Fees Pay</button>
+            <div class="dropdown">
+              <button class="btn blue dropdown-toggle" type="button">
+                Receipt
+              </button>
+              <div class="dropdown-menu show-on-hover">
+                <button
+                  class="dropdown-item"
+                  (click)="downloadAdmissionReceipt(student.enrollmentNumber)"
+                >
+                  Admission
+                </button>
+                <button
+                  class="dropdown-item"
+                  (click)="
+                    downloadAdmissionFeeReceipt(student.enrollmentNumber)
+                  "
+                >
+                  Fee
+                </button>
+              </div>
+            </div>
+          </div>
+          <button class="btn orange">View Details</button>
         </div>
       </div>
-      <button class="btn orange">View Details</button>
     </div>
   </div>
-
   <!-- No Results Message -->
   <div class="no-results" *ngIf="filteredStudents.length === 0">
     <p>No students found matching your search criteria.</p>
