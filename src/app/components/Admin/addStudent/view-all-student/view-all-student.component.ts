@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { catchError, concatMap, map, Observable, of, tap } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-view-all-student',
   standalone: true,
@@ -17,61 +18,149 @@ import { HttpClient } from '@angular/common/http';
 export class ViewAllStudentComponent implements OnInit {
   toastr = inject(ToastrService);
   route = inject(Router);
+  private apiUrl = 'https://localhost:7262';
+
   constructor(private http: HttpClient) {
     this.getAllStudent();
   }
-  studentList:any[]= [];
-  
-getAllStudent(){
-  this.http.get("https://localhost:7262/GetAllStudents").subscribe((result:any)=>{
-    this.studentList = result;
-    console.table(this.studentList);
-  })
-}
- 
+  studentList: any[] = [];
+  filteredStudents: any[] = [];
+  searchTerm: string = '';
 
-  
 
-downloadAdmissionReceipt(enrollmentNumber: number) {
-  const url = `https://localhost:7262/GetAdmissionReceiptPdf/${enrollmentNumber}`;
-  
-  this.http.get(url, { responseType: 'blob' }).subscribe(
-    (blob: Blob) => {
-      const a = document.createElement('a');
-      const objectUrl = URL.createObjectURL(blob);
-      a.href = objectUrl;
-      a.download = `AdmissionFeeReceipt_${enrollmentNumber}.pdf`;
-      a.click();
-      URL.revokeObjectURL(objectUrl);
-    },
-    error => {
-      this.toastr.error('Failed to download the receipt.', 'Error');
-    }
-  );
-}
+  currentPage: number = 1;
+  itemsPerPage: number = 5;
+  totalItems: number = 0;
+  totalPages: number = 0;
 
-downloadAdmissionFeeReceipt(enrollmentNumber: number) {
-  const url = `https://localhost:7262/api/AdmissionFee/GenerateAdmissionFeeReceipt/${enrollmentNumber}`;
-  
-  this.http.get(url, { responseType: 'blob' }).subscribe(
-    (blob: Blob) => {
-      const a = document.createElement('a');
-      const objectUrl = URL.createObjectURL(blob);
-      a.href = objectUrl;
-      a.download = `AdmissionFeeReceipt_${enrollmentNumber}.pdf`;
-      a.click();
-      URL.revokeObjectURL(objectUrl);
-    },
-    error => {
-      this.toastr.error('Failed to download the receipt.', 'Error');
-    }
-  );
-}
- 
-
-  
-
-  ngOnInit(): void {
-    
+  get paginatedStudents() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.filteredStudents.slice(startIndex, endIndex);
   }
+
+  getAllStudent() {
+    this.http.get('https://localhost:7262/GetAllStudents').subscribe({
+      next: (result: any) => {
+       
+        this.studentList = result.sort(
+          (a: any, b: any) => b.enrollmentNumber - a.enrollmentNumber
+        );
+        this.filteredStudents = [...this.studentList];
+        this.updatePagination();
+
+        console.log('Student data:', this.studentList);
+        this.studentList.forEach((student, index) => {
+          console.log(`Student ${index + 1} image path:`, student.imagePath);
+          console.log(
+            `Full image URL:`,
+            'https://localhost:7262/' + student.imagePath
+          );
+        });
+      },
+      error: (error) => {
+        console.error('Error fetching students:', error);
+        this.toastr.error('Failed to fetch students', 'Error');
+      },
+    });
+  }
+
+  handleImageError(event: any) {
+    console.log('Image loading error:', event);
+    console.log('Failed image URL:', event.target.src);
+    
+    event.target.src = 'assets/images/default-profile.png';
+  }
+
+ 
+  onSearch() {
+    if (!this.searchTerm.trim()) {
+      this.filteredStudents = [...this.studentList];
+    } else {
+      const searchLower = this.searchTerm.toLowerCase().trim();
+      this.filteredStudents = this.studentList.filter(
+        (student) =>
+          student.studentName.toLowerCase().includes(searchLower) ||
+          student.enrollmentNumber.toString().includes(searchLower)
+      );
+    }
+    this.currentPage = 1; 
+    this.updatePagination();
+  }
+
+  private updatePagination() {
+    this.totalItems = this.filteredStudents.length;
+    this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
+  }
+
+  
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  goToPage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
+  }
+
+  downloadAdmissionReceipt(enrollmentNumber: number) {
+    const url = `https://localhost:7262/GetAdmissionReceiptPdf/${enrollmentNumber}`;
+
+    this.http.get(url, { responseType: 'blob' }).subscribe(
+      (blob: Blob) => {
+        const a = document.createElement('a');
+        const objectUrl = URL.createObjectURL(blob);
+        a.href = objectUrl;
+        a.download = `AdmissionFeeReceipt_${enrollmentNumber}.pdf`;
+        a.click();
+        URL.revokeObjectURL(objectUrl);
+      },
+      (error) => {
+        this.toastr.error('Failed to download the receipt.', 'Error');
+      }
+    );
+  }
+
+  downloadAdmissionFeeReceipt(enrollmentNumber: number) {
+    const url = `https://localhost:7262/api/AdmissionFee/GenerateAdmissionFeeReceipt/${enrollmentNumber}`;
+
+    this.http.get(url, { responseType: 'blob' }).subscribe(
+      (blob: Blob) => {
+        const a = document.createElement('a');
+        const objectUrl = URL.createObjectURL(blob);
+        a.href = objectUrl;
+        a.download = `AdmissionFeeReceipt_${enrollmentNumber}.pdf`;
+        a.click();
+        URL.revokeObjectURL(objectUrl);
+      },
+      (error) => {
+        this.toastr.error('Failed to download the receipt.', 'Error');
+      }
+    );
+  }
+
+  getImageUrl(imagePath: string | null | undefined): string {
+    if (!imagePath) {
+      return 'assets/images/default-profile.png';
+    }
+    
+    // Remove any leading slashes and clean the path
+    const cleanPath = imagePath.replace(/^\/+/, '');
+    
+    // Construct the full URL using the API base URL
+    const imageUrl = `${this.apiUrl}/${cleanPath}`;
+    console.log('Generated image URL:', imageUrl);
+    return imageUrl;
+  }
+
+  ngOnInit(): void {}
 }

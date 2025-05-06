@@ -1,30 +1,112 @@
-<div class="card-container">
-  <div class="card" *ngFor="let student of studentList; let i = index">
-    <div class="profile-image">
-      <img src="https://via.placeholder.com/100" alt="Profile Picture" />
-    </div>
-    <div class="box">
-      <h2>{{ i + 1 }}. {{ student.studentName }}</h2>
-      <p><span class="label">Enrollment:</span> {{ student.enrollmentNumber }}</p>
-      <p><span class="label">DOB:</span> {{ student.dateOfBirth | date: 'dd-MM-yyyy' }}</p>
-      <p><span class="label">Mobile:</span> {{ student.mobile }}</p>
-    </div>
+<div class="container-fluid p-0 teacher-area">
+  <div class="search-area">
+    <h1>Search</h1>
 
-    <div class="button-group">
-      <button class="btn green">Fees Pay</button>
-      <div class="dropdown">
-        <button class="btn blue dropdown-toggle" type="button">
-          Receipt
-        </button>
-        <div class="dropdown-menu show-on-hover">
-          <button class="dropdown-item" (click)="downloadAdmissionReceipt(student.enrollmentNumber)">Admission</button>
-          <button class="dropdown-item" (click)="downloadAdmissionFeeReceipt(student.enrollmentNumber)">Fee</button>
-          
+    <input
+      type="search"
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="onSearch()"
+      placeholder="Search by name or enrollment number"
+      class="search-input"
+    />
+  </div>
+
+  <div class="teacher-list text-center">
+    <h1
+      class="my-4"
+      style="
+        background-color: #fdc300;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      "
+    >
+      LISTED Students
+    </h1>
+    <div class="details">
+      <div class="row">
+        <div
+          class="card"
+          *ngFor="let student of paginatedStudents; let i = index"
+        >
+          <div class="profile-image">
+            <img
+              [src]="getImageUrl(student.imagePath)"
+              [alt]="student.studentName"
+              class="student-image"
+              (error)="handleImageError($event)"
+              onerror="this.src='assets/images/default-profile.png'"
+            />
+          </div>
+          <div class="box">
+            <h2>{{ i + 1 }}. {{ student.studentName }}</h2>
+            <p>
+              <span class="label">Enrollment:</span>
+              {{ student.enrollmentNumber }}
+            </p>
+            <p>
+              <span class="label">DOB:</span>
+              {{ student.dateOfBirth | date : "dd-MM-yyyy" }}
+            </p>
+            <p><span class="label">Mobile:</span> {{ student.mobile }}</p>
+          </div>
+
+          <div class="button-group">
+            <button class="btn green">Fees Pay</button>
+            <div class="dropdown">
+              <button class="btn blue dropdown-toggle" type="button">
+                Receipt
+              </button>
+              <div class="dropdown-menu show-on-hover">
+                <button
+                  class="dropdown-item"
+                  (click)="downloadAdmissionReceipt(student.enrollmentNumber)"
+                >
+                  Admission
+                </button>
+                <button
+                  class="dropdown-item"
+                  (click)="
+                    downloadAdmissionFeeReceipt(student.enrollmentNumber)
+                  "
+                >
+                  Fee
+                </button>
+              </div>
+            </div>
+          </div>
+          <button class="btn orange">View Details</button>
         </div>
       </div>
-      
-
     </div>
-    <button class="btn orange">View Details</button>
+  </div>
+  <!-- No Results Message -->
+  <div class="no-results" *ngIf="filteredStudents.length === 0">
+    <p>No students found matching your search criteria.</p>
+  </div>
+
+  <!-- Pagination Controls -->
+  <div class="pagination-controls" *ngIf="filteredStudents.length > 0">
+    <button class="btn" [disabled]="currentPage === 1" (click)="previousPage()">
+      Previous
+    </button>
+
+    <div class="page-numbers">
+      <button
+        *ngFor="let page of [].constructor(totalPages); let i = index"
+        class="btn"
+        [class.active]="currentPage === i + 1"
+        (click)="goToPage(i + 1)"
+      >
+        {{ i + 1 }}
+      </button>
+    </div>
+
+    <button
+      class="btn"
+      [disabled]="currentPage === totalPages"
+      (click)="nextPage()"
+    >
+      Next
+    </button>
   </div>
 </div>
