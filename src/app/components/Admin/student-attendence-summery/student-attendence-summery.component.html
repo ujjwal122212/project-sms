@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="header">
+      <h1>Section Wise Attendance</h1>
+    </div>
+  
+    <div class="selected-area">
+      <div class="area">
+        <select
+          [(ngModel)]="selectedClass"
+          (change)="onClassChange($event)"
+        >
+          <option value="0" disabled selected>Select a Class</option>
+          @for(class of Classes; track $index) {
+            <option [value]="class.classId">{{ class.className }}</option>
+          }
+        </select>
+      </div>
+  
+      <div class="area">
+        <select
+          [(ngModel)]="selectedSectionId"
+          (change)="onSectionChange($event)"
+          [disabled]="!selectedClass"
+        >
+          <option value="0" disabled selected>Select a Section</option>
+          @for(section of Sections; track $index) {
+            <option [value]="section.sectionId">{{ section.sectionName }}</option>
+          }
+        </select>
+      </div>
+  
+      <div class="area">
+        <input type="date" [(ngModel)]="selectedDate" />
+      </div>
+  
+      <div class="area show">
+        <button
+          type="button"
+          [disabled]="selectedClass === 0 || selectedSectionId === 0 || !selectedDate"
+          (click)="showDetails()"
+        >
+          Show
+        </button>
+      </div>
+    </div>
+  
+    <!-- No data message -->
+    <!-- <div *ngIf="StudentRecords.length === 0 && selectedDate && selectedClass && selectedSectionId" class="no-records">
+      <p>No attendance data available for the selected section and date.</p>
+    </div> -->
+  
+    <!-- Attendance Table -->
+    <div *ngIf="StudentRecords.length > 0" class="table-container">
+      <h3>Attendance Record</h3>
+      <table class="attendance-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Day</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of StudentRecords">
+            <td>{{ record.studentName }}</td>
+            <td>{{ record.attendanceDate | date : 'EEEE' }}</td>
+            <td>{{ record.attendanceDate | date : 'longDate' }}</td>
+            <td>
+              <span
+                class="badge"
+                [class.present]="record.isPresent"
+                [class.absent]="!record.isPresent"
+              >
+                {{ record.isPresent ? 'Present' : 'Absent' }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
