@@ -1,0 +1,122 @@
+/* Header */
+.header {
+    text-align: center;
+    background: #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 30px;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Form container */
+.form-container {
+    max-width: 900px;
+    margin: 0 auto 20px;
+    padding: 2rem;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.form-group {
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+input,
+select {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+input:focus,
+select:focus {
+    border-color: #1976d2;
+    outline: none;
+    box-shadow: 0 0 4px rgba(25, 118, 210, 0.4);
+}
+
+/* Button */
+button {
+    padding: 0.6rem 1.2rem;
+    background: #1976d2;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+}
+
+button:hover {
+    background: #1565c0;
+}
+
+/* Table section */
+.attendance-summary {
+    padding: 1rem;
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow-x: auto;
+    margin-bottom: 2rem;
+}
+
+.attendance-summary h2 {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+    background: #1976d2;
+    color: #fff;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+    white-space: nowrap;
+}
+
+tbody tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+tbody tr:hover {
+    background: #e3f2fd;
+}
