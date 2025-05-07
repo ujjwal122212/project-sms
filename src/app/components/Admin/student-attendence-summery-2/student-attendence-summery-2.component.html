@@ -1,0 +1,84 @@
+<div class="header">
+  <h1>Section Wise Attendance In Date Range</h1>
+</div>
+
+<div class="form-container">
+  <form
+    [formGroup]="attendenceformOfStudent"
+    (ngSubmit)="onSubmit()"
+    class="form-row"
+  >
+    <div class="form-group">
+      <label for="classId">Class</label>
+      <select
+        id="classId"
+        (change)="onClassChange($event)"
+        formControlName="classId"
+      >
+        <option value="" selected disabled>Select a Class</option>
+        @for(class of Classes; track $index) {
+        <option [value]="class.classId">{{ class.className }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="sectionId">Section</label>
+      <select id="sectionId" formControlName="sectionId">
+        <option value="" selected disabled>Select a Section</option>
+        @for(section of Sections; track $index) {
+        <option [value]="section.sectionId">{{ section.sectionName }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="fromDate">From Date</label>
+      <input type="date" id="fromDate" formControlName="fromDate" />
+    </div>
+
+    <div class="form-group">
+      <label for="toDate">To Date</label>
+      <input type="date" id="toDate" formControlName="toDate" />
+    </div>
+
+    <div class="form-group button-group">
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+
+<!-- Display Attendance Summary -->
+<div *ngIf="students.length > 0" class="attendance-summary">
+  <h2>Attendance Report</h2>
+  <table border="1" cellspacing="0" cellpadding="8">
+    <thead>
+      <tr>
+        <th>Student Name</th>
+        <th>Enrollment No</th>
+        @for (date of dates; track date) {
+        <th>{{ date | date : "dd-MM-yyyy" }}</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (student of students; track student.enrollmentNumber) {
+      <tr>
+        <td>{{ student.studentName }}</td>
+        <td>{{ student.enrollmentNumber }}</td>
+        @for (date of dates; track date) {
+        <td>
+          {{
+            student.attendance[date] === true
+              ? "✔️"
+              : student.attendance[date] === false
+              ? "❌"
+              : "-"
+          }}
+        </td>
+        }
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
