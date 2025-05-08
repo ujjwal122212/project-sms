@@ -301,6 +301,61 @@ body {
   color: #666;
 }
 
+
+
+
+@media screen  and (max-width:991px){
+  .calendar1-overlay,.card-title,.card{
+    max-width: 80%;
+  }
+  .calendar1-overlay,.card-title,.card {
+    font-size: 1.1rem;
+    padding-right: 70px;
+  }
+}
+@media screen  and (max-width:768px){
+  .calendar1-overlay,.card-title,.card{
+    column-gap: 6%;
+    width: 220px;
+    padding-right: 50px;
+  }
+  .calendar1-overlay,.card-title,.card{
+    width: 20%;
+    padding-right: 50px;
+  }
+  .calendar1-overlay,.card-title,.card{
+    font-size: 1rem;
+    padding-right: 50px;
+  }
+
+}
+@media screen  and (max-width:497px){
+  .calendar1-overlay,.card-title,.card{
+   
+    overflow-x: hidden;
+    column-gap: 4%;
+    width: 220px;
+    padding-right: 50px;
+  }
+  .calendar1-overlay,.card-title,.card{
+    width: 48%;
+    width: 220px;
+    padding-right: 50px;
+  }
+  .calendar1-overlay,.card-title,.card{
+    font-size: 1.1rem;
+    width: 220px;
+    padding-right: 50px;
+  }
+}
+
+
+
+
+
+
+
+
 .calendar1-overlay {
   position: absolute; 
   left: 0;
