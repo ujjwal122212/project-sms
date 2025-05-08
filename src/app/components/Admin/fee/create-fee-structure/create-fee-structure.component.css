@@ -56,6 +56,25 @@ body {
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
+.custom-input, .custom-select {
+  height: 45px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  appearance: none; /* For select */
+}
+
+.custom-select {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5'%3E%3Cpath fill='%23999' d='M2 0L0 2h4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px;
+}
+
 
 h1 {
   text-align: center;
@@ -132,4 +151,17 @@ button:hover {
   button {
     grid-column: 1 / 2;
   }
+}
+/* Red text for error messages */
+.text-danger {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+/* Red border for invalid inputs or selects */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border: 1px solid red;
+  box-shadow: none;
 }
