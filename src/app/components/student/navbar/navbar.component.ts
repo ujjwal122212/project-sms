@@ -16,7 +16,7 @@ import { LoginService } from '../../../Services/login.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterLinkActive, MainProfileComponent, NoficationComponent],
+  imports: [FormsModule, CommonModule, RouterLinkActive, MainProfileComponent, NoficationComponent,],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
@@ -71,4 +71,42 @@ export class NavbarComponent implements OnInit {
   }
 
 
+  showCalendar = false;
+
+  CalendarView = false;
+  openCalender(){
+    this.showCalendar=false;
+    this.CalendarView =!this.CalendarView
+  }
+  
+  showsCalendar(){
+      this.showCalendar=!this.showCalendar;
+      this.CalendarView=false;
+      this.AcademicYear=false;
+      this.AcademicCalendar=false;
+  }
+
+
+  AcademicYear = false;
+
+  academicView(){
+    this.CalendarView=false;
+    this.AcademicYear=!this.AcademicYear;
+  }
+
+
+
+  AcademicCalendar= false;
+ 
+  AcademicsCalendar(){
+    this.CalendarView=false;
+    this.AcademicCalendar=!this.AcademicCalendar;
+  }
+
 }
+
+
+
+
+
+

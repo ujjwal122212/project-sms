@@ -8,12 +8,13 @@ import { MainProfileComponent } from '../../main-profile-data/main-profile/main-
 import { AdminProfileComponent } from '../admin-profile/admin-profile.component';
 import { LoginService } from '../../../Services/login.service';
 import { AdminRegistrationService } from '../../../Services/admin-registration.service';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-a-navbar',
   standalone: true,
-  imports: [CommonModule, RouterLink, AdminProfileComponent,RouterLinkActive],
+  imports: [CommonModule, RouterLink, AdminProfileComponent,RouterLinkActive,FormsModule],
   templateUrl: './a-navbar.component.html',
   styleUrl: './a-navbar.component.css',
   viewProviders: [AMenubarComponent, ViewStudentComponent]
@@ -44,6 +45,43 @@ export class ANavbarComponent {
   openProfile() {
     this.show = !this.show;
   }
+
+  showCalendar = false;
+
+  CalendarView = false;
+  openCalender(){
+    this.showCalendar=false;
+    this.CalendarView =!this.CalendarView
+  }
+  
+  showsCalendar(){
+      this.showCalendar=!this.showCalendar;
+      this.CalendarView=false;
+      this.AcademicYear=false;
+      this.AcademicCalendar=false;
+  }
+
+
+  AcademicYear = false;
+
+  academicView(){
+    this.CalendarView=false;
+    this.AcademicYear=!this.AcademicYear;
+  }
+
+
+
+  AcademicCalendar= false;
+ 
+  AcademicsCalendar(){
+    this.CalendarView=false;
+    this.AcademicCalendar=!this.AcademicCalendar;
+  }
+
+ 
+
+
+  
 
 
 }

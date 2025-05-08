@@ -1,4 +1,10 @@
 <nav>
+
+  <div class="menu-container" (click)="showsCalendar()">
+    <span class="menu-text">Menu</span>
+    <span class="arrow">&#9662;</span> 
+  </div>
+
   <div class="logo">
     <img src="assets/images/logo.png" alt="Logo" />
   </div>
@@ -32,3 +38,95 @@
     </div>
   </div>
 </nav>
+
+<div *ngIf="showCalendar" class="calendar1-overlay">
+  <div class="container">
+    <div class="info-box">
+      <span><strong>Academic year</strong> : 2024–2025</span>
+      <span><strong>Class</strong> :</span>
+    </div>
+
+    <div class="card" (click)="openCalender()">
+      <i style='font-size:24px' class='fas'>&#xf073;</i>
+      <div class="card-title">School Calendar</div>
+      <div class="card-subtitle">Event Calendar</div>
+    </div>
+  </div>
+</div>
+@if(CalendarView){
+<div  class="view-toggle" class="cccOverlay">
+  <button class="tab active"  (click)="academicView()">
+    <i class="fa-solid fa-calendar-days"></i>
+    <span>Calendar View</span>
+  </button>
+  <button class="tab" (click)="AcademicsCalendar()">
+    <i class="fa-solid fa-list"></i>
+    <span>List View</span>
+  </button>
+</div>
+}
+
+@if(AcademicYear){
+<div class="calendar-container" (click)="academicView()" class="cccOverlay">
+  <div class="calendar-card">
+    <h2><strong>Academic Year</strong></h2>
+    <p><strong>Term:</strong> string</p>
+    <p><strong>Event Name:</strong> string</p>
+    <p><strong>Event Date:</strong> February 24, 2025</p>
+    <p><strong>Event Type:</strong> string</p>
+    <p><strong>Description:</strong> string</p>
+  </div>
+</div>
+}
+
+@if(AcademicCalendar){
+<div class="container" class="ccccOverlay">
+
+  <div class="calendar">
+    <div class="calendar-section">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">Holidays</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>17/07/2024</td><td>Muharram</td></tr>
+          <tr><td>01/08/2024</td><td>Non instructional Days</td></tr>
+          <tr><td>02/08/2024</td><td>Non instructional Days</td></tr>
+          <tr><td>03/08/2024</td><td>Non Instructional Days</td></tr>
+          <tr><td>15/08/2024</td><td>Independence Day</td></tr>
+          <tr><td>19/08/2024</td><td>Raksha Bandhan</td></tr>
+          <tr><td>25/08/2024</td><td>Janamashtami</td></tr>
+          <tr><td>26/08/2024</td><td>Janamashtami</td></tr>
+          <tr><td>16/09/2024</td><td>Milad un-Nabi/Id-e-Milad*</td></tr>
+          <tr><td>17/09/2024</td><td>Non Instructional Day</td></tr>
+          <tr><td>18/09/2024</td><td>Non Instructional Day</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="calendar-section">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">Events</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>19/12/2024</td><td>Registration for Even Semester Starts.</td></tr>
+          <tr><td>23/12/2024</td><td>Registration for Even Semester Ends.</td></tr>
+          <tr><td>31/07/2024</td><td>Last Instructional Day.</td></tr>
+          <tr><td>01/08/2024</td><td>Semester End Examination Starts.</td></tr>
+          <tr><td>10/08/2024</td><td>Semester End Examination Ends.</td></tr>
+          <tr><td>24/08/2024</td><td>Result Declaration.</td></tr>
+          <tr><td>01/07/2024</td><td>Commencement of Classes</td></tr>
+          <tr><td>03/08/2024</td><td>Last Instructional Day</td></tr>
+          <tr><td>06/08/2024</td><td>Semester End Examination Starts</td></tr>
+          <tr><td>20/08/2024</td><td>Semester End Examination Ends</td></tr>
+          <tr><td>04/09/2024</td><td>Result Declaration</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+}
