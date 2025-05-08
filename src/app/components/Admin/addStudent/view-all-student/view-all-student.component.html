@@ -31,9 +31,8 @@
         >
           <div class="profile-image">
             <img
-              [src]="getImageUrl(student.imagePath)"
-              [alt]="student.studentName"
-              (error)="handleImageError($event)"
+              [src]="'https://localhost:7262/api/Image/' + student.imagePath"
+              alt="sudent image"
               class="student-image"
             />
           </div>

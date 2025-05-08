@@ -23,7 +23,7 @@ export class ViewAllStudentComponent implements OnInit {
   studentList: any[] = [];
   filteredStudents: any[] = [];
   searchTerm: string = '';
-  
+
 
   currentPage: number = 1;
   itemsPerPage: number = 5;
@@ -39,7 +39,7 @@ export class ViewAllStudentComponent implements OnInit {
   getAllStudent() {
     this.http.get('https://localhost:7262/GetAllStudents').subscribe({
       next: (result: any) => {
-       
+
         this.studentList = result.sort(
           (a: any, b: any) => b.enrollmentNumber - a.enrollmentNumber
         );
@@ -47,13 +47,13 @@ export class ViewAllStudentComponent implements OnInit {
         this.updatePagination();
 
         console.log('Student data:', this.studentList);
-        this.studentList.forEach((student, index) => {
-          console.log(`Student ${index + 1} image path:`, student.imagePath);
-          console.log(
-            `Full image URL:`,
-            'https://localhost:7262/' + student.imagePath
-          );
-        });
+        // this.studentList.forEach((student, index) => {
+        //   console.log(`Student ${index + 1} image path:`, student.imagePath);
+        //   console.log(
+        //     `Full image URL:`,
+        //     'https://localhost:7262/' + student.imagePath
+        //   );
+        // });
       },
       error: (error) => {
         console.error('Error fetching students:', error);
@@ -65,11 +65,11 @@ export class ViewAllStudentComponent implements OnInit {
   handleImageError(event: any) {
     console.log('Image loading error:', event);
     console.log('Failed image URL:', event.target.src);
-    
+
     event.target.src = 'assets/images/default-profile.png';
   }
 
- 
+
   onSearch() {
     if (!this.searchTerm.trim()) {
       this.filteredStudents = [...this.studentList];
@@ -81,7 +81,7 @@ export class ViewAllStudentComponent implements OnInit {
           student.enrollmentNumber.toString().includes(searchLower)
       );
     }
-    this.currentPage = 1; 
+    this.currentPage = 1;
     this.updatePagination();
   }
 
@@ -90,7 +90,7 @@ export class ViewAllStudentComponent implements OnInit {
     this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
   }
 
-  
+
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
@@ -109,42 +109,42 @@ export class ViewAllStudentComponent implements OnInit {
     }
   }
 
-downloadAdmissionReceipt(enrollmentNumber: number) {
-  const url = `https://localhost:7262/GetAdmissionReceiptPdf/${enrollmentNumber}`;
-  
-  this.http.get(url, { responseType: 'blob' }).subscribe(
-    (blob: Blob) => {
-      const a = document.createElement('a');
-      const objectUrl = URL.createObjectURL(blob);
-      a.href = objectUrl;
-      a.download = `AdmissionFeeReceipt_${enrollmentNumber}.pdf`;
-      a.click();
-      URL.revokeObjectURL(objectUrl);
-    },
-      (error) => {
-      this.toastr.error('Failed to download the receipt.', 'Error');
-    }
-  );
-}
+  downloadAdmissionReceipt(enrollmentNumber: number) {
+    const url = `https://localhost:7262/GetAdmissionReceiptPdf/${enrollmentNumber}`;
 
-downloadAdmissionFeeReceipt(enrollmentNumber: number) {
-  const url = `https://localhost:7262/api/AdmissionFee/GenerateAdmissionFeeReceipt/${enrollmentNumber}`;
-  
-  this.http.get(url, { responseType: 'blob' }).subscribe(
-    (blob: Blob) => {
-      const a = document.createElement('a');
-      const objectUrl = URL.createObjectURL(blob);
-      a.href = objectUrl;
-      a.download = `AdmissionFeeReceipt_${enrollmentNumber}.pdf`;
-      a.click();
-      URL.revokeObjectURL(objectUrl);
-    },
+    this.http.get(url, { responseType: 'blob' }).subscribe(
+      (blob: Blob) => {
+        const a = document.createElement('a');
+        const objectUrl = URL.createObjectURL(blob);
+        a.href = objectUrl;
+        a.download = `AdmissionFeeReceipt_${enrollmentNumber}.pdf`;
+        a.click();
+        URL.revokeObjectURL(objectUrl);
+      },
       (error) => {
-      this.toastr.error('Failed to download the receipt.', 'Error');
-    }
-  );
-}
- 
+        this.toastr.error('Failed to download the receipt.', 'Error');
+      }
+    );
+  }
+
+  downloadAdmissionFeeReceipt(enrollmentNumber: number) {
+    const url = `https://localhost:7262/api/AdmissionFee/GenerateAdmissionFeeReceipt/${enrollmentNumber}`;
+
+    this.http.get(url, { responseType: 'blob' }).subscribe(
+      (blob: Blob) => {
+        const a = document.createElement('a');
+        const objectUrl = URL.createObjectURL(blob);
+        a.href = objectUrl;
+        a.download = `AdmissionFeeReceipt_${enrollmentNumber}.pdf`;
+        a.click();
+        URL.revokeObjectURL(objectUrl);
+      },
+      (error) => {
+        this.toastr.error('Failed to download the receipt.', 'Error');
+      }
+    );
+  }
+
   getImageUrl(imagePath: string): string {
     if (!imagePath) {
       console.log('No image path provided');
@@ -157,5 +157,5 @@ downloadAdmissionFeeReceipt(enrollmentNumber: number) {
     return fullUrl;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
