@@ -2,7 +2,7 @@
     <!-- Header Box -->
     <div class="header-box">
       <div class="header-title">Fee Structure List</div>
-      <button class="add-button">Add Fee Structure</button>
+      <button class="add-button" routerLink="/adminlayout/createstudentfee">Add Fee Structure</button>
     </div>
   
     <!-- Table -->
@@ -20,17 +20,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td data-label="Fee Structure ID">1</td>
-          <td data-label="Class ID">14</td>
-          <td data-label="Academic Year ID">1</td>
-          <td data-label="Admission Fee">4000</td>
-          <td data-label="Monthly Fee">1500</td>
-          <td data-label="Late Fee / Month">50</td>
-          <td data-label="Discount Allowed">0</td>
+        <tr *ngFor="let fee of feeStructureList ">
+          <td data-label="Fee Structure ID">{{fee.feeStructureId}}</td>
+          <td data-label="Class ID">{{fee.className}}</td>
+          <td data-label="Academic Year ID">{{fee.academicYearName}}</td>
+          <td data-label="Admission Fee">{{fee.admissionFee}}</td>
+          <td data-label="Monthly Fee">{{fee.monthlyFeeAmount}}</td>
+          <td data-label="Late Fee / Month">{{fee.lateFeePerMonth}}</td>
+          <td data-label="Discount Allowed">{{fee.discountAllowed}}</td>
           <td data-label="Actions">
             <button class="update-btn">Update</button>
-            <button class="delete-btn">Delete</button>
+            <button class="delete-btn" (click)="deleteFeeStructure(fee.feeStructureId)">Delete</button>
           </td>
         </tr>
       </tbody>
