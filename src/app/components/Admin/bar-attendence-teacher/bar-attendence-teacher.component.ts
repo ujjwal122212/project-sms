@@ -11,6 +11,7 @@ Chart.register(...registerables);
 })
 export class BarAttendenceTeacherComponent {
 public Attendence: any = {
+  
     type: 'bar',
     data: {
       labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
