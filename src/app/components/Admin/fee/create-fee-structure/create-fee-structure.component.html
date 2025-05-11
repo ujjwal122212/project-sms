@@ -1,0 +1,73 @@
+<div class="main-container">
+  <div class="container">
+    <div class="header-box">
+      <div class="header-title"> Add Fee Structure </div>
+      <button class="add-button" routerLink="/adminlayout/viewFeeStructure">Show Fee Structure List</button>
+    </div>
+
+    <form (ngSubmit)="submitFeeStructure()" #feeForm="ngForm" novalidate>
+      <!-- Class -->
+      <div class="form-group">
+        <label for="classId">Class</label>
+        <select id="classId" name="classId" [(ngModel)]="feeStructure.classId" required class="custom-select" #classId="ngModel">
+          <option value="" disabled>Select a class</option>
+          <option *ngFor="let c of classList" [value]="c.classId">{{ c.className }}</option>
+        </select>
+        <div *ngIf="classId.invalid && classId.touched" class="text-danger">Class is required.</div>
+      </div>
+    
+      <!-- Academic Year -->
+      <div class="form-group">
+        <label for="academicYearID">Academic Year</label>
+        <select id="academicYearID" name="academicYearID" [(ngModel)]="feeStructure.academicYearID" required class="custom-select" #academicYearID="ngModel">
+          <option value="" disabled>Select a Year</option>
+          <option *ngFor="let a of yearList" [value]="a.academicYearID">{{ a.yearName }}</option>
+        </select>
+        <div *ngIf="academicYearID.invalid && academicYearID.touched" class="text-danger">Academic year is required.</div>
+      </div>
+    
+      <!-- Admission Fee -->
+      <div class="form-group">
+        <label for="admissionFee">Admission Fee</label>
+        <input type="number" id="admissionFee" name="admissionFee" [(ngModel)]="feeStructure.admissionFee" required min="0" class="custom-input" #admissionFee="ngModel" />
+        <div *ngIf="admissionFee.invalid && admissionFee.touched" class="text-danger">
+          <div *ngIf="admissionFee.errors?.['required']">Admission fee is required.</div>
+          <div *ngIf="admissionFee.errors?.['min']">Fee cannot be negative.</div>
+        </div>
+      </div>
+    
+      <!-- Monthly Fee -->
+      <div class="form-group">
+        <label for="monthlyFeeAmount">Monthly Fee Amount</label>
+        <input type="number" id="monthlyFeeAmount" name="monthlyFeeAmount" [(ngModel)]="feeStructure.monthlyFeeAmount" required min="0" class="custom-input" #monthlyFeeAmount="ngModel" />
+        <div *ngIf="monthlyFeeAmount.invalid && monthlyFeeAmount.touched" class="text-danger">
+          <div *ngIf="monthlyFeeAmount.errors?.['required']">Monthly fee is required.</div>
+          <div *ngIf="monthlyFeeAmount.errors?.['min']">Amount cannot be negative.</div>
+        </div>
+      </div>
+    
+      <!-- Late Fee -->
+      <div class="form-group">
+        <label for="lateFeePerMonth">Late Fee Per Month</label>
+        <input type="number" id="lateFeePerMonth" name="lateFeePerMonth" [(ngModel)]="feeStructure.lateFeePerMonth" required min="0" class="custom-input" #lateFeePerMonth="ngModel" />
+        <div *ngIf="lateFeePerMonth.invalid && lateFeePerMonth.touched" class="text-danger">
+          <div *ngIf="lateFeePerMonth.errors?.['required']">Late fee is required.</div>
+          <div *ngIf="lateFeePerMonth.errors?.['min']">Late fee cannot be negative.</div>
+        </div>
+      </div>
+    
+      <!-- Discount -->
+      <div class="form-group">
+        <label for="discountAllowed">Discount Allowed (%)</label>
+        <input type="number" id="discountAllowed" name="discountAllowed" [(ngModel)]="feeStructure.discountAllowed" required min="0" max="100" class="custom-input" #discountAllowed="ngModel" />
+        <div *ngIf="discountAllowed.invalid && discountAllowed.touched" class="text-danger">
+          <div *ngIf="discountAllowed.errors?.['required']">Discount is required.</div>
+          <div *ngIf="discountAllowed.errors?.['min'] || discountAllowed.errors?.['max']">Discount must be between 0% and 100%.</div>
+        </div>
+      </div>
+    
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="feeForm.invalid">Save Fee Structure</button>
+    </form>
+  </div>
+</div>

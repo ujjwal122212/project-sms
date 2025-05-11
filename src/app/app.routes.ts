@@ -93,6 +93,8 @@ import { QuizQuestionsComponent } from './components/student/quiz-questions/quiz
 import { ParentInfoComponent } from './components/Admin/parent-info/parent-info.component';
 import { ViewAllStudentComponent } from './components/Admin/addStudent/view-all-student/view-all-student.component';
 import { StudentAttendenceSummeryComponent } from './components/Admin/student-attendence-summery/student-attendence-summery.component';
+import { ViewFeeStructureComponent } from './components/Admin/fee/view-fee-structure/view-fee-structure.component';
+import { CreateFeeStructureComponent } from './components/Admin/fee/create-fee-structure/create-fee-structure.component';
 
 // import { RegisterTeacherComponent } from './components/Admin/register-teacher/register-teacher.component';
 // import { ResetPasswordComponent } from './main-profile/reset-password/reset-password.component';
@@ -1289,6 +1291,23 @@ export const routes: Routes = [
         canActivate: [authGuard],
         data: { roles: ['Admin'] },
       },
+      //student fee
+      {
+        path: 'viewFeeStructure',
+        title: 'View-Fee-Structre',
+        component: ViewFeeStructureComponent,
+        canActivate: [authGuard],
+        data: { roles: ['Admin'] },
+      },
+
+      {
+        path: 'createFeeStructure',
+        title: 'Create-Fee-Structre',
+        component: CreateFeeStructureComponent,
+        canActivate: [authGuard],
+        data: { roles: ['Admin'] },
+      },
+
 
       {
         path: 'viewstudentadmission',
