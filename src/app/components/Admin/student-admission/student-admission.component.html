@@ -1,6 +1,10 @@
 <div class="registration-area">
   <div class="form-area" id="formModel">
+    @if(isEdit){
+    <h1>Update Student Information</h1>
+    } @else {
     <h1>Student Information</h1>
+    }
     <form action="" [formGroup]="regForm" (ngSubmit)="onSubmit()">
       <div class="card-area">
         <div class="card">
@@ -165,7 +169,7 @@
         </div>
       </div>
       <div class="button-area">
-        <button type="submit" style="margin-right: 15px;">Next</button>
+        <button type="submit" style="margin-right: 15px">Next</button>
         <button type="button" (click)="CloseModel()" class="close">Back</button>
       </div>
     </form>

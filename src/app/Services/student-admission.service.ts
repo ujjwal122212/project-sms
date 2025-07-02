@@ -5,10 +5,10 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class StudentAdmissionService {
-  private studentDataSubject=new BehaviorSubject<any>(null);
-  studentData$=this.studentDataSubject.asObservable();
+  public studentDataSubject = new BehaviorSubject<any>(null);
+  studentData$ = this.studentDataSubject.asObservable();
 
-  private parentDataSubject = new BehaviorSubject<any>(null);
+  public parentDataSubject = new BehaviorSubject<any>(null);
   parentData$ = this.parentDataSubject.asObservable();
 
   setStudentData(data: any) {
@@ -18,5 +18,6 @@ export class StudentAdmissionService {
   setParentData(data: any) {
     this.parentDataSubject.next(data);
   }
-  constructor() { }
+
+  constructor() {}
 }

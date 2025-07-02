@@ -1,45 +1,44 @@
 <div class="parentinfo">
   <div class="form-area">
-    <h1>Parent Information</h1>
+    <h1>{{ isEdit ? 'Update Parent Information' : 'Add Parent Information' }}</h1>
     <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
-        <label>Father's Name</label>
-        <input type="text" formControlName="fathersName">
-      
-        <label>Mother's Name</label>
-        <input type="text" formControlName="mothersName">
-      
-        <label>Father's Occupation</label>
-        <input type="text" formControlName="fatherOccupation">
-      
-        <label>Mother's Occupation</label>
-        <input type="text" formControlName="motherOccupation">
-      
-        <label>Family Income</label>
-        <input type="number" formControlName="familyIncome">
-      
-        <label>Father's DOB</label>
-        <input type="date" formControlName="fathersDOB">
-      
-        <label>Mother's DOB</label>
-        <input type="date" formControlName="mothersDOB">
-      
-        <!-- Image Uploads -->
-        
-      
-        <label>Father's Image</label>
-        <input type="file" (change)="onFileChange($event, 'fathersImg')" accept="image/*">
-      
-        <label>Father's Document Image</label>
-        <input type="file" (change)="onFileChange($event, 'fathersDocumentImg')" accept="image/*">
-      
-        <label>Mother's Image</label>
-        <input type="file" (change)="onFileChange($event, 'mothersImg')" accept="image/*">
-      
-        <label>Mother's Document Image</label>
-        <input type="file" (change)="onFileChange($event, 'mothersDocumentImg')" accept="image/*">
-      
-        <button type="submit" [disabled]="!parentForm.valid">Submit</button>
-      </form>
-      
+      <label>Father's Name</label>
+      <input type="text" formControlName="fathersName">
+
+      <label>Mother's Name</label>
+      <input type="text" formControlName="mothersName">
+
+      <label>Father's Occupation</label>
+      <input type="text" formControlName="fatherOccupation">
+
+      <label>Mother's Occupation</label>
+      <input type="text" formControlName="motherOccupation">
+
+      <label>Family Income</label>
+      <input type="number" formControlName="familyIncome">
+
+      <label>Father's DOB</label>
+      <input type="date" formControlName="fathersDOB">
+
+      <label>Mother's DOB</label>
+      <input type="date" formControlName="mothersDOB">
+
+      <!-- Image Uploads -->
+      <label>Father's Image</label>
+      <input type="file" (change)="onFileChange($event, 'fathersImg')" accept="image/*">
+
+      <label>Father's Document Image</label>
+      <input type="file" (change)="onFileChange($event, 'fathersDocumentImg')" accept="image/*">
+
+      <label>Mother's Image</label>
+      <input type="file" (change)="onFileChange($event, 'mothersImg')" accept="image/*">
+
+      <label>Mother's Document Image</label>
+      <input type="file" (change)="onFileChange($event, 'mothersDocumentImg')" accept="image/*">
+
+      <button type="submit" [disabled]="!parentForm.valid">
+        {{ isEdit ? 'Update Information' : 'Submit Information' }}
+      </button>
+    </form>
   </div>
 </div>
