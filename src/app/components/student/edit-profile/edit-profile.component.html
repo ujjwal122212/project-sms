@@ -1,126 +1,178 @@
-
 <div class="registration-area">
-    <div class="form-area" id="formModel">
-        @if(isEdit){
-        <h1>Update Details</h1>
-        }
-        @else {
-        <h1>Add Details</h1>
-        }
-        <form action="" [formGroup]="regForm" (ngSubmit)="onSubmit()">
-            <div class="card-area">
-                <div class="card">
-                    <input type="text" placeholder="Enter Student Name" formControlName="studentName" name="name">
-                </div>
-                <div class="card">
-                    <input type="date" formControlName="dateOfBirth">
-                </div>
-                <div class="card">
-                    <select name="" id="" formControlName="gender">
-                        <option value="" selected disabled>Select a gender</option>
-                        @for(gender of genderArray;track $index){
-                        <option [value]="gender">{{gender}}</option>
-                        }
-                    </select>
-                </div>
-                <div class="card">
-                    <input type="text" placeholder="Enter blood group" formControlName="bloodGroup" name="bloodGroup">
-                </div>
-                <div class="card">
-                    <input type="text" placeholder="Enter fathers Name" formControlName="fathersName"
-                        name="fathersName">
-                </div>
-                <div class="card">
-                    <input type="text" placeholder="Enter Mothers Name" formControlName="mothersName"
-                        name="mothersName">
-                </div>
-                <div class="card">
-                    <input type="text" placeholder="Enter fathers occupation" formControlName="fatherOccupation"
-                        name="fatherOccupation">
-                </div>
-                <div class="card">
-                    <input type="text" placeholder="Enter mothers occupation" formControlName="motherOccupation"
-                        name="motherOccupation">
-                </div>
-                <div class="card">
-                    <input type="number" placeholder="Enter family Income" formControlName="familyIncome"
-                        name="familyIncome">
-                </div>
-                <div class="card">
-                    <input type="text" placeholder="Enter mobileNo" formControlName="mobile" name="mobile">
-                </div>
-                <div class="card">
-                    <input type="email" placeholder="Enter Email" formControlName="email" name="email">
-                </div>
-                <div class="card">
-                    <select name="" id="" (change)="onStateChange($event)" formControlName="state">
-                        <option value="" selected disabled>Select a state</option>
-                        @for(state of State;track $index){
-                        <option [value]="state.stateId">{{state.stateName}}</option>
-                        }
-                    </select>
-                </div>
-                <div class="card">
-                    <select name="" id="" formControlName="district">
-                        <option value="" selected disabled>Select a district</option>
-                        @for(district of District;track $index){
-                        <option [value]="district.districtId">{{district.districtName}}</option>
-                        }
-                    </select>
-                </div>
-                <div class="card">
-                    <input type="text" placeholder="Enter Pincode" formControlName="pincode" name="pincode">
-                </div>
-                <div class="card">
-                    <textarea name="" id="" placeholder="Enter Address" formControlName="address"></textarea>
-                </div>
-                <div class="card image-card">
-                    <div class="input-div" style="width: 100%;">
-                        <input type="file" (change)="onFileSelected($event)" #fileInput  accept="image/*">
-                    </div>
-                    <div class="image-div">
-                        <div *ngIf="imagePreview" class="image">
-                            <p>Newly Selected Image</p>
-                            <img [src]="imagePreview" alt="Student Image">
-                        </div>
-                        @if(isEdit){
-                        <div class="image">
-                            <p>Previosly uploaded image</p>
-                            <img [src]="'https://localhost:7262/api/Image/'+image" alt="DataBase Image">
-                        </div>
-                        }
-                    </div>
+  <div class="form-area" id="formModel">
+    <h1>{{ isEdit ? "Update Profile" : "Add Profile" }}</h1>
+    <form
+      [formGroup]="regForm"
+      (ngSubmit)="onSubmit()"
+      enctype="multipart/form-data"
+      class="p-4"
+    >
+      <div class="row">
+        <!-- Basic Info -->
+        <div class="col-md-6 mb-3">
+          <label>Enrollment Number</label>
+          <input type="number" formControlName="enrollmentNumber" class="form-control" readonly />
+        </div>
 
-                </div>
-                <div class="card">
-                    <select name="" id="" (change)="onClassChange($event)" formControlName="class">
-                        <option value="" selected disabled>Select a Class</option>
-                        @for(class of Classes;track $index){
-                        <option [value]="class.classId">{{class.className}}</option>
-                        }
-                    </select>
-                </div>
-                <div class="card">
-                    <select name="" id="" formControlName="sectionId">
-                        <option value="0" selected disabled>Select a Section</option>
-                        @for(section of Sections;track $index){
-                        <option [value]="section.sectionId">{{section.sectionName}}</option>
-                        }
-                    </select>
-                </div>
+        <div class="col-md-6 mb-3">
+          <label>Student Name</label>
+          <input type="text" formControlName="studentName" class="form-control" />
+        </div>
 
-            </div>
-            <div class="button-area">
-                @if(isEdit){
-                <button type="submit" class="submit">Update</button>
-                }
-                @else {
-                <button type="submit" class="submit">Save</button>
-                }
-                <button type="button" (click)="CloseModel()" class="close">Back</button>
-            </div>
+        <div class="col-md-6 mb-3">
+          <label>Date of Birth</label>
+          <input type="date" formControlName="dateOfBirth" class="form-control" />
+        </div>
 
-        </form>
-    </div>
+        <div class="col-md-6 mb-3">
+          <label>Gender</label>
+          <select formControlName="gender" class="form-control">
+            <option *ngFor="let g of genderArray" [value]="g">{{ g }}</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Blood Group</label>
+          <input type="text" formControlName="bloodGroup" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Father's Name</label>
+          <input type="text" formControlName="fathersName" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Mother's Name</label>
+          <input type="text" formControlName="mothersName" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Father's Occupation</label>
+          <input type="text" formControlName="fatherOccupation" class="form-control" readonly/>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Mother's Occupation</label>
+          <input type="text" formControlName="motherOccupation" class="form-control" readonly />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Family Income</label>
+          <input type="text" formControlName="familyIncome" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Mobile</label>
+          <input type="text" formControlName="mobile" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Alternate Mobile</label>
+          <input type="text" formControlName="alternateMobile" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Email</label>
+          <input type="email" formControlName="email" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>State</label>
+          <select formControlName="state" class="form-control" (change)="onStateChange($event)">
+            <option *ngFor="let s of State" [value]="s.stateId">{{ s.stateName }}</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>District</label>
+          <select formControlName="district" class="form-control">
+            <option *ngFor="let d of District" [value]="d.districtId">{{ d.districtName }}</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Pincode</label>
+          <input type="text" formControlName="pincode" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Address</label>
+          <textarea formControlName="address" class="form-control"></textarea>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Class</label>
+          <select formControlName="class" class="form-control" (change)="onClassChange($event)">
+            <option *ngFor="let c of Classes" [value]="c.classId">{{ c.className }}</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Section</label>
+          <select formControlName="sectionId" class="form-control">
+            <option *ngFor="let sec of Sections" [value]="sec.sectionId">{{ sec.sectionName }}</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Password</label>
+          <input type="password" formControlName="password" class="form-control" readonly/>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Caste</label>
+          <input type="text" formControlName="caste" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Enrollment Date</label>
+          <input type="date" formControlName="enrollmentDate" class="form-control" />
+        </div>
+
+        <!-- Image Uploads -->
+        <div class="col-md-6 mb-3">
+          <label>Student Image</label>
+          <input type="file" class="form-control" (change)="onFileChange($event, 'StudentImg')" #studentImgInput />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Student Aadhar Image</label>
+          <input type="file" class="form-control" (change)="onFileChange($event, 'studentAadharImg')" #aadharImgInput />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Birth Certificate</label>
+          <input type="file" class="form-control" (change)="onFileChange($event, 'studentBirthCertificate')" #birthCertificateInput />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Father's Image</label>
+          <input type="file" class="form-control" (change)="onFileChange($event, 'fathersImg')" #fathersImgInput />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Father's Document</label>
+          <input type="file" class="form-control" (change)="onFileChange($event, 'fathersDocumentImg')" #fathersDocumentInput />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Mother's Image</label>
+          <input type="file" class="form-control" (change)="onFileChange($event, 'mothersImg')" #mothersImgInput />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label>Mother's Document</label>
+          <input type="file" class="form-control" (change)="onFileChange($event, 'mothersDocumentImg')" #mothersDocumentInput />
+        </div>
+      </div>
+
+      <!-- Submit Buttons -->
+      <div class="mt-4">
+        <button type="submit" class="btn btn-primary">
+          {{ isEdit ? "Update" : "Submit" }}
+        </button>
+        <button type="button" class="btn btn-secondary ms-2" (click)="CloseModel()">Cancel</button>
+      </div>
+    </form>
+  </div>
 </div>
-

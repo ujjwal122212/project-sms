@@ -39,7 +39,12 @@
 
     <ng-template #hasTeachers>
       <!-- Search Results Empty Message -->
-      <ng-container *ngIf="searchTerm && teachers.length > 0 && filteredUserList.length === 0; else showTeachers">
+      <ng-container
+        *ngIf="
+          searchTerm && teachers.length > 0 && filteredUserList.length === 0;
+          else showTeachers
+        "
+      >
         <div class="empty-state">
           <i class="fas fa-search"></i>
           <h3>No Matching Results</h3>
@@ -64,7 +69,8 @@
             >
               <img
                 [src]="
-                  'https://localhost:7262/api/TeacherImage/' + teacher.imagePath
+                  'https://localhost:7262/api/Image/Teacher_images/' +
+                  teacher.imagePath
                 "
                 alt="Teacher Image"
               />
@@ -93,8 +99,8 @@
         <div class="pagination-container" *ngIf="totalPages > 1">
           <div class="pagination">
             <!-- First Page -->
-            <button 
-              class="page-btn" 
+            <button
+              class="page-btn"
               [class.disabled]="currentPage === 1"
               (click)="onPageChange(1)"
               [disabled]="currentPage === 1"
@@ -103,8 +109,8 @@
             </button>
 
             <!-- Previous Page -->
-            <button 
-              class="page-btn" 
+            <button
+              class="page-btn"
               [class.disabled]="currentPage === 1"
               (click)="onPageChange(currentPage - 1)"
               [disabled]="currentPage === 1"
@@ -113,7 +119,7 @@
             </button>
 
             <!-- Page Numbers -->
-            <button 
+            <button
               *ngFor="let page of getPageNumbers()"
               class="page-btn"
               [class.active]="page === currentPage"
@@ -123,8 +129,8 @@
             </button>
 
             <!-- Next Page -->
-            <button 
-              class="page-btn" 
+            <button
+              class="page-btn"
               [class.disabled]="currentPage === totalPages"
               (click)="onPageChange(currentPage + 1)"
               [disabled]="currentPage === totalPages"
@@ -133,8 +139,8 @@
             </button>
 
             <!-- Last Page -->
-            <button 
-              class="page-btn" 
+            <button
+              class="page-btn"
               [class.disabled]="currentPage === totalPages"
               (click)="onPageChange(totalPages)"
               [disabled]="currentPage === totalPages"
@@ -147,4 +153,3 @@
     </ng-template>
   </div>
 </div>
-

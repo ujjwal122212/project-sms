@@ -1,72 +1,79 @@
 <div class="teacher-area">
-    <div class="profile-area" *ngIf="teacher">
-        <img [src]="'https://localhost:7262/api/TeacherImage/'+teacher.imagePath" alt="Teacher Image">
-        <div class="edit-profile">
-            <button type="button" (click)="editDetails(teacher.enrollmentNumber)">Edit Details</button>
-        </div>
+  <div class="profile-area" *ngIf="teacher">
+    <img
+      [src]="
+        'https://localhost:7262/api/Image/Teacher_images/' + teacher.imagePath
+      "
+      alt="Teacher Image"
+    />
+    <div class="edit-profile">
+      <button type="button" (click)="editDetails(teacher.enrollmentNumber)">
+        Edit Details
+      </button>
     </div>
-    @if(teacher){
-    <div class="details-area">
-        <div class="card">
-            <p><strong>Name</strong></p>
-            <p>{{teacher.name}}</p>
-        </div>
-        <div class="card">
-            <p> <strong>EnrollmentNumber</strong></p>
-            <p>{{teacher.enrollmentNumber}}</p>
-        </div>
-        <div class="card">
-            <p><strong>Gender</strong></p>
-            <p>{{teacher.gender}}</p>
-        </div>
-        <div class="card">
-            <p><strong>D.O.B</strong></p>
-            <p>{{teacher.dob | date:'dd-MM-yyyy'}}</p>
-        </div>
-        <div class="card">
-            <p><strong>Email</strong></p>
-            <p>{{teacher.email}}</p>
-        </div>
-        <div class="card">
-            <p><strong>Contact</strong></p>
-            <p>{{teacher.contact}}</p>
-        </div>
-        <div class="card">
-            <p><strong>State</strong></p>
-            <p>{{teacher.state}}</p>
-        </div>
-        <div class="card">
-            <p><strong>District</strong></p>
-            <p>{{teacher.district}}</p>
-        </div>
-        <div class="card">
-            <p><strong>Pincode</strong></p>
-            <p>{{teacher.pincode}}</p>
-        </div>
-        <div class="card">
-            <p><strong>Address</strong></p>
-            <p>{{teacher.address}}</p>
-        </div>
-        <div class="card">
-            <p><strong>Qualification</strong></p>
-            <p>{{teacher.qualification}}</p>
-        </div>
-        <div class="card">
-            <p><strong>Teach Class</strong></p>
-            <p>{{teacher.teachClasses}}</p>
-        </div>
-        <div class="card">
-            <p><strong>Subject</strong></p>
-            <p>{{teacher.teachSubject}}</p>
-        </div>
-        <div class="card">
-            <p><strong>Experience</strong></p>
-            <p>{{teacher.experienceOfTeaching}} Years</p>
-        </div>
-        <div class="card">
-            <p><strong>Additional Info</strong></p>
-            <p>{{teacher.additionalText}}</p>
-        </div>
+  </div>
+  @if(teacher){
+  <div class="details-area">
+    <div class="card">
+      <p><strong>Name</strong></p>
+      <p>{{ teacher.name }}</p>
     </div>
-    }
+    <div class="card">
+      <p><strong>EnrollmentNumber</strong></p>
+      <p>{{ teacher.enrollmentNumber }}</p>
+    </div>
+    <div class="card">
+      <p><strong>Gender</strong></p>
+      <p>{{ teacher.gender }}</p>
+    </div>
+    <div class="card">
+      <p><strong>D.O.B</strong></p>
+      <p>{{ teacher.dob | date : "dd-MM-yyyy" }}</p>
+    </div>
+    <div class="card">
+      <p><strong>Email</strong></p>
+      <p>{{ teacher.email }}</p>
+    </div>
+    <div class="card">
+      <p><strong>Contact</strong></p>
+      <p>{{ teacher.contact }}</p>
+    </div>
+    <div class="card">
+      <p><strong>State</strong></p>
+      <p>{{ teacher.state }}</p>
+    </div>
+    <div class="card">
+      <p><strong>District</strong></p>
+      <p>{{ teacher.district }}</p>
+    </div>
+    <div class="card">
+      <p><strong>Pincode</strong></p>
+      <p>{{ teacher.pincode }}</p>
+    </div>
+    <div class="card">
+      <p><strong>Address</strong></p>
+      <p>{{ teacher.address }}</p>
+    </div>
+    <div class="card">
+      <p><strong>Qualification</strong></p>
+      <p>{{ teacher.qualification }}</p>
+    </div>
+    <div class="card">
+      <p><strong>Teach Class</strong></p>
+      <p>{{ teacher.teachClasses }}</p>
+    </div>
+    <div class="card">
+      <p><strong>Subject</strong></p>
+      <p>{{ teacher.teachSubject }}</p>
+    </div>
+    <div class="card">
+      <p><strong>Experience</strong></p>
+      <p>{{ teacher.experienceOfTeaching }} Years</p>
+    </div>
+    <div class="card">
+      <p><strong>Additional Info</strong></p>
+      <p>{{ teacher.additionalText }}</p>
+    </div>
+  </div>
+  }
 </div>

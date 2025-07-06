@@ -90,7 +90,7 @@ export class EditDetailsComponent implements OnInit {
   }
 
 
-  baseImageUrl: string = 'https://localhost:7262/api/TeacherImage/';
+  baseImageUrl: string = 'https://localhost:7262/api/Image/Teacher_images';
   convertImagePathToFile(imagePath: string, filename: string): Promise<File> {
     const fullImageUrl = `${this.baseImageUrl}${imagePath}`;
 
