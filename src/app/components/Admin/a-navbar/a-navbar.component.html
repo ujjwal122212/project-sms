@@ -16,7 +16,7 @@
   <div class="user-info">
     <span class="user-icon" routerLinkActive="active" (click)="openProfile()">
       <div class="teacher-image" *ngIf="teacher">
-        <img [src]="'https://localhost:7262/Admin/'+teacher.imagePath" alt="Teacher Image">
+        <img [src]="'https://localhost:7262/api/Image/Admin_images/'+teacher.imagePath" alt="Admin Image">
       </div>
     </span>
     @if (show) {

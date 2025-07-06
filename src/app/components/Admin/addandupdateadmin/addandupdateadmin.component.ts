@@ -109,7 +109,7 @@ export class AddandupdateadminComponent implements OnInit {
   }
 
 
-  baseImageUrl: string = 'https://localhost:7262/Admin/';
+  baseImageUrl: string = 'https://localhost:7262/api/Image/Admin_images';
   convertImagePathToFile(imagePath: string, filename: string): Promise<File> {
     const fullImageUrl = `${this.baseImageUrl}${imagePath}`;
 

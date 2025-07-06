@@ -1,239 +1,125 @@
-
+/* Container & Form Layout */
 .registration-area {
-    /* margin: 60px 10px 0 60px; */
-       padding: 10px;
-       display: flex;
-       flex-direction: column;
-   }
-   
-   .header {
-       display: flex;
-       justify-content: space-between;
-       background-color: #ddd;
-       padding: 10px 5px;
-       border-radius: 10px;
-       margin-bottom: 30px;
-   }
-   
-   h1 {
-       font-size: 20px;
-       font-weight: bold;
-       align-self: center;
-   }
-   
-   button {
-       background-color: yellowgreen;
-       color: black;
-       border-radius: 10px;
-       padding: 10px;
-       font-weight: bold;
-       font-size: 18px;
-   }
-   
-   .selected-area {
-       width: 100%;
-       display: flex;
-       /* gap: 30px; */
-       justify-content: space-between;
-       /* background-color: pink; */
-       padding: 0 20px;
-   }
-   
-   .selected-area .area {
-       width: 30%;
-   }
-   
-   .show {
-       display: flex;
-       justify-content: center;
-   }
-   
-   .area button {
-       background-color: #007bff;
-       padding: 2px 10px;
-   }
-   
-   .section {
-       overflow: hidden;
-       margin: 40px 10px;
-       border-radius: 10px;
-       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-   }
-   
-   .table-container {
-       /* display: none; */
-       /* margin-top: 20PX; */
-       width: 100%;
-       overflow-x: auto;
-       border-radius: 10px;
-   
-   }
-   
-   table {
-       width: 100%;
-       padding: 0 10px;
-   
-       border-collapse: collapse;
-   }
-   
-   th {
-       border: 2px solid #ddd;
-       padding: 8px;
-       text-align: center;
-       background-color: #f1f1f1;
-   }
-   
-   td {
-       border: 1px solid #ddd;
-       padding: 5px;
-       text-align: center;
-   }
-   
-   button.edit {
-       background-color: #28a745;
-       color: white;
-       border: none;
-       padding: 5px 10px;
-       border-radius: 4px;
-       /* cursor: pointer; */
-       margin-right: 5px;
-   }
-   
-   button.delete {
-       background-color: #dc3545;
-       color: white;
-       border: none;
-       padding: 5px 10px;
-       border-radius: 4px;
-       cursor: pointer;
-   }
-   
-   td.action-button {
-       min-width: 150px;
-   }
-   
-   
-   .form-area {
-       /* position: relative;
-       top: 70px;
-       left: 70px;
-       right: 20px; */
-       /* transform: scale(0.1); */
-       /* visibility: hidden; */
-       /* background-color: #f8fafc; */
-       background-color: white;
-       overflow-x: hidden;
-       border-radius: 10px;
-       margin-bottom: 10px;
-       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-   }
-   
-   .openform {
-       visibility: visible;
-       top: 70px;
-       left: 70px;
-       right: 20px;
-       transform: scale(1);
-       transition: transform 0.5s, top 0.5s;
-   }
-   
-   
-   .form-area form {
-       padding: 15px 10px 10px 10px;
-   }
-   
-   .form-area h1 {
-       text-align: center;
-       padding: 15px 0;
-       border-radius: 10px 10px 0 0;
-       font-size: 22px;
-       background-color: #FDC300;
-   }
-   
-   .card-area {
-       display: flex;
-       /* column-gap: 50px; */
-       justify-content: space-between;
-       flex-wrap: wrap;
-   }
-   
-   .card {
-       display: flex;
-       /* justify-content: space-between; */
-       /* align-items: center; */
-       width: 48%;
-       /* background-color: aqua; */
-       margin-bottom: 30px;
-   }
-   
-   select,
-   input,
-   textarea {
-       border: 2px solid #ddd;
-       width: 100%;
-       border-radius: 5px;
-       padding: 4px 2px;
-   }
-   
-   select:hover {
-       cursor: pointer;
-   
-   }
-   
-   .button-area {
-       /* margin-top: 30px; */
-       display: flex;
-       justify-content: center;
-   }
-   
-   .submit {
-       margin-right: 20px;
-       background-color: #007bff;
-       padding: 5px 10px;
-       font-weight: bold;
-       font-size: 20px;
-   }
-   
-   .close {
-       background-color: #ef4444;
-       padding: 5px 10px;
-       font-weight: bold;
-       font-size: 20px;
-   }
-   
-   .image-card {
-       border: 2px solid #ddd;
-       border-radius: 10px;
-       height: 280px;
-       display: flex;
-       flex-direction: column;
-   }
-   
-   textarea {
-       height: 280px;
-   }
-   
-   .image-div {
-       padding: 0 10px;
-       width: 100%;
-       display: flex;
-       gap: 15px;
-       margin-bottom: 5px;
-   }
-   
-   .image-div .image {
-       width: 50%;
-       height: 200px;
-       border-radius: 10px;
-   }
-   
-   .image img {
-       border-radius: 10px;
-       height: 100%;
-   }
-   
-   .image p {
-       color: #28a745;
-       font-weight: 500;
-       margin-bottom: 3px;
-   }
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f7f9fc;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-area h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+/* Form Grid */
+form .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+form .col-md-6,
+form .col-md-12 {
+  flex: 1 1 calc(50% - 1rem);
+}
+
+form .col-md-12 {
+  flex: 1 1 100%;
+}
+
+/* Labels & Inputs */
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #34495e;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+  background-color: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* File Input Styling */
+input[type="file"] {
+  padding: 0.3rem;
+  background-color: #fcfcfc;
+}
+
+/* Section Headers */
+h5 {
+  font-size: 1.2rem;
+  color: #2980b9;
+  border-bottom: 2px solid #dcdde1;
+  padding-bottom: 0.3rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+/* Buttons */
+.mt-4 {
+  margin-top: 2rem;
+  text-align: right;
+}
+
+button {
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.btn-primary {
+  background-color: #2ecc71;
+  color: white;
+}
+
+button.btn-secondary {
+  background-color: #95a5a6;
+  color: white;
+  margin-left: 1rem;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  form .col-md-6 {
+    flex: 1 1 100%;
+  }
+
+  .mt-4 {
+    text-align: center;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  button.btn-secondary {
+    margin-left: 0;
+  }
+}

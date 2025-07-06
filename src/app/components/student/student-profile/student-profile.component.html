@@ -1,6 +1,6 @@
 <div class="student-container" *ngIf="student">
     <div class="profile-area">
-        <img [src]="'https://localhost:7262/api/Image/'+imagePath" alt="Student Img">
+        <img [src]="'https://localhost:7262/api/Image/Student_images/'+imagePath" alt="Student Img">
         <div class="edit-profile">
             <button type="button" (click)="EditStudent(student.enrollmentNumber)">Edit Profile</button>
         </div>
