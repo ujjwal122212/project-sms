@@ -1,6 +1,6 @@
 <div class="teacher-area">
     <div class="profile-area" *ngIf="teacher">
-        <img [src]="'https://localhost:7262/Admin/'+teacher.imagePath" alt="Admin Image">
+        <img [src]="'https://localhost:7262/api/Image/Admin_images/'+teacher.imagePath" alt="Admin Image">
         <div class="edit-profile">
             <button type="button" (click)="editDetails(teacher.enrollmentNumber)">Edit Details</button>
         </div>
